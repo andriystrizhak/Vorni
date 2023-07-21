@@ -1,0 +1,10 @@
+C:\Users\Windows-10H-20\Desktop\EWL 1\Eng_Flash-Cards_Learner.pdb
+C:\Users\Windows-10H-20\Desktop\EWL 1\D3DCompiler_47_cor3.dll
+C:\Users\Windows-10H-20\Desktop\EWL 1\PenImc_cor3.dll
+C:\Users\Windows-10H-20\Desktop\EWL 1\PresentationNative_cor3.dll
+C:\Users\Windows-10H-20\Desktop\EWL 1\vcruntime140_cor3.dll
+C:\Users\Windows-10H-20\Desktop\EWL 1\wpfgfx_cor3.dll
+C:\Users\Windows-10H-20\Desktop\EWL 1\sni.dll
+C:\Users\Windows-10H-20\Desktop\EWL 1\SQLite.Interop.dll
+C:\Users\Windows-10H-20\Desktop\EWL 1\MySql.Data.xml
+C:\Users\Windows-10H-20\Desktop\EWL 1\Eng_Flash-Cards_Learner.exe
