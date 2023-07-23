@@ -38,7 +38,7 @@ namespace Eng_Flash_Cards_Learner
 
         bool WordIsNotRepeated(string engW)
         {
-            string query = $"SELECT * FROM Words WHERE EngWord = '{engW}';";
+            string query = $"SELECT * FROM AllWords WHERE EngWord = '{engW}';";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
 
             SQLiteDataReader reader = cmd.ExecuteReader();
@@ -50,7 +50,7 @@ namespace Eng_Flash_Cards_Learner
             if (WordIsNotRepeated(engW)) return false;
 
             uaW = uaW.Replace("'", "''");
-            string query = $"INSERT INTO Words (EngWord, UaTranslation, Rating, Repetition) VALUES ('{engW}', '{uaW}', 0, 0);";
+            string query = $"INSERT INTO AllWords (EngWord, UaTranslation, Rating, Repetition) VALUES ('{engW}', '{uaW}', 0, 0);";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
 
             SQLiteDataReader reader = cmd.ExecuteReader();
@@ -59,7 +59,7 @@ namespace Eng_Flash_Cards_Learner
 
         public void RemoveLastWord(int count)
         {
-            string query = $"DELETE FROM Words ORDER BY WordID DESC LIMIT {count};";
+            string query = $"DELETE FROM AllWords ORDER BY WordID DESC LIMIT {count};";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
             SQLiteDataReader reader = cmd.ExecuteReader();
         }
@@ -74,7 +74,7 @@ namespace Eng_Flash_Cards_Learner
         /// <returns>Список слів </returns>
         public List<DB_Word> GetWords(int number)
         {
-            string query = $"SELECT * FROM Words ORDER BY Rating LIMIT {number};";
+            string query = $"SELECT * FROM AllWords ORDER BY Rating LIMIT {number};";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
             SQLiteDataReader reader = cmd.ExecuteReader();
             var words = new List<DB_Word>();
@@ -95,7 +95,7 @@ namespace Eng_Flash_Cards_Learner
 
         public void RateWord(int id, int number)
         {
-            string query = $"UPDATE Words SET Rating = {number} WHERE WordID = {id};";
+            string query = $"UPDATE AllWords SET Rating = {number} WHERE WordID = {id};";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
             SQLiteDataReader reader = cmd.ExecuteReader();
         }
@@ -112,7 +112,7 @@ namespace Eng_Flash_Cards_Learner
             string query;
             for (int i = 0; i <= 5; i++)
             {
-                query = $"SELECT count (*) FROM Words WHERE Rating = {i};";
+                query = $"SELECT count (*) FROM AllWords WHERE Rating = {i};";
                 cmd = new SQLiteCommand(query, connection);
                 stat.allRatings[i] = Convert.ToInt32(cmd.ExecuteScalar());
             }
@@ -158,7 +158,7 @@ namespace Eng_Flash_Cards_Learner
 
         public int GetWordRepetition(int id)
         {
-            string query = $"SELECT Repetition FROM Words WHERE WordID = {id};";
+            string query = $"SELECT Repetition FROM AllWords WHERE WordID = {id};";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
             return Convert.ToInt32(cmd.ExecuteScalar());
         }
@@ -166,7 +166,7 @@ namespace Eng_Flash_Cards_Learner
         public void IncrementWordRepetition(int id)
         {
             int wordRepetition = GetWordRepetition(id);
-            string query = $"UPDATE Words SET Repetition = {++wordRepetition} WHERE WordID = {id};";
+            string query = $"UPDATE AllWords SET Repetition = {++wordRepetition} WHERE WordID = {id};";
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
             SQLiteDataReader reader = cmd.ExecuteReader();
         }

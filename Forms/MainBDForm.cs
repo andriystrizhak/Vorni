@@ -28,7 +28,7 @@ namespace Eng_Flash_Cards_Learner
         /// <summary>
         /// Список слів для вивчення
         /// </summary>
-        List<DB_Word> words = new List<DB_Word>();
+        List<DB_Word> AllWords = new List<DB_Word>();
         /// <summary>
         /// Індекс поточного слова для вивчення зі списку words
         /// </summary>

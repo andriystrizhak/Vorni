@@ -30,6 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainBDForm));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -100,6 +104,21 @@
             label2 = new Label();
             GoBackButton7 = new Button();
             label5 = new Label();
+            panel1 = new Panel();
+            dataGridView1 = new DataGridView();
+            button6 = new Button();
+            button7 = new Button();
+            label8 = new Label();
+            textBox1 = new TextBox();
+            label9 = new Label();
+            textBox2 = new TextBox();
+            label10 = new Label();
+            button8 = new Button();
+            label11 = new Label();
+            WordID = new DataGridViewTextBoxColumn();
+            EngWord = new DataGridViewTextBoxColumn();
+            UaTranslation = new DataGridViewTextBoxColumn();
+            Rating = new DataGridViewTextBoxColumn();
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             MenuPanel.SuspendLayout();
@@ -114,6 +133,8 @@
             ((System.ComponentModel.ISupportInitialize)WordCountNumericUpDown).BeginInit();
             AddingWPanel3.SuspendLayout();
             AddingWPanel2.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // CloseButton
@@ -147,7 +168,7 @@
             TopPanel.Controls.Add(CloseButton);
             TopPanel.Controls.Add(TitleLabel);
             TopPanel.Cursor = Cursors.SizeAll;
-            TopPanel.Location = new Point(0, 0);
+            TopPanel.Location = new Point(0, -18);
             TopPanel.Name = "TopPanel";
             TopPanel.Size = new Size(978, 31);
             TopPanel.TabIndex = 9;
@@ -1314,22 +1335,238 @@
             label5.Text = "Додавання нових слів";
             label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(button6);
+            panel1.Controls.Add(button7);
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(label9);
+            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(label10);
+            panel1.Controls.Add(button8);
+            panel1.Controls.Add(label11);
+            panel1.ImeMode = ImeMode.Hangul;
+            panel1.Location = new Point(0, 23);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(978, 519);
+            panel1.TabIndex = 31;
+            // 
+            // dataGridView1
+            // 
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.LightGray;
+            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.NullValue = "-";
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { WordID, EngWord, UaTranslation, Rating });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridView1.GridColor = Color.Gray;
+            dataGridView1.Location = new Point(497, 121);
+            dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.LightGray;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(403, 281);
+            dataGridView1.TabIndex = 49;
+            // 
+            // button6
+            // 
+            button6.BackColor = SystemColors.WindowFrame;
+            button6.Cursor = Cursors.Hand;
+            button6.Enabled = false;
+            button6.FlatAppearance.BorderColor = Color.Gray;
+            button6.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
+            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button6.ForeColor = Color.White;
+            button6.Location = new Point(286, 420);
+            button6.Name = "button6";
+            button6.Size = new Size(195, 53);
+            button6.TabIndex = 48;
+            button6.Text = "Скасувати попереднє";
+            button6.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            button7.BackColor = SystemColors.WindowFrame;
+            button7.Cursor = Cursors.Hand;
+            button7.Enabled = false;
+            button7.FlatAppearance.BorderColor = Color.Gray;
+            button7.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
+            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button7.ForeColor = Color.White;
+            button7.Location = new Point(519, 420);
+            button7.Name = "button7";
+            button7.Size = new Size(195, 53);
+            button7.TabIndex = 47;
+            button7.Text = "Додати слово";
+            button7.UseVisualStyleBackColor = false;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Roboto Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(67, 375);
+            label8.Name = "label8";
+            label8.Size = new Size(169, 18);
+            label8.TabIndex = 46;
+            label8.Text = "*кожен в окремому рядку";
+            label8.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // textBox1
+            // 
+            textBox1.AcceptsReturn = true;
+            textBox1.BackColor = Color.FromArgb(90, 90, 90);
+            textBox1.Cursor = Cursors.IBeam;
+            textBox1.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            textBox1.ForeColor = Color.White;
+            textBox1.Location = new Point(52, 222);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.ScrollBars = ScrollBars.Vertical;
+            textBox1.Size = new Size(382, 152);
+            textBox1.TabIndex = 45;
+            textBox1.TabStop = false;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.ForeColor = Color.White;
+            label9.Location = new Point(141, 195);
+            label9.Name = "label9";
+            label9.Size = new Size(208, 25);
+            label9.TabIndex = 44;
+            label9.Text = "Введи його переклади";
+            label9.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = Color.FromArgb(90, 90, 90);
+            textBox2.Cursor = Cursors.IBeam;
+            textBox2.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            textBox2.ForeColor = Color.White;
+            textBox2.Location = new Point(91, 149);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(308, 36);
+            textBox2.TabIndex = 43;
+            textBox2.TabStop = false;
+            textBox2.TextAlign = HorizontalAlignment.Center;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.ForeColor = Color.White;
+            label10.Location = new Point(133, 122);
+            label10.Name = "label10";
+            label10.Size = new Size(222, 25);
+            label10.TabIndex = 42;
+            label10.Text = "Введи англійське слово";
+            label10.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // button8
+            // 
+            button8.BackColor = Color.FromArgb(50, 50, 50);
+            button8.BackgroundImage = Resource1.icons8_налево_96;
+            button8.BackgroundImageLayout = ImageLayout.Zoom;
+            button8.Cursor = Cursors.Hand;
+            button8.FlatAppearance.BorderColor = Color.Gray;
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 50, 50);
+            button8.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button8.ForeColor = Color.White;
+            button8.Location = new Point(3, 3);
+            button8.Name = "button8";
+            button8.Size = new Size(60, 60);
+            button8.TabIndex = 40;
+            button8.UseVisualStyleBackColor = false;
+            button8.Click += GoBackButton_Click;
+            // 
+            // label11
+            // 
+            label11.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label11.AutoSize = true;
+            label11.BackColor = Color.FromArgb(50, 50, 50);
+            label11.BorderStyle = BorderStyle.FixedSingle;
+            label11.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.ForeColor = Color.White;
+            label11.Location = new Point(313, 49);
+            label11.Name = "label11";
+            label11.Size = new Size(381, 47);
+            label11.TabIndex = 38;
+            label11.Text = "Додавання нових слів";
+            label11.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // WordID
+            // 
+            WordID.HeaderText = "ID";
+            WordID.Name = "WordID";
+            // 
+            // EngWord
+            // 
+            EngWord.HeaderText = "Eng";
+            EngWord.Name = "EngWord";
+            // 
+            // UaTranslation
+            // 
+            UaTranslation.HeaderText = "Ua";
+            UaTranslation.Name = "UaTranslation";
+            // 
+            // Rating
+            // 
+            Rating.HeaderText = "Rating";
+            Rating.Name = "Rating";
+            // 
             // MainBDForm
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(50, 50, 50);
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(978, 550);
-            Controls.Add(TopPanel);
-            Controls.Add(LearningStatPanel);
-            Controls.Add(StatPanel);
-            Controls.Add(AddingWPanel3);
-            Controls.Add(AddingWPanel2);
+            Controls.Add(panel1);
             Controls.Add(AddingWPanel1);
+            Controls.Add(TopPanel);
             Controls.Add(SettingPanel);
             Controls.Add(MenuPanel);
             Controls.Add(LearningEngPanel);
             Controls.Add(LearningUaPanel);
+            Controls.Add(LearningStatPanel);
+            Controls.Add(StatPanel);
+            Controls.Add(AddingWPanel3);
+            Controls.Add(AddingWPanel2);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainBDForm";
@@ -1356,6 +1593,9 @@
             AddingWPanel3.PerformLayout();
             AddingWPanel2.ResumeLayout(false);
             AddingWPanel2.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -1432,5 +1672,20 @@
         private Button GoBackButton7;
         private Label label5;
         private Label LearningRatingLabel;
+        private Panel panel1;
+        private Button button6;
+        private Button button7;
+        private Label label8;
+        private TextBox textBox1;
+        private Label label9;
+        private TextBox textBox2;
+        private Label label10;
+        private Button button8;
+        private Label label11;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn WordID;
+        private DataGridViewTextBoxColumn EngWord;
+        private DataGridViewTextBoxColumn UaTranslation;
+        private DataGridViewTextBoxColumn Rating;
     }
 }
