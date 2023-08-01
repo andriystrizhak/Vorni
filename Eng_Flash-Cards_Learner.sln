@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eng_Flash-Cards_Learner", "Eng_Flash-Cards_Learner.csproj", "{57ED3951-21E9-4F61-B604-44283E06FB3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "..\Tests\Tests.csproj", "{88974E7C-805A-4A19-98DB-6A4C21147047}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EWL_Tests", "..\EWL_Tests\EWL_Tests.csproj", "{939A21C0-7F44-4D6A-9652-DE7756038A79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{57ED3951-21E9-4F61-B604-44283E06FB3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57ED3951-21E9-4F61-B604-44283E06FB3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57ED3951-21E9-4F61-B604-44283E06FB3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{88974E7C-805A-4A19-98DB-6A4C21147047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{88974E7C-805A-4A19-98DB-6A4C21147047}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{88974E7C-805A-4A19-98DB-6A4C21147047}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{88974E7C-805A-4A19-98DB-6A4C21147047}.Release|Any CPU.Build.0 = Release|Any CPU
+		{939A21C0-7F44-4D6A-9652-DE7756038A79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939A21C0-7F44-4D6A-9652-DE7756038A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939A21C0-7F44-4D6A-9652-DE7756038A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939A21C0-7F44-4D6A-9652-DE7756038A79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -106,6 +106,10 @@
             label5 = new Label();
             panel1 = new Panel();
             dataGridView1 = new DataGridView();
+            WordID = new DataGridViewTextBoxColumn();
+            EngWord = new DataGridViewTextBoxColumn();
+            UaTranslation = new DataGridViewTextBoxColumn();
+            Rating = new DataGridViewTextBoxColumn();
             button6 = new Button();
             button7 = new Button();
             label8 = new Label();
@@ -115,10 +119,6 @@
             label10 = new Label();
             button8 = new Button();
             label11 = new Label();
-            WordID = new DataGridViewTextBoxColumn();
-            EngWord = new DataGridViewTextBoxColumn();
-            UaTranslation = new DataGridViewTextBoxColumn();
-            Rating = new DataGridViewTextBoxColumn();
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             MenuPanel.SuspendLayout();
@@ -1380,7 +1380,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.GridColor = Color.Gray;
-            dataGridView1.Location = new Point(497, 121);
+            dataGridView1.Location = new Point(497, 118);
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.LightGray;
@@ -1392,8 +1392,28 @@
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(403, 281);
+            dataGridView1.Size = new Size(403, 270);
             dataGridView1.TabIndex = 49;
+            // 
+            // WordID
+            // 
+            WordID.HeaderText = "ID";
+            WordID.Name = "WordID";
+            // 
+            // EngWord
+            // 
+            EngWord.HeaderText = "Eng";
+            EngWord.Name = "EngWord";
+            // 
+            // UaTranslation
+            // 
+            UaTranslation.HeaderText = "Ua";
+            UaTranslation.Name = "UaTranslation";
+            // 
+            // Rating
+            // 
+            Rating.HeaderText = "Rating";
+            Rating.Name = "Rating";
             // 
             // button6
             // 
@@ -1436,7 +1456,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Roboto Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(67, 375);
+            label8.Location = new Point(87, 376);
             label8.Name = "label8";
             label8.Size = new Size(169, 18);
             label8.TabIndex = 46;
@@ -1448,13 +1468,13 @@
             textBox1.AcceptsReturn = true;
             textBox1.BackColor = Color.FromArgb(90, 90, 90);
             textBox1.Cursor = Cursors.IBeam;
-            textBox1.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            textBox1.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(52, 222);
+            textBox1.Location = new Point(86, 222);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
             textBox1.ScrollBars = ScrollBars.Vertical;
-            textBox1.Size = new Size(382, 152);
+            textBox1.Size = new Size(318, 152);
             textBox1.TabIndex = 45;
             textBox1.TabStop = false;
             // 
@@ -1529,26 +1549,6 @@
             label11.TabIndex = 38;
             label11.Text = "Додавання нових слів";
             label11.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // WordID
-            // 
-            WordID.HeaderText = "ID";
-            WordID.Name = "WordID";
-            // 
-            // EngWord
-            // 
-            EngWord.HeaderText = "Eng";
-            EngWord.Name = "EngWord";
-            // 
-            // UaTranslation
-            // 
-            UaTranslation.HeaderText = "Ua";
-            UaTranslation.Name = "UaTranslation";
-            // 
-            // Rating
-            // 
-            Rating.HeaderText = "Rating";
-            Rating.Name = "Rating";
             // 
             // MainBDForm
             // 

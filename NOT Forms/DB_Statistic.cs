@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Eng_Flash_Cards_Learner.Logic
 {
-    internal class DB_Statistic
+    public class DB_Statistic
     {
         public int allWordCount { get; set; }
 

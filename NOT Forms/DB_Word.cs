@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Eng_Flash_Cards_Learner.Logic
 {
-    internal class DB_Word
+    public class DB_Word
     {
         public int WordID { get; set; }
         public string EngWord { get; set; }

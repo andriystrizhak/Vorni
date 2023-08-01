@@ -17,7 +17,7 @@ namespace Eng_Flash_Cards_Learner
     public partial class SetUpForm : Form
     {
         Point lastPoint;
-        List<Panel> listPanel = new List<Panel>();
+        List<Panel> panelList = new List<Panel>();
         int panelIndex = 0;
 
         bool[] groupBoxesAreChanged = { false, false, false };
@@ -67,7 +67,7 @@ namespace Eng_Flash_Cards_Learner
             #region Логіка переходу на нову форму
             if (continueButton.Text == "Вивчати!")
             {
-                if (listPanel[panelIndex] == panel4)
+                if (panelList[panelIndex] == panel4)
                 {
                     MessageBox.Show(
                         "Це ще поки не реалізовано, киш-киш!",
@@ -85,18 +85,18 @@ namespace Eng_Flash_Cards_Learner
             }
             #endregion
             #region Логіка розгалуження
-            listPanel[2] = radioButtonBD.Checked ? panel3 : panel4;
+            panelList[2] = radioButtonBD.Checked ? panel3 : panel4;
 
-            if (listPanel[panelIndex] == panel3)
+            if (panelList[panelIndex] == panel3)
             {
                 if (radioButtonAddNewW.Checked)
-                    listPanel.Add(panel5);
-                else listPanel = listPanel.Take(3).ToList();
+                    panelList.Add(panel5);
+                else panelList = panelList.Take(3).ToList();
             }
             #endregion
 
-            if (panelIndex < listPanel.Count - 1)
-                listPanel[++panelIndex].BringToFront();
+            if (panelIndex < panelList.Count - 1)
+                panelList[++panelIndex].BringToFront();
             previousButton.Enabled = true;
             ContinueButton_Disable();
             ContinueButton_ChangeText();
@@ -109,8 +109,8 @@ namespace Eng_Flash_Cards_Learner
         /// </summary>
         private void ContinueButton_Disable()
         {
-            groupBoxIndex = listPanel[panelIndex] == panel2
-            ? 0 : listPanel[panelIndex] == panel3 ? 1 : 2;
+            groupBoxIndex = panelList[panelIndex] == panel2
+            ? 0 : panelList[panelIndex] == panel3 ? 1 : 2;
 
             if ((panelIndex == 1 || panelIndex == 2) && !groupBoxesAreChanged[groupBoxIndex])
                 continueButton.Enabled = false;
@@ -122,8 +122,8 @@ namespace Eng_Flash_Cards_Learner
         private void ContinueButton_ChangeText()
         {
             if (panelIndex == 3
-                || listPanel[panelIndex] == panel4
-                || (listPanel[panelIndex] == panel3 && radioButtonLearnAvaliableW.Checked))
+                || panelList[panelIndex] == panel4
+                || (panelList[panelIndex] == panel3 && radioButtonLearnAvaliableW.Checked))
                 continueButton.Text = "Вивчати!";
             else continueButton.Text = "Продовжити";
         }
@@ -138,7 +138,7 @@ namespace Eng_Flash_Cards_Learner
         private void PreviousButton_Click(object sender, EventArgs e)
         {
             if (panelIndex > 0)
-                listPanel[--panelIndex].BringToFront();
+                panelList[--panelIndex].BringToFront();
             if (panelIndex == 0)
                 previousButton.Enabled = false;
             continueButton.Enabled = true;
@@ -149,11 +149,11 @@ namespace Eng_Flash_Cards_Learner
 
         private void SetUpForm_Load(object sender, EventArgs e)
         {
-            listPanel.Add(panel1);
-            listPanel.Add(panel2);
-            listPanel.Add(null);
+            panelList.Add(panel1);
+            panelList.Add(panel2);
+            panelList.Add(null);
 
-            listPanel[panelIndex].BringToFront();
+            panelList[panelIndex].BringToFront();
         }
 
         #region Додавання нових слів

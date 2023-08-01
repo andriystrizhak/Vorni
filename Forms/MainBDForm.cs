@@ -1,4 +1,5 @@
 ﻿using Eng_Flash_Cards_Learner.Logic;
+using Eng_Flash_Cards_Learner.NOT_Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,7 @@ namespace Eng_Flash_Cards_Learner
         /// <summary>
         /// Список слів для вивчення
         /// </summary>
-        List<DB_Word> AllWords = new List<DB_Word>();
+        List<DB_Word> words = new List<DB_Word>();
         /// <summary>
         /// Індекс поточного слова для вивчення зі списку words
         /// </summary>
@@ -37,6 +38,8 @@ namespace Eng_Flash_Cards_Learner
         /// Оцінки поточних слів
         /// </summary>
         int[] wordRatings = { 0, 0, 0, 0, 0, 0 };
+
+        List<DB_WordCategory> wordCategories;
 
         public MainBDForm()
         {
@@ -47,7 +50,15 @@ namespace Eng_Flash_Cards_Learner
             this.KeyDown += MainBDForm_KeyDown;
 
             WSourceComboBox.Text = WSourceComboBox.Items[0].ToString();
+
+            SetWordCategoryList();
         }
+
+        void SetWordCategoryList()
+        {
+            
+        }
+
 
         #region Властивості верхньої панелі TopPanel
 
