@@ -162,7 +162,7 @@ namespace Eng_Flash_Cards_Learner
             string engWord = EngTextBox.Text;
             string uaTrans = UaTextBox.Text;
 
-            if (!db.TryAddWord(engWord, uaTrans))
+            if (!db.TryAddWord_ToAllWords(engWord, uaTrans))
             {
                 MessageBox.Show("Таке ж слово вже існує в БД", "Х'юстон, проблемка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 addedWords++;
@@ -178,7 +178,7 @@ namespace Eng_Flash_Cards_Learner
 
         private void CancelPrevButton_Click(object sender, EventArgs e)
         {
-            db.RemoveLastWord(1);
+            db.RemoveLastWord_Completely(1);
             addedWords--;
             if (addedWords == 0)
                 CancelPrevButton.Enabled = false;

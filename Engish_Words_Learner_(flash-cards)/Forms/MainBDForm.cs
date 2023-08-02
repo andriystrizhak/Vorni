@@ -249,7 +249,7 @@ namespace Eng_Flash_Cards_Learner
             string engWord = AddEngWTextBox.Text;
             string uaTrans = AddUaTTextBox.Text;
 
-            if (!db.TryAddWord(engWord, uaTrans))
+            if (!db.TryAddWord_ToAllWords(engWord, uaTrans))
                 MessageBox.Show(
                     "Таке ж слово вже існує в БД",
                     "Не сіпайся, все добре",
@@ -275,7 +275,7 @@ namespace Eng_Flash_Cards_Learner
 
         private void CancelPrevButton_Click(object sender, EventArgs e)
         {
-            db.RemoveLastWord(1);
+            db.RemoveLastWord_Completely(1);
             addedWords--;
             if (addedWords == 0)
             {
@@ -325,7 +325,7 @@ namespace Eng_Flash_Cards_Learner
         {
             var word = Txt_FileHandler.SplitSpecialLine(EngUaStringTextBox.Text);
 
-            if (!db.TryAddWord(word.Eng, word.Ua))
+            if (!db.TryAddWord_ToAllWords(word.Eng, word.Ua))
                 MessageBox.Show(
                     "Таке ж слово вже існує в БД",
                     "Не сіпайся, все добре",
@@ -363,7 +363,7 @@ namespace Eng_Flash_Cards_Learner
 
         private void CancelAddingButton_Click(object sender, EventArgs e)
         {
-            db.RemoveLastWord(addedWords);
+            db.RemoveLastWord_Completely(addedWords);
             addedWords = 0;
             CancelAddingButton.Enabled = false;
         }

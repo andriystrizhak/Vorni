@@ -9,13 +9,15 @@ using Eng_Flash_Cards_Learner.Logic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.AxHost;
 using Eng_Flash_Cards_Learner.NOT_Forms;
+using NUnit.Framework;
+using System.Windows.Forms;
 
 namespace Eng_Flash_Cards_Learner
 {
     public class DB_SQLite
     {
         //TODO - remove "public"
-        public SQLiteConnection connection; // = new SQLiteConnection("Data Source=.\\Vocabulary.db;Version=3;"); //D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\Engish_Words_Learner_(flash-cards)
+        public SQLiteConnection connection; // = new SQLiteConnection("Data Source=.\\Vocabulary.db;Version=3;");
 
         public DB_SQLite(string connectionInfo)
         {
@@ -51,36 +53,12 @@ namespace Eng_Flash_Cards_Learner
         }
         //*********************************************************************************************************
 
-        //TEST
-        #region Отримати інформацію про Категорії слів
-
-        /// <summary>
-        /// Отрмати список категорій з БД де Count = number
-        /// </summary>
-        /// <returns>Список слів </returns>
-        public List<DB_WordCategory> GetWordCategories()
-        {
-            string query = $"SELECT * FROM Categories ORDER BY CategoryID"; //LIMIT {number};";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //SQLiteDataReader reader = cmd.ExecuteReader();
-            var reader = GetDataReader(query);
-            var categories = new List<DB_WordCategory>();
-
-            while (reader.Read())
-                categories.Add(new DB_WordCategory
-                {
-                    CategoryID = reader.GetInt32(0),
-                    Name = reader.GetString(1),
-                    CreationDate = DateTime.Parse(reader.GetString(2)),
-                    IsDeleted = reader.GetInt32(3) == 1,
-                    CanBeDeleted = reader.GetInt32(4) == 1,
-                });
-            return categories;
-        }
-        #endregion
+        #region [Категорії слів]
 
         //TEST
         #region Отримати / Змінити поточну категорію для додавання слів / Додати нову
+
+
 
         //TEST
         bool CategoryIsRepeated(string categoryName)
@@ -126,6 +104,34 @@ namespace Eng_Flash_Cards_Learner
         #endregion
 
         //TEST
+        #region Отримати інформацію про Категорії слів
+
+        /// <summary>
+        /// Отрмати список категорій з БД де Count = number
+        /// </summary>
+        /// <returns>Список слів </returns>
+        public List<DB_WordCategory> GetWordCategories()
+        {
+            string query = $"SELECT * FROM Categories ORDER BY CategoryID"; //LIMIT {number};";
+            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            //SQLiteDataReader reader = cmd.ExecuteReader();
+            var reader = GetDataReader(query);
+            var categories = new List<DB_WordCategory>();
+
+            while (reader.Read())
+                categories.Add(new DB_WordCategory
+                {
+                    CategoryID = reader.GetInt32(0),
+                    Name = reader.GetString(1),
+                    CreationDate = DateTime.Parse(reader.GetString(2)),
+                    IsDeleted = reader.GetInt32(3) == 1,
+                    CanBeDeleted = reader.GetInt32(4) == 1,
+                });
+            return categories;
+        }
+        #endregion
+
+        //TEST
         #region Додати слово(слова) в категорію / Скасувати його(їх) додавання 
 
         //TEST
@@ -159,35 +165,53 @@ namespace Eng_Flash_Cards_Learner
         }
         #endregion
 
-        //TEST
+        #endregion
+
+        //TESTED
         #region Додати слово в БД / Скасувати його(їх) додавання
 
-        bool WordIsRepeated(string engW)
-        {
-            string query = $"SELECT * FROM AllWords WHERE EngWord = '{engW}';";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //return cmd.ExecuteReader().HasRows;
-            return GetDataReader(query).HasRows;
-        }
+        bool WordIsRepeated_InAllWords(string engW)
+            => GetDataReader($"SELECT * FROM AllWords WHERE EngWord = '{engW}';").HasRows;
 
-        public bool TryAddWord(string engW, string uaW)
+        public bool TryAddWord_ToAllWords(string engW, string uaW)
         {
-            if (WordIsRepeated(engW)) return false;
+            if (WordIsRepeated_InAllWords(engW)) return false;
 
             uaW = uaW.Replace("'", "''");
-            string query = $"INSERT INTO AllWords (EngWord, UaTranslation, Rating, Repetition) VALUES ('{engW}', '{uaW}', 0, 0);";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //SQLiteDataReader reader = cmd.ExecuteReader();
-            GetDataReader(query);
-            return true;
+            var reader = GetDataReader(
+                "INSERT INTO AllWords (EngWord, UaTranslation, Rating, Repetition) " +
+                $"VALUES ('{engW}', '{uaW}', 0, 0); " +
+                "SELECT last_insert_rowid();");
+            reader.Read();
+            int wordID = reader.GetInt32(0);
+
+            //Додавання до основної категорії
+            return TryAddWord_ToCategory(wordID, 1);
         }
 
-        public void RemoveLastWord(int count)
+        public void RemoveLastWord_Completely(int count)
         {
-            string query = $"DELETE FROM AllWords ORDER BY WordID DESC LIMIT {count};";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //SQLiteDataReader reader = cmd.ExecuteReader();
-            GetDataReader(query);
+            List<int> wordIDsForRemoving = new List<int>();
+
+            var reader = GetDataReader($"SELECT WordID FROM WordCategories ORDER BY WordID DESC, AddedAt DESC LIMIT {count};"); //Можна замінити WordID на AddedAt
+            while (reader.Read())
+                wordIDsForRemoving.Add(reader.GetInt32(0));
+
+            for (int i = 0; i < wordIDsForRemoving.Count; i++)
+            {
+                GetDataReader($"DELETE FROM AllWords WHERE WordID = {wordIDsForRemoving[i]}");
+                GetDataReader($"DELETE FROM WordCategories WHERE WordID = {wordIDsForRemoving[i]}");
+            }
+            /*
+            for (int i = 0; i < count; i++)
+            {
+                var reader1= GetDataReader($"SELECT WordID FROM WordCategories ORDER BY WordID DESC LIMIT {count};");
+                reader1.Read();
+                int wordIDForRemoving = reader1.GetInt32(0);
+                GetDataReader($"DELETE FROM AllWords WHERE WordID = {wordIDForRemoving}");
+                GetDataReader($"DELETE FROM WordCategories WHERE WordID = {wordIDForRemoving}");
+            }
+            */
         }
         #endregion
 
