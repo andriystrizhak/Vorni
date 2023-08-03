@@ -37,7 +37,7 @@ namespace Eng_Flash_Cards_Learner.Logic
             int addedWordsCount = 0;
 
             foreach (var word in allWords)
-                addedWordsCount += db.TryAddWord_ToAllWords(word.Eng, word.Ua) ? 1 : 0;
+                addedWordsCount += db.TryAdd_Word_ToAllWords(word.Eng, word.Ua) ? 1 : 0;
 
             return (allWords.Count, addedWordsCount);
         }

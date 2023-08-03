@@ -46,76 +46,44 @@ namespace Eng_Flash_Cards_Learner
 
         //*********************************************************************************************************
         //TODO - delete "public"
-        public SQLiteDataReader GetDataReader(string query)
+        /// <summary>
+        /// Виконує SQL-команду й повертає DataReader
+        /// </summary>
+        /// <param name="query">SQL-команда</param>
+        /// <returns>Значення типу SQLiteDataReader</returns>
+        public SQLiteDataReader Get_DataReader(string query)
         {
             SQLiteCommand cmd = new SQLiteCommand(query, connection);
             return cmd.ExecuteReader();
         }
         //*********************************************************************************************************
 
+        //TESTED ✔️
         #region [Категорії слів]
 
-        //TEST
-        #region Отримати / Змінити поточну категорію для додавання слів / Додати нову
+        #region Отримати / Змінити поточну категорію для додавання слів
 
-
-
-        //TEST
-        bool CategoryIsRepeated(string categoryName)
+        public int Get_CurrentCategory()
         {
-            string query = $"SELECT * FROM WordCategories WHERE Name = '{categoryName}';";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //return cmd.ExecuteReader().HasRows;
-            return GetDataReader(query).HasRows;
+            var reader = Get_DataReader("SELECT CurrentCategoryID FROM Settings;");
+            reader.Read();
+            return reader.GetInt32(0);
         }
 
-        //TEST
-        public bool AddNewCategory(string categoryName)
-        {
-            //string categoryTableName = string.Concat(categoryName.Split().Select(c => char.ToUpper(c[0]) + c.Substring(1)));
-            if (CategoryIsRepeated(categoryName)) return false;
-
-            //TODO - додавання нової категорії до таблиці категорій
-            string query = $"INSERT INTO WordCategories (Name, CreationDate, Deleted, CanBeDeleted) VALUES ('{categoryName}', '{DateTime.Now:dd-MM-yyyy}', 0, 1);";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //SQLiteDataReader reader = cmd.ExecuteReader();
-            GetDataReader(query);
-            return true;
-        }
-
-        //TEST
-        public int GetCurrentCategory()
-        {
-            string query = $"SELECT CurrentWordCategory FROM Settings;";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //return Convert.ToInt32(cmd.ExecuteScalar());
-            return GetDataReader(query).GetInt32(0);
-        }
-
-        //TEST
-        public void SetCurrentCategory(int currentCategoryID)
-        {
-            string query = $"UPDATE Settings SET CurrentWordCategory = {currentCategoryID} WHERE SettingsID = 1;";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //SQLiteDataReader reader = cmd.ExecuteReader();
-            GetDataReader(query);
-        }
-
+        public void Set_CurrentCategory(int currentCategoryID)
+            => Get_DataReader($"UPDATE Settings SET CurrentCategoryID = {currentCategoryID} WHERE SettingsID = 1;");
         #endregion
 
-        //TEST
-        #region Отримати інформацію про Категорії слів
+        #region Отримати інформацію про Категорії / Додавання нової
 
         /// <summary>
         /// Отрмати список категорій з БД де Count = number
         /// </summary>
-        /// <returns>Список слів </returns>
-        public List<DB_WordCategory> GetWordCategories()
+        /// <returns>Список значень типу DB_WordCategory з інформацією про категорію</returns>
+        public List<DB_WordCategory> Get_Categories()
         {
-            string query = $"SELECT * FROM Categories ORDER BY CategoryID"; //LIMIT {number};";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //SQLiteDataReader reader = cmd.ExecuteReader();
-            var reader = GetDataReader(query);
+            string query = $"SELECT * FROM Categories ORDER BY CategoryID";
+            var reader = Get_DataReader(query);
             var categories = new List<DB_WordCategory>();
 
             while (reader.Read())
@@ -129,78 +97,71 @@ namespace Eng_Flash_Cards_Learner
                 });
             return categories;
         }
+
+        bool Is_CategoryRepeated(string categoryName)
+            => Get_DataReader($"SELECT * FROM Categories WHERE Name = '{categoryName}';").HasRows;
+
+        public bool Add_NewCategory(string categoryName)
+        {
+            if (Is_CategoryRepeated(categoryName)) return false;
+
+            Get_DataReader($"INSERT INTO Categories (Name, Deleted, CanBeDeleted) VALUES ('{categoryName}', 0, 1);");
+            return true;
+        }
         #endregion
 
-        //TEST
         #region Додати слово(слова) в категорію / Скасувати його(їх) додавання 
 
-        //TEST
-        bool WordIsRepeated_InCategory(int wordID, int categoryID)
-        {
-            string query = $"SELECT * FROM WordCategories WHERE WordID = '{wordID}' AND CategoryID = '{categoryID}';";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //return cmd.ExecuteReader().HasRows;
-            return GetDataReader(query).HasRows;
-        }
+        bool Is_WordRepeated_InCategory(int wordID, int categoryID)
+            => Get_DataReader($"SELECT * FROM WordCategories WHERE WordID = '{wordID}' AND CategoryID = '{categoryID}';").HasRows;
 
-        //TEST
-        public bool TryAddWord_ToCategory(int wordID, int categoryID)
+        public bool TryAdd_Word_ToCategory(int wordID, int categoryID)
         {
-            if (WordIsRepeated_InCategory(wordID, categoryID)) return false;
+            if (Is_WordRepeated_InCategory(wordID, categoryID)) return false;
 
-            string query = $"INSERT INTO WordCategories (WordID, CategoryID) VALUES ({wordID}, {categoryID});";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //SQLiteDataReader reader = cmd.ExecuteReader();
-            GetDataReader(query);
+            Get_DataReader($"INSERT INTO WordCategories (WordID, CategoryID) VALUES ({wordID}, {categoryID});");
             return true;
         }
 
-        //TEST
-        public void RemoveLastWord_FromCategory(int count)
-        {
-            string query = $"DELETE FROM WordCategories ORDER BY AddedAt DESC LIMIT {count};";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //SQLiteDataReader reader = cmd.ExecuteReader();
-            GetDataReader(query);
-        }
+        public void Remove_LastWord_FromCategory(int count)
+            => Get_DataReader($"DELETE FROM WordCategories ORDER BY AddedAt DESC LIMIT {count};");
         #endregion
 
         #endregion
 
-        //TESTED
+        //TESTED ✔️
         #region Додати слово в БД / Скасувати його(їх) додавання
 
         bool WordIsRepeated_InAllWords(string engW)
-            => GetDataReader($"SELECT * FROM AllWords WHERE EngWord = '{engW}';").HasRows;
+            => Get_DataReader($"SELECT * FROM AllWords WHERE EngWord = '{engW}';").HasRows;
 
-        public bool TryAddWord_ToAllWords(string engW, string uaW)
+        public bool TryAdd_Word_ToAllWords(string engW, string uaW, int categoryID = 1)
         {
             if (WordIsRepeated_InAllWords(engW)) return false;
 
             uaW = uaW.Replace("'", "''");
-            var reader = GetDataReader(
-                "INSERT INTO AllWords (EngWord, UaTranslation, Rating, Repetition) " +
-                $"VALUES ('{engW}', '{uaW}', 0, 0); " +
-                "SELECT last_insert_rowid();");
+            var reader = Get_DataReader("INSERT INTO AllWords (EngWord, UaTranslation, Rating, Repetition) " +
+                $"VALUES ('{engW}', '{uaW}', 0, 0); SELECT last_insert_rowid();");
             reader.Read();
             int wordID = reader.GetInt32(0);
 
-            //Додавання до основної категорії
-            return TryAddWord_ToCategory(wordID, 1);
+            //Додавання до основної категорії, після - до додаткової
+            if (!TryAdd_Word_ToCategory(wordID, 1)) throw new Exception("Чогось не хоче додаватися до категорій слів!");
+            return categoryID != 1 ? TryAdd_Word_ToCategory(wordID, categoryID) : true;
         }
 
-        public void RemoveLastWord_Completely(int count)
+        public void Remove_LastWords_FromAllWords(int count)
         {
             List<int> wordIDsForRemoving = new List<int>();
 
-            var reader = GetDataReader($"SELECT WordID FROM WordCategories ORDER BY WordID DESC, AddedAt DESC LIMIT {count};"); //Можна замінити WordID на AddedAt
+            var reader = Get_DataReader($"SELECT WordID FROM WordCategories ORDER BY WordID DESC, AddedAt DESC LIMIT {count};"); //Можна замінити WordID на AddedAt
             while (reader.Read())
                 wordIDsForRemoving.Add(reader.GetInt32(0));
 
             for (int i = 0; i < wordIDsForRemoving.Count; i++)
             {
-                GetDataReader($"DELETE FROM AllWords WHERE WordID = {wordIDsForRemoving[i]}");
-                GetDataReader($"DELETE FROM WordCategories WHERE WordID = {wordIDsForRemoving[i]}");
+                Get_DataReader($"DELETE FROM AllWords WHERE WordID = {wordIDsForRemoving[i]}");
+                Get_DataReader($"DELETE FROM WordCategories WHERE WordID = {wordIDsForRemoving[i]}");
             }
             /*
             for (int i = 0; i < count; i++)
@@ -228,7 +189,7 @@ namespace Eng_Flash_Cards_Learner
             string query = $"SELECT * FROM AllWords ORDER BY Rating LIMIT {number};";
             //SQLiteCommand cmd = new SQLiteCommand(query, connection);
             //SQLiteDataReader reader = cmd.ExecuteReader();
-            var reader = GetDataReader(query);
+            var reader = Get_DataReader(query);
             var words = new List<DB_Word>();
 
             while (reader.Read())
@@ -251,7 +212,7 @@ namespace Eng_Flash_Cards_Learner
             string query = $"UPDATE AllWords SET Rating = {number} WHERE WordID = {id};";
             //SQLiteCommand cmd = new SQLiteCommand(query, connection);
             //SQLiteDataReader reader = cmd.ExecuteReader();
-            GetDataReader(query);
+            Get_DataReader(query);
         }
         #endregion
 
@@ -289,7 +250,7 @@ namespace Eng_Flash_Cards_Learner
             string query = $"UPDATE Settings SET WordCountToLearn = {count} WHERE SettingsID = 1;";
             //SQLiteCommand cmd = new SQLiteCommand(query, connection);
             //SQLiteDataReader reader = cmd.ExecuteReader();
-            GetDataReader(query);
+            Get_DataReader(query);
         }
         #endregion
 
@@ -308,7 +269,7 @@ namespace Eng_Flash_Cards_Learner
             string query = $"UPDATE Settings SET WordAddingMode = {mode} WHERE SettingsID = 1;";
             //SQLiteCommand cmd = new SQLiteCommand(query, connection);
             //SQLiteDataReader reader = cmd.ExecuteReader();
-            GetDataReader(query);
+            Get_DataReader(query);
         }
         #endregion
 
@@ -327,7 +288,7 @@ namespace Eng_Flash_Cards_Learner
             string query = $"UPDATE AllWords SET Repetition = {++wordRepetition} WHERE WordID = {id};";
             //SQLiteCommand cmd = new SQLiteCommand(query, connection);
             //SQLiteDataReader reader = cmd.ExecuteReader();
-            GetDataReader(query);
+            Get_DataReader(query);
         }
         #endregion
 
@@ -343,7 +304,7 @@ namespace Eng_Flash_Cards_Learner
             string query = $"SELECT * FROM Settings;";
             //SQLiteCommand cmd = new SQLiteCommand(query, connection);
             //SQLiteDataReader reader = cmd.ExecuteReader();
-            var reader = GetDataReader(query);
+            var reader = Get_DataReader(query);
             reader.Read();
 
             return reader.GetInt32(2) == 1 ? true : false;
@@ -359,7 +320,7 @@ namespace Eng_Flash_Cards_Learner
             string query = $"UPDATE Settings SET WasLaunched = { (wasLaunched ? 1 : 0) } WHERE SettingsID = 1;";
             //SQLiteCommand cmd = new SQLiteCommand(query, connection);
             //SQLiteDataReader reader = cmd.ExecuteReader();
-            GetDataReader(query);
+            Get_DataReader(query);
         }
         #endregion
     }
