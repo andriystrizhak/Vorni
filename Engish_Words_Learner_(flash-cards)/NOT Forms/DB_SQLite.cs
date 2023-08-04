@@ -11,6 +11,7 @@ using static System.Windows.Forms.AxHost;
 using Eng_Flash_Cards_Learner.NOT_Forms;
 using NUnit.Framework;
 using System.Windows.Forms;
+using System.Reflection.Metadata;
 
 namespace Eng_Flash_Cards_Learner
 {
@@ -74,7 +75,7 @@ namespace Eng_Flash_Cards_Learner
             => Get_DataReader($"UPDATE Settings SET CurrentCategoryID = {currentCategoryID} WHERE SettingsID = 1;");
         #endregion
 
-        #region Отримати інформацію про Категорії / Додавання нової
+        #region Отримати інформацію про Категорії / Додавання нової / Видалення
 
         /// <summary>
         /// Отрмати список категорій з БД де Count = number
@@ -108,7 +109,46 @@ namespace Eng_Flash_Cards_Learner
             Get_DataReader($"INSERT INTO Categories (Name, Deleted, CanBeDeleted) VALUES ('{categoryName}', 0, 1);");
             return true;
         }
+
+        /// <summary>
+        /// Позначає категорію в 'Categories' як видалена й додає час (позначення) виделення в "DeletedAt"
+        /// </summary>
+        /// <param name="categoryID">'CategoryID' категорії яка (позначатиметься як) видалена</param>
+        /// <returns>Значення true якщо (позначення як) видалення пройшло успішно</returns>
+        public bool TryMarkAsRemoved_Category(int categoryID)
+        {
+            bool categoryCanBeDeleted = Convert.ToInt32(
+                    (new SQLiteCommand($"SELECT CanBeDeleted FROM Categories WHERE CategoryID = {categoryID}", connection)).ExecuteScalar()) == 1;
+            if (!categoryCanBeDeleted) return false;
+
+            int currentCategoryID = Convert.ToInt32((new SQLiteCommand("SELECT CurrentCategoryID FROM Settings", connection)).ExecuteScalar());
+            if (currentCategoryID == categoryID)
+                Get_DataReader("UPDATE Settings SET CurrentCategoryID = 1 WHERE SettingsID = 1;");
+
+            Get_DataReader($"UPDATE Categories SET Deleted = 1, DeletedAt = '{DateTime.Now:yyyy-MM-dd HH:mm:ss}' WHERE CategoryID = {categoryID};");
+            return true;
+        }
+
+        //TODO - Повне видалення категорії
+        public void Remove_Category(int categoryID, int retentionDayCountInRecycleBin = 7)
+        {
+            TimeSpan retentionTimeInRecycleBin = TimeSpan.FromDays(retentionDayCountInRecycleBin);
+            //TODO - реалізувати автоматичне визначення категорій які потрібно видалити ПОВНІСТЮ
+
+            //Видалення всіх слів з WordCategories пов'язаних з категорією, яку видаляємо
+            Get_DataReader($"DELETE FROM WordCategories WHERE CategoryID = {categoryID};");
+            //Видалення самої категорії з Categories
+            Get_DataReader($"DELETE FROM Categories WHERE CategoryID = {categoryID};");
+        }
+
+        //TODO - Відновлення категорії з "Корзини"
+        public void Restore_Category_FromDeletion(int categoryID)
+        {
+            //Відновлення "нормальних" значень полів категорії в 'Categories'
+            Get_DataReader($"UPDATE Categories SET Deleted = 0, DeletedAt = NULL WHERE CategoryID = {categoryID};");
+        }
         #endregion
+
 
         #region Додати слово(слова) в категорію / Скасувати його(їх) додавання 
 
@@ -125,6 +165,9 @@ namespace Eng_Flash_Cards_Learner
 
         public void Remove_LastWord_FromCategory(int count)
             => Get_DataReader($"DELETE FROM WordCategories ORDER BY AddedAt DESC LIMIT {count};");
+
+        //TODO - Видалення слова з категорії
+
         #endregion
 
         #endregion
@@ -174,6 +217,9 @@ namespace Eng_Flash_Cards_Learner
             }
             */
         }
+
+        //TODO - Видалення слова з БД
+
         #endregion
 
         //TEST
