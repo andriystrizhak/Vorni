@@ -12,6 +12,7 @@ using Eng_Flash_Cards_Learner.NOT_Forms;
 using NUnit.Framework;
 using System.Windows.Forms;
 using System.Reflection.Metadata;
+using System.Xml.Linq;
 
 namespace Eng_Flash_Cards_Learner
 {
@@ -25,6 +26,7 @@ namespace Eng_Flash_Cards_Learner
             connection = new SQLiteConnection(connectionInfo);
             OpenConnection();
         }
+
 
         #region Відкрити / Закрити / Отримати з'єднання
 
@@ -59,6 +61,7 @@ namespace Eng_Flash_Cards_Learner
         }
         //*********************************************************************************************************
 
+
         //TESTED ✔️
         #region [Категорії слів]
 
@@ -75,7 +78,8 @@ namespace Eng_Flash_Cards_Learner
             => Get_DataReader($"UPDATE Settings SET CurrentCategoryID = {currentCategoryID} WHERE SettingsID = 1;");
         #endregion
 
-        #region Отримати інформацію про Категорії / Додавання нової / Видалення
+
+        #region Отримати інформацію про Категорії / Додавання нової 
 
         /// <summary>
         /// Отрмати список категорій з БД де Count = number
@@ -92,9 +96,10 @@ namespace Eng_Flash_Cards_Learner
                 {
                     CategoryID = reader.GetInt32(0),
                     Name = reader.GetString(1),
-                    CreationDate = DateTime.Parse(reader.GetString(2)),
-                    IsDeleted = reader.GetInt32(3) == 1,
-                    CanBeDeleted = reader.GetInt32(4) == 1,
+                    CreatedAt = DateTime.Parse(reader.GetString(2)),
+                    CanBeDeleted = reader.GetInt32(3) == 1,
+                    IsDeleted = reader.GetInt32(4) == 1,
+                    DeletedAt = DateTime.Parse(reader.GetString(5)),
                 });
             return categories;
         }
@@ -109,6 +114,10 @@ namespace Eng_Flash_Cards_Learner
             Get_DataReader($"INSERT INTO Categories (Name, Deleted, CanBeDeleted) VALUES ('{categoryName}', 0, 1);");
             return true;
         }
+        #endregion
+        
+
+        #region Видалення категорії (корзина / повне) / Відновлення 
 
         /// <summary>
         /// Позначає категорію в 'Categories' як видалена й додає час (позначення) виделення в "DeletedAt"
@@ -118,7 +127,7 @@ namespace Eng_Flash_Cards_Learner
         public bool TryMarkAsRemoved_Category(int categoryID)
         {
             bool categoryCanBeDeleted = Convert.ToInt32(
-                    (new SQLiteCommand($"SELECT CanBeDeleted FROM Categories WHERE CategoryID = {categoryID}", connection)).ExecuteScalar()) == 1;
+                (new SQLiteCommand($"SELECT CanBeDeleted FROM Categories WHERE CategoryID = {categoryID}", connection)).ExecuteScalar()) == 1;
             if (!categoryCanBeDeleted) return false;
 
             int currentCategoryID = Convert.ToInt32((new SQLiteCommand("SELECT CurrentCategoryID FROM Settings", connection)).ExecuteScalar());
@@ -129,23 +138,30 @@ namespace Eng_Flash_Cards_Learner
             return true;
         }
 
-        //TODO - Повне видалення категорії
-        public void Remove_Category(int categoryID, int retentionDayCountInRecycleBin = 7)
+        /// <summary>
+        /// Повністю видаляє категорії які знахдяться "корзині" більше ніж певну кількість днів
+        /// </summary>
+        /// <param name="retentionDayCountInRecycleBin">Кількість днів протягом якої категорія може зберігатися в "корзині"</param>
+        public void FindAndRemove_LongMarkedCategories(int retentionDayCountInRecycleBin = 7)
         {
             TimeSpan retentionTimeInRecycleBin = TimeSpan.FromDays(retentionDayCountInRecycleBin);
-            //TODO - реалізувати автоматичне визначення категорій які потрібно видалити ПОВНІСТЮ
+            var categoriesInfoToBeDeleted = Get_Categories()
+                .Where(x => x.IsDeleted && ((DateTime.Now - x.DeletedAt) > retentionTimeInRecycleBin))
+                .ToList();
 
-            //Видалення всіх слів з WordCategories пов'язаних з категорією, яку видаляємо
-            Get_DataReader($"DELETE FROM WordCategories WHERE CategoryID = {categoryID};");
-            //Видалення самої категорії з Categories
-            Get_DataReader($"DELETE FROM Categories WHERE CategoryID = {categoryID};");
+            foreach (var category in categoriesInfoToBeDeleted)
+            {
+                //Видалення всіх слів з WordCategories пов'язаних з категорією, яку видаляємо
+                Get_DataReader($"DELETE FROM WordCategories WHERE CategoryID = {category.CategoryID};");
+                //Видалення самої категорії з Categories
+                Get_DataReader($"DELETE FROM Categories WHERE CategoryID = {category.CategoryID};");
+            }
         }
 
-        //TODO - Відновлення категорії з "Корзини"
         public void Restore_Category_FromDeletion(int categoryID)
         {
             //Відновлення "нормальних" значень полів категорії в 'Categories'
-            Get_DataReader($"UPDATE Categories SET Deleted = 0, DeletedAt = NULL WHERE CategoryID = {categoryID};");
+            Get_DataReader($"UPDATE Categories SET Deleted = 0 WHERE CategoryID = {categoryID};");
         }
         #endregion
 
@@ -171,6 +187,7 @@ namespace Eng_Flash_Cards_Learner
         #endregion
 
         #endregion
+
 
         //TESTED ✔️
         #region Додати слово в БД / Скасувати його(їх) додавання
@@ -222,6 +239,7 @@ namespace Eng_Flash_Cards_Learner
 
         #endregion
 
+
         //TEST
         #region Отримати слова
 
@@ -250,6 +268,7 @@ namespace Eng_Flash_Cards_Learner
         }
         #endregion
 
+
         //TEST
         #region Оцінювати слово
 
@@ -261,6 +280,7 @@ namespace Eng_Flash_Cards_Learner
             Get_DataReader(query);
         }
         #endregion
+
 
         #region Отримати статистику по ВСІХ словах
         public DB_Statistic GetStatistic()
@@ -281,6 +301,7 @@ namespace Eng_Flash_Cards_Learner
         }
         #endregion
 
+
         #region Отримати / Змінити кількість слів для вивчення (за раз)
 
         public int GetWordsToLearnCount()
@@ -299,6 +320,7 @@ namespace Eng_Flash_Cards_Learner
             Get_DataReader(query);
         }
         #endregion
+
 
         #region Отримати / Змінити мод (спосіб) додавання слів
 
@@ -319,6 +341,7 @@ namespace Eng_Flash_Cards_Learner
         }
         #endregion
 
+
         #region Отримати / Змінити значення повторюваності слова
 
         public int GetWordRepetition(int id)
@@ -337,6 +360,7 @@ namespace Eng_Flash_Cards_Learner
             Get_DataReader(query);
         }
         #endregion
+
 
         #region Отримати дані чи запускався цей додаток до цього, чи ні
 
@@ -369,5 +393,6 @@ namespace Eng_Flash_Cards_Learner
             Get_DataReader(query);
         }
         #endregion
+
     }
 }

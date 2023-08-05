@@ -8,12 +8,20 @@ namespace EWL_Tests
     /// </summary>
     public static class MyTestCases
     {
+        /// <summary>
+        /// Набір тест-кейсів з Категоріями
+        /// </summary>
+        /// <returns> IEnumerable категорій </returns>
         public static IEnumerable<TestCaseData> Categories_Cases()
         {
             yield return new TestCaseData("Category 1");
             yield return new TestCaseData("Category 2");
         }
 
+        /// <summary>
+        /// Набір тест-кейсів зі Словами
+        /// </summary>
+        /// <returns> IEnumerable слів </returns>
         public static IEnumerable<TestCaseData> Words_Cases()
         {
             yield return new TestCaseData("a", "ей");
@@ -29,9 +37,8 @@ namespace EWL_Tests
 
         [SetUp]
         public void Setup()
-        {
-            TearDown();
-        }
+            => TearDown();
+
 
 
         #region Words TESTS
@@ -83,7 +90,7 @@ namespace EWL_Tests
         }
         #endregion
 
-        #region Categories TESTS
+        #region Categories [TESTS]
 
         [TestCase(2)]
         [TestCase(1)]
@@ -112,6 +119,8 @@ namespace EWL_Tests
                 "Отриманий список інформації про категорії - НЕ вірний");
         }
 
+        #region Categories Adding [TESTS]
+
         [TestCaseSource(typeof(MyTestCases), "Categories_Cases")]
         public void NewCategory_Adding_Test(string categoryName)
         {
@@ -131,8 +140,9 @@ namespace EWL_Tests
                 "Додавання нової категорії вдале [а не повинне бути]");
         }
 
+        #endregion
 
-
+        #region Categories Marking as Removed [TESTS]
 
         [TestCaseSource(typeof(MyTestCases), "Categories_Cases")]
         public void Category_MarkingAsRemoved_Test(string categoryName)
@@ -176,15 +186,88 @@ namespace EWL_Tests
             Assert.IsFalse(categoryIsMarkedAsDeleted,
                 "Значення поля 'Deleted' заданої категорії змінилося на '1' [а не повинно було]");
         }
-
-
-
-
-
-        //перевірити автоматичне видалення категорій давно позначених як "Видалені"
         #endregion
 
-        #region WordCategories TESTS
+        #region Categories Restoring from Deletion [TESTS]
+
+        [TestCaseSource(typeof(MyTestCases), "Categories_Cases")]
+        public void Category_Restoring_FromDeletion_Test(string categoryName)
+        {
+            int categoryID = 3;
+            db.Add_NewCategory(categoryName);           //Додавання нової категорії (3-тя)
+            db.Set_CurrentCategory(categoryID);         //Встановлення поточної категорії - '3'
+            db.TryMarkAsRemoved_Category(categoryID);   //Позначення категорії як "Видалена"
+
+            db.Restore_Category_FromDeletion(categoryID);   //Відновлення категорії з "Кошика"
+
+            var reader = db.Get_DataReader($"SELECT Deleted FROM Categories WHERE CategoryID = {categoryID}");
+            reader.Read();
+            bool categoryIsMarkedAsDeleted = reader.GetInt32(0) == 1;
+            Assert.IsFalse(categoryIsMarkedAsDeleted,
+                "Значення поля 'Deleted' заданої категорії НЕ змінилося на '0'");
+
+            Assert.AreEqual(1, db.Get_CurrentCategory(),
+                "CurrentCategoryID в Settings змінилося з дефолтного '1' на інше [а не повинне було]");
+        }
+        #endregion
+
+        #region Categories Removing [TESTS]
+
+        public (string, string) MarkedCategories_Removing_Test(string categoryName)
+        {
+            int categoryID = 3;
+            db.Add_NewCategory(categoryName);           //Додавання нової категорії (3-тя)
+            db.TryAdd_Word_ToCategory(1, categoryID);   //Додавання першого слова до нової категорії
+            db.TryAdd_Word_ToCategory(2, categoryID);   //Додавання другого слова до нової категорії
+            db.TryMarkAsRemoved_Category(categoryID);   //Позначення категорії як "видалена"
+
+            return (query1: $"SELECT * FROM WordCategories WHERE CategoryID = '{categoryID}'",
+                query2: $"SELECT * FROM Categories WHERE CategoryID = '{categoryID}'");
+        }
+
+        [TestCaseSource(typeof(MyTestCases), "Categories_Cases")]
+        public void RecentlyMarkedCategories_Removing_Test(string categoryName)
+        {
+            var queries = MarkedCategories_Removing_Test(categoryName);
+
+            //Перевірки
+            db.FindAndRemove_LongMarkedCategories(3);
+
+            bool isRecentlyMarkedCategoryWordsDeleted = !db.Get_DataReader(queries.Item1).HasRows;
+            Assert.IsFalse(isRecentlyMarkedCategoryWordsDeleted, 
+                "Слова даної категорії видалені з WordCategory [а НЕ повинні бути]");
+
+            bool isRecentlyMarkedCategoryDeleted = !db.Get_DataReader(queries.Item2).HasRows;
+            Assert.IsFalse(isRecentlyMarkedCategoryDeleted, 
+                "Дана категорія видалена з Categories [а НЕ повинна бути]");
+        }
+
+        [TestCaseSource(typeof(MyTestCases), "Categories_Cases")]
+        public void LongMarkedCategories_Removing_Test(string categoryName)
+        {
+            int categoryID = 3;
+            var queries = MarkedCategories_Removing_Test(categoryName);
+
+            //Зміна дати (позначення як) видалення даної категорії
+            db.Get_DataReader($"UPDATE Categories " +
+                $"SET DeletedAt = '{new DateTime(2023, 01, 01):yyyy-MM-dd HH:mm:ss}' WHERE CategoryID = {categoryID}");
+            db.FindAndRemove_LongMarkedCategories(3);
+
+            //Перевірка
+            db.FindAndRemove_LongMarkedCategories(1);
+            bool isLongMarkedCategoryWordsDeleted = !db.Get_DataReader(queries.Item1).HasRows;
+            Assert.IsTrue(isLongMarkedCategoryWordsDeleted,
+                "Слова даної категорії НЕ видалені з WordCategory");
+
+            bool isLongMarkedCategoryDeleted = !db.Get_DataReader(queries.Item2).HasRows;
+            Assert.IsTrue(isLongMarkedCategoryDeleted,
+                "Дана категорія НЕ видалена з Categories");
+        }
+        #endregion
+
+        #endregion
+
+        #region WordCategories [TESTS]
 
         public void Word_Adding_ToCategory_Test()
         {
@@ -214,7 +297,7 @@ namespace EWL_Tests
 
         [TestCase(1)]
         [TestCase(2)]
-        public void Word_Removing_FromWordCategories_Test(int count)
+        public void LastAddedWord_Removing_FromWordCategories_Test(int count)
         {
             for (int i = 1; i <= count; i++)
                 db.TryAdd_Word_ToCategory(i, 2);        //Додавання слова(-ів) до іншої категорії
@@ -236,10 +319,13 @@ namespace EWL_Tests
             }
         }
 
+        public void Word_Removing_FromWordCategories_Test(int count)
+        {
+            //TODO - реалізувати тест "Видалення слова з категорії"
+        }
         #endregion
 
-
-
+        //TODO - Додавати ТЕСТИ ...
 
 
 
@@ -252,12 +338,7 @@ namespace EWL_Tests
             db.Get_DataReader("DELETE FROM Categories WHERE CategoryID NOT IN ( SELECT CategoryID FROM Categories ORDER BY CategoryID LIMIT 2);");
         }
 
-
-
-
-
-
-
+        /*
         [TestCase("Programming Table", "ProgrammingTable")]
         [TestCase("programming table", "ProgrammingTable")]
         [TestCase("wild Animals", "WildAnimals")]
@@ -267,5 +348,6 @@ namespace EWL_Tests
             string createdCategoryTableName = string.Concat(categoryName.Split().Select(c => char.ToUpper(c[0]) + c.Substring(1)));
             Assert.AreEqual(categoryTableName, createdCategoryTableName);
         }
+        */
     }
 }
