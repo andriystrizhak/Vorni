@@ -13,5 +13,6 @@ namespace Eng_Flash_Cards_Learner.Logic
         public string UaTranslation { get; set; }
         public int Rating { get; set; }
         public int Repetition { get; set; }
+        public DateTime AddedAt { get; set; }
     }
 }

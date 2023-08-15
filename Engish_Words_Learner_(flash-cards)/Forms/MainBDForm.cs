@@ -275,7 +275,7 @@ namespace Eng_Flash_Cards_Learner
 
         private void CancelPrevButton_Click(object sender, EventArgs e)
         {
-            db.Remove_LastWords_FromAllWords(1);
+            db.Remove_LastWords_Permanently(1);
             addedWords--;
             if (addedWords == 0)
             {
@@ -363,7 +363,7 @@ namespace Eng_Flash_Cards_Learner
 
         private void CancelAddingButton_Click(object sender, EventArgs e)
         {
-            db.Remove_LastWords_FromAllWords(addedWords);
+            db.Remove_LastWords_Permanently(addedWords);
             addedWords = 0;
             CancelAddingButton.Enabled = false;
         }
