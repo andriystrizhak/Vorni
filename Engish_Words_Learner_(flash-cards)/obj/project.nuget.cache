@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ORszM1ah9JbNGkgSw6U7S+1V+Br5rJgm/JfwM8EERRzUdWxZr/J8ytgg6WpKVvEWIAB0bwM3NKu2zdYVcE7r4A==",
+  "dgSpecHash": "qj6GgFKSB95gx4GOYTHoZiCIvdyLnl3XCeAGbTrTY8v4wYMafCUfH9jJbazaUjj7ub0oT7nJ8dGuFZxgJj7HOA==",
   "success": true,
   "projectFilePath": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\Engish_Words_Learner_(flash-cards)\\Eng_Flash-Cards_Learner.csproj",
   "expectedPackageFiles": [
@@ -31,7 +31,7 @@
     "C:\\Users\\Windows-10H-20\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
     "C:\\Users\\Windows-10H-20\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\Windows-10H-20\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
-    "C:\\Users\\Windows-10H-20\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.22621.28\\microsoft.windows.sdk.net.ref.10.0.22621.28.nupkg.sha512"
+    "C:\\Users\\Windows-10H-20\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.22621.29\\microsoft.windows.sdk.net.ref.10.0.22621.29.nupkg.sha512"
   ],
   "logs": []
 }

@@ -17,7 +17,7 @@ namespace Eng_Flash_Cards_Learner
     public partial class SetUpForm : Form
     {
         Point lastPoint;
-        List<Panel> panelList = new List<Panel>();
+        List<Panel?> panelList = new List<Panel?>();
         int panelIndex = 0;
 
         bool[] groupBoxesAreChanged = { false, false, false };
@@ -96,7 +96,7 @@ namespace Eng_Flash_Cards_Learner
             #endregion
 
             if (panelIndex < panelList.Count - 1)
-                panelList[++panelIndex].BringToFront();
+                panelList[++panelIndex]?.BringToFront();    //Перевірка на null або впевнитись в безпечності
             previousButton.Enabled = true;
             ContinueButton_Disable();
             ContinueButton_ChangeText();
@@ -138,7 +138,7 @@ namespace Eng_Flash_Cards_Learner
         private void PreviousButton_Click(object sender, EventArgs e)
         {
             if (panelIndex > 0)
-                panelList[--panelIndex].BringToFront();
+                panelList[--panelIndex]?.BringToFront();    //Перевірка на null або впевнитись в безпечності
             if (panelIndex == 0)
                 previousButton.Enabled = false;
             continueButton.Enabled = true;
@@ -153,7 +153,7 @@ namespace Eng_Flash_Cards_Learner
             panelList.Add(panel2);
             panelList.Add(null);
 
-            panelList[panelIndex].BringToFront();
+            panelList[panelIndex]?.BringToFront();    //Перевірка на null або впевнитись в безпечності
         }
 
         #region Додавання нових слів

@@ -236,7 +236,7 @@ namespace EWL_Tests
 
         #region Categories Removing [TESTS]
 
-        public (string, string) MarkedCategories_Removing_Test(string categoryName)
+        public (string query1, string query2) MarkedCategories_Removing_Test(string categoryName)
         {
             int categoryID = 3;
             db.Add_NewCategory(categoryName);           //Додавання нової категорії (3-тя)
@@ -244,8 +244,8 @@ namespace EWL_Tests
             db.TryAdd_Word_ToCategory(2, categoryID);   //Додавання другого слова до нової категорії
             db.TryMarkAsRemoved_Category(categoryID);   //Позначення категорії як "видалена"
 
-            return (query1: $"SELECT * FROM WordCategories WHERE CategoryID = '{categoryID}'",
-                query2: $"SELECT * FROM Categories WHERE CategoryID = '{categoryID}'");
+            return ($"SELECT * FROM WordCategories WHERE CategoryID = '{categoryID}'",
+                $"SELECT * FROM Categories WHERE CategoryID = '{categoryID}'");
         }
 
         [TestCaseSource(typeof(MyTestCases), "Categories_Cases")]
@@ -256,11 +256,11 @@ namespace EWL_Tests
             //Перевірки
             db.FindAndRemove_LongMarkedCategories(3);
 
-            bool isRecentlyMarkedCategoryWordsDeleted = !db.Get_DataReader(queries.Item1).HasRows;
+            bool isRecentlyMarkedCategoryWordsDeleted = !db.Get_DataReader(queries.query1).HasRows;
             Assert.IsFalse(isRecentlyMarkedCategoryWordsDeleted, 
                 "Слова даної категорії видалені з WordCategory [а НЕ повинні бути]");
 
-            bool isRecentlyMarkedCategoryDeleted = !db.Get_DataReader(queries.Item2).HasRows;
+            bool isRecentlyMarkedCategoryDeleted = !db.Get_DataReader(queries.query2).HasRows;
             Assert.IsFalse(isRecentlyMarkedCategoryDeleted, 
                 "Дана категорія видалена з Categories [а НЕ повинна бути]");
         }
@@ -278,11 +278,11 @@ namespace EWL_Tests
 
             //Перевірка
             db.FindAndRemove_LongMarkedCategories(1);
-            bool isLongMarkedCategoryWordsDeleted = !db.Get_DataReader(queries.Item1).HasRows;
+            bool isLongMarkedCategoryWordsDeleted = !db.Get_DataReader(queries.query1).HasRows;
             Assert.IsTrue(isLongMarkedCategoryWordsDeleted,
                 "Слова даної категорії НЕ видалені з WordCategory");
 
-            bool isLongMarkedCategoryDeleted = !db.Get_DataReader(queries.Item2).HasRows;
+            bool isLongMarkedCategoryDeleted = !db.Get_DataReader(queries.query2).HasRows;
             Assert.IsTrue(isLongMarkedCategoryDeleted,
                 "Дана категорія НЕ видалена з Categories");
         }
@@ -317,6 +317,31 @@ namespace EWL_Tests
                 "Метод НЕ додав слово до категорії '2'");
             Assert.IsFalse(db.TryAdd_Word_ToCategory(anotherWordID, anotherCategoryID), 
                 "Метод додав ІДЕНТИЧНЕ слово до категорії '2' [а не повинен]");
+        }
+
+        /// <summary>
+        /// Перевіряє чи виникне виключення якщо додати до категорії слово з неправильним номером wordID чи categoryID
+        /// </summary>
+        /// <param name="invalidNumber">неправильний номер для wordID чи categoryID</param>
+        [TestCase(0)]
+        [TestCase(-2)]
+        public void InvalidNumber_Word_Adding_ToCategory_Test(int invalidNumber)
+        {
+            int validWordID = 2;
+            int validCategoryID = 2;
+
+            TestDelegate AddValidWordIDToInvalidCategoryID = () => db.TryAdd_Word_ToCategory(validWordID, invalidNumber);
+            Assert.Catch(typeof(ArgumentException), AddValidWordIDToInvalidCategoryID,
+                "Тут повинне виникати виключення, а не виникає");
+
+            TestDelegate AddInvalidWordIDToValidCategoryID = () => db.TryAdd_Word_ToCategory(invalidNumber, validCategoryID);
+            Assert.Catch(typeof(ArgumentException), AddInvalidWordIDToValidCategoryID,
+                "Тут повинне виникати виключення, а не виникає");
+
+            TestDelegate AddInvalidWordIDToInvalidCategoryID = () => db.TryAdd_Word_ToCategory(invalidNumber, invalidNumber);
+            Assert.Catch(typeof(ArgumentException), AddInvalidWordIDToInvalidCategoryID,
+                "Тут повинне виникати виключення, а не виникає");
+
         }
 
         [TestCase(1)]
@@ -365,7 +390,7 @@ namespace EWL_Tests
         }
 
 
-        #region WordCategories Get Words from Category [TESTS]
+            #region WordCategories - Get Words from Category [TESTS]
 
         /// <summary>
         /// Додавання слів до БД (й половини з них до побічної категорії '2')
@@ -373,11 +398,14 @@ namespace EWL_Tests
         /// <param name="wordCount">Кількість слів</param>
         void Words_Adding_ToDB(int wordCount)
         {
+            int anotherCategoryID = 2;
+            int alreadyAddedWordsCount = 2;
+
             for (int i = 0; i < wordCount; i++)
                 db.TryAdd_Word_ToAllWords($"{i + 1}", "i + 1");
-            for (int i = 0; i < wordCount + 2; i++)
+            for (int i = 0; i < wordCount + alreadyAddedWordsCount; i++)
                 if (i % 2 == 0)
-                    db.TryAdd_Word_ToCategory(i, 2);
+                    db.TryAdd_Word_ToCategory(i + 1, anotherCategoryID);
         }
 
         [TestCase(4)]
@@ -406,10 +434,13 @@ namespace EWL_Tests
             Words_Adding_ToDB(addedWordCount);
 
             var allWFromCategory = db.Get_Words_FromCategory(categoryID);
-            Assert.AreEqual((int)Math.Round(((double)addedWordCount + 2)/2, MidpointRounding.AwayFromZero), allWFromCategory.Count);
+            //int addedWordCount
+            Assert.AreEqual((int)Math.Round(((double)addedWordCount + 2)/2, MidpointRounding.AwayFromZero), allWFromCategory.Count,
+                $"Отриманих слів має бути {addedWordCount + 2} а не {allWFromCategory.Count}");
 
             var countWFromCategory = db.Get_Words_FromCategory(categoryID, getWordsCount);
-            Assert.AreEqual(getWordsCount, countWFromCategory.Count);
+            Assert.AreEqual(getWordsCount, countWFromCategory.Count,
+                $"Отриманих слів має бути {addedWordCount + 2} а не {allWFromCategory.Count}");   
         }
 
         [TestCase(4)]
@@ -417,8 +448,8 @@ namespace EWL_Tests
         public void Words_NOTGetting_FromAnotherCategory_Test(int addedWordCount)
         {
             Words_Adding_ToDB(addedWordCount);
-            int nonexistentCategoryID = -2;
-            TestDelegate GetWordsFromNonexistentCategory = () => db.Get_Words_FromCategory(2, -2);
+            int nonexistentWordCount = -2;
+            TestDelegate GetWordsFromNonexistentCategory = () => db.Get_Words_FromCategory(2, nonexistentWordCount);
 
             Assert.Catch(typeof(ArgumentException), GetWordsFromNonexistentCategory, 
                 "Тут повинне виникати виключення, а не виникає");

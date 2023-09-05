@@ -78,11 +78,11 @@ namespace Eng_Flash_Cards_Learner
             string query = "SELECT AllWords.WordID, AllWords.EngWord, AllWords.UaTranslation, " +
                 "AllWords.Rating, AllWords.Repetition, WordCategories.AddedAt " +
                 "FROM AllWords JOIN WordCategories ON AllWords.WordID = WordCategories.WordID " +
-                "WHERE WordCategories.CategoryID = 1 ORDER BY AllWords.Rating, WordCategories.AddedAt ";
-            if (wordCount == -1)
-                query += $"LIMIT {wordCount}";
-            else if (wordCount < -1)
+                $"WHERE WordCategories.CategoryID = {categoryID} ORDER BY AllWords.Rating, WordCategories.AddedAt ";
+            if (wordCount < -1)
                 throw new ArgumentException("Wrong wordCount number");
+            else if (wordCount != -1)
+                query += $"LIMIT {wordCount}";
 
             var reader = Get_DataReader(query);
             var categories = new List<DB_Word>();
@@ -211,6 +211,8 @@ namespace Eng_Flash_Cards_Learner
 
         public bool TryAdd_Word_ToCategory(int wordID, int categoryID)
         {
+            if (wordID < 1 || categoryID < 1) 
+                throw new ArgumentException("wordID and categoryID arguments can't be less than '1'");
             if (Is_WordRepeated_InCategory(wordID, categoryID)) return false;
 
             Get_DataReader($"INSERT INTO WordCategories (WordID, CategoryID) VALUES ({wordID}, {categoryID});");
