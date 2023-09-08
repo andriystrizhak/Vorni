@@ -641,11 +641,11 @@
             Controls.Add(closeButton);
             Controls.Add(topPanel);
             Controls.Add(bottomPanel);
-            Controls.Add(panel4);
-            Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(panel5);
             Controls.Add(panel3);
+            Controls.Add(panel4);
+            Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "SetUpForm";
             StartPosition = FormStartPosition.CenterScreen;

@@ -390,7 +390,7 @@ namespace EWL_Tests
         }
 
 
-            #region WordCategories - Get Words from Category [TESTS]
+        #region WordCategories - Get Words from Category [TESTS]
 
         /// <summary>
         /// Додавання слів до БД (й половини з них до побічної категорії '2')
