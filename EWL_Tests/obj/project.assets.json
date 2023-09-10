@@ -3325,8 +3325,8 @@
     },
     "Eng_Flash-Cards_Learner/1.0.0": {
       "type": "project",
-      "path": "../Engish_Words_Learner_(flash-cards)/Eng_Flash-Cards_Learner.csproj",
-      "msbuildProject": "../Engish_Words_Learner_(flash-cards)/Eng_Flash-Cards_Learner.csproj"
+      "path": "../EWL/Eng_Flash-Cards_Learner.csproj",
+      "msbuildProject": "../EWL/Eng_Flash-Cards_Learner.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3367,6 +3367,9 @@
           "projectReferences": {
             "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\Engish_Words_Learner_(flash-cards)\\Eng_Flash-Cards_Learner.csproj": {
               "projectPath": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\Engish_Words_Learner_(flash-cards)\\Eng_Flash-Cards_Learner.csproj"
+            },
+            "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Eng_Flash-Cards_Learner.csproj": {
+              "projectPath": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Eng_Flash-Cards_Learner.csproj"
             }
           }
         }
