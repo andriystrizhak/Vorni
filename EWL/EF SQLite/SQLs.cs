@@ -18,7 +18,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
             OpenConnection();
         }
         */
-
+        /*
         #region Відкрити / Закрити / Отримати з'єднання
 
         public void OpenConnection()
@@ -36,8 +36,8 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         public SQLiteConnection GetConnection()
             => connection;
         #endregion
-
-
+        */
+        /*
         //*********************************************************************************************************
         //TODO - remove "public"
         /// <summary>
@@ -51,12 +51,13 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
             return cmd.ExecuteReader();
         }
         //*********************************************************************************************************
+        */
 
-
-        //TESTED ✔️
+        //TEST-TEST
         #region [Категорії слів]
 
-        #region Певну кількість слів (або всіх) певної категорії
+        //RESOLVE
+        #region Отримати певну кількість слів (або всіх) певної категорії
 
         /// <summary>
         /// Отрмати список слів (DB_Word) з певної категорії й певну кількість
@@ -93,59 +94,57 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         #endregion
 
-
+        //TEST
         #region Отримати / Змінити поточну категорію для додавання слів
 
-        public int Get_CurrentCategory()
+        public static long Get_CurrentCategory()
         {
-            var reader = Get_DataReader("SELECT CurrentCategoryID FROM Settings;");
-            reader.Read();
-            return reader.GetInt32(0);
+            using (VocabularyContext db = new())
+                return db.Settings.ToList()[0].CurrentCategoryId;
         }
 
-        public void Set_CurrentCategory(int currentCategoryID)
-            => Get_DataReader($"UPDATE Settings SET CurrentCategoryID = {currentCategoryID} WHERE SettingsID = 1;");
+        public static void Set_CurrentCategory(int currentCategoryID)
+        {
+            if (currentCategoryID < 1)
+                throw new ArgumentException("categoryID arguments can't be less than '1'");
+
+            using VocabularyContext db = new();
+            db.Settings.First().CurrentCategoryId = currentCategoryID;
+            db.SaveChanges();
+        }
         #endregion
 
-
+        //TEST
         #region Отримати інформацію про Категорії / Додавання нової 
 
         /// <summary>
         /// Отрмати список категорій з БД де Count = number
         /// </summary>
         /// <returns>Список значень типу DB_WordCategory з інформацією про категорію</returns>
-        public List<DB_WordCategory> Get_Categories()
+        public static List<Category> Get_Categories()
         {
-            string query = $"SELECT * FROM Categories ORDER BY CategoryID";
-            var reader = Get_DataReader(query);
-            var categories = new List<DB_WordCategory>();
-
-            while (reader.Read())
-                categories.Add(new DB_WordCategory
-                {
-                    CategoryID = reader.GetInt32(0),
-                    Name = reader.GetString(1),
-                    CreatedAt = DateTime.Parse(reader.GetString(2)),
-                    CanBeDeleted = reader.GetInt32(3) == 1,
-                    IsDeleted = reader.GetInt32(4) == 1,
-                    DeletedAt = DateTime.Parse(reader.GetString(5)),
-                });
-            return categories;
+            using VocabularyContext db = new();
+            return db.Categories.ToList();
+        }
+        static bool Is_CategoryRepeated(string categoryName)
+        {
+            using VocabularyContext db = new();
+            return db.Categories.Any(c => c.Name == categoryName);
         }
 
-        bool Is_CategoryRepeated(string categoryName)
-            => Get_DataReader($"SELECT * FROM Categories WHERE Name = '{categoryName}';").HasRows;
-
-        public bool Add_NewCategory(string categoryName)
+        public static bool Add_NewCategory(string categoryName)
         {
             if (Is_CategoryRepeated(categoryName)) return false;
 
-            Get_DataReader($"INSERT INTO Categories (Name, Deleted, CanBeDeleted) VALUES ('{categoryName}', 0, 1);");
+            using VocabularyContext db = new();
+            db.Categories.Add(new Category { Name = categoryName });
+            db.SaveChanges();
+
             return true;
         }
         #endregion
 
-
+        //TEST
         #region Видалення категорії (корзина / повне) / Відновлення 
 
         /// <summary>
@@ -153,17 +152,24 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         /// </summary>
         /// <param name="categoryID">'CategoryID' категорії яка (позначатиметься як) видалена</param>
         /// <returns>Значення true якщо (позначення як) видалення пройшло успішно</returns>
-        public bool TryMarkAsRemoved_Category(int categoryID)
+        public static bool TryMarkAsRemoved_Category(int categoryID)
         {
-            bool categoryCanBeDeleted = Convert.ToInt32(
-                (new SQLiteCommand($"SELECT CanBeDeleted FROM Categories WHERE CategoryID = {categoryID}", connection)).ExecuteScalar()) == 1;
-            if (!categoryCanBeDeleted) return false;
+            if (categoryID < 1)
+                throw new ArgumentException("categoryID arguments can't be less than '1'");
 
-            int currentCategoryID = Convert.ToInt32((new SQLiteCommand("SELECT CurrentCategoryID FROM Settings", connection)).ExecuteScalar());
-            if (currentCategoryID == categoryID)
-                Get_DataReader("UPDATE Settings SET CurrentCategoryID = 1 WHERE SettingsID = 1;");
+            using VocabularyContext db = new();
 
-            Get_DataReader($"UPDATE Categories SET Deleted = 1, DeletedAt = '{DateTime.Now:yyyy-MM-dd HH:mm:ss}' WHERE CategoryID = {categoryID};");
+            var category = db.Categories.First(c => c.CategoryId == categoryID);
+            var setting = db.Settings.First();
+
+            if (category.CanBeDeleted == false) return false;
+            if (setting.CurrentCategoryId == categoryID)
+                setting.CurrentCategoryId = 1;
+
+            category.Deleted = true;
+            category.DeletedAt = DateTime.Now;
+
+            db.SaveChanges();
             return true;
         }
 
@@ -171,101 +177,132 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         /// Повністю видаляє категорії які знахдяться "корзині" більше ніж певну кількість днів
         /// </summary>
         /// <param name="retentionDayCountInRecycleBin">Кількість днів протягом якої категорія може зберігатися в "корзині"</param>
-        public void FindAndRemove_LongMarkedCategories(int retentionDayCountInRecycleBin = 7)
+        public static void FindAndRemove_LongMarkedCategories(int retentionDayCountInRecycleBin = 7)
         {
+            using VocabularyContext db = new();
+
             TimeSpan retentionTimeInRecycleBin = TimeSpan.FromDays(retentionDayCountInRecycleBin);
-            var categoriesInfoToBeDeleted = Get_Categories()
-                .Where(x => x.IsDeleted && ((DateTime.Now - x.DeletedAt) > retentionTimeInRecycleBin))
+            var categoriesToBeDeleted = db.Categories
+                .Where(c => c.Deleted && ((DateTime.Now - c.DeletedAt) > retentionTimeInRecycleBin))
                 .ToList();
 
-            foreach (var category in categoriesInfoToBeDeleted)
-            {
-                //Видалення всіх слів з WordCategories пов'язаних з категорією, яку видаляємо
-                Get_DataReader($"DELETE FROM WordCategories WHERE CategoryID = {category.CategoryID};");
-                //Видалення самої категорії з Categories
-                Get_DataReader($"DELETE FROM Categories WHERE CategoryID = {category.CategoryID};");
-            }
+            foreach (var category in categoriesToBeDeleted)
+                //Видалення всіх слів з WordCategories пов'язаних з категоріями, які видаляємо
+                db.WordCategories.RemoveRange(db.WordCategories
+                    .Where(c => c.CategoryId == category.CategoryId)
+                    .ToList());
+                //db.Categories.Remove(db.Categories.Where(c => c.CategoryId == category.CategoryId).First());  //REMOVE
+
+            //Видалення самих категорій з Categories
+            db.Categories.RemoveRange(categoriesToBeDeleted);
+            db.SaveChanges();
         }
 
-        public void Restore_Category_FromDeletion(int categoryID)
+        public static void Restore_Category_FromDeletion(int categoryID)
         {
+            if (categoryID < 1)
+                throw new ArgumentException("categoryID arguments can't be less than '1'");
+
             //Відновлення "нормальних" значень полів категорії в 'Categories'
-            Get_DataReader($"UPDATE Categories SET Deleted = 0 WHERE CategoryID = {categoryID};");
+            using VocabularyContext db = new();
+            db.Categories.First(c => c.CategoryId == categoryID).Deleted = false;
+            db.SaveChanges();
         }
         #endregion
 
-
+        //TEST
         #region Додати слово(слова) в категорію / Скасувати його(їх) додавання / Видалити з категорії
 
-        bool Is_WordRepeated_InCategory(int wordID, int categoryID)
-            => Get_DataReader($"SELECT * FROM WordCategories WHERE WordID = '{wordID}' AND CategoryID = '{categoryID}';").HasRows;
+        static bool Is_WordRepeated_InCategory(int wordID, int categoryID)
+        {
+            using VocabularyContext db = new();
+            return db.WordCategories.Any(c => c.WordId == wordID && c.CategoryId == categoryID);
+        }
 
-        public bool TryAdd_Word_ToCategory(int wordID, int categoryID)
+        public static bool TryAdd_Word_ToCategory(int wordID, int categoryID)
         {
             if (wordID < 1 || categoryID < 1)
                 throw new ArgumentException("wordID and categoryID arguments can't be less than '1'");
             if (Is_WordRepeated_InCategory(wordID, categoryID)) return false;
 
-            Get_DataReader($"INSERT INTO WordCategories (WordID, CategoryID) VALUES ({wordID}, {categoryID});");
+            using VocabularyContext db = new();
+            db.WordCategories.Add(new WordCategory { CategoryId = categoryID, WordId = wordID });
+            db.SaveChanges();
             return true;
         }
 
-        public void Remove_LastWord_FromCategory(int count)
-            => Get_DataReader($"DELETE FROM WordCategories ORDER BY AddedAt DESC LIMIT {count};");
-
-        public void Remove_Word_FromCategory(int wordID, int categoryID)
+        public static void Remove_LastWords_FromCategory(int count)
         {
-            if (categoryID != 1)
-                Get_DataReader($"DELETE FROM WordCategories WHERE WordID = {wordID} AND CategoryID = {categoryID};");
+            using VocabularyContext db = new();
+            var wordsToBeDeleted = db.WordCategories.OrderBy(w => w.AddedAt).Take(count).ToList();
+            db.WordCategories.RemoveRange(wordsToBeDeleted);
+            db.SaveChanges();
+        }
+
+        public static void Remove_Word_FromCategory(int wordID, int categoryID)
+        {
+            if (wordID < 1 || categoryID < 1)
+                throw new ArgumentException("wordID and categoryID arguments can't be less than '1'");
+            if (categoryID == 1)
+                throw new ArgumentException("the main category (#1) can't be deleted");
+
+            using VocabularyContext db = new();
+            db.WordCategories.Remove(db.WordCategories.First(w => w.WordId == wordID && w.CategoryId == categoryID));
+            db.SaveChanges();
         }
 
         #endregion
 
-        #endregion
-
-
-        //TESTED ✔️
-        #region Додати слово в БД / Скасувати його(їх) додавання / Видалити з БД
-
-        bool WordIsRepeated_InAllWords(string engW)
-            => Get_DataReader($"SELECT * FROM AllWords WHERE EngWord = '{engW}';").HasRows;
-
-        public bool TryAdd_Word_ToAllWords(string engW, string uaW, int categoryID = 1)
-        {
-            if (WordIsRepeated_InAllWords(engW)) return false;
-
-            uaW = uaW.Replace("'", "''");
-            var reader = Get_DataReader("INSERT INTO AllWords (EngWord, UaTranslation, Rating, Repetition) " +
-                $"VALUES ('{engW}', '{uaW}', 0, 0); SELECT last_insert_rowid();");
-            reader.Read();
-            int wordID = reader.GetInt32(0);
-
-            //Додавання до основної категорії, після - до додаткової
-            if (!TryAdd_Word_ToCategory(wordID, 1)) throw new Exception("Чогось не хоче додаватися до категорій слів!");
-            return categoryID == 1 || TryAdd_Word_ToCategory(wordID, categoryID);
-        }
-
-        public void Remove_LastWords_Permanently(int count)
-        {
-            List<int> wordIDsForRemoving = new();
-
-            var reader = Get_DataReader($"SELECT WordID FROM WordCategories ORDER BY WordID DESC, AddedAt DESC LIMIT {count};"); //Можна замінити WordID на AddedAt
-            while (reader.Read())
-                wordIDsForRemoving.Add(reader.GetInt32(0));
-
-            for (int i = 0; i < wordIDsForRemoving.Count; i++)
-                Remove_Word_Permanently(wordIDsForRemoving[i]);
-        }
-
-        public void Remove_Word_Permanently(int wordID)
-        {
-            Get_DataReader($"DELETE FROM WordCategories WHERE WordID = {wordID}");
-            Get_DataReader($"DELETE FROM AllWords WHERE WordID = {wordID}");
-        }
         #endregion
 
 
         //TEST
+        #region Додати слово в БД / Скасувати його(їх) додавання / Видалити з БД
+
+        static bool WordIsRepeated_InAllWords(string engW)
+        {
+            using VocabularyContext db = new();
+            return db.AllWords.Any(c => c.EngWord == engW);
+        }
+
+        public static bool TryAdd_Word_ToAllWords(string engW, string uaW, int categoryID = 1)
+        {
+            if (WordIsRepeated_InAllWords(engW)) return false;
+            uaW = uaW.Replace("'", "''");
+
+            using VocabularyContext db = new();
+            db.AllWords.Add(new AllWord { EngWord = engW, UaTranslation = uaW });
+            db.SaveChanges();
+
+            int wordID = db.AllWords.Last().WordId;
+            //Додавання до основної категорії, після (якщо треба) - до додаткової
+            if (!TryAdd_Word_ToCategory(wordID, 1)) 
+                throw new Exception("Чомусь нове слово не хоче додаватися до категорій слів!");
+            return categoryID == 1 || TryAdd_Word_ToCategory(wordID, categoryID);
+        }
+
+        public static void Remove_LastWords_Permanently(int count)
+        {
+            using VocabularyContext db = new();
+            //Видалення останніх count слів
+            for (int i = 0; i < count; i++)
+                Remove_Word_Permanently(db.AllWords.Last().WordId);
+            db.SaveChanges();
+        }
+
+        public static void Remove_Word_Permanently(int wordID)
+        {
+            using VocabularyContext db = new();
+            //Видалення слова з усіх категорій
+            db.WordCategories.RemoveRange(db.WordCategories.Where(w => w.WordId == wordID).ToList());
+            //Видалення слова з AllWords
+            db.AllWords.Remove(db.AllWords.First(w => w.WordId == wordID));
+            db.SaveChanges();
+        }
+        #endregion
+
+
+        //RESOLVE
         #region Отримати слова
 
         /// <summary>
@@ -294,7 +331,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         #endregion
 
 
-        //TEST
+        //RESOLVE
         #region Оцінювати слово
 
         public void RateWord(int id, int number)
@@ -307,6 +344,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         #endregion
 
 
+        //RESOLVE
         #region Отримати статистику по ВСІХ словах
         public DB_Statistic GetStatistic()
         {
@@ -327,6 +365,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         #endregion
 
 
+        //RESOLVE
         #region Отримати / Змінити кількість слів для вивчення (за раз)
 
         public int GetWordsToLearnCount()
@@ -347,6 +386,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         #endregion
 
 
+        //RESOLVE
         #region Отримати / Змінити мод (спосіб) додавання слів
 
         public int GetWordAddingMode()
@@ -367,6 +407,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         #endregion
 
 
+        //RESOLVE
         #region Отримати / Змінити значення повторюваності слова
 
         public int GetWordRepetition(int id)
@@ -387,6 +428,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         #endregion
 
 
+        //RESOLVE
         #region Отримати дані чи запускався цей додаток до цього, чи ні
 
         //TEST

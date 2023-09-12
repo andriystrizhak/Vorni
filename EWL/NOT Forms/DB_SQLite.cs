@@ -266,7 +266,7 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
 
         public void Remove_Word_Permanently(int wordID)
         {
-            Get_DataReader($"DELETE FROM WordCategories WHERE WordID = {wordID}");
+            Get_DataReader($"DELETE FROM WordCategories WHERE WordID = {wordID}"); 
             Get_DataReader($"DELETE FROM AllWords WHERE WordID = {wordID}");
         }
         #endregion

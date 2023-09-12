@@ -5,9 +5,9 @@ namespace Eng_Flash_Cards_Learner;
 
 public partial class WordCategory
 {
-    public long WordId { get; set; }
+    public int WordId { get; set; }
 
-    public long CategoryId { get; set; }
+    public int CategoryId { get; set; }
 
     public DateTime AddedAt { get; set; }
 

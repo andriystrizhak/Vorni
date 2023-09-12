@@ -5,7 +5,7 @@ namespace Eng_Flash_Cards_Learner;
 
 public partial class Category
 {
-    public long CategoryId { get; set; }
+    public int CategoryId { get; set; }
 
     public string Name { get; set; } = null!;
 
