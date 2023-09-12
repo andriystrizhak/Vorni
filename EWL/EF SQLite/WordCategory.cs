@@ -13,5 +13,5 @@ public partial class WordCategory
 
     public virtual Category Category { get; set; } = null!;
 
-    public virtual AllWord Word { get; set; } = null!;
+    public virtual Word Word { get; set; } = null!;
 }

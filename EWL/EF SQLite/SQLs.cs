@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Eng_Flash_Cards_Learner.EF_SQLite
 {
@@ -271,7 +272,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
             uaW = uaW.Replace("'", "''");
 
             using VocabularyContext db = new();
-            db.AllWords.Add(new AllWord { EngWord = engW, UaTranslation = uaW });
+            db.AllWords.Add(new Word { EngWord = engW, UaTranslation = uaW });
             db.SaveChanges();
 
             int wordID = db.AllWords.Last().WordId;
@@ -302,65 +303,44 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         #endregion
 
 
-        //RESOLVE
+        //TEST
         #region Отримати слова
 
         /// <summary>
-        /// Отрмати список слів з БД де Count = number
+        /// Отримати список слів з БД де Count = number
         /// </summary>
         /// <param name="number">Кількість слів для вивчення</param>
         /// <returns>Список слів </returns>
-        public List<DB_Word> GetWords(int number)
+        public static List<Word> GetWords(int number)
         {
-            string query = $"SELECT * FROM AllWords ORDER BY Rating LIMIT {number};";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //SQLiteDataReader reader = cmd.ExecuteReader();
-            var reader = Get_DataReader(query);
-            var words = new List<DB_Word>();
-
-            while (reader.Read())
-                words.Add(new DB_Word
-                {
-                    WordID = reader.GetInt32(0),
-                    EngWord = reader.GetString(1),
-                    UaTranslation = reader.GetString(2),
-                    Rating = reader.GetInt32(3),
-                });
-            return words;
+            using VocabularyContext db = new();
+            return db.AllWords.OrderBy(w => w.Rating).Take(number).ToList();
         }
         #endregion
 
-
-        //RESOLVE
+        //TEST
         #region Оцінювати слово
 
-        public void RateWord(int id, int number)
+        public static void RateWord(int wordId, int rating)
         {
-            string query = $"UPDATE AllWords SET Rating = {number} WHERE WordID = {id};";
-            //SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            //SQLiteDataReader reader = cmd.ExecuteReader();
-            Get_DataReader(query);
+            using VocabularyContext db = new();
+            db.AllWords.First(w => w.WordId == wordId).Rating = rating;
+            db.SaveChanges();
         }
         #endregion
 
-
-        //RESOLVE
+        //TEST
         #region Отримати статистику по ВСІХ словах
-        public DB_Statistic GetStatistic()
+        public static Statistic GetStatistic()
         {
-            DB_Statistic stat = new();
+            using VocabularyContext db = new();
 
-            SQLiteCommand cmd = new("SELECT count (*) FROM Words;", connection);
-            stat.AllWordCount = Convert.ToInt32(cmd.ExecuteScalar());
-
-            string query;
+            var stat = new int[7];
             for (int i = 0; i <= 5; i++)
-            {
-                query = $"SELECT count (*) FROM AllWords WHERE Rating = {i};";
-                cmd = new SQLiteCommand(query, connection);
-                stat.AllRatings[i] = Convert.ToInt32(cmd.ExecuteScalar());
-            }
-            return stat;
+                stat[i] = db.AllWords.Where(w => w.Rating == i).Count();
+            stat[6] = db.AllWords.Count();
+
+            return new Statistic(stat);
         }
         #endregion
 
@@ -368,8 +348,11 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         //RESOLVE
         #region Отримати / Змінити кількість слів для вивчення (за раз)
 
-        public int GetWordsToLearnCount()
+        public static int GetWordsToLearnCount()
         {
+            using VocabularyContext db = new();
+
+
             string query = $"SELECT WordCountToLearn FROM Settings;";
             SQLiteCommand cmd = new(query, connection);
             return Convert.ToInt32(cmd.ExecuteScalar());

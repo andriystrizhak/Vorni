@@ -24,7 +24,7 @@ public partial class VocabularyContext : DbContext
     { }
 
 
-    public virtual DbSet<AllWord> AllWords { get; set; }
+    public virtual DbSet<Word> AllWords { get; set; }
 
     public virtual DbSet<Category> Categories { get; set; }
 
@@ -41,7 +41,7 @@ public partial class VocabularyContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<AllWord>(entity =>
+        modelBuilder.Entity<Word>(entity =>
         {
             entity.HasKey(e => e.WordId);
 
