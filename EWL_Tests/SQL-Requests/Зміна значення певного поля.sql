@@ -1,1 +1,0 @@
-UPDATE Settings SET CurrentCategoryID = 1 WHERE SettingsID
