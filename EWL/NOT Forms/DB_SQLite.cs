@@ -317,7 +317,7 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
         #region Отримати статистику по ВСІХ словах
         public Statistic GetStatistic()
         {
-            Statistic stat = new();
+            Statistic stat = new(new int[7]);
 
             SQLiteCommand cmd = new("SELECT count (*) FROM Words;", connection);
             stat.AllWordCount = Convert.ToInt32(cmd.ExecuteScalar());

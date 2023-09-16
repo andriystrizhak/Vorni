@@ -163,12 +163,10 @@ namespace Eng_Flash_Cards_Learner
             string uaTrans = UaTextBox.Text;
 
             if (!DB.TryAdd_Word_ToAllWords(engWord, uaTrans))
-            {
                 MessageBox.Show("Таке ж слово вже існує в БД", "Х'юстон, проблемка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                AddedWords++;
-            }
             else
             {
+                AddedWords++; //NEW
                 EngTextBox.Text = "";
                 UaTextBox.Text = "";
                 AddWButton.Enabled = false;
@@ -180,7 +178,7 @@ namespace Eng_Flash_Cards_Learner
         {
             DB.Remove_LastWords_Permanently(1);
             AddedWords--;
-            if (AddedWords == 0)
+            if (AddedWords <= 0)
                 CancelPrevButton.Enabled = false;
         }
 
