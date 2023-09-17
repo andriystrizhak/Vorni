@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Eng_Flash_Cards_Learner;
@@ -8,6 +9,7 @@ namespace Eng_Flash_Cards_Learner;
 [Table("AllWords")]
 public partial class Word
 {
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int WordId { get; set; }
 
     public string EngWord { get; set; } = null!;

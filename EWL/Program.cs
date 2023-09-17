@@ -1,4 +1,6 @@
+using Eng_Flash_Cards_Learner.EF_SQLite;
 using Eng_Flash_Cards_Learner.NOT_Forms;
+using SQLitePCL;
 
 namespace Eng_Flash_Cards_Learner
 {
@@ -14,11 +16,11 @@ namespace Eng_Flash_Cards_Learner
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-
+            
             if (!DB.WasLaunched())
                 Application.Run(new SetUpForm());
             if (Mode == LearningMode.DataBase)
                 Application.Run(new MainBDForm());
         }
     }
-}
+} 

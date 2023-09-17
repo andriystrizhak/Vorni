@@ -17,37 +17,9 @@ namespace Eng_Flash_Cards_Learner.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
 
-            modelBuilder.Entity("Eng_Flash_Cards_Learner.AllWord", b =>
-                {
-                    b.Property<long>("WordId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("WordID");
-
-                    b.Property<int>("Difficulty")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("EngWord")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Repetition")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UaTranslation")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("WordId");
-
-                    b.ToTable("AllWords");
-                });
-
             modelBuilder.Entity("Eng_Flash_Cards_Learner.Category", b =>
                 {
-                    b.Property<long>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("CategoryID");
 
@@ -78,11 +50,11 @@ namespace Eng_Flash_Cards_Learner.Migrations
 
             modelBuilder.Entity("Eng_Flash_Cards_Learner.Setting", b =>
                 {
-                    b.Property<long>("SettingsId")
+                    b.Property<int>("SettingsId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("SettingsID");
 
-                    b.Property<long>("CurrentCategoryId")
+                    b.Property<int>("CurrentCategoryId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("CurrentCategoryID");
 
@@ -102,6 +74,34 @@ namespace Eng_Flash_Cards_Learner.Migrations
                     b.ToTable("Settings");
                 });
 
+            modelBuilder.Entity("Eng_Flash_Cards_Learner.Word", b =>
+                {
+                    b.Property<int>("WordId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("WordID");
+
+                    b.Property<int>("Difficulty")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("EngWord")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Repetition")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UaTranslation")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("WordId");
+
+                    b.ToTable("AllWords");
+                });
+
             modelBuilder.Entity("Eng_Flash_Cards_Learner.WordCategory", b =>
                 {
                     b.Property<DateTime>("AddedAt")
@@ -109,11 +109,11 @@ namespace Eng_Flash_Cards_Learner.Migrations
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                    b.Property<long>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("CategoryID");
 
-                    b.Property<long>("WordId")
+                    b.Property<int>("WordId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("WordID");
 
@@ -141,7 +141,7 @@ namespace Eng_Flash_Cards_Learner.Migrations
                         .HasForeignKey("CategoryId")
                         .IsRequired();
 
-                    b.HasOne("Eng_Flash_Cards_Learner.AllWord", "Word")
+                    b.HasOne("Eng_Flash_Cards_Learner.Word", "Word")
                         .WithMany()
                         .HasForeignKey("WordId")
                         .IsRequired();

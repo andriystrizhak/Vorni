@@ -34,7 +34,7 @@ namespace EWL_Tests
     [TestFixture]
     public class DB_SQLite_Test
     {
-        public DB_SQLite DB { get; set; } = new DB_SQLite("Data Source=D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL_Tests\\Test_DB.db;Version=3;");
+        public DB_SQLite DB { get; set; } = new DB_SQLite("Data Source=D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL_Tests\\Test_DB_SQLit.db;Version=3;");
 
         [SetUp]
         public void Setup()

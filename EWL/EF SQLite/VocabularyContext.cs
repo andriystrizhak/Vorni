@@ -7,7 +7,9 @@ namespace Eng_Flash_Cards_Learner;
 public partial class VocabularyContext : DbContext
 {
     static string connectionString = "Data Source=.\\Vocabulary.db;";
-    readonly StreamWriter logStream = new("log\\SQLog.txt", true);
+
+    //static public bool DoLogActions { get; set; } = true;
+    //readonly StreamWriter logStream = new("log\\SQLog.txt", true);
 
     public VocabularyContext()
     {
@@ -36,7 +38,8 @@ public partial class VocabularyContext : DbContext
     //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
     {
         optionsBuilder.UseSqlite(connectionString);
-        optionsBuilder.LogTo(logStream.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
+        //if (DoLogActions)
+        //    optionsBuilder.LogTo(logStream.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -46,14 +49,14 @@ public partial class VocabularyContext : DbContext
             entity.HasKey(e => e.WordId);
 
             entity.Property(e => e.WordId)
-                .ValueGeneratedNever()
+                //.ValueGeneratedNever()
                 .HasColumnName("WordID");
         });
 
         modelBuilder.Entity<Category>(entity =>
         {
             entity.Property(e => e.CategoryId)
-                .ValueGeneratedNever()
+                //.ValueGeneratedNever()
                 .HasColumnName("CategoryID");
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
@@ -68,7 +71,7 @@ public partial class VocabularyContext : DbContext
             entity.HasKey(e => e.SettingsId);
 
             entity.Property(e => e.SettingsId)
-                .ValueGeneratedNever()
+                //.ValueGeneratedNever()
                 .HasColumnName("SettingsID");
             entity.Property(e => e.CurrentCategoryId).HasColumnName("CurrentCategoryID");
 
@@ -79,7 +82,7 @@ public partial class VocabularyContext : DbContext
 
         modelBuilder.Entity<WordCategory>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => new { e.CategoryId, e.WordId }); //Визначення складеного первинного ключа
 
             entity.Property(e => e.AddedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
@@ -87,11 +90,13 @@ public partial class VocabularyContext : DbContext
             entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
             entity.Property(e => e.WordId).HasColumnName("WordID");
 
-            entity.HasOne(d => d.Category).WithMany()
+            entity.HasOne(d => d.Category)
+                .WithMany()
                 .HasForeignKey(d => d.CategoryId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 
-            entity.HasOne(d => d.Word).WithMany()
+            entity.HasOne(d => d.Word)
+                .WithMany()
                 .HasForeignKey(d => d.WordId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
@@ -104,6 +109,6 @@ public partial class VocabularyContext : DbContext
     public override void Dispose()
     {
         base.Dispose();
-        logStream.Dispose();
+        //logStream.Dispose();
     }
 }
