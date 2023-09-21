@@ -11,7 +11,7 @@ public partial class Category
 
     public DateTime CreatedAt { get; set; }
 
-    public bool CanBeDeleted { get; set; }
+    public bool CanBeDeleted { get; set; } = true;
 
     public bool Deleted { get; set; }
 

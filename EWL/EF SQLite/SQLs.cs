@@ -117,7 +117,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
             var category = db.Categories.First(c => c.CategoryId == categoryID);
             var setting = db.Settings.First();
 
-            if (category.CanBeDeleted == false) return false;
+            if (!category.CanBeDeleted) return false;
             if (setting.CurrentCategoryId == categoryID)
                 setting.CurrentCategoryId = 1;
 

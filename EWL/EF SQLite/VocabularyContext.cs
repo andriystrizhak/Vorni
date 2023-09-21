@@ -75,7 +75,8 @@ public partial class VocabularyContext : DbContext
                 .HasColumnName("SettingsID");
             entity.Property(e => e.CurrentCategoryId).HasColumnName("CurrentCategoryID");
 
-            entity.HasOne(d => d.CurrentCategory).WithMany(p => p.Settings)
+            entity.HasOne(d => d.CurrentCategory)
+                .WithMany(p => p.Settings)
                 .HasForeignKey(d => d.CurrentCategoryId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
