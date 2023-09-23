@@ -20,6 +20,7 @@ namespace Eng_Flash_Cards_Learner.Migrations
             modelBuilder.Entity("Eng_Flash_Cards_Learner.Category", b =>
                 {
                     b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
                         .HasColumnName("CategoryID");
 
@@ -51,6 +52,7 @@ namespace Eng_Flash_Cards_Learner.Migrations
             modelBuilder.Entity("Eng_Flash_Cards_Learner.Setting", b =>
                 {
                     b.Property<int>("SettingsId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
                         .HasColumnName("SettingsID");
 
@@ -77,6 +79,7 @@ namespace Eng_Flash_Cards_Learner.Migrations
             modelBuilder.Entity("Eng_Flash_Cards_Learner.Word", b =>
                 {
                     b.Property<int>("WordId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
                         .HasColumnName("WordID");
 
@@ -99,16 +102,11 @@ namespace Eng_Flash_Cards_Learner.Migrations
 
                     b.HasKey("WordId");
 
-                    b.ToTable("AllWords");
+                    b.ToTable("Words");
                 });
 
             modelBuilder.Entity("Eng_Flash_Cards_Learner.WordCategory", b =>
                 {
-                    b.Property<DateTime>("AddedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("CategoryID");
@@ -117,7 +115,12 @@ namespace Eng_Flash_Cards_Learner.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnName("WordID");
 
-                    b.HasIndex("CategoryId");
+                    b.Property<DateTime>("AddedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.HasKey("CategoryId", "WordId");
 
                     b.HasIndex("WordId");
 

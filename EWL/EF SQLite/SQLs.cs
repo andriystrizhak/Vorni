@@ -33,6 +33,41 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
             List<Tuple<Word, DateTime>> wordsInfo = new();
 
+
+            var wordsInCategory = db.WordCategories
+                .Where(wc => wc.CategoryId == categoryID) // Фільтр по категорії
+                .OrderByDescending(wc => wc.Word.Rating) // Сортування за рейтингом у спадаючому порядку
+                .ThenBy(wc => wc.AddedAt) // Сортування за датою додавання
+                .Select(wc => new
+                {
+                    WordId = wc.Word.WordId,
+                    EngWord = wc.Word.EngWord,
+                    UaTranslation = wc.Word.UaTranslation,
+                    Rating = wc.Word.Rating,
+                    Repetition = wc.Word.Repetition,
+                    Difficulty = wc.Word.Difficulty,
+                    AddedAt = wc.AddedAt
+                })
+                .ToList();
+            return wordsInfo;
+
+
+            // Отримуємо список ID слів для вказаної категорії та сортуємо їх
+            List<int> wordIds = db.WordCategories
+                .Where(wc => wc.CategoryId == categoryID)
+                .OrderBy(wc => wc.Word.Rating)
+                .ThenBy(wc => wc.AddedAt)
+                .Select(wc => wc.WordId)
+                .ToList();
+
+            // Отримуємо слова зі списку ID, обмежуючи їх кількість, якщо wordCount != -1
+            wordsInfo = db.AllWords
+                .Where(w => wordIds.Contains(w.WordId))
+                .Select(w => Tuple.Create(w, DateTime.Now)) // Додайте DateTime за вашими потребами
+                .ToList();
+
+            return wordsInfo;
+
             wordsInfo = db.AllWords
                 .Join(db.WordCategories,
                     word => word.WordId,
@@ -136,17 +171,15 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         {
             using VocabularyContext db = new(ConStr);
 
-            TimeSpan retentionTimeInRecycleBin = TimeSpan.FromDays(retentionDayCountInRecycleBin);
-            var categoriesToBeDeleted = db.Categories
-                .Where(c => c.Deleted && ((DateTime.Now - c.DeletedAt) > retentionTimeInRecycleBin))
+            DateTime now = DateTime.Now;
+            var categoriesToBeDeleted = db.Categories.AsEnumerable()
+                .Where(c => c.Deleted && ((now - c.DeletedAt).Days > retentionDayCountInRecycleBin))
                 .ToList();
 
             foreach (var category in categoriesToBeDeleted)
                 //Видалення всіх слів з WordCategories пов'язаних з категоріями, які видаляємо
                 db.WordCategories.RemoveRange(db.WordCategories
-                    .Where(c => c.CategoryId == category.CategoryId)
-                    .ToList());
-                //db.Categories.Remove(db.Categories.Where(c => c.CategoryId == category.CategoryId).First());  //REMOVE
+                    .Where(c => c.CategoryId == category.CategoryId));
 
             //Видалення самих категорій з Categories
             db.Categories.RemoveRange(categoriesToBeDeleted);
@@ -189,7 +222,10 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         public static void Remove_LastWords_FromCategory(int count)
         {
             using VocabularyContext db = new(ConStr);
-            var wordsToBeDeleted = db.WordCategories.OrderBy(w => w.AddedAt).Take(count).ToList();
+            var wordsToBeDeleted = db.WordCategories
+                .OrderByDescending(w => w.AddedAt)
+                .Take(count)
+                .ToList();
             db.WordCategories.RemoveRange(wordsToBeDeleted);
             db.SaveChanges();
         }
@@ -197,12 +233,16 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         public static void Remove_Word_FromCategory(int wordID, int categoryID)
         {
             if (wordID < 1 || categoryID < 1)
-                throw new ArgumentException("wordID and categoryID arguments can't be less than '1'");
+                throw new ArgumentException(
+                    "wordID and categoryID arguments can't be less than '1'");
             if (categoryID == 1)
-                throw new ArgumentException("the main category (#1) can't be deleted");
+                throw new ArgumentException(
+                    "the word from main category (#1) can't be removed, only removed completely");
 
             using VocabularyContext db = new(ConStr);
-            db.WordCategories.Remove(db.WordCategories.First(w => w.WordId == wordID && w.CategoryId == categoryID));
+            db.WordCategories.Remove(
+                db.WordCategories
+                    .First(w => w.WordId == wordID && w.CategoryId == categoryID));
             db.SaveChanges();
         }
 

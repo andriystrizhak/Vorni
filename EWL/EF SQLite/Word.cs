@@ -16,10 +16,8 @@ public partial class Word
 
     public string UaTranslation { get; set; } = null!;
 
-    //[DefaultValue(0)]
     public int Rating { get; set; }
 
-    //[DefaultValue(0)]
     public int Repetition { get; set; }
 
     public int Difficulty { get; set; }

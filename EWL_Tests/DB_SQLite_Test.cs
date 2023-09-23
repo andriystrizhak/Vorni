@@ -446,9 +446,8 @@ namespace EWL_Tests
         {
             Words_Adding_ToDB(addedWordCount);
             int nonexistentWordCount = -2;
-            TestDelegate GetWordsFromNonexistentCategory = () => DB.Get_Words_FromCategory(2, nonexistentWordCount);
 
-            Assert.Catch(typeof(ArgumentException), GetWordsFromNonexistentCategory, 
+            Assert.Catch<ArgumentException>(() => DB.Get_Words_FromCategory(2, nonexistentWordCount), 
                 "Тут повинне виникати виключення, а не виникає");
         }
 
