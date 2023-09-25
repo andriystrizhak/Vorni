@@ -20,7 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Engish_Words_Learner_(flash-cards)\Eng_Flash-Cards_Learner.csproj" />
+    <ProjectReference Include="..\EWL\Eng_Flash-Cards_Learner.csproj" />
+	  <!--     <ProjectReference Include="..\Engish_Words_Learner_(flash-cards)\Eng_Flash-Cards_Learner.csproj" /> -->
     <ProjectReference Include="..\EWL\Eng_Flash-Cards_Learner.csproj" />
   </ItemGroup>
 

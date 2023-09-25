@@ -15,11 +15,11 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         /// </summary>
         public static string ConStr { get; set; } = "Data Source=.\\Vocabulary.db;";
 
-        //TEST-TEST
-        #region [Категорії слів]
 
-        //TEST
-        #region Отримати певну кількість слів (або всіх) певної категорії
+        //TEST-TEST
+        #region [ Слова ]
+
+        #region Отримати певну кількість слів (або всіх) певної категорії / З основної категорії
 
         /// <summary>
         /// Отрмати список слів (DB_Word) з певної категорії й певну кількість
@@ -29,16 +29,18 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         /// <returns>Список слів (DB_Word)</returns>
         public static List<Tuple<Word, DateTime>> Get_Words_FromCategory(int categoryID, int wordCount = -1)
         {
-            using VocabularyContext db = new(ConStr);
+            if (wordCount < -1) throw new ArgumentException("wordcount argument can't be less than '1'");
+            if (categoryID <= 0) throw new ArgumentException("categoryID argument can't be less than '1'");
 
             List<Tuple<Word, DateTime>> wordsInfo = new();
 
+            using VocabularyContext db = new(ConStr);
 
-            var wordsInCategory = db.WordCategories
+            wordsInfo = db.WordCategories
                 .Where(wc => wc.CategoryId == categoryID) // Фільтр по категорії
                 .OrderByDescending(wc => wc.Word.Rating) // Сортування за рейтингом у спадаючому порядку
                 .ThenBy(wc => wc.AddedAt) // Сортування за датою додавання
-                .Select(wc => new
+                .Select(wc => Tuple.Create(new Word
                 {
                     WordId = wc.Word.WordId,
                     EngWord = wc.Word.EngWord,
@@ -46,64 +48,177 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
                     Rating = wc.Word.Rating,
                     Repetition = wc.Word.Repetition,
                     Difficulty = wc.Word.Difficulty,
-                    AddedAt = wc.AddedAt
-                })
-                .ToList();
-            return wordsInfo;
-
-
-            // Отримуємо список ID слів для вказаної категорії та сортуємо їх
-            List<int> wordIds = db.WordCategories
-                .Where(wc => wc.CategoryId == categoryID)
-                .OrderBy(wc => wc.Word.Rating)
-                .ThenBy(wc => wc.AddedAt)
-                .Select(wc => wc.WordId)
+                    //AddedAt = wc.AddedAt
+                }, wc.AddedAt)
+                )
                 .ToList();
 
-            // Отримуємо слова зі списку ID, обмежуючи їх кількість, якщо wordCount != -1
-            wordsInfo = db.AllWords
-                .Where(w => wordIds.Contains(w.WordId))
-                .Select(w => Tuple.Create(w, DateTime.Now)) // Додайте DateTime за вашими потребами
-                .ToList();
+            if (wordCount > -1)
+                wordsInfo = wordsInfo
+                    .Take(wordCount)
+                    .ToList();
 
             return wordsInfo;
+        }
 
-            wordsInfo = db.AllWords
-                .Join(db.WordCategories,
-                    word => word.WordId,
-                    wordCategory => wordCategory.WordId,
-                    (word, wordCategory) => Tuple.Create(word, wordCategory))
-                .Where(result => result.Item2.CategoryId == categoryID)
-                .OrderBy(result => result.Item1.Rating)
-                .ThenBy(result => result.Item2.AddedAt)
-                .Select(w => Tuple.Create(w.Item1, w.Item2.AddedAt))
-                .ToList();
-            return wordsInfo;
+        /// <summary>
+        /// Отримати список слів з БД де Count = number
+        /// </summary>
+        /// <param name="number">Кількість слів для вивчення</param>
+        /// <returns>Список слів </returns>
+        public static List<Word> GetWords(int number)
+        {
+            using VocabularyContext db = new(ConStr);
+            return db.AllWords.OrderBy(w => w.Rating).Take(number).ToList();
         }
 
         #endregion
 
         //TEST
-        #region Отримати / Змінити поточну категорію для додавання слів
-
-        public static int Get_CurrentCategory()
+        #region Отримати статистику по ВСІХ словах
+        public static Statistic GetStatistic()
         {
             using VocabularyContext db = new(ConStr);
-            return db.Settings.ToList()[0].CurrentCategoryId;
+
+            var stat = new int[7];
+            for (int i = 0; i <= 5; i++)
+                stat[i] = db.AllWords.Where(w => w.Rating == i).Count();
+            stat[6] = db.AllWords.Count();
+
+            return new Statistic(stat);
+        }
+        #endregion
+
+        #region Додати слово в БД / Скасувати його(їх) додавання / Видалити з БД
+
+        static bool WordIsRepeated_InAllWords(string engW)
+        {
+            using VocabularyContext db = new(ConStr);
+            return db.AllWords.Any(c => c.EngWord == engW);
         }
 
-        public static void Set_CurrentCategory(int currentCategoryID)
+        public static bool TryAdd_Word_ToAllWords(string engW, string uaW, int categoryID = 1)
         {
-            if (currentCategoryID < 1)
-                throw new ArgumentException("categoryID arguments can't be less than '1'");
+            if (WordIsRepeated_InAllWords(engW)) return false;
+            uaW = uaW.Replace("'", "''");
 
             using VocabularyContext db = new(ConStr);
-            db.Settings.First().CurrentCategoryId = currentCategoryID;
+            db.AllWords.Add(new Word { EngWord = engW, UaTranslation = uaW });
+            db.SaveChanges();
+
+            int wordID = db.AllWords.OrderBy(w => w.WordId).Last().WordId;
+            //Додавання до основної категорії, після (якщо треба) - до додаткової
+            if (!TryAdd_Word_ToCategory(wordID, 1))
+                throw new Exception("Чомусь нове слово не хоче додаватися до категорій слів!");
+            return categoryID == 1 || TryAdd_Word_ToCategory(wordID, categoryID);
+        }
+
+        public static void Remove_LastWords_Permanently(int count)
+        {
+            using VocabularyContext db = new(ConStr);
+            //Видалення останніх count слів
+            for (int i = 0; i < count; i++)
+                Remove_Word_Permanently(db.AllWords.OrderBy(w => w.WordId).Last().WordId);
+            db.SaveChanges();
+        }
+
+        public static void Remove_Word_Permanently(int wordID)
+        {
+            using VocabularyContext db = new(ConStr);
+            //Видалення слова з усіх категорій
+            db.WordCategories.RemoveRange(db.WordCategories.Where(w => w.WordId == wordID).ToList());
+            //Видалення слова з AllWords
+            db.AllWords.Remove(db.AllWords.First(w => w.WordId == wordID));
             db.SaveChanges();
         }
         #endregion
 
         //TEST
+        #region Отримати / Змінити значення повторюваності слова
+
+        public static int GetWordRepetition(int wordId)
+        {
+            using VocabularyContext db = new(ConStr);
+            return db.AllWords.First(w => w.WordId == wordId).Repetition;
+        }
+
+        public static void IncrementWordRepetition(int wordId)
+        {
+            using VocabularyContext db = new(ConStr);
+            int wordRepetition = db.AllWords.First(w => w.WordId == wordId).Repetition;
+            db.AllWords.First().Repetition = ++wordRepetition;
+            db.SaveChanges();
+        }
+        #endregion
+
+        //TEST
+        #region Змінити оцінку слова
+
+        public static void RateWord(int wordId, int rating)
+        {
+            using VocabularyContext db = new(ConStr);
+            db.AllWords.First(w => w.WordId == wordId).Rating = rating;
+            db.SaveChanges();
+        }
+        #endregion
+
+        #endregion
+
+        #region [ Категорії слів ]
+
+        #region Додати слово(слова) в категорію / Скасувати його(їх) додавання / Видалити з категорії
+
+        static bool Is_WordRepeated_InCategory(int wordID, int categoryID)
+        {
+            using VocabularyContext db = new(ConStr);
+            return db.WordCategories.Any(c => c.WordId == wordID && c.CategoryId == categoryID);
+        }
+
+        public static bool TryAdd_Word_ToCategory(int wordID, int categoryID)
+        {
+            if (wordID < 1 || categoryID < 1)
+                throw new ArgumentException("wordID and categoryID arguments can't be less than '1'");
+            if (Is_WordRepeated_InCategory(wordID, categoryID)) return false;
+
+            using VocabularyContext db = new(ConStr);
+            db.WordCategories.Add(new WordCategory { CategoryId = categoryID, WordId = wordID });
+            db.SaveChanges();
+            return true;
+        }
+
+        public static void Remove_LastWords_FromCategory(int count)
+        {
+            using VocabularyContext db = new(ConStr);
+            var wordsToBeDeleted = db.WordCategories
+                .OrderByDescending(w => w.AddedAt)
+                .Take(count)
+                .ToList();
+            db.WordCategories.RemoveRange(wordsToBeDeleted);
+            db.SaveChanges();
+        }
+
+        public static void Remove_Word_FromCategory(int wordID, int categoryID)
+        {
+            if (wordID < 1 || categoryID < 1)
+                throw new ArgumentException(
+                    "wordID and categoryID arguments can't be less than '1'");
+            if (categoryID == 1)
+                throw new ArgumentException(
+                    "the word from main category (#1) can't be removed, only removed completely");
+
+            using VocabularyContext db = new(ConStr);
+            db.WordCategories.Remove(
+                db.WordCategories
+                    .First(w => w.WordId == wordID && w.CategoryId == categoryID));
+            db.SaveChanges();
+        }
+
+        #endregion
+
+        #endregion
+
+        #region [ Категорії ]
+
         #region Отримати інформацію про Категорії / Додавання нової 
 
         /// <summary>
@@ -134,7 +249,6 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         }
         #endregion
 
-        //TEST
         #region Видалення категорії (корзина / повне) / Відновлення 
 
         /// <summary>
@@ -198,163 +312,10 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         }
         #endregion
 
-        //TEST
-        #region Додати слово(слова) в категорію / Скасувати його(їх) додавання / Видалити з категорії
-
-        static bool Is_WordRepeated_InCategory(int wordID, int categoryID)
-        {
-            using VocabularyContext db = new(ConStr);
-            return db.WordCategories.Any(c => c.WordId == wordID && c.CategoryId == categoryID);
-        }
-
-        public static bool TryAdd_Word_ToCategory(int wordID, int categoryID)
-        {
-            if (wordID < 1 || categoryID < 1)
-                throw new ArgumentException("wordID and categoryID arguments can't be less than '1'");
-            if (Is_WordRepeated_InCategory(wordID, categoryID)) return false;
-
-            using VocabularyContext db = new(ConStr);
-            db.WordCategories.Add(new WordCategory { CategoryId = categoryID, WordId = wordID });
-            db.SaveChanges();
-            return true;
-        }
-
-        public static void Remove_LastWords_FromCategory(int count)
-        {
-            using VocabularyContext db = new(ConStr);
-            var wordsToBeDeleted = db.WordCategories
-                .OrderByDescending(w => w.AddedAt)
-                .Take(count)
-                .ToList();
-            db.WordCategories.RemoveRange(wordsToBeDeleted);
-            db.SaveChanges();
-        }
-
-        public static void Remove_Word_FromCategory(int wordID, int categoryID)
-        {
-            if (wordID < 1 || categoryID < 1)
-                throw new ArgumentException(
-                    "wordID and categoryID arguments can't be less than '1'");
-            if (categoryID == 1)
-                throw new ArgumentException(
-                    "the word from main category (#1) can't be removed, only removed completely");
-
-            using VocabularyContext db = new(ConStr);
-            db.WordCategories.Remove(
-                db.WordCategories
-                    .First(w => w.WordId == wordID && w.CategoryId == categoryID));
-            db.SaveChanges();
-        }
-
         #endregion
 
-        #endregion
-
-        //TEST
-        #region Додати слово в БД / Скасувати його(їх) додавання / Видалити з БД
-
-        static bool WordIsRepeated_InAllWords(string engW)
-        {
-            using VocabularyContext db = new(ConStr);
-            return db.AllWords.Any(c => c.EngWord == engW);
-        }
-
-        public static bool TryAdd_Word_ToAllWords(string engW, string uaW, int categoryID = 1)
-        {
-            if (WordIsRepeated_InAllWords(engW)) return false;
-            uaW = uaW.Replace("'", "''");
-
-            using VocabularyContext db = new(ConStr);
-            db.AllWords.Add(new Word { EngWord = engW, UaTranslation = uaW });
-            db.SaveChanges();
-
-            int wordID = db.AllWords.OrderBy(w => w.WordId).Last().WordId;
-            //Додавання до основної категорії, після (якщо треба) - до додаткової
-            if (!TryAdd_Word_ToCategory(wordID, 1)) 
-                throw new Exception("Чомусь нове слово не хоче додаватися до категорій слів!");
-            return categoryID == 1 || TryAdd_Word_ToCategory(wordID, categoryID);
-        }
-
-        public static void Remove_LastWords_Permanently(int count)
-        {
-            using VocabularyContext db = new(ConStr);
-            //Видалення останніх count слів
-            for (int i = 0; i < count; i++)
-                Remove_Word_Permanently(db.AllWords.OrderBy(w => w.WordId).Last().WordId);
-            db.SaveChanges();
-        }
-
-        public static void Remove_Word_Permanently(int wordID)
-        {
-            using VocabularyContext db = new(ConStr);
-            //Видалення слова з усіх категорій
-            db.WordCategories.RemoveRange(db.WordCategories.Where(w => w.WordId == wordID).ToList());
-            //Видалення слова з AllWords
-            db.AllWords.Remove(db.AllWords.First(w => w.WordId == wordID));
-            db.SaveChanges();
-        }
-        #endregion
-
-        //TEST
-        #region Отримати слова
-
-        /// <summary>
-        /// Отримати список слів з БД де Count = number
-        /// </summary>
-        /// <param name="number">Кількість слів для вивчення</param>
-        /// <returns>Список слів </returns>
-        public static List<Word> GetWords(int number)
-        {
-            using VocabularyContext db = new(ConStr);
-            return db.AllWords.OrderBy(w => w.Rating).Take(number).ToList();
-        }
-        #endregion
-
-        //TEST
-        #region Отримати / Змінити значення повторюваності слова
-
-        public static int GetWordRepetition(int wordId)
-        {
-            using VocabularyContext db = new(ConStr);
-            return db.AllWords.First(w => w.WordId == wordId).Repetition;
-        }
-
-        public static void IncrementWordRepetition(int wordId)
-        {
-            using VocabularyContext db = new(ConStr);
-            int wordRepetition = db.AllWords.First(w => w.WordId == wordId).Repetition;
-            db.AllWords.First().Repetition = ++wordRepetition;
-            db.SaveChanges();
-        }
-        #endregion
-
-        //TEST
-        #region Оцінювати слово
-
-        public static void RateWord(int wordId, int rating)
-        {
-            using VocabularyContext db = new(ConStr);
-            db.AllWords.First(w => w.WordId == wordId).Rating = rating;
-            db.SaveChanges();
-        }
-        #endregion
-
-        //************************
-
-        //TEST
-        #region Отримати статистику по ВСІХ словах
-        public static Statistic GetStatistic()
-        {
-            using VocabularyContext db = new(ConStr);
-
-            var stat = new int[7];
-            for (int i = 0; i <= 5; i++)
-                stat[i] = db.AllWords.Where(w => w.Rating == i).Count();
-            stat[6] = db.AllWords.Count();
-
-            return new Statistic(stat);
-        }
-        #endregion
+        //TEST-TEST
+        #region [ Налаштування ]
 
         //TEST
         #region Отримати / Змінити кількість слів для вивчення (за раз)
@@ -369,6 +330,25 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         {
             using VocabularyContext db = new(ConStr);
             db.Settings.First().WordCountToLearn = count;
+            db.SaveChanges();
+        }
+        #endregion
+
+        #region Отримати / Змінити поточну категорію для додавання слів
+
+        public static int Get_CurrentCategory()
+        {
+            using VocabularyContext db = new(ConStr);
+            return db.Settings.ToList()[0].CurrentCategoryId;
+        }
+
+        public static void Set_CurrentCategory(int currentCategoryID)
+        {
+            if (currentCategoryID < 1)
+                throw new ArgumentException("categoryID arguments can't be less than '1'");
+
+            using VocabularyContext db = new(ConStr);
+            db.Settings.First().CurrentCategoryId = currentCategoryID;
             db.SaveChanges();
         }
         #endregion
@@ -413,6 +393,8 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
             db.Settings.First().WasLaunched = wasLaunched;
             db.SaveChanges();
         }
+        #endregion
+
         #endregion
     }
 }
