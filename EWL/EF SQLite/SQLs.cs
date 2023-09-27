@@ -15,8 +15,6 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         /// </summary>
         public static string ConStr { get; set; } = "Data Source=.\\Vocabulary.db;";
 
-
-        //TEST-TEST
         #region [ Слова ]
 
         #region Отримати певну кількість слів (або всіх) певної категорії / З основної категорії
@@ -37,9 +35,9 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
             using VocabularyContext db = new(ConStr);
 
             wordsInfo = db.WordCategories
-                .Where(wc => wc.CategoryId == categoryID) // Фільтр по категорії
-                .OrderByDescending(wc => wc.Word.Rating) // Сортування за рейтингом у спадаючому порядку
-                .ThenBy(wc => wc.AddedAt) // Сортування за датою додавання
+                .Where(wc => wc.CategoryId == categoryID)  // Фільтр по категорії
+                .OrderByDescending(wc => wc.Word.Rating)   // Сортування за рейтингом у спадаючому порядку
+                .ThenBy(wc => wc.AddedAt)                  // Сортування за датою додавання
                 .Select(wc => Tuple.Create(new Word
                 {
                     WordId = wc.Word.WordId,
@@ -48,7 +46,6 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
                     Rating = wc.Word.Rating,
                     Repetition = wc.Word.Repetition,
                     Difficulty = wc.Word.Difficulty,
-                    //AddedAt = wc.AddedAt
                 }, wc.AddedAt)
                 )
                 .ToList();
@@ -70,6 +67,17 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         {
             using VocabularyContext db = new(ConStr);
             return db.AllWords.OrderBy(w => w.Rating).Take(number).ToList();
+        }
+
+        /// <summary>
+        /// Отримати слово ('Word') з БД
+        /// </summary>
+        /// <param name="wordID">ID слова</param>
+        /// <returns>Слово ('Word')</returns>
+        public static Word GetWord(int wordID)
+        {
+            using VocabularyContext db = new(ConStr);
+            return db.AllWords.First(w => w.WordId == wordID);
         }
 
         #endregion
@@ -133,33 +141,25 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         }
         #endregion
 
-        //TEST
-        #region Отримати / Змінити значення повторюваності слова
+        #region Змінити оцінку / значення повторюваності слова
 
-        public static int GetWordRepetition(int wordId)
+        public static void RateWord(int wordId, int rating)
         {
+            if (wordId < 1) throw new ArgumentException("wordID can't be less than '1'");
+            if (rating < 0) throw new ArgumentException("rating can't be less than '0'");
+
             using VocabularyContext db = new(ConStr);
-            return db.AllWords.First(w => w.WordId == wordId).Repetition;
+            db.AllWords.First(w => w.WordId == wordId).Rating = rating;
+            db.SaveChanges();
         }
 
         public static void IncrementWordRepetition(int wordId)
         {
             using VocabularyContext db = new(ConStr);
-            int wordRepetition = db.AllWords.First(w => w.WordId == wordId).Repetition;
-            db.AllWords.First().Repetition = ++wordRepetition;
+            int wordRepetition = db.AllWords.First(w => w.WordId == wordId).Repetition++;
             db.SaveChanges();
         }
-        #endregion
 
-        //TEST
-        #region Змінити оцінку слова
-
-        public static void RateWord(int wordId, int rating)
-        {
-            using VocabularyContext db = new(ConStr);
-            db.AllWords.First(w => w.WordId == wordId).Rating = rating;
-            db.SaveChanges();
-        }
         #endregion
 
         #endregion
@@ -314,20 +314,21 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         #endregion
 
-        //TEST-TEST
         #region [ Налаштування ]
 
-        //TEST
         #region Отримати / Змінити кількість слів для вивчення (за раз)
 
-        public static int GetWordsToLearnCount()
+        public static int GetNumberOfWordsToLearn()
         {
             using VocabularyContext db = new(ConStr);
             return db.Settings.First().WordCountToLearn;
         }
 
-        public static void SetWordsToLearnCount(int count)
+        public static void SetNumberOfWordsToLearn(int count)
         {
+            if (count < 1) 
+                throw new ArgumentException("count argument can't be less than '1' ");
+
             using VocabularyContext db = new(ConStr);
             db.Settings.First().WordCountToLearn = count;
             db.SaveChanges();
@@ -345,7 +346,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         public static void Set_CurrentCategory(int currentCategoryID)
         {
             if (currentCategoryID < 1)
-                throw new ArgumentException("categoryID arguments can't be less than '1'");
+                throw new ArgumentException("categoryID argument can't be less than '1'");
 
             using VocabularyContext db = new(ConStr);
             db.Settings.First().CurrentCategoryId = currentCategoryID;
@@ -353,7 +354,6 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         }
         #endregion
 
-        //TEST
         #region Отримати / Змінити мод (спосіб) додавання слів
 
         public static int GetWordAddingMode()
@@ -364,13 +364,15 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         public static void SetWordAddingMode(int mode)
         {
+            if (mode < 0) 
+                throw new ArgumentException("mode can't be less than '0'");
+
             using VocabularyContext db = new(ConStr);
             db.Settings.First().WordAddingMode = mode;
             db.SaveChanges();
         }
         #endregion
 
-        //TEST
         #region Отримати дані чи запускався цей додаток до цього, чи ні
 
         /// <summary>

@@ -6,35 +6,6 @@ using SQLitePCL;
 
 namespace EWL_Tests
 {
-    /*
-    /// <summary>
-    /// Клас що містить тест-кейси
-    /// </summary>
-    public static class MyTestCases
-    {
-        /// <summary>
-        /// Набір тест-кейсів з Категоріями
-        /// </summary>
-        /// <returns> IEnumerable категорій </returns>
-        public static IEnumerable<TestCaseData> Categories_Cases()
-        {
-            yield return new TestCaseData("Category 1");
-            yield return new TestCaseData("Category 2");
-        }
-
-        /// <summary>
-        /// Набір тест-кейсів зі Словами
-        /// </summary>
-        /// <returns> IEnumerable слів </returns>
-        public static IEnumerable<TestCaseData> Words_Cases()
-        {
-            yield return new TestCaseData("a", "ей");
-            yield return new TestCaseData("b", "бі");
-            yield return new TestCaseData("c", "сі");
-        }
-    }
-    */
-
     [TestFixture]
     public class SQLs_Test
     {
@@ -54,8 +25,9 @@ namespace EWL_Tests
         }
 
 
-
         #region [ Words ]
+
+        #region Words Adding
 
         [TestCaseSource(typeof(MyTestCases), "Words_Cases")]
         public void NewWord_Adding_Test(string engW, string uaW)
@@ -82,6 +54,10 @@ namespace EWL_Tests
             Assert.IsFalse(SQLs.TryAdd_Word_ToAllWords(engW, uaW),
                 "Метод додав задане слово в Words [а не повинен був]");
         }
+
+        #endregion
+
+        #region Words Removing
 
         [TestCaseSource(typeof(MyTestCases), "Words_Cases")]
         public void LastWords_Removing_Test(string engW, string uaW)
@@ -130,6 +106,56 @@ namespace EWL_Tests
             bool isAnotherWordRemovedFromWordCategories = db.WordCategories.Any(c => c.WordId == anotherWId);
             Assert.IsTrue(isAnotherWordRemovedFromWordCategories, "Перше слово було видалене з WordCategories [а не повинне бути]");
         }
+
+        #endregion
+
+        #region Changing word parametrs
+
+        [TestCase(1, 4)]
+        [TestCase(1, 0)]
+        public void WordRating_Setting_Test(int wordId, int rating)
+        {
+            SQLs.RateWord(wordId, rating);        //Налаштування значення Rating в Word
+
+            using VocabularyContext db = new(conStr);
+
+            var actualRating = db.AllWords.First(w => w.WordId == wordId).Rating;
+            Assert.AreEqual(rating, actualRating,
+                "WordAddingMode НЕ встановлене із необхідним значенням");
+        }
+
+        [TestCase(0, 4)]
+        [TestCase(1, -1)]
+        public void WordAddingMode_NOTSettingBelowOne_Test(int wordId, int rating)
+        {
+            //Налаштування значення Rating в Word
+            Assert.Catch(typeof(ArgumentException), () => SQLs.RateWord(wordId, rating),
+                "Тут повинне виникати виключення, а не виникає");
+        }
+
+
+        [TestCase(1)]
+        [TestCase(2)]
+        public void WordRepetition_Incrementation_Test(int wordId)
+        {
+            int repetition;
+            using (VocabularyContext db = new(conStr))
+            {
+                repetition = db.AllWords.First(w => w.WordId == wordId).Repetition;
+                SQLs.IncrementWordRepetition(wordId);        //Збільшення значення Repetition в Word
+            }
+            using (VocabularyContext db = new(conStr))
+            {
+                var actualRepetition = db.AllWords.First(w => w.WordId == wordId).Repetition;
+                Assert.AreEqual(repetition + 1, actualRepetition,
+                    "Repetition НЕ збільшилося із необхідним значенням");
+
+                db.AllWords.First(w => w.WordId == wordId).Repetition = 0;
+                db.SaveChanges();
+            }
+        }
+
+        #endregion
 
         #endregion
 
@@ -463,7 +489,6 @@ namespace EWL_Tests
 
         #endregion
 
-
         #region [ Settings ]
 
         #region Setting Current category
@@ -496,19 +521,107 @@ namespace EWL_Tests
         }
         #endregion
 
-        #region Setting Current category
+        #region Setting Number of Words to Learn
 
+        [TestCase(1)]
+        [TestCase(99)]
+        public void NumberOfWordsToLearn_SettingAndGetting_Test(int count)
+        {
+            SQLs.SetNumberOfWordsToLearn(count);        //Налаштування значення WordCountToLearn в Settings
 
+            using VocabularyContext db = new(conStr);
+
+            //Перевірки
+            var actualNumberOfWordsToLearn = db.Settings.First().WordCountToLearn;
+            Assert.AreEqual(count, actualNumberOfWordsToLearn,
+                "WordCountToLearn НЕ встановлене із необхідним значенням");
+
+            int gettedNumberOfWordsToLearn = SQLs.GetNumberOfWordsToLearn();   //Отримання значення WordCountToLearn в Settings
+            int expectedNumberOfWordsToLearn = actualNumberOfWordsToLearn;     //зміна призначення змінної
+            Assert.AreEqual(expectedNumberOfWordsToLearn, gettedNumberOfWordsToLearn,
+                "Отримане значення WordCountToLearn - НЕ вірне");
+        }
+
+        [TestCase(0)]
+        [TestCase(-12)]
+        public void NumberOfWordsToLearn_NOTSettingBelowOne_Test(int count)
+        {
+            //Налаштування значення CurrentCategoryID в Settings
+            TestDelegate SetNumberOfWordsForFalseNumber = () => SQLs.SetNumberOfWordsToLearn(count);
+            Assert.Catch(typeof(ArgumentException), SetNumberOfWordsForFalseNumber,
+                "Тут повинне виникати виключення, а не виникає");
+
+            int gettedNumberOfWordsToLearn = SQLs.GetNumberOfWordsToLearn();   //Отримання значення WordCountToLearn в Settings
+            Assert.AreNotEqual(count, gettedNumberOfWordsToLearn,
+                "Отримане значення WordCountToLearn - НЕ повинне було змінюватися");
+        }
+
+        #endregion
+
+        #region Setting Was Launched
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void WasLaunched_SettingAndGetting_Test(bool wasLaunched)
+        {
+            SQLs.SetWasLaunched(wasLaunched);        //Налаштування значення WasLaunched в Settings
+
+            using VocabularyContext db = new(conStr);
+
+            //Перевірки
+            var actualWasLaunched = db.Settings.First().WasLaunched;
+            Assert.AreEqual(wasLaunched, actualWasLaunched,
+                "WasLaunched НЕ встановлене із необхідним значенням");
+
+            var gettedWasLaunched = SQLs.WasLaunched();     //Отримання значення WasLaunched в Settings
+            var expectedWasLaunched = actualWasLaunched;    //зміна призначення змінної
+            Assert.AreEqual(expectedWasLaunched, gettedWasLaunched,
+                "Отримане значення WasLaunched - НЕ вірне");
+        }
+
+        #endregion
+
+        #region Setting Number of Words to Learn
+
+        [TestCase(1)]
+        [TestCase(99)]
+        public void WordAddingMode_SettingAndGetting_Test(int count)
+        {
+            SQLs.SetWordAddingMode(count);        //Налаштування значення WordAddingMode в Settings
+
+            using VocabularyContext db = new(conStr);
+
+            //Перевірки
+            var actualWordAddingMode = db.Settings.First().WordAddingMode;
+            Assert.AreEqual(count, actualWordAddingMode,
+                "WordAddingMode НЕ встановлене із необхідним значенням");
+
+            var gettedWordAddingMode = SQLs.GetWordAddingMode();   //Отримання значення WordAddingMode в Settings
+            var expectedWordAddingMode = actualWordAddingMode;     //зміна призначення змінної
+            Assert.AreEqual(expectedWordAddingMode, gettedWordAddingMode,
+                "Отримане значення WordAddingMode - НЕ вірне");
+        }
+
+        [TestCase(-1)]
+        [TestCase(-12)]
+        public void WordAddingMode_NOTSettingBelowOne_Test(int count)
+        {
+            //Налаштування значення WordAddingMode в Settings
+            TestDelegate SetNonexistentWordAddingMode = () => SQLs.SetWordAddingMode(count);
+            Assert.Catch(typeof(ArgumentException), SetNonexistentWordAddingMode,
+                "Тут повинне виникати виключення, а не виникає");
+
+            int gettedWordAddingMode = SQLs.GetWordAddingMode();   //Отримання значення WordAddingMode в Settings
+            Assert.AreNotEqual(count, gettedWordAddingMode,
+                "Отримане значення WordCountToLearn - НЕ повинне було змінюватися");
+        }
 
         #endregion
 
         #endregion
+
 
         //TODO - Додавати ТЕСТИ ...
-
-
-
-
 
 
         [TearDown]
@@ -518,6 +631,7 @@ namespace EWL_Tests
             db.WordCategories.RemoveRange(db.WordCategories.Skip(2));
             db.AllWords.RemoveRange(db.AllWords.Skip(2));
             db.Categories.RemoveRange(db.Categories.Skip(2));
+            db.Settings.First().WordCountToLearn = 5;
             db.SaveChanges();
         }
     }
