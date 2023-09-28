@@ -1,4 +1,5 @@
-﻿using Eng_Flash_Cards_Learner.NOT_Forms;
+﻿using Eng_Flash_Cards_Learner.EF_SQLite;
+using Eng_Flash_Cards_Learner.NOT_Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,21 +15,27 @@ namespace Eng_Flash_Cards_Learner
 {
     public partial class MainBDForm : Form
     {
+        //Pay attention on:
+        //- "//REPLACE"
+        //- "//TODO"
+        //- "//CHECK"
+
         /// <summary>
-        /// Розташування TopPanel
+        /// Розташування TopPanel (для переміщення вікна мишкою)
         /// </summary>
         Point lastPoint;
 
-        readonly DB_SQLite db = Program.DB;
+        //readonly DB_SQLite db = Program.DB;
 
         /// <summary>
         /// Кількість слів доданих за один раз
         /// </summary>
-        int addedWords = 0;
+        int addedWords = 0; //REPLACE
         /// <summary>
         /// Список слів для вивчення
         /// </summary>
-        List<DB_Word> words = new();
+        List<Word> words = new();
+        //List<DB_Word> words = new();
         /// <summary>
         /// Індекс поточного слова для вивчення зі списку words
         /// </summary>
@@ -36,9 +43,11 @@ namespace Eng_Flash_Cards_Learner
         /// <summary>
         /// Оцінки поточних слів
         /// </summary>
-        int[] wordRatings = { 0, 0, 0, 0, 0, 0 };
+        int[] wordRatings = { 0, 0, 0, 0, 0, 0 }; //REPLACE
 
-        List<DB_WordCategory> wordCategories = null; //TODO
+        //List<DB_WordCategory> wordCategories = null;
+        List<Category> categories = null; //TODO
+        int curentCategoryID;
 
         public MainBDForm()
         {
@@ -50,14 +59,18 @@ namespace Eng_Flash_Cards_Learner
 
             WSourceComboBox.Text = WSourceComboBox.Items[0].ToString();
 
-            SetWordCategoryList();
+            SetCategoriesList();
         }
 
-        void SetWordCategoryList()
+        #region [ Category ]
+
+        void SetCategoriesList()
         {
+            categories = SQLs.Get_Categories();
             //TODO
         }
 
+        #endregion
 
         #region Властивості верхньої панелі TopPanel
 
@@ -83,8 +96,11 @@ namespace Eng_Flash_Cards_Learner
         #region Головне меню
         private void LearnWButton_Click(object sender, EventArgs e)
         {
-            WordCountNumericUpDown.Value = db.GetWordsToLearnCount();
-            words = db.GetWords((int)WordCountNumericUpDown.Value);
+            WordCountNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
+            words = SQLs
+                .Get_Words_FromCategory(curentCategoryID, SQLs.Get_NumberOfWordsToLearn())
+                .Select(w => w.Item1)
+                .ToList();
 
             StartLearning();
         }
@@ -406,7 +422,8 @@ namespace Eng_Flash_Cards_Learner
         private void MainBDForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
-                MenuPanel.BringToFront();
+                GoBackButton_Click(sender, e); //CHECK
+                //MenuPanel.BringToFront();
         }
 
 

@@ -19,7 +19,7 @@ namespace EWL_Tests
         [OneTimeSetUp]
         public void Setup()
         {
-            SQLs.ConStr = conStr;
+            SQLs.CS = conStr;
             //VocabularyContext.DoLogActions = false;
             TearDown();
         }
@@ -115,7 +115,7 @@ namespace EWL_Tests
         [TestCase(1, 0)]
         public void WordRating_Setting_Test(int wordId, int rating)
         {
-            SQLs.RateWord(wordId, rating);        //Налаштування значення Rating в Word
+            SQLs.Rate_Word(wordId, rating);        //Налаштування значення Rating в Word
 
             using VocabularyContext db = new(conStr);
 
@@ -129,7 +129,7 @@ namespace EWL_Tests
         public void WordAddingMode_NOTSettingBelowOne_Test(int wordId, int rating)
         {
             //Налаштування значення Rating в Word
-            Assert.Catch(typeof(ArgumentException), () => SQLs.RateWord(wordId, rating),
+            Assert.Catch(typeof(ArgumentException), () => SQLs.Rate_Word(wordId, rating),
                 "Тут повинне виникати виключення, а не виникає");
         }
 
@@ -142,7 +142,7 @@ namespace EWL_Tests
             using (VocabularyContext db = new(conStr))
             {
                 repetition = db.AllWords.First(w => w.WordId == wordId).Repetition;
-                SQLs.IncrementWordRepetition(wordId);        //Збільшення значення Repetition в Word
+                SQLs.Increment_WordRepetition(wordId);        //Збільшення значення Repetition в Word
             }
             using (VocabularyContext db = new(conStr))
             {
@@ -527,7 +527,7 @@ namespace EWL_Tests
         [TestCase(99)]
         public void NumberOfWordsToLearn_SettingAndGetting_Test(int count)
         {
-            SQLs.SetNumberOfWordsToLearn(count);        //Налаштування значення WordCountToLearn в Settings
+            SQLs.Set_NumberOfWordsToLearn(count);        //Налаштування значення WordCountToLearn в Settings
 
             using VocabularyContext db = new(conStr);
 
@@ -536,7 +536,7 @@ namespace EWL_Tests
             Assert.AreEqual(count, actualNumberOfWordsToLearn,
                 "WordCountToLearn НЕ встановлене із необхідним значенням");
 
-            int gettedNumberOfWordsToLearn = SQLs.GetNumberOfWordsToLearn();   //Отримання значення WordCountToLearn в Settings
+            int gettedNumberOfWordsToLearn = SQLs.Get_NumberOfWordsToLearn();   //Отримання значення WordCountToLearn в Settings
             int expectedNumberOfWordsToLearn = actualNumberOfWordsToLearn;     //зміна призначення змінної
             Assert.AreEqual(expectedNumberOfWordsToLearn, gettedNumberOfWordsToLearn,
                 "Отримане значення WordCountToLearn - НЕ вірне");
@@ -547,11 +547,11 @@ namespace EWL_Tests
         public void NumberOfWordsToLearn_NOTSettingBelowOne_Test(int count)
         {
             //Налаштування значення CurrentCategoryID в Settings
-            TestDelegate SetNumberOfWordsForFalseNumber = () => SQLs.SetNumberOfWordsToLearn(count);
+            TestDelegate SetNumberOfWordsForFalseNumber = () => SQLs.Set_NumberOfWordsToLearn(count);
             Assert.Catch(typeof(ArgumentException), SetNumberOfWordsForFalseNumber,
                 "Тут повинне виникати виключення, а не виникає");
 
-            int gettedNumberOfWordsToLearn = SQLs.GetNumberOfWordsToLearn();   //Отримання значення WordCountToLearn в Settings
+            int gettedNumberOfWordsToLearn = SQLs.Get_NumberOfWordsToLearn();   //Отримання значення WordCountToLearn в Settings
             Assert.AreNotEqual(count, gettedNumberOfWordsToLearn,
                 "Отримане значення WordCountToLearn - НЕ повинне було змінюватися");
         }
@@ -564,7 +564,7 @@ namespace EWL_Tests
         [TestCase(false)]
         public void WasLaunched_SettingAndGetting_Test(bool wasLaunched)
         {
-            SQLs.SetWasLaunched(wasLaunched);        //Налаштування значення WasLaunched в Settings
+            SQLs.Set_WasLaunched(wasLaunched);        //Налаштування значення WasLaunched в Settings
 
             using VocabularyContext db = new(conStr);
 
@@ -587,7 +587,7 @@ namespace EWL_Tests
         [TestCase(99)]
         public void WordAddingMode_SettingAndGetting_Test(int count)
         {
-            SQLs.SetWordAddingMode(count);        //Налаштування значення WordAddingMode в Settings
+            SQLs.Set_WordAddingMode(count);        //Налаштування значення WordAddingMode в Settings
 
             using VocabularyContext db = new(conStr);
 
@@ -596,7 +596,7 @@ namespace EWL_Tests
             Assert.AreEqual(count, actualWordAddingMode,
                 "WordAddingMode НЕ встановлене із необхідним значенням");
 
-            var gettedWordAddingMode = SQLs.GetWordAddingMode();   //Отримання значення WordAddingMode в Settings
+            var gettedWordAddingMode = SQLs.Get_WordAddingMode();   //Отримання значення WordAddingMode в Settings
             var expectedWordAddingMode = actualWordAddingMode;     //зміна призначення змінної
             Assert.AreEqual(expectedWordAddingMode, gettedWordAddingMode,
                 "Отримане значення WordAddingMode - НЕ вірне");
@@ -607,11 +607,11 @@ namespace EWL_Tests
         public void WordAddingMode_NOTSettingBelowOne_Test(int count)
         {
             //Налаштування значення WordAddingMode в Settings
-            TestDelegate SetNonexistentWordAddingMode = () => SQLs.SetWordAddingMode(count);
+            TestDelegate SetNonexistentWordAddingMode = () => SQLs.Set_WordAddingMode(count);
             Assert.Catch(typeof(ArgumentException), SetNonexistentWordAddingMode,
                 "Тут повинне виникати виключення, а не виникає");
 
-            int gettedWordAddingMode = SQLs.GetWordAddingMode();   //Отримання значення WordAddingMode в Settings
+            int gettedWordAddingMode = SQLs.Get_WordAddingMode();   //Отримання значення WordAddingMode в Settings
             Assert.AreNotEqual(count, gettedWordAddingMode,
                 "Отримане значення WordCountToLearn - НЕ повинне було змінюватися");
         }

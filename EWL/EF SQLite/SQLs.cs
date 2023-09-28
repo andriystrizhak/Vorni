@@ -13,7 +13,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         /// <summary>
         /// Connection String (contains path to .db file)
         /// </summary>
-        public static string ConStr { get; set; } = "Data Source=.\\Vocabulary.db;";
+        public static string CS { get; set; } = "Data Source=.\\Vocabulary.db;";
 
         #region [ Слова ]
 
@@ -32,7 +32,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
             List<Tuple<Word, DateTime>> wordsInfo = new();
 
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
 
             wordsInfo = db.WordCategories
                 .Where(wc => wc.CategoryId == categoryID)  // Фільтр по категорії
@@ -63,9 +63,9 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         /// </summary>
         /// <param name="number">Кількість слів для вивчення</param>
         /// <returns>Список слів </returns>
-        public static List<Word> GetWords(int number)
+        public static List<Word> Get_Words(int number)
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             return db.AllWords.OrderBy(w => w.Rating).Take(number).ToList();
         }
 
@@ -74,9 +74,9 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         /// </summary>
         /// <param name="wordID">ID слова</param>
         /// <returns>Слово ('Word')</returns>
-        public static Word GetWord(int wordID)
+        public static Word Get_Word(int wordID)
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             return db.AllWords.First(w => w.WordId == wordID);
         }
 
@@ -84,9 +84,9 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         //TEST
         #region Отримати статистику по ВСІХ словах
-        public static Statistic GetStatistic()
+        public static Statistic Get_Statistic()
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
 
             var stat = new int[7];
             for (int i = 0; i <= 5; i++)
@@ -101,7 +101,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         static bool WordIsRepeated_InAllWords(string engW)
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             return db.AllWords.Any(c => c.EngWord == engW);
         }
 
@@ -110,7 +110,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
             if (WordIsRepeated_InAllWords(engW)) return false;
             uaW = uaW.Replace("'", "''");
 
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             db.AllWords.Add(new Word { EngWord = engW, UaTranslation = uaW });
             db.SaveChanges();
 
@@ -123,7 +123,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         public static void Remove_LastWords_Permanently(int count)
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             //Видалення останніх count слів
             for (int i = 0; i < count; i++)
                 Remove_Word_Permanently(db.AllWords.OrderBy(w => w.WordId).Last().WordId);
@@ -132,7 +132,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         public static void Remove_Word_Permanently(int wordID)
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             //Видалення слова з усіх категорій
             db.WordCategories.RemoveRange(db.WordCategories.Where(w => w.WordId == wordID).ToList());
             //Видалення слова з AllWords
@@ -143,19 +143,19 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         #region Змінити оцінку / значення повторюваності слова
 
-        public static void RateWord(int wordId, int rating)
+        public static void Rate_Word(int wordId, int rating)
         {
             if (wordId < 1) throw new ArgumentException("wordID can't be less than '1'");
             if (rating < 0) throw new ArgumentException("rating can't be less than '0'");
 
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             db.AllWords.First(w => w.WordId == wordId).Rating = rating;
             db.SaveChanges();
         }
 
-        public static void IncrementWordRepetition(int wordId)
+        public static void Increment_WordRepetition(int wordId)
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             int wordRepetition = db.AllWords.First(w => w.WordId == wordId).Repetition++;
             db.SaveChanges();
         }
@@ -170,7 +170,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         static bool Is_WordRepeated_InCategory(int wordID, int categoryID)
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             return db.WordCategories.Any(c => c.WordId == wordID && c.CategoryId == categoryID);
         }
 
@@ -180,7 +180,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
                 throw new ArgumentException("wordID and categoryID arguments can't be less than '1'");
             if (Is_WordRepeated_InCategory(wordID, categoryID)) return false;
 
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             db.WordCategories.Add(new WordCategory { CategoryId = categoryID, WordId = wordID });
             db.SaveChanges();
             return true;
@@ -188,7 +188,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         public static void Remove_LastWords_FromCategory(int count)
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             var wordsToBeDeleted = db.WordCategories
                 .OrderByDescending(w => w.AddedAt)
                 .Take(count)
@@ -206,7 +206,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
                 throw new ArgumentException(
                     "the word from main category (#1) can't be removed, only removed completely");
 
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             db.WordCategories.Remove(
                 db.WordCategories
                     .First(w => w.WordId == wordID && w.CategoryId == categoryID));
@@ -227,13 +227,13 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         /// <returns>Список значень типу DB_WordCategory з інформацією про категорію</returns>
         public static List<Category> Get_Categories()
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             return db.Categories.ToList();
         }
 
         static bool Is_CategoryRepeated(string categoryName)
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             return db.Categories.Any(c => c.Name == categoryName);
         }
 
@@ -241,7 +241,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         {
             if (Is_CategoryRepeated(categoryName)) return false;
 
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             db.Categories.Add(new Category { Name = categoryName });
             db.SaveChanges();
 
@@ -261,7 +261,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
             if (categoryID < 1)
                 throw new ArgumentException("categoryID arguments can't be less than '1'");
 
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
 
             var category = db.Categories.First(c => c.CategoryId == categoryID);
             var setting = db.Settings.First();
@@ -283,7 +283,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         /// <param name="retentionDayCountInRecycleBin">Кількість днів протягом якої категорія може зберігатися в "корзині"</param>
         public static void FindAndRemove_LongMarkedCategories(int retentionDayCountInRecycleBin = 7)
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
 
             DateTime now = DateTime.Now;
             var categoriesToBeDeleted = db.Categories.AsEnumerable()
@@ -306,7 +306,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
                 throw new ArgumentException("categoryID arguments can't be less than '1'");
 
             //Відновлення "нормальних" значень полів категорії в 'Categories'
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             db.Categories.First(c => c.CategoryId == categoryID).Deleted = false;
             db.SaveChanges();
         }
@@ -318,18 +318,18 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         #region Отримати / Змінити кількість слів для вивчення (за раз)
 
-        public static int GetNumberOfWordsToLearn()
+        public static int Get_NumberOfWordsToLearn()
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             return db.Settings.First().WordCountToLearn;
         }
 
-        public static void SetNumberOfWordsToLearn(int count)
+        public static void Set_NumberOfWordsToLearn(int count)
         {
             if (count < 1) 
                 throw new ArgumentException("count argument can't be less than '1' ");
 
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             db.Settings.First().WordCountToLearn = count;
             db.SaveChanges();
         }
@@ -339,7 +339,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         public static int Get_CurrentCategory()
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             return db.Settings.ToList()[0].CurrentCategoryId;
         }
 
@@ -348,7 +348,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
             if (currentCategoryID < 1)
                 throw new ArgumentException("categoryID argument can't be less than '1'");
 
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             db.Settings.First().CurrentCategoryId = currentCategoryID;
             db.SaveChanges();
         }
@@ -356,18 +356,18 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
 
         #region Отримати / Змінити мод (спосіб) додавання слів
 
-        public static int GetWordAddingMode()
+        public static int Get_WordAddingMode()
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             return db.Settings.First().WordAddingMode;
         }
 
-        public static void SetWordAddingMode(int mode)
+        public static void Set_WordAddingMode(int mode)
         {
             if (mode < 0) 
                 throw new ArgumentException("mode can't be less than '0'");
 
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             db.Settings.First().WordAddingMode = mode;
             db.SaveChanges();
         }
@@ -381,7 +381,7 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         /// <returns></returns>
         public static bool WasLaunched()
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             return db.Settings.First().WasLaunched;
         }
 
@@ -389,9 +389,9 @@ namespace Eng_Flash_Cards_Learner.EF_SQLite
         /// Змінює значення "WasLaunched" в таблиці "Settings" в БД
         /// </summary>
         /// <param name="wasLaunched">Значення поля "WasLaunched"</param>
-        public static void SetWasLaunched(bool wasLaunched)
+        public static void Set_WasLaunched(bool wasLaunched)
         {
-            using VocabularyContext db = new(ConStr);
+            using VocabularyContext db = new(CS);
             db.Settings.First().WasLaunched = wasLaunched;
             db.SaveChanges();
         }
