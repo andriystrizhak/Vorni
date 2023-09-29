@@ -1,4 +1,4 @@
-﻿using Eng_Flash_Cards_Learner.NOT_Forms;
+﻿using EWL.NOT_Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using RadioButton = System.Windows.Forms.RadioButton;
 
-namespace Eng_Flash_Cards_Learner
+namespace EWL
 {
     public partial class SetUpForm : Form
     {

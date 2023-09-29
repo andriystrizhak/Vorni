@@ -1,4 +1,4 @@
-﻿namespace Eng_Flash_Cards_Learner
+﻿namespace EWL
 {
     partial class MainBDForm
     {
@@ -84,7 +84,7 @@
             SettingPanel = new Panel();
             label1 = new Label();
             WSourceComboBox = new ComboBox();
-            WordCountNumericUpDown = new NumericUpDown();
+            NumberOfWordsNumericUpDown = new NumericUpDown();
             DefaultSettingsButton = new Button();
             SaveSettingsButton = new Button();
             label3 = new Label();
@@ -130,7 +130,7 @@
             StatPanel.SuspendLayout();
             AddingWPanel1.SuspendLayout();
             SettingPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)WordCountNumericUpDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumberOfWordsNumericUpDown).BeginInit();
             AddingWPanel3.SuspendLayout();
             AddingWPanel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -963,7 +963,7 @@
             SettingPanel.BorderStyle = BorderStyle.FixedSingle;
             SettingPanel.Controls.Add(label1);
             SettingPanel.Controls.Add(WSourceComboBox);
-            SettingPanel.Controls.Add(WordCountNumericUpDown);
+            SettingPanel.Controls.Add(NumberOfWordsNumericUpDown);
             SettingPanel.Controls.Add(DefaultSettingsButton);
             SettingPanel.Controls.Add(SaveSettingsButton);
             SettingPanel.Controls.Add(label3);
@@ -1005,18 +1005,18 @@
             // 
             // WordCountNumericUpDown
             // 
-            WordCountNumericUpDown.BackColor = Color.FromArgb(80, 80, 80);
-            WordCountNumericUpDown.BorderStyle = BorderStyle.FixedSingle;
-            WordCountNumericUpDown.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            WordCountNumericUpDown.ForeColor = Color.White;
-            WordCountNumericUpDown.Location = new Point(419, 193);
-            WordCountNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            WordCountNumericUpDown.Name = "WordCountNumericUpDown";
-            WordCountNumericUpDown.Size = new Size(159, 30);
-            WordCountNumericUpDown.TabIndex = 49;
-            WordCountNumericUpDown.TextAlign = HorizontalAlignment.Center;
-            WordCountNumericUpDown.Value = new decimal(new int[] { 10, 0, 0, 0 });
-            WordCountNumericUpDown.ValueChanged += WordCountNumericUpDown_ValueChanged;
+            NumberOfWordsNumericUpDown.BackColor = Color.FromArgb(80, 80, 80);
+            NumberOfWordsNumericUpDown.BorderStyle = BorderStyle.FixedSingle;
+            NumberOfWordsNumericUpDown.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            NumberOfWordsNumericUpDown.ForeColor = Color.White;
+            NumberOfWordsNumericUpDown.Location = new Point(419, 193);
+            NumberOfWordsNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            NumberOfWordsNumericUpDown.Name = "WordCountNumericUpDown";
+            NumberOfWordsNumericUpDown.Size = new Size(159, 30);
+            NumberOfWordsNumericUpDown.TabIndex = 49;
+            NumberOfWordsNumericUpDown.TextAlign = HorizontalAlignment.Center;
+            NumberOfWordsNumericUpDown.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            NumberOfWordsNumericUpDown.ValueChanged += WordCountNumericUpDown_ValueChanged;
             // 
             // DefaultSettingsButton
             // 
@@ -1588,7 +1588,7 @@
             AddingWPanel1.PerformLayout();
             SettingPanel.ResumeLayout(false);
             SettingPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)WordCountNumericUpDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumberOfWordsNumericUpDown).EndInit();
             AddingWPanel3.ResumeLayout(false);
             AddingWPanel3.PerformLayout();
             AddingWPanel2.ResumeLayout(false);
@@ -1654,7 +1654,7 @@
         private Label label3;
         private Button GoBackButton5;
         private Label label4;
-        private NumericUpDown WordCountNumericUpDown;
+        private NumericUpDown NumberOfWordsNumericUpDown;
         private ComboBox WSourceComboBox;
         private Label label1;
         private Panel AddingWPanel3;

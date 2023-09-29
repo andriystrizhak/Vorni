@@ -1,4 +1,4 @@
-﻿using Eng_Flash_Cards_Learner.NOT_Forms;
+﻿using EWL.NOT_Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-namespace Eng_Flash_Cards_Learner.EF_SQLite
+namespace EWL.EF_SQLite
 {
     public static class SQLs
     {

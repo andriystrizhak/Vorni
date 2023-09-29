@@ -1,8 +1,8 @@
-using Eng_Flash_Cards_Learner.EF_SQLite;
-using Eng_Flash_Cards_Learner.NOT_Forms;
+using EWL.EF_SQLite;
+using EWL.NOT_Forms;
 using SQLitePCL;
 
-namespace Eng_Flash_Cards_Learner
+namespace EWL
 {
     internal static class Program
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Eng_Flash_Cards_Learner;
+namespace EWL;
 
 public partial class VocabularyContext : DbContext
 {

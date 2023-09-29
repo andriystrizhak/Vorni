@@ -1,5 +1,5 @@
-﻿using Eng_Flash_Cards_Learner.EF_SQLite;
-using Eng_Flash_Cards_Learner.NOT_Forms;
+﻿using EWL.EF_SQLite;
+using EWL.NOT_Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Eng_Flash_Cards_Learner
+namespace EWL
 {
     public partial class MainBDForm : Form
     {
         //Pay attention on:
-        //- "//REPLACE"
+        //- "//CHANGE"
         //- "//TODO"
         //- "//CHECK"
 
@@ -25,12 +25,10 @@ namespace Eng_Flash_Cards_Learner
         /// </summary>
         Point lastPoint;
 
-        //readonly DB_SQLite db = Program.DB;
-
         /// <summary>
         /// Кількість слів доданих за один раз
         /// </summary>
-        int addedWords = 0; //REPLACE
+        int addedWords = 0; //CHANGE
         /// <summary>
         /// Список слів для вивчення
         /// </summary>
@@ -43,11 +41,11 @@ namespace Eng_Flash_Cards_Learner
         /// <summary>
         /// Оцінки поточних слів
         /// </summary>
-        int[] wordRatings = { 0, 0, 0, 0, 0, 0 }; //REPLACE
+        int[] wordRatings = { 0, 0, 0, 0, 0, 0 }; //CHANGE
 
         //List<DB_WordCategory> wordCategories = null;
         List<Category> categories = null; //TODO
-        int curentCategoryID;
+        int curentCategoryID;             //TODO
 
         public MainBDForm()
         {
@@ -62,6 +60,7 @@ namespace Eng_Flash_Cards_Learner
             SetCategoriesList();
         }
 
+        //TODO
         #region [ Category ]
 
         void SetCategoriesList()
@@ -72,7 +71,7 @@ namespace Eng_Flash_Cards_Learner
 
         #endregion
 
-        #region Властивості верхньої панелі TopPanel
+        #region [ TopPanel ]
 
         private void CloseButton_Click(object sender, EventArgs e)
             => this.Close();
@@ -93,15 +92,17 @@ namespace Eng_Flash_Cards_Learner
 
         #endregion
 
-        #region Головне меню
+        #region [[ Головне меню ]]
+
+        #region [ Вивчати слова ]
+
         private void LearnWButton_Click(object sender, EventArgs e)
         {
-            WordCountNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
+            NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
             words = SQLs
-                .Get_Words_FromCategory(curentCategoryID, SQLs.Get_NumberOfWordsToLearn())
+                .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), SQLs.Get_NumberOfWordsToLearn())
                 .Select(w => w.Item1)
                 .ToList();
-
             StartLearning();
         }
 
@@ -109,71 +110,8 @@ namespace Eng_Flash_Cards_Learner
         {
             EngWLabel1.Text = words[wordIndex].EngWord;
             EngWLabel2.Text = words[wordIndex].EngWord;
-            LearningEngPanel.BringToFront();
+            ShowPanel(LearningEngPanel);
         }
-
-        private void SeeAddingWPanelButton_Click(object sender, EventArgs e)
-        {
-            addedWords = 0;
-            int wAddingMode = db.GetWordAddingMode();
-
-            NullEngUaTextBoxes();
-            EngUaStringTextBox.Text = "";
-            TxtFilePathTextBox.Text = "";
-
-            if (wAddingMode == 0)
-                AddingWPanel1.BringToFront();
-            if (wAddingMode == 1)
-                AddingWPanel2.BringToFront();
-            if (wAddingMode == 2)
-                AddingWPanel3.BringToFront();
-        }
-
-        private void SettingButton_Click(object sender, EventArgs e)
-        {
-            WordCountNumericUpDown.Value = db.GetWordsToLearnCount();
-            WSourceComboBox.SelectedIndex = db.GetWordAddingMode();
-            SaveSettingsButton.Enabled = false;
-            DefaultSettingsButton.Enabled = true;
-            SettingPanel.BringToFront();
-        }
-
-        private void SeeStatButton_Click(object sender, EventArgs e)
-        {
-            var stat = db.GetStatistic();
-            int count = stat.AllWordCount;
-            var ratings = stat.AllRatings;
-            StatLabel.Text =
-                $"Всього слів в БД — {stat.AllWordCount} " +
-                $"\n\nОцінки: " +
-                $"\n5 — {ratings[5]} слів ({((float)ratings[5] / count):P1})" +
-                $"\n4 — {ratings[4]} слів ({((float)ratings[4] / count):P1})" +
-                $"\n3 — {ratings[3]} слів ({((float)ratings[3] / count):P1})" +
-                $"\n2 — {ratings[2]} слів ({((float)ratings[2] / count):P1})" +
-                $"\n1 — {ratings[1]} слів ({((float)ratings[1] / count):P1})" +
-                $"\n\nЩе не вивчалися — {ratings[0]} слів ({((float)ratings[0] / count):P1})";
-
-            StatPanel.BringToFront();
-        }
-
-        #region Поки не реалізовано
-        private void FullScreenButton_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal) // Якщо вікно не в повноекранному режимі
-            {
-                this.WindowState = FormWindowState.Maximized; // Встановлюємо повноекранний режим
-                TopPanel.Visible = false;
-                FullScreenButton.ImageIndex = 0;
-            }
-            else // Якщо вікно в повноекранному режимі
-            {
-                this.WindowState = FormWindowState.Normal; // Відновлюємо нормальний режим вікна
-                TopPanel.Visible = true;
-                FullScreenButton.ImageIndex = 1;
-            }
-        }
-        #endregion
-        #endregion
 
         #region Властивості контролів LearningWPanel
 
@@ -182,7 +120,7 @@ namespace Eng_Flash_Cards_Learner
             TranslationLabel.Text = words[wordIndex].UaTranslation;
             LearningUaPanel.BringToFront();
 
-            db.IncrementWordRepetition(words[wordIndex].WordID);
+            SQLs.Increment_WordRepetition(words[wordIndex].WordId);
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -202,7 +140,7 @@ namespace Eng_Flash_Cards_Learner
         /// <param name="rating">Оцінка</param>
         void RateWord(int rating)
         {
-            db.RateWord(words[wordIndex].WordID, rating);
+            SQLs.Rate_Word(words[wordIndex].WordId, rating);
             wordRatings[rating]++;
 
             if (++wordIndex != words.Count)
@@ -256,6 +194,27 @@ namespace Eng_Flash_Cards_Learner
 
         #endregion
 
+        #endregion
+
+        #region [ Додати слова ]
+
+        private void SeeAddingWPanelButton_Click(object sender, EventArgs e)
+        {
+            addedWords = 0;
+            int wAddingMode = SQLs.Get_WordAddingMode();
+
+            NullEngUaTextBoxes();
+            EngUaStringTextBox.Text = "";
+            TxtFilePathTextBox.Text = "";
+
+            if (wAddingMode == 0)
+                AddingWPanel1.BringToFront();
+            if (wAddingMode == 1)
+                AddingWPanel2.BringToFront();
+            if (wAddingMode == 2)
+                AddingWPanel3.BringToFront();
+        }
+
         #region Властивості контролів AddingWPanel
 
         #region AddingWPanel1
@@ -264,7 +223,7 @@ namespace Eng_Flash_Cards_Learner
             string engWord = AddEngWTextBox.Text;
             string uaTrans = AddUaTTextBox.Text;
 
-            if (!db.TryAdd_Word_ToAllWords(engWord, uaTrans))
+            if (!SQLs.TryAdd_Word_ToAllWords(engWord, uaTrans))
                 MessageBox.Show(
                     "Таке ж слово вже існує в БД",
                     "Не сіпайся, все добре",
@@ -290,7 +249,7 @@ namespace Eng_Flash_Cards_Learner
 
         private void CancelPrevButton_Click(object sender, EventArgs e)
         {
-            db.Remove_LastWords_Permanently(1);
+            SQLs.Remove_LastWords_Permanently(1);
             addedWords--;
             if (addedWords == 0)
             {
@@ -340,7 +299,7 @@ namespace Eng_Flash_Cards_Learner
         {
             var word = Txt_FileHandler.SplitSpecialLine(EngUaStringTextBox.Text);
 
-            if (!db.TryAdd_Word_ToAllWords(word.Eng, word.Ua))
+            if (!SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua))
                 MessageBox.Show(
                     "Таке ж слово вже існує в БД",
                     "Не сіпайся, все добре",
@@ -364,7 +323,7 @@ namespace Eng_Flash_Cards_Learner
 
         private void AddWButton3_Click(object sender, EventArgs e)
         {
-            var report = Txt_FileHandler.AddWordsFromTxtFile(TxtFilePathTextBox.Text, db);
+            var report = Txt_FileHandler.AddWordsFromTxtFile(TxtFilePathTextBox.Text);
             MessageBox.Show(
                 $"Всього слів в файлі: {report.Item1}\nБуло додано: {report.Item2}",
                 "Звіт про додавання слів",
@@ -378,7 +337,7 @@ namespace Eng_Flash_Cards_Learner
 
         private void CancelAddingButton_Click(object sender, EventArgs e)
         {
-            db.Remove_LastWords_Permanently(addedWords);
+            SQLs.Remove_LastWords_Permanently(addedWords);
             addedWords = 0;
             CancelAddingButton.Enabled = false;
         }
@@ -387,7 +346,21 @@ namespace Eng_Flash_Cards_Learner
 
         #endregion
 
+        #endregion
+
+        #region [ Налаштування ]
+
+        private void SettingButton_Click(object sender, EventArgs e)
+        {
+            NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
+            WSourceComboBox.SelectedIndex = SQLs.Get_WordAddingMode();
+            SaveSettingsButton.Enabled = false;
+            DefaultSettingsButton.Enabled = true;
+            SettingPanel.BringToFront();
+        }
+
         #region Властивості контролів SettingPanel
+
         private void WordCountNumericUpDown_ValueChanged(object sender, EventArgs e)
             => SaveSettingsButton.Enabled = true;
 
@@ -400,21 +373,68 @@ namespace Eng_Flash_Cards_Learner
             SaveSettingsButton.Enabled = false;
             DefaultSettingsButton.Enabled = true;
 
-            db.SetWordsToLearnCount((int)WordCountNumericUpDown.Value);
-            db.SetWordAddingMode(WSourceComboBox.SelectedIndex);
+            SQLs.Set_NumberOfWordsToLearn((int)NumberOfWordsNumericUpDown.Value);
+            SQLs.Set_WordAddingMode(WSourceComboBox.SelectedIndex);
         }
 
         private void DefaultSettingsButton_Click(object sender, EventArgs e)
         {
             DefaultSettingsButton.Enabled = false;
-            db.SetWordsToLearnCount(10);
-            db.SetWordAddingMode(0);
+            SQLs.Set_NumberOfWordsToLearn(10);
+            SQLs.Set_WordAddingMode(0);
 
-            WordCountNumericUpDown.Value = 10;
+            NumberOfWordsNumericUpDown.Value = 10;
             WSourceComboBox.SelectedIndex = 0;
         }
         #endregion
 
+        #endregion
+
+        #region [ Переглянути статистику ]
+
+        private void SeeStatButton_Click(object sender, EventArgs e)
+        {
+            var stat = SQLs.Get_Statistic();
+            int count = stat.AllWordCount;
+            var ratings = stat.AllRatings;
+            StatLabel.Text =
+                $"Всього слів в БД — {stat.AllWordCount} " +
+                $"\n\nОцінки: " +
+                $"\n5 — {ratings[5]} слів ({((float)ratings[5] / count):P1})" +
+                $"\n4 — {ratings[4]} слів ({((float)ratings[4] / count):P1})" +
+                $"\n3 — {ratings[3]} слів ({((float)ratings[3] / count):P1})" +
+                $"\n2 — {ratings[2]} слів ({((float)ratings[2] / count):P1})" +
+                $"\n1 — {ratings[1]} слів ({((float)ratings[1] / count):P1})" +
+                $"\n\nЩе не вивчалися — {ratings[0]} слів ({((float)ratings[0] / count):P1})";
+
+            StatPanel.BringToFront();
+        }
+
+        #endregion
+
+        //*******
+
+        #region  Х( Поки не реалізовано )Х
+        private void FullScreenButton_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal) // Якщо вікно не в повноекранному режимі
+            {
+                this.WindowState = FormWindowState.Maximized; // Встановлюємо повноекранний режим
+                TopPanel.Visible = false;
+                FullScreenButton.ImageIndex = 0;
+            }
+            else // Якщо вікно в повноекранному режимі
+            {
+                this.WindowState = FormWindowState.Normal; // Відновлюємо нормальний режим вікна
+                TopPanel.Visible = true;
+                FullScreenButton.ImageIndex = 1;
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region [ Назад, до меню ]
 
         private void GoBackButton_Click(object sender, EventArgs e)
             => MenuPanel.BringToFront();
@@ -423,8 +443,38 @@ namespace Eng_Flash_Cards_Learner
         {
             if (e.KeyCode == Keys.Escape)
                 GoBackButton_Click(sender, e); //CHECK
-                //MenuPanel.BringToFront();
+                                               //MenuPanel.BringToFront();
         }
+
+        #endregion
+
+
+        #region { OTHER }
+
+        private void ShowPanel(Panel panelToShow)
+        {
+            foreach (Control panel in this.Controls)
+                if (panel is Panel && panel != TopPanel)
+                    panel.Visible = false;
+
+            panelToShow.Visible = true;
+
+            /*
+            if (panelToShow == panel1)
+            {
+                // Встановити функцію для кнопки на panel1
+            }
+            else if (panelToShow == panel2)
+            {
+                // Встановити іншу функцію для кнопки на panel2
+            }
+            */
+        }
+
+        #endregion
+
+
+
 
 
         //TODOTODO 

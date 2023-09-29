@@ -1,7 +1,7 @@
-using Eng_Flash_Cards_Learner.EF_SQLite;
+using EWL.EF_SQLite;
 using System.Data.SQLite;
 using NUnit.Framework;
-using Eng_Flash_Cards_Learner;
+using EWL;
 using SQLitePCL;
 
 namespace EWL_Tests

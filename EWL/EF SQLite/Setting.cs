@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Eng_Flash_Cards_Learner;
+namespace EWL;
 
 public partial class Setting
 {

@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Eng_Flash_Cards_Learner;
+namespace EWL;
 
 [Table("AllWords")]
 public partial class Word

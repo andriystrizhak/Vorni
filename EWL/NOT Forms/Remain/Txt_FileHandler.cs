@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using EWL.EF_SQLite;
 
-namespace Eng_Flash_Cards_Learner.NOT_Forms
+namespace EWL.NOT_Forms
 {
     static class Txt_FileHandler
     {
@@ -25,11 +26,10 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
         /// Додає слова з .txt-файлу до БД
         /// </summary>
         /// <param name="pathToTxtFile">Шлях до .txt-файлу</param>
-        /// <param name="db">Екземпляр класу DB_SQLite</param>
         /// <returns>Результати роботи методу: 
-        /// Item1 - кількість слів в файлі;
+        /// Item1 - кількість слів в файлі,
         /// Item2 - кількість доданих до БД слів</returns>
-        public static (int, int) AddWordsFromTxtFile(string pathToTxtFile, DB_SQLite db)
+        public static (int, int) AddWordsFromTxtFile(string pathToTxtFile)//, DB_SQLite db)
         {
             string[] allLines = File.ReadAllLines(pathToTxtFile);
 
@@ -37,7 +37,7 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
             int addedWordsCount = 0;
 
             foreach (var word in allWords)
-                addedWordsCount += db.TryAdd_Word_ToAllWords(word.Eng, word.Ua) ? 1 : 0;
+                addedWordsCount += SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua) ? 1 : 0;
 
             return (allWords.Count, addedWordsCount);
         }

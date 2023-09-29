@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Eng_Flash_Cards_Learner.Migrations
+namespace EWL.Migrations
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration

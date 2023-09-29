@@ -1,4 +1,4 @@
-﻿namespace Eng_Flash_Cards_Learner
+﻿namespace EWL
 {
     partial class SetUpForm
     {

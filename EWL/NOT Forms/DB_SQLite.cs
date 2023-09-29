@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using System.Reflection.Metadata;
 using System.Xml.Linq;
 
-namespace Eng_Flash_Cards_Learner.NOT_Forms
+namespace EWL.NOT_Forms
 {
     public class DB_SQLite
     {

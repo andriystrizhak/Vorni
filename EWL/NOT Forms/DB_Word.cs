@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eng_Flash_Cards_Learner.NOT_Forms
+namespace EWL.NOT_Forms
 {
     public class DB_Word
     {

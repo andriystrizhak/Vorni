@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Eng_Flash_Cards_Learner {
+namespace EWL {
     using System;
     
     
