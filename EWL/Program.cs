@@ -1,5 +1,5 @@
 using EWL.EF_SQLite;
-using EWL.NOT_Forms;
+using EWL .NOT_Forms;
 using SQLitePCL;
 
 namespace EWL
@@ -20,7 +20,7 @@ namespace EWL
             if (!DB.WasLaunched())
                 Application.Run(new SetUpForm());
             if (Mode == LearningMode.DataBase)
-                Application.Run(new MainBDForm());
+                Application.Run(new MainForm());
         }
     }
 } 

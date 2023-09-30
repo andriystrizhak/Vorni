@@ -16,21 +16,22 @@ namespace EWL.NOT_Forms
         {
             AllRatings = allRatings;
             NotLearned = allRatings[0];
-            Rating1 = allRatings[1];
-            Rating2 = allRatings[2];
-            Rating3 = allRatings[3];
-            Rating4 = allRatings[4];
-            Rating5 = allRatings[5];
+            //Rating1 = allRatings[1];
+            //Rating2 = allRatings[2];
+            //Rating3 = allRatings[3];
+            //Rating4 = allRatings[4];
+            //Rating5 = allRatings[5];
             AllWordCount = allRatings[6];
         }
 
         public int AllWordCount { get; set; }
 
-        public int Rating5 { get; private set; }
-        public int Rating4 { get; private set; }
-        public int Rating3 { get; private set; }
-        public int Rating2 { get; private set; }
-        public int Rating1 { get; private set; }
+        //REMOVE
+        //public int Rating5 { get; private set; }
+        //public int Rating4 { get; private set; }
+        //public int Rating3 { get; private set; }
+        //public int Rating2 { get; private set; }
+        //public int Rating1 { get; private set; }
         public int NotLearned { get; private set; }
 
         public int[] AllRatings { get; private set; }

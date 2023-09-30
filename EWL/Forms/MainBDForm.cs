@@ -1,19 +1,10 @@
 ﻿using EWL.EF_SQLite;
 using EWL.NOT_Forms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EWL
 {
-    public partial class MainBDForm : Form
+    public partial class MainForm : Form
     {
         //Pay attention on:
         //- "//CHANGE"
@@ -41,26 +32,26 @@ namespace EWL
         /// <summary>
         /// Оцінки поточних слів
         /// </summary>
-        int[] wordRatings = { 0, 0, 0, 0, 0, 0 }; //CHANGE
+        int[] wordRatings { get; set; } = { 0, 0, 0, 0, 0, 0 }; //CHANGE
 
         //List<DB_WordCategory> wordCategories = null;
-        List<Category> categories = null; //TODO
+        List<Category> categories = null!; //TODO
         int curentCategoryID;             //TODO
 
-        public MainBDForm()
+        public MainForm()
         {
             InitializeComponent();
             MenuPanel.BringToFront();
 
             this.KeyPreview = true;
-            this.KeyDown += MainBDForm_KeyDown;
+            this.KeyDown += MainForm_KeyDown!;
 
             WSourceComboBox.Text = WSourceComboBox.Items[0].ToString();
 
             SetCategoriesList();
         }
 
-        //TODO
+        //TODO - Імплементувати
         #region [ Category ]
 
         void SetCategoriesList()
@@ -96,6 +87,8 @@ namespace EWL
 
         #region [ Вивчати слова ]
 
+        //TODO - Додати проміжну панель чи кнопку для перемикання категорії для вивчення
+
         private void LearnWButton_Click(object sender, EventArgs e)
         {
             NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
@@ -103,22 +96,26 @@ namespace EWL
                 .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), SQLs.Get_NumberOfWordsToLearn())
                 .Select(w => w.Item1)
                 .ToList();
-            StartLearning();
+            SeeEngWord();
         }
 
-        private void StartLearning()
+        /// <summary>
+        /// Підготовує й показує 'LearningEngPanel'
+        /// </summary>
+        private void SeeEngWord()
         {
             EngWLabel1.Text = words[wordIndex].EngWord;
             EngWLabel2.Text = words[wordIndex].EngWord;
+
             ShowPanel(LearningEngPanel);
         }
 
-        #region Властивості контролів LearningWPanel
+        #region ( Властивості контролів LearningWPanel )
 
         private void SeeTransButton_Click(object sender, EventArgs e)
         {
             TranslationLabel.Text = words[wordIndex].UaTranslation;
-            LearningUaPanel.BringToFront();
+            ShowPanel(LearningUaPanel);
 
             SQLs.Increment_WordRepetition(words[wordIndex].WordId);
         }
@@ -144,24 +141,20 @@ namespace EWL
             wordRatings[rating]++;
 
             if (++wordIndex != words.Count)
-            {
-                EngWLabel1.Text = words[wordIndex].EngWord;
-                EngWLabel2.Text = words[wordIndex].EngWord;
-                LearningEngPanel.BringToFront();
-            }
+                SeeEngWord();
             else
             {
-                LearningStatPanel.BringToFront();
                 wordIndex = 0;
                 OutputLearningStatistic();
+                ShowPanel(LearningStatPanel);
             }
         }
         #endregion
 
-        #region Властивості контролів LearningStatPanel
+        #region ( Властивості контролів LearningStatPanel )
+
         void OutputLearningStatistic()
         {
-            //int learnedWordsCount = wordRatings[1] + wordRatings[2] + wordRatings[3] + wordRatings[4] + wordRatings[5];
             LearningStatLabel.Text =
                 $"Було вивчено слів: {words.Count} " +
                 $"\n\nОцінки " +
@@ -177,11 +170,11 @@ namespace EWL
                 / (words.Count * 5)) * 100;
 
             LearningRatingLabel.Text = $"Твоя успішність: {learningRating:f0}/100";
-            if (learningRating > 90)
+            if (learningRating > 85)
                 LearningRatingLabel.ForeColor = Color.FromArgb(117, 222, 42);
-            else if (learningRating > 75)
+            else if (learningRating > 70)
                 LearningRatingLabel.ForeColor = Color.FromArgb(222, 204, 42);
-            else if (learningRating > 60)
+            else if (learningRating > 50)
                 LearningRatingLabel.ForeColor = Color.FromArgb(222, 150, 42);
             else
                 LearningRatingLabel.ForeColor = Color.FromArgb(222, 69, 42);
@@ -190,7 +183,7 @@ namespace EWL
         }
 
         private void RetryButton_Click(object sender, EventArgs e)
-            => StartLearning();
+            => SeeEngWord();
 
         #endregion
 
@@ -198,53 +191,65 @@ namespace EWL
 
         #region [ Додати слова ]
 
+        //TODO - Додати перемикач категорії для додавання слів
+
         private void SeeAddingWPanelButton_Click(object sender, EventArgs e)
         {
             addedWords = 0;
             int wAddingMode = SQLs.Get_WordAddingMode();
 
-            NullEngUaTextBoxes();
+            Null_EngUaTextBoxes();
+            CancelPrevButton1.Enabled = false;
+            CancelPrevButton2.Enabled = false;
+
+            if (wAddingMode == 0)
+                ShowPanel(AddingWPanel1);
+            if (wAddingMode == 1)
+                ShowPanel(AddingWPanel2);
+            if (wAddingMode == 2)
+                ShowPanel(AddingWPanel3);
+        }
+
+        /// <summary>
+        /// Скидає всі AddingWPanel до початкового стану
+        /// </summary>
+        void Null_EngUaTextBoxes()
+        {
+            AddEngWTextBox.Text = "";
+            AddUaTTextBox.Text = "";
+
             EngUaStringTextBox.Text = "";
             TxtFilePathTextBox.Text = "";
 
-            if (wAddingMode == 0)
-                AddingWPanel1.BringToFront();
-            if (wAddingMode == 1)
-                AddingWPanel2.BringToFront();
-            if (wAddingMode == 2)
-                AddingWPanel3.BringToFront();
+            AddWButton1.Enabled = false;
         }
 
-        #region Властивості контролів AddingWPanel
+        void Show_WordIsRepeated_MessageBox()
+        {
+            MessageBox.Show(
+                "Таке ж слово вже існує в БД",
+                "Не сіпайся, все добре",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+        }
+
+        #region ( Властивості контролів AddingWPanel-s )
 
         #region AddingWPanel1
+
         private void AddWButton1_Click(object sender, EventArgs e)
         {
             string engWord = AddEngWTextBox.Text;
             string uaTrans = AddUaTTextBox.Text;
 
             if (!SQLs.TryAdd_Word_ToAllWords(engWord, uaTrans))
-                MessageBox.Show(
-                    "Таке ж слово вже існує в БД",
-                    "Не сіпайся, все добре",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                Show_WordIsRepeated_MessageBox();
             else
             {
                 addedWords++;
+                Null_EngUaTextBoxes();
                 CancelPrevButton1.Enabled = true;
-                NullEngUaTextBoxes();
             }
-        }
-
-        /// <summary>
-        /// Скидає AddingWPanel до початкового стану
-        /// </summary>
-        void NullEngUaTextBoxes()
-        {
-            AddEngWTextBox.Text = "";
-            AddUaTTextBox.Text = "";
-            AddWButton1.Enabled = false;
         }
 
         private void CancelPrevButton_Click(object sender, EventArgs e)
@@ -258,7 +263,8 @@ namespace EWL
             }
         }
 
-        #region Властивості текстових полів AddingWPanel1
+        #region ( Властивості текстових полів AddingWPanel1 )
+
         private void EngUaTextBox_TextChanged(object sender, EventArgs e)
         {
             if (AddEngWTextBox.Text != "" && AddUaTTextBox.Text != "")
@@ -300,11 +306,7 @@ namespace EWL
             var word = Txt_FileHandler.SplitSpecialLine(EngUaStringTextBox.Text);
 
             if (!SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua))
-                MessageBox.Show(
-                    "Таке ж слово вже існує в БД",
-                    "Не сіпайся, все добре",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                Show_WordIsRepeated_MessageBox();
             else
             {
                 addedWords++;
@@ -314,6 +316,7 @@ namespace EWL
         }
 
         //див. CancelPrevButton_Click() - для обох панелей (1 і 2)
+
         #endregion
 
         #region AddingWPanel3
@@ -356,17 +359,17 @@ namespace EWL
             WSourceComboBox.SelectedIndex = SQLs.Get_WordAddingMode();
             SaveSettingsButton.Enabled = false;
             DefaultSettingsButton.Enabled = true;
-            SettingPanel.BringToFront();
+            ShowPanel(SettingPanel);
         }
 
         #region Властивості контролів SettingPanel
 
+        //TODO - Додати перемикач категорії для вивчення
+
         private void WordCountNumericUpDown_ValueChanged(object sender, EventArgs e)
             => SaveSettingsButton.Enabled = true;
-
         private void WSourceComboBox_SelectedIndexChanged(object sender, EventArgs e)
             => SaveSettingsButton.Enabled = true;
-
 
         private void SaveSettingsButton_Click(object sender, EventArgs e)
         {
@@ -392,6 +395,8 @@ namespace EWL
 
         #region [ Переглянути статистику ]
 
+        //TODO - Додати перемикач категорії для статистики
+
         private void SeeStatButton_Click(object sender, EventArgs e)
         {
             var stat = SQLs.Get_Statistic();
@@ -407,7 +412,7 @@ namespace EWL
                 $"\n1 — {ratings[1]} слів ({((float)ratings[1] / count):P1})" +
                 $"\n\nЩе не вивчалися — {ratings[0]} слів ({((float)ratings[0] / count):P1})";
 
-            StatPanel.BringToFront();
+            ShowPanel(StatPanel);
         }
 
         #endregion
@@ -434,16 +439,15 @@ namespace EWL
 
         #endregion
 
-        #region [ Назад, до меню ]
+        #region [ Назад, до Меню ]
 
         private void GoBackButton_Click(object sender, EventArgs e)
-            => MenuPanel.BringToFront();
+            => ShowPanel(MenuPanel);
 
-        private void MainBDForm_KeyDown(object sender, KeyEventArgs e)
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
                 GoBackButton_Click(sender, e); //CHECK
-                                               //MenuPanel.BringToFront();
         }
 
         #endregion
@@ -461,19 +465,13 @@ namespace EWL
 
             /*
             if (panelToShow == panel1)
-            {
                 // Встановити функцію для кнопки на panel1
-            }
             else if (panelToShow == panel2)
-            {
                 // Встановити іншу функцію для кнопки на panel2
-            }
             */
         }
 
         #endregion
-
-
 
 
 

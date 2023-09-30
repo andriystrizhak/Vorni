@@ -84,6 +84,8 @@ namespace EWL.EF_SQLite
 
         //TEST
         #region Отримати статистику по ВСІХ словах
+
+        //TODO - Збір статистики по певній категорії
         public static Statistic Get_Statistic()
         {
             using VocabularyContext db = new(CS);

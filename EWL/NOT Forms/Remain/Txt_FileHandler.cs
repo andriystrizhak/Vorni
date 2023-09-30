@@ -11,16 +11,20 @@ namespace EWL.NOT_Forms
 {
     static class Txt_FileHandler
     {
+        //TODO
+        // - Додати спеціальний формат для рядка зі складністю
+        // - Додати можливість встановлювати складність з рядка, якщо така є
+
         /// <summary>
-        /// Розділяє рядок на Англ слово і його переклад
+        /// Розділяє рядок на слово і його переклад
         /// </summary>
-        public static Func<string, Txt_Word> SplitSpecialLine = x =>
+        public static Txt_Word SplitSpecialLine(string line)
         {
-            string[] wordMeaningPair = x.Split(" - ");
+            string[] wordMeaningPair = line.Split(" - ");
             string meanings = wordMeaningPair[1].Replace(" / ", "\n");
 
             return new Txt_Word { Eng = wordMeaningPair[0], Ua = meanings };
-        };
+        }
 
         /// <summary>
         /// Додає слова з .txt-файлу до БД
@@ -29,11 +33,14 @@ namespace EWL.NOT_Forms
         /// <returns>Результати роботи методу: 
         /// Item1 - кількість слів в файлі,
         /// Item2 - кількість доданих до БД слів</returns>
-        public static (int, int) AddWordsFromTxtFile(string pathToTxtFile)//, DB_SQLite db)
+        public static (int, int) AddWordsFromTxtFile(string pathToTxtFile)
         {
             string[] allLines = File.ReadAllLines(pathToTxtFile);
 
-            var allWords = allLines.Where(x => x.Contains(" - ")).Select(x => SplitSpecialLine(x)).ToList();
+            var allWords = allLines
+                .Where(x => x.Contains(" - "))
+                .Select(x => SplitSpecialLine(x))
+                .ToList();
             int addedWordsCount = 0;
 
             foreach (var word in allWords)
