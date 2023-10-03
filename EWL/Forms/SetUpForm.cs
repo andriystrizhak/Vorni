@@ -1,37 +1,52 @@
-﻿using EWL.NOT_Forms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using EWL.EF_SQLite;
+using EWL.NOT_Forms;
 using System.Data;
-using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using RadioButton = System.Windows.Forms.RadioButton;
 
 namespace EWL
 {
     public partial class SetUpForm : Form
     {
-        Point LastPoint;
-        List<Panel?> PanelList = new();
-        int PanelIndex = 0;
+        /// <summary>
+        /// Розташування TopPanel (для переміщення вікна мишкою)
+        /// </summary>
+        Point lastPoint;
 
-        bool[] GroupBoxesAreChanged { get; set; } = { false, false, false };
-        int GroupBoxIndex = 0;
+        /// <summary>
+        /// Список панелей в "шляху" логіки форми
+        /// </summary>
+        List<Panel> panelList = new();
+        int currentPanelIndex = 0;
 
-        readonly DB_SQLite DB = Program.DB;
-        int AddedWords = 0;
+        /// <summary>
+        /// Список з даними для кожного groupBox-а про те чи вносилися в нього зміни
+        /// </summary>
+        bool[] groupBoxesWasChanged { get; set; } = { false, false, false };
+        int currentGroupBoxIndex = 0;
+
+        /// <summary>
+        /// Кількість доданих слів
+        /// </summary>
+        int addedWordsCount = 0;
 
         public SetUpForm()
         {
             InitializeComponent();
         }
 
-        #region Властивості верхньої панелі TopPanel
+        #region [ Підготовка форми ]
+
+        private void SetUpForm_Load(object sender, EventArgs e)
+        {
+            panelList.Add(startingPanel1);
+            panelList.Add(dbOrTxtPanel2);
+            panelList.Add(null!);
+
+            ShowPanel(panelList[currentPanelIndex]);
+        }
+
+        #endregion
+
+        #region [[ TopPanel ]]
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
@@ -40,93 +55,120 @@ namespace EWL
         }
 
         private void TopPanel_MouseDown(object sender, MouseEventArgs e)
-            => LastPoint = new Point(e.X, e.Y);
+            => lastPoint = new Point(e.X, e.Y);
         private void TopPanel_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                this.Left += e.X - LastPoint.X;
-                this.Top += e.Y - LastPoint.Y;
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
             }
         }
 
         #endregion
 
-        //*************************************************************
+        #region [[ BottomPanel ]]
 
-        private void SourceTypeGroupBox_Enter(object sender, EventArgs e)
+        #region ( 'goBackButton' properties )
+
+        private void PreviousButton_Click(object sender, EventArgs e)
         {
+            if (currentPanelIndex > 0)
+                ShowPanel(panelList[--currentPanelIndex]);
+            if (currentPanelIndex == 0)
+                goBackButton.Enabled = false;
             continueButton.Enabled = true;
-            GroupBoxesAreChanged[GroupBoxIndex] = true;
+            ContinueButton_ChangeText();
         }
 
-        //*************************************************************
+        #endregion
+
+        #region ( 'continueButton' properties )
 
         private void ContinueButton_Click(object sender, EventArgs e)
         {
-            #region Логіка переходу на нову форму
+            #region Перехід на нову форму
             if (continueButton.Text == "Вивчати!")
             {
-                if (PanelList[PanelIndex] == panel4)
+                if (panelList[currentPanelIndex] == txtActionPanel4)
                 {
                     MessageBox.Show(
                         "Це ще поки не реалізовано, киш-киш!",
                         "Технічні шеколадки",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-                    PanelIndex--;
+                    currentPanelIndex--;
                 }
                 else
                 {
-                    DB.SetWasLaunched(true);
+                    SQLs.Set_WasLaunched(true);
                     Program.Mode = LearningMode.DataBase;
                     this.Close();
                 }
             }
             #endregion
-            #region Логіка розгалуження
-            PanelList[2] = radioButtonBD.Checked ? panel3 : panel4;
+            #region Розгалуження
+            if (currentPanelIndex == 1)
+                panelList[2] = radioButtonBD.Checked ? dbActionPanel3 : txtActionPanel4; //CHECK
 
-            if (PanelList[PanelIndex] == panel3)
+            if (panelList[currentPanelIndex] == dbActionPanel3)
             {
                 if (radioButtonAddNewW.Checked)
-                    PanelList.Add(panel5);
-                else PanelList = PanelList.Take(3).ToList();
+                    panelList.Add(wAddingPanel5);
+                else panelList = panelList.Take(3).ToList();
             }
             #endregion
 
-            if (PanelIndex < PanelList.Count - 1)
-                PanelList[++PanelIndex]?.BringToFront();    //Перевірка на null або впевнитись в безпечності
-            previousButton.Enabled = true;
+            if (currentPanelIndex < panelList.Count - 1)
+                ShowPanel(panelList[++currentPanelIndex]);
+            goBackButton.Enabled = true;
             ContinueButton_Disable();
             ContinueButton_ChangeText();
         }
 
-        #region Властивості кнопки "Продовжити"
+        #region [ 'continueButton' Logic ]
 
         /// <summary>
-        /// Метод для автоматичного відключeння кнопки "Продовжити"
+        /// Метод для перевірки й автоматичного відключeння кнопки "Продовжити"
         /// </summary>
         private void ContinueButton_Disable()
         {
-            GroupBoxIndex = PanelList[PanelIndex] == panel2
-            ? 0 : PanelList[PanelIndex] == panel3 ? 1 : 2;
+            currentGroupBoxIndex = currentPanelIndex == 1
+                ? 0 : currentPanelIndex == 2 && panelList[currentPanelIndex] == dbActionPanel3
+                ? 1 : 2;
 
-            if ((PanelIndex == 1 || PanelIndex == 2) && !GroupBoxesAreChanged[GroupBoxIndex])
+            if ((currentPanelIndex == 1 || currentPanelIndex == 2)
+                && !groupBoxesWasChanged[currentGroupBoxIndex])
                 continueButton.Enabled = false;
         }
 
         /// <summary>
-        /// Метод для автоматичної зміни тексту кнопки "Продовжити"
+        /// Метод для перевірки й автоматичної зміни тексту кнопки "Продовжити"
         /// </summary>
         private void ContinueButton_ChangeText()
         {
-            if (PanelIndex == 3
-                || PanelList[PanelIndex] == panel4
-                || (PanelList[PanelIndex] == panel3 && radioButtonLearnAvaliableW.Checked))
+            if (currentPanelIndex == 3
+                || panelList[currentPanelIndex] == txtActionPanel4
+                || (panelList[currentPanelIndex] == dbActionPanel3 && radioButtonLearnAvaliableW.Checked))
                 continueButton.Text = "Вивчати!";
             else continueButton.Text = "Продовжити";
         }
+
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        #region [[ Main Panels ]]
+
+        private void SourceTypeGroupBox_Enter(object sender, EventArgs e)
+        {
+            continueButton.Enabled = true;
+            groupBoxesWasChanged[currentGroupBoxIndex] = true;
+        }
+
+        #region ( Властивості radioButtn-ів )
 
         private void RadioButtonAddNewW_CheckedChanged(object sender, EventArgs e)
             => continueButton.Text = "Продовжити";
@@ -135,38 +177,17 @@ namespace EWL
 
         #endregion
 
-        private void PreviousButton_Click(object sender, EventArgs e)
-        {
-            if (PanelIndex > 0)
-                PanelList[--PanelIndex]?.BringToFront();    //Перевірка на null або впевнитись в безпечності
-            if (PanelIndex == 0)
-                previousButton.Enabled = false;
-            continueButton.Enabled = true;
-            ContinueButton_ChangeText();
-        }
-
-        //*************************************************************
-
-        private void SetUpForm_Load(object sender, EventArgs e)
-        {
-            PanelList.Add(panel1);
-            PanelList.Add(panel2);
-            PanelList.Add(null);
-
-            PanelList[PanelIndex]?.BringToFront();    //Перевірка на null або впевнитись в безпечності
-        }
-
-        #region Додавання нових слів
+        #region [ Додавання нових слів ]
         private void AddWButton_Click(object sender, EventArgs e)
         {
             string engWord = EngTextBox.Text;
             string uaTrans = UaTextBox.Text;
 
-            if (!DB.TryAdd_Word_ToAllWords(engWord, uaTrans))
+            if (!SQLs.TryAdd_Word_ToAllWords(engWord, uaTrans))
                 MessageBox.Show("Таке ж слово вже існує в БД", "Х'юстон, проблемка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
-                AddedWords++; //NEW
+                addedWordsCount++; //NEW
                 EngTextBox.Text = "";
                 UaTextBox.Text = "";
                 AddWButton.Enabled = false;
@@ -176,13 +197,13 @@ namespace EWL
 
         private void CancelPrevButton_Click(object sender, EventArgs e)
         {
-            DB.Remove_LastWords_Permanently(1);
-            AddedWords--;
-            if (AddedWords <= 0)
+            SQLs.Remove_LastWords_Permanently(1);
+            addedWordsCount--;
+            if (addedWordsCount <= 0)
                 CancelPrevButton.Enabled = false;
         }
 
-        #region Властивості текстових полів panel5
+        #region ( Властивості текстових полів wAddingPanel5 )
 
         private void EngUaTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -205,7 +226,9 @@ namespace EWL
             int charCode = e.KeyChar;
             if (!(charCode >= 1040 && charCode <= 1103)
                 && charCode != 8 && charCode != 32
-                && charCode != '(' && charCode != ')')
+                && charCode != '(' && charCode != ')'
+                && charCode != 13 && charCode != 'і'
+                && charCode != '-' && charCode != '\'')
                 e.Handled = true;
         }
 
@@ -213,5 +236,31 @@ namespace EWL
 
         #endregion
 
+        #endregion
+
+
+        #region { OTHER }
+
+        private void ShowPanel(Panel panelToShow)
+        {
+            foreach (Control panel in this.Controls)
+                if (panel is Panel
+                    && panel != TopPanel
+                    && panel != BannerPanel
+                    && panel != BottomPanel)
+                    panel.Visible = false;
+
+            if (panelToShow != null)
+                panelToShow.Visible = true;
+
+            /*
+            if (panelToShow == panel1)
+                // Встановити функцію для кнопки на panel1
+            else if (panelToShow == panel2)
+                // Встановити іншу функцію для кнопки на panel2
+            */
+        }
+
+        #endregion
     }
 }

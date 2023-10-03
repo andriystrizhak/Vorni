@@ -17,14 +17,14 @@ namespace EWL
         Point lastPoint;
 
         /// <summary>
-        /// Кількість слів доданих за один раз
+        /// Кількість слів доданих за один раз в розділі "Додати слова"
         /// </summary>
         int addedWords = 0; //CHANGE
+
         /// <summary>
         /// Список слів для вивчення
         /// </summary>
         List<Word> words = new();
-        //List<DB_Word> words = new();
         /// <summary>
         /// Індекс поточного слова для вивчення зі списку words
         /// </summary>
@@ -34,7 +34,6 @@ namespace EWL
         /// </summary>
         int[] wordRatings { get; set; } = { 0, 0, 0, 0, 0, 0 }; //CHANGE
 
-        //List<DB_WordCategory> wordCategories = null;
         List<Category> categories = null!; //TODO
         int curentCategoryID;             //TODO
 

@@ -20,7 +20,6 @@ namespace EWL_Tests
         public void Setup()
         {
             SQLs.CS = conStr;
-            //VocabularyContext.DoLogActions = false;
             TearDown();
         }
 

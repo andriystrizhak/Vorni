@@ -8,7 +8,6 @@ public partial class VocabularyContext : DbContext
 {
     static string connectionString = "Data Source=.\\Vocabulary.db;";
 
-    //static public bool DoLogActions { get; set; } = true;
     //readonly StreamWriter logStream = new("log\\SQLog.txt", true);
 
     public VocabularyContext()
@@ -38,8 +37,7 @@ public partial class VocabularyContext : DbContext
     //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
     {
         optionsBuilder.UseSqlite(connectionString);
-        //if (DoLogActions)
-        //    optionsBuilder.LogTo(logStream.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
+        //optionsBuilder.LogTo(logStream.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -49,14 +47,12 @@ public partial class VocabularyContext : DbContext
             entity.HasKey(e => e.WordId);
 
             entity.Property(e => e.WordId)
-                //.ValueGeneratedNever()
                 .HasColumnName("WordID");
         });
 
         modelBuilder.Entity<Category>(entity =>
         {
             entity.Property(e => e.CategoryId)
-                //.ValueGeneratedNever()
                 .HasColumnName("CategoryID");
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
@@ -71,7 +67,6 @@ public partial class VocabularyContext : DbContext
             entity.HasKey(e => e.SettingsId);
 
             entity.Property(e => e.SettingsId)
-                //.ValueGeneratedNever()
                 .HasColumnName("SettingsID");
             entity.Property(e => e.CurrentCategoryId).HasColumnName("CurrentCategoryID");
 
@@ -83,7 +78,8 @@ public partial class VocabularyContext : DbContext
 
         modelBuilder.Entity<WordCategory>(entity =>
         {
-            entity.HasKey(e => new { e.CategoryId, e.WordId }); //Визначення складеного первинного ключа
+            //Визначення складеного первинного ключа
+            entity.HasKey(e => new { e.CategoryId, e.WordId });
 
             entity.Property(e => e.AddedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")

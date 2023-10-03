@@ -25,7 +25,6 @@ namespace EWL.NOT_Forms
             OpenConnection();
         }
 
-
         #region Відкрити / Закрити / Отримати з'єднання
 
         public void OpenConnection()
@@ -44,7 +43,6 @@ namespace EWL.NOT_Forms
             => connection;
         #endregion
 
-
         //*********************************************************************************************************
         //TODO - remove "public"
         /// <summary>
@@ -58,7 +56,6 @@ namespace EWL.NOT_Forms
             return cmd.ExecuteReader();
         }
         //*********************************************************************************************************
-
 
         //TESTED ✔️
         #region [Категорії слів]
@@ -230,7 +227,6 @@ namespace EWL.NOT_Forms
 
         #endregion
 
-
         //TESTED ✔️
         #region Додати слово в БД / Скасувати його(їх) додавання / Видалити з БД
 
@@ -271,7 +267,6 @@ namespace EWL.NOT_Forms
         }
         #endregion
 
-
         //TEST
         #region Отримати слова
 
@@ -300,7 +295,6 @@ namespace EWL.NOT_Forms
         }
         #endregion
 
-
         //TEST
         #region Оцінювати слово
 
@@ -312,7 +306,6 @@ namespace EWL.NOT_Forms
             Get_DataReader(query);
         }
         #endregion
-
 
         #region Отримати статистику по ВСІХ словах
         public Statistic GetStatistic()
@@ -333,7 +326,6 @@ namespace EWL.NOT_Forms
         }
         #endregion
 
-
         #region Отримати / Змінити кількість слів для вивчення (за раз)
 
         public int GetWordsToLearnCount()
@@ -352,7 +344,6 @@ namespace EWL.NOT_Forms
             Get_DataReader(query);
         }
         #endregion
-
 
         #region Отримати / Змінити мод (спосіб) додавання слів
 
@@ -373,7 +364,6 @@ namespace EWL.NOT_Forms
         }
         #endregion
 
-
         #region Отримати / Змінити значення повторюваності слова
 
         public int GetWordRepetition(int id)
@@ -392,7 +382,6 @@ namespace EWL.NOT_Forms
             Get_DataReader(query);
         }
         #endregion
-
 
         #region Отримати дані чи запускався цей додаток до цього, чи ні
 
