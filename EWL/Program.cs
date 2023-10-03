@@ -19,7 +19,7 @@ namespace EWL
 
             if (!SQLs.WasLaunched())
                 Application.Run(new SetUpForm());
-            if (Mode == LearningMode.DataBase)
+            if (SQLs.WasLaunched())
                 Application.Run(new MainForm());
         }
     }

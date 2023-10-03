@@ -6,6 +6,33 @@ using SQLitePCL;
 
 namespace EWL_Tests
 {
+    /// <summary>
+    /// Клас що містить тест-кейси
+    /// </summary>
+    public static class MyTestCases
+    {
+        /// <summary>
+        /// Набір тест-кейсів з Категоріями
+        /// </summary>
+        /// <returns> IEnumerable категорій </returns>
+        public static IEnumerable<TestCaseData> Categories_Cases()
+        {
+            yield return new TestCaseData("Category 1");
+            yield return new TestCaseData("Category 2");
+        }
+
+        /// <summary>
+        /// Набір тест-кейсів зі Словами
+        /// </summary>
+        /// <returns> IEnumerable слів </returns>
+        public static IEnumerable<TestCaseData> Words_Cases()
+        {
+            yield return new TestCaseData("a", "ей");
+            yield return new TestCaseData("b", "бі");
+            yield return new TestCaseData("c", "сі");
+        }
+    }
+
     [TestFixture]
     public class SQLs_Test
     {
@@ -618,7 +645,6 @@ namespace EWL_Tests
         #endregion
 
         #endregion
-
 
         //TODO - Додавати ТЕСТИ ...
 

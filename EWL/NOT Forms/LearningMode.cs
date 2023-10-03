@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EWL.NOT_Forms
 {
+    //TODO - Remove after logic changing 
     /// <summary>
     /// Визначає яка форма відкриватиметься після налаштувальної
     /// </summary>
