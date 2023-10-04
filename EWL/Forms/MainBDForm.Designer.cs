@@ -152,7 +152,7 @@
             CloseButton.Location = new Point(927, 1);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(48, 27);
-            CloseButton.TabIndex = 8;
+            CloseButton.TabIndex = 2;
             CloseButton.TabStop = false;
             CloseButton.Text = "x";
             CloseButton.TextAlign = ContentAlignment.TopCenter;
@@ -171,7 +171,7 @@
             TopPanel.Location = new Point(0, -18);
             TopPanel.Name = "TopPanel";
             TopPanel.Size = new Size(978, 31);
-            TopPanel.TabIndex = 9;
+            TopPanel.TabIndex = 0;
             TopPanel.MouseDown += TopPanel_MouseDown;
             TopPanel.MouseMove += TopPanel_MouseMove;
             // 
@@ -190,7 +190,7 @@
             MinimizeButton.Location = new Point(877, 1);
             MinimizeButton.Name = "MinimizeButton";
             MinimizeButton.Size = new Size(48, 27);
-            MinimizeButton.TabIndex = 12;
+            MinimizeButton.TabIndex = 0;
             MinimizeButton.TabStop = false;
             MinimizeButton.Text = "–";
             MinimizeButton.TextAlign = ContentAlignment.TopCenter;
@@ -199,12 +199,12 @@
             // 
             // TitleIcoPictureBox
             // 
-            TitleIcoPictureBox.Image = Resource1.Untitled_3_1;
+            TitleIcoPictureBox.Image = (Image)resources.GetObject("TitleIcoPictureBox.Image");
             TitleIcoPictureBox.Location = new Point(6, 5);
             TitleIcoPictureBox.Name = "TitleIcoPictureBox";
             TitleIcoPictureBox.Size = new Size(48, 21);
             TitleIcoPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            TitleIcoPictureBox.TabIndex = 11;
+            TitleIcoPictureBox.TabIndex = 1;
             TitleIcoPictureBox.TabStop = false;
             // 
             // TitleLabel
@@ -215,7 +215,7 @@
             TitleLabel.Location = new Point(58, 7);
             TitleLabel.Name = "TitleLabel";
             TitleLabel.Size = new Size(193, 15);
-            TitleLabel.TabIndex = 10;
+            TitleLabel.TabIndex = 3;
             TitleLabel.Text = "English Words Learner (flash-cards)";
             // 
             // fullScreenImageList
@@ -240,7 +240,7 @@
             MenuPanel.Location = new Point(0, 31);
             MenuPanel.Name = "MenuPanel";
             MenuPanel.Size = new Size(978, 519);
-            MenuPanel.TabIndex = 21;
+            MenuPanel.TabIndex = 9;
             // 
             // SettingButton
             // 
@@ -259,7 +259,7 @@
             SettingButton.MinimumSize = new Size(350, 50);
             SettingButton.Name = "SettingButton";
             SettingButton.Size = new Size(350, 50);
-            SettingButton.TabIndex = 33;
+            SettingButton.TabIndex = 3;
             SettingButton.Text = "Налаштування";
             SettingButton.UseVisualStyleBackColor = false;
             SettingButton.Click += SettingButton_Click;
@@ -282,7 +282,8 @@
             FullScreenButton.Location = new Point(915, 1);
             FullScreenButton.Name = "FullScreenButton";
             FullScreenButton.Size = new Size(60, 60);
-            FullScreenButton.TabIndex = 32;
+            FullScreenButton.TabIndex = 4;
+            FullScreenButton.TabStop = false;
             FullScreenButton.UseVisualStyleBackColor = false;
             FullScreenButton.Visible = false;
             FullScreenButton.Click += FullScreenButton_Click;
@@ -304,7 +305,7 @@
             LearnWButton.MinimumSize = new Size(350, 50);
             LearnWButton.Name = "LearnWButton";
             LearnWButton.Size = new Size(350, 50);
-            LearnWButton.TabIndex = 29;
+            LearnWButton.TabIndex = 1;
             LearnWButton.Text = "Вивчати слова";
             LearnWButton.UseVisualStyleBackColor = false;
             LearnWButton.Click += LearnWButton_Click;
@@ -326,7 +327,7 @@
             SeeAddingWPanelButton.MinimumSize = new Size(350, 50);
             SeeAddingWPanelButton.Name = "SeeAddingWPanelButton";
             SeeAddingWPanelButton.Size = new Size(350, 50);
-            SeeAddingWPanelButton.TabIndex = 30;
+            SeeAddingWPanelButton.TabIndex = 2;
             SeeAddingWPanelButton.Text = "Додати слова";
             SeeAddingWPanelButton.UseVisualStyleBackColor = false;
             SeeAddingWPanelButton.Click += SeeAddingWPanelButton_Click;
@@ -348,20 +349,20 @@
             SeeStatButton.MinimumSize = new Size(350, 50);
             SeeStatButton.Name = "SeeStatButton";
             SeeStatButton.Size = new Size(350, 50);
-            SeeStatButton.TabIndex = 31;
+            SeeStatButton.TabIndex = 4;
             SeeStatButton.Text = "Переглянути статистику";
             SeeStatButton.UseVisualStyleBackColor = false;
             SeeStatButton.Click += SeeStatButton_Click;
             // 
             // EWLPictureBox
             // 
-            EWLPictureBox.Image = Resource1.Logo11;
+            EWLPictureBox.Image = (Image)resources.GetObject("EWLPictureBox.Image");
             EWLPictureBox.Location = new Point(190, 16);
             EWLPictureBox.MinimumSize = new Size(550, 100);
             EWLPictureBox.Name = "EWLPictureBox";
             EWLPictureBox.Size = new Size(586, 150);
             EWLPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            EWLPictureBox.TabIndex = 28;
+            EWLPictureBox.TabIndex = 5;
             EWLPictureBox.TabStop = false;
             // 
             // LearningUaPanel
@@ -376,12 +377,12 @@
             LearningUaPanel.Location = new Point(0, 31);
             LearningUaPanel.Name = "LearningUaPanel";
             LearningUaPanel.Size = new Size(978, 519);
-            LearningUaPanel.TabIndex = 22;
+            LearningUaPanel.TabIndex = 1;
             // 
             // GoBackButton2
             // 
             GoBackButton2.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton2.BackgroundImage = Resource1.icons8_налево_96;
+            GoBackButton2.BackgroundImage = (Image)resources.GetObject("GoBackButton2.BackgroundImage");
             GoBackButton2.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton2.Cursor = Cursors.Hand;
             GoBackButton2.FlatAppearance.BorderColor = Color.Gray;
@@ -394,7 +395,8 @@
             GoBackButton2.Location = new Point(3, 3);
             GoBackButton2.Name = "GoBackButton2";
             GoBackButton2.Size = new Size(60, 60);
-            GoBackButton2.TabIndex = 37;
+            GoBackButton2.TabIndex = 0;
+            GoBackButton2.TabStop = false;
             GoBackButton2.UseVisualStyleBackColor = false;
             GoBackButton2.Click += GoBackButton_Click;
             // 
@@ -408,7 +410,7 @@
             TranslationLabel.Location = new Point(208, 182);
             TranslationLabel.Name = "TranslationLabel";
             TranslationLabel.Size = new Size(575, 152);
-            TranslationLabel.TabIndex = 36;
+            TranslationLabel.TabIndex = 1;
             TranslationLabel.Text = "ХХХ";
             TranslationLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -430,13 +432,13 @@
             RateTableLayoutPanel.RowCount = 1;
             RateTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             RateTableLayoutPanel.Size = new Size(542, 101);
-            RateTableLayoutPanel.TabIndex = 33;
+            RateTableLayoutPanel.TabIndex = 2;
             // 
             // Button5
             // 
             Button5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button5.BackColor = Color.FromArgb(50, 50, 50);
-            Button5.BackgroundImage = Resource1.icons8_5_в_кружке_100;
+            Button5.BackgroundImage = (Image)resources.GetObject("Button5.BackgroundImage");
             Button5.BackgroundImageLayout = ImageLayout.Zoom;
             Button5.CausesValidation = false;
             Button5.Cursor = Cursors.Hand;
@@ -451,7 +453,8 @@
             Button5.Margin = new Padding(4);
             Button5.Name = "Button5";
             Button5.Size = new Size(102, 93);
-            Button5.TabIndex = 38;
+            Button5.TabIndex = 0;
+            Button5.TabStop = false;
             Button5.UseVisualStyleBackColor = false;
             Button5.Click += Button5_Click;
             // 
@@ -459,7 +462,7 @@
             // 
             Button4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button4.BackColor = Color.FromArgb(50, 50, 50);
-            Button4.BackgroundImage = Resource1.icons8_4_в_кружке_100;
+            Button4.BackgroundImage = (Image)resources.GetObject("Button4.BackgroundImage");
             Button4.BackgroundImageLayout = ImageLayout.Zoom;
             Button4.CausesValidation = false;
             Button4.Cursor = Cursors.Hand;
@@ -474,7 +477,8 @@
             Button4.Margin = new Padding(4);
             Button4.Name = "Button4";
             Button4.Size = new Size(100, 93);
-            Button4.TabIndex = 37;
+            Button4.TabIndex = 1;
+            Button4.TabStop = false;
             Button4.UseVisualStyleBackColor = false;
             Button4.Click += Button4_Click;
             // 
@@ -482,7 +486,7 @@
             // 
             Button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button3.BackColor = Color.FromArgb(50, 50, 50);
-            Button3.BackgroundImage = Resource1.icons8_3_в_кружке_100;
+            Button3.BackgroundImage = (Image)resources.GetObject("Button3.BackgroundImage");
             Button3.BackgroundImageLayout = ImageLayout.Zoom;
             Button3.CausesValidation = false;
             Button3.Cursor = Cursors.Hand;
@@ -497,7 +501,8 @@
             Button3.Margin = new Padding(4);
             Button3.Name = "Button3";
             Button3.Size = new Size(100, 93);
-            Button3.TabIndex = 36;
+            Button3.TabIndex = 2;
+            Button3.TabStop = false;
             Button3.UseVisualStyleBackColor = false;
             Button3.Click += Button3_Click;
             // 
@@ -505,7 +510,7 @@
             // 
             Button2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button2.BackColor = Color.FromArgb(50, 50, 50);
-            Button2.BackgroundImage = Resource1.icons8_2_в_кружке_100__1_;
+            Button2.BackgroundImage = (Image)resources.GetObject("Button2.BackgroundImage");
             Button2.BackgroundImageLayout = ImageLayout.Zoom;
             Button2.CausesValidation = false;
             Button2.Cursor = Cursors.Hand;
@@ -520,7 +525,8 @@
             Button2.Margin = new Padding(4);
             Button2.Name = "Button2";
             Button2.Size = new Size(100, 93);
-            Button2.TabIndex = 35;
+            Button2.TabIndex = 3;
+            Button2.TabStop = false;
             Button2.UseVisualStyleBackColor = false;
             Button2.Click += Button2_Click;
             // 
@@ -528,7 +534,7 @@
             // 
             Button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button1.BackColor = Color.FromArgb(50, 50, 50);
-            Button1.BackgroundImage = Resource1.icons8_1_в_кружке_100__1_;
+            Button1.BackgroundImage = (Image)resources.GetObject("Button1.BackgroundImage");
             Button1.BackgroundImageLayout = ImageLayout.Zoom;
             Button1.CausesValidation = false;
             Button1.Cursor = Cursors.Hand;
@@ -543,7 +549,8 @@
             Button1.Margin = new Padding(4);
             Button1.Name = "Button1";
             Button1.Size = new Size(100, 93);
-            Button1.TabIndex = 34;
+            Button1.TabIndex = 4;
+            Button1.TabStop = false;
             Button1.UseVisualStyleBackColor = false;
             Button1.Click += Button1_Click;
             // 
@@ -557,7 +564,7 @@
             EngWLabel2.Location = new Point(272, 76);
             EngWLabel2.Name = "EngWLabel2";
             EngWLabel2.Size = new Size(447, 76);
-            EngWLabel2.TabIndex = 1;
+            EngWLabel2.TabIndex = 3;
             EngWLabel2.Text = "ХХХ";
             EngWLabel2.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -572,7 +579,7 @@
             LearningEngPanel.Location = new Point(0, 31);
             LearningEngPanel.Name = "LearningEngPanel";
             LearningEngPanel.Size = new Size(978, 519);
-            LearningEngPanel.TabIndex = 24;
+            LearningEngPanel.TabIndex = 10;
             // 
             // EngWLabel1
             // 
@@ -584,14 +591,14 @@
             EngWLabel1.Location = new Point(250, 176);
             EngWLabel1.Name = "EngWLabel1";
             EngWLabel1.Size = new Size(469, 95);
-            EngWLabel1.TabIndex = 37;
+            EngWLabel1.TabIndex = 0;
             EngWLabel1.Text = "ХХХ";
             EngWLabel1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // GoBackButton1
             // 
             GoBackButton1.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton1.BackgroundImage = Resource1.icons8_налево_96;
+            GoBackButton1.BackgroundImage = (Image)resources.GetObject("GoBackButton1.BackgroundImage");
             GoBackButton1.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton1.Cursor = Cursors.Hand;
             GoBackButton1.FlatAppearance.BorderColor = Color.Gray;
@@ -604,7 +611,8 @@
             GoBackButton1.Location = new Point(3, 3);
             GoBackButton1.Name = "GoBackButton1";
             GoBackButton1.Size = new Size(60, 60);
-            GoBackButton1.TabIndex = 34;
+            GoBackButton1.TabIndex = 1;
+            GoBackButton1.TabStop = false;
             GoBackButton1.UseVisualStyleBackColor = false;
             GoBackButton1.Click += GoBackButton_Click;
             // 
@@ -626,7 +634,8 @@
             SeeTransButton.MinimumSize = new Size(300, 50);
             SeeTransButton.Name = "SeeTransButton";
             SeeTransButton.Size = new Size(320, 60);
-            SeeTransButton.TabIndex = 29;
+            SeeTransButton.TabIndex = 2;
+            SeeTransButton.TabStop = false;
             SeeTransButton.Text = "Побачити переклад";
             SeeTransButton.UseVisualStyleBackColor = false;
             SeeTransButton.Click += SeeTransButton_Click;
@@ -644,7 +653,7 @@
             LearningStatPanel.Location = new Point(0, 31);
             LearningStatPanel.Name = "LearningStatPanel";
             LearningStatPanel.Size = new Size(978, 519);
-            LearningStatPanel.TabIndex = 25;
+            LearningStatPanel.TabIndex = 2;
             // 
             // LearningRatingLabel
             // 
@@ -656,7 +665,7 @@
             LearningRatingLabel.Location = new Point(291, 329);
             LearningRatingLabel.Name = "LearningRatingLabel";
             LearningRatingLabel.Size = new Size(422, 37);
-            LearningRatingLabel.TabIndex = 41;
+            LearningRatingLabel.TabIndex = 0;
             LearningRatingLabel.Text = "XXX";
             LearningRatingLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -672,13 +681,14 @@
             RetryButton.FlatStyle = FlatStyle.Flat;
             RetryButton.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
             RetryButton.ForeColor = Color.White;
-            RetryButton.Location = new Point(225, 402);
+            RetryButton.Location = new Point(533, 401);
             RetryButton.Margin = new Padding(10);
             RetryButton.MaximumSize = new Size(350, 70);
             RetryButton.MinimumSize = new Size(150, 50);
             RetryButton.Name = "RetryButton";
             RetryButton.Size = new Size(250, 70);
-            RetryButton.TabIndex = 40;
+            RetryButton.TabIndex = 1;
+            RetryButton.TabStop = false;
             RetryButton.Text = "Тренуватись ще";
             RetryButton.UseVisualStyleBackColor = false;
             RetryButton.Click += RetryButton_Click;
@@ -694,7 +704,7 @@
             StatLabel1.Location = new Point(304, 46);
             StatLabel1.Name = "StatLabel1";
             StatLabel1.Size = new Size(411, 47);
-            StatLabel1.TabIndex = 38;
+            StatLabel1.TabIndex = 2;
             StatLabel1.Text = "Результати Тренування:";
             StatLabel1.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -710,13 +720,14 @@
             GoMenuButton.FlatStyle = FlatStyle.Flat;
             GoMenuButton.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
             GoMenuButton.ForeColor = Color.White;
-            GoMenuButton.Location = new Point(533, 401);
+            GoMenuButton.Location = new Point(225, 405);
             GoMenuButton.Margin = new Padding(10);
             GoMenuButton.MaximumSize = new Size(350, 70);
             GoMenuButton.MinimumSize = new Size(150, 50);
             GoMenuButton.Name = "GoMenuButton";
             GoMenuButton.Size = new Size(250, 70);
-            GoMenuButton.TabIndex = 29;
+            GoMenuButton.TabIndex = 3;
+            GoMenuButton.TabStop = false;
             GoMenuButton.Text = "Завершити";
             GoMenuButton.UseVisualStyleBackColor = false;
             GoMenuButton.Click += GoBackButton_Click;
@@ -731,7 +742,7 @@
             LearningStatLabel.Location = new Point(215, 110);
             LearningStatLabel.Name = "LearningStatLabel";
             LearningStatLabel.Size = new Size(575, 266);
-            LearningStatLabel.TabIndex = 39;
+            LearningStatLabel.TabIndex = 4;
             LearningStatLabel.Text = "ХХХ";
             LearningStatLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -746,12 +757,12 @@
             StatPanel.Location = new Point(0, 31);
             StatPanel.Name = "StatPanel";
             StatPanel.Size = new Size(978, 519);
-            StatPanel.TabIndex = 26;
+            StatPanel.TabIndex = 3;
             // 
             // GoBackButton3
             // 
             GoBackButton3.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton3.BackgroundImage = Resource1.icons8_налево_96;
+            GoBackButton3.BackgroundImage = (Image)resources.GetObject("GoBackButton3.BackgroundImage");
             GoBackButton3.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton3.Cursor = Cursors.Hand;
             GoBackButton3.FlatAppearance.BorderColor = Color.Gray;
@@ -764,7 +775,8 @@
             GoBackButton3.Location = new Point(3, 3);
             GoBackButton3.Name = "GoBackButton3";
             GoBackButton3.Size = new Size(60, 60);
-            GoBackButton3.TabIndex = 40;
+            GoBackButton3.TabIndex = 0;
+            GoBackButton3.TabStop = false;
             GoBackButton3.UseVisualStyleBackColor = false;
             GoBackButton3.Click += GoBackButton_Click;
             // 
@@ -779,7 +791,7 @@
             StatHeaderLabel.Location = new Point(313, 51);
             StatHeaderLabel.Name = "StatHeaderLabel";
             StatHeaderLabel.Size = new Size(371, 47);
-            StatHeaderLabel.TabIndex = 38;
+            StatHeaderLabel.TabIndex = 1;
             StatHeaderLabel.Text = "Загальна Статистика:";
             StatHeaderLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -793,7 +805,7 @@
             StatLabel.Location = new Point(203, 122);
             StatLabel.Name = "StatLabel";
             StatLabel.Size = new Size(586, 333);
-            StatLabel.TabIndex = 39;
+            StatLabel.TabIndex = 2;
             StatLabel.Text = "ХХХ";
             StatLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -814,7 +826,7 @@
             AddingWPanel1.Location = new Point(0, 31);
             AddingWPanel1.Name = "AddingWPanel1";
             AddingWPanel1.Size = new Size(978, 519);
-            AddingWPanel1.TabIndex = 27;
+            AddingWPanel1.TabIndex = 7;
             // 
             // CancelPrevButton1
             // 
@@ -830,7 +842,8 @@
             CancelPrevButton1.Location = new Point(286, 420);
             CancelPrevButton1.Name = "CancelPrevButton1";
             CancelPrevButton1.Size = new Size(195, 53);
-            CancelPrevButton1.TabIndex = 48;
+            CancelPrevButton1.TabIndex = 0;
+            CancelPrevButton1.TabStop = false;
             CancelPrevButton1.Text = "Скасувати попереднє";
             CancelPrevButton1.UseVisualStyleBackColor = false;
             CancelPrevButton1.Click += CancelPrevButton_Click;
@@ -849,7 +862,8 @@
             AddWButton1.Location = new Point(519, 420);
             AddWButton1.Name = "AddWButton1";
             AddWButton1.Size = new Size(195, 53);
-            AddWButton1.TabIndex = 47;
+            AddWButton1.TabIndex = 1;
+            AddWButton1.TabStop = false;
             AddWButton1.Text = "Додати слово";
             AddWButton1.UseVisualStyleBackColor = false;
             AddWButton1.Click += AddWButton1_Click;
@@ -862,7 +876,7 @@
             AddWLabel4.Location = new Point(322, 377);
             AddWLabel4.Name = "AddWLabel4";
             AddWLabel4.Size = new Size(169, 18);
-            AddWLabel4.TabIndex = 46;
+            AddWLabel4.TabIndex = 2;
             AddWLabel4.Text = "*кожен в окремому рядку";
             AddWLabel4.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -878,7 +892,7 @@
             AddUaTTextBox.Name = "AddUaTTextBox";
             AddUaTTextBox.ScrollBars = ScrollBars.Vertical;
             AddUaTTextBox.Size = new Size(382, 152);
-            AddUaTTextBox.TabIndex = 45;
+            AddUaTTextBox.TabIndex = 3;
             AddUaTTextBox.TabStop = false;
             AddUaTTextBox.TextChanged += EngUaTextBox_TextChanged;
             AddUaTTextBox.KeyPress += UaTextBox_KeyPress;
@@ -891,7 +905,7 @@
             AddWLabel3.Location = new Point(396, 197);
             AddWLabel3.Name = "AddWLabel3";
             AddWLabel3.Size = new Size(208, 25);
-            AddWLabel3.TabIndex = 44;
+            AddWLabel3.TabIndex = 4;
             AddWLabel3.Text = "Введи його переклади";
             AddWLabel3.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -904,7 +918,7 @@
             AddEngWTextBox.Location = new Point(346, 151);
             AddEngWTextBox.Name = "AddEngWTextBox";
             AddEngWTextBox.Size = new Size(308, 36);
-            AddEngWTextBox.TabIndex = 43;
+            AddEngWTextBox.TabIndex = 5;
             AddEngWTextBox.TabStop = false;
             AddEngWTextBox.TextAlign = HorizontalAlignment.Center;
             AddEngWTextBox.TextChanged += EngUaTextBox_TextChanged;
@@ -918,14 +932,14 @@
             AddWLabel2.Location = new Point(388, 124);
             AddWLabel2.Name = "AddWLabel2";
             AddWLabel2.Size = new Size(222, 25);
-            AddWLabel2.TabIndex = 42;
+            AddWLabel2.TabIndex = 6;
             AddWLabel2.Text = "Введи англійське слово";
             AddWLabel2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // GoBackButton4
             // 
             GoBackButton4.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton4.BackgroundImage = Resource1.icons8_налево_96;
+            GoBackButton4.BackgroundImage = (Image)resources.GetObject("GoBackButton4.BackgroundImage");
             GoBackButton4.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton4.Cursor = Cursors.Hand;
             GoBackButton4.FlatAppearance.BorderColor = Color.Gray;
@@ -938,7 +952,8 @@
             GoBackButton4.Location = new Point(3, 3);
             GoBackButton4.Name = "GoBackButton4";
             GoBackButton4.Size = new Size(60, 60);
-            GoBackButton4.TabIndex = 40;
+            GoBackButton4.TabIndex = 7;
+            GoBackButton4.TabStop = false;
             GoBackButton4.UseVisualStyleBackColor = false;
             GoBackButton4.Click += GoBackButton_Click;
             // 
@@ -953,7 +968,7 @@
             AddWLabel1.Location = new Point(313, 49);
             AddWLabel1.Name = "AddWLabel1";
             AddWLabel1.Size = new Size(381, 47);
-            AddWLabel1.TabIndex = 38;
+            AddWLabel1.TabIndex = 8;
             AddWLabel1.Text = "Додавання нових слів";
             AddWLabel1.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -973,7 +988,7 @@
             SettingPanel.Location = new Point(0, 31);
             SettingPanel.Name = "SettingPanel";
             SettingPanel.Size = new Size(978, 519);
-            SettingPanel.TabIndex = 28;
+            SettingPanel.TabIndex = 8;
             // 
             // label1
             // 
@@ -983,7 +998,7 @@
             label1.Location = new Point(360, 259);
             label1.Name = "label1";
             label1.Size = new Size(278, 25);
-            label1.TabIndex = 51;
+            label1.TabIndex = 0;
             label1.Text = "Додавати нові слова у вигляді";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -999,11 +1014,11 @@
             WSourceComboBox.Location = new Point(363, 299);
             WSourceComboBox.Name = "WSourceComboBox";
             WSourceComboBox.Size = new Size(273, 31);
-            WSourceComboBox.TabIndex = 50;
+            WSourceComboBox.TabIndex = 1;
             WSourceComboBox.TabStop = false;
             WSourceComboBox.SelectedIndexChanged += WSourceComboBox_SelectedIndexChanged;
             // 
-            // WordCountNumericUpDown
+            // NumberOfWordsNumericUpDown
             // 
             NumberOfWordsNumericUpDown.BackColor = Color.FromArgb(80, 80, 80);
             NumberOfWordsNumericUpDown.BorderStyle = BorderStyle.FixedSingle;
@@ -1011,9 +1026,9 @@
             NumberOfWordsNumericUpDown.ForeColor = Color.White;
             NumberOfWordsNumericUpDown.Location = new Point(419, 193);
             NumberOfWordsNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            NumberOfWordsNumericUpDown.Name = "WordCountNumericUpDown";
+            NumberOfWordsNumericUpDown.Name = "NumberOfWordsNumericUpDown";
             NumberOfWordsNumericUpDown.Size = new Size(159, 30);
-            NumberOfWordsNumericUpDown.TabIndex = 49;
+            NumberOfWordsNumericUpDown.TabIndex = 2;
             NumberOfWordsNumericUpDown.TextAlign = HorizontalAlignment.Center;
             NumberOfWordsNumericUpDown.Value = new decimal(new int[] { 10, 0, 0, 0 });
             NumberOfWordsNumericUpDown.ValueChanged += WordCountNumericUpDown_ValueChanged;
@@ -1031,7 +1046,8 @@
             DefaultSettingsButton.Location = new Point(286, 389);
             DefaultSettingsButton.Name = "DefaultSettingsButton";
             DefaultSettingsButton.Size = new Size(195, 53);
-            DefaultSettingsButton.TabIndex = 48;
+            DefaultSettingsButton.TabIndex = 3;
+            DefaultSettingsButton.TabStop = false;
             DefaultSettingsButton.Text = "За замовчуванням";
             DefaultSettingsButton.UseVisualStyleBackColor = false;
             DefaultSettingsButton.Click += DefaultSettingsButton_Click;
@@ -1050,7 +1066,8 @@
             SaveSettingsButton.Location = new Point(519, 389);
             SaveSettingsButton.Name = "SaveSettingsButton";
             SaveSettingsButton.Size = new Size(195, 53);
-            SaveSettingsButton.TabIndex = 47;
+            SaveSettingsButton.TabIndex = 4;
+            SaveSettingsButton.TabStop = false;
             SaveSettingsButton.Text = "Зберегти";
             SaveSettingsButton.UseVisualStyleBackColor = false;
             SaveSettingsButton.Click += SaveSettingsButton_Click;
@@ -1063,14 +1080,14 @@
             label3.Location = new Point(366, 154);
             label3.Name = "label3";
             label3.Size = new Size(260, 25);
-            label3.TabIndex = 42;
+            label3.TabIndex = 5;
             label3.Text = "Кількість слів для вивчення";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // GoBackButton5
             // 
             GoBackButton5.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton5.BackgroundImage = Resource1.icons8_налево_96;
+            GoBackButton5.BackgroundImage = (Image)resources.GetObject("GoBackButton5.BackgroundImage");
             GoBackButton5.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton5.Cursor = Cursors.Hand;
             GoBackButton5.FlatAppearance.BorderColor = Color.Gray;
@@ -1083,7 +1100,7 @@
             GoBackButton5.Location = new Point(3, 3);
             GoBackButton5.Name = "GoBackButton5";
             GoBackButton5.Size = new Size(60, 60);
-            GoBackButton5.TabIndex = 40;
+            GoBackButton5.TabIndex = 6;
             GoBackButton5.TabStop = false;
             GoBackButton5.UseVisualStyleBackColor = false;
             GoBackButton5.Click += GoBackButton_Click;
@@ -1099,7 +1116,7 @@
             label4.Location = new Point(364, 63);
             label4.Name = "label4";
             label4.Size = new Size(262, 47);
-            label4.TabIndex = 38;
+            label4.TabIndex = 7;
             label4.Text = "Налаштування";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -1117,7 +1134,7 @@
             AddingWPanel3.Location = new Point(0, 31);
             AddingWPanel3.Name = "AddingWPanel3";
             AddingWPanel3.Size = new Size(978, 519);
-            AddingWPanel3.TabIndex = 29;
+            AddingWPanel3.TabIndex = 4;
             // 
             // CancelAddingButton
             // 
@@ -1133,7 +1150,8 @@
             CancelAddingButton.Location = new Point(286, 395);
             CancelAddingButton.Name = "CancelAddingButton";
             CancelAddingButton.Size = new Size(195, 53);
-            CancelAddingButton.TabIndex = 48;
+            CancelAddingButton.TabIndex = 0;
+            CancelAddingButton.TabStop = false;
             CancelAddingButton.Text = "Скасувати додавання";
             CancelAddingButton.UseVisualStyleBackColor = false;
             CancelAddingButton.Click += CancelAddingButton_Click;
@@ -1152,7 +1170,8 @@
             AddWButton3.Location = new Point(519, 395);
             AddWButton3.Name = "AddWButton3";
             AddWButton3.Size = new Size(195, 53);
-            AddWButton3.TabIndex = 47;
+            AddWButton3.TabIndex = 1;
+            AddWButton3.TabStop = false;
             AddWButton3.Text = "Додати слова з файлу";
             AddWButton3.UseVisualStyleBackColor = false;
             AddWButton3.Click += AddWButton3_Click;
@@ -1167,7 +1186,7 @@
             TxtFilePathTextBox.Name = "TxtFilePathTextBox";
             TxtFilePathTextBox.ScrollBars = ScrollBars.Horizontal;
             TxtFilePathTextBox.Size = new Size(635, 33);
-            TxtFilePathTextBox.TabIndex = 43;
+            TxtFilePathTextBox.TabIndex = 2;
             TxtFilePathTextBox.TabStop = false;
             TxtFilePathTextBox.TextAlign = HorizontalAlignment.Center;
             TxtFilePathTextBox.TextChanged += TxtFilePathTextBox_TextChanged;
@@ -1180,14 +1199,14 @@
             label6.Location = new Point(330, 211);
             label6.Name = "label6";
             label6.Size = new Size(338, 25);
-            label6.TabIndex = 42;
+            label6.TabIndex = 3;
             label6.Text = "Введи шлях до .txt-файлу зі словами";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // GoBackButton6
             // 
             GoBackButton6.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton6.BackgroundImage = Resource1.icons8_налево_96;
+            GoBackButton6.BackgroundImage = (Image)resources.GetObject("GoBackButton6.BackgroundImage");
             GoBackButton6.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton6.Cursor = Cursors.Hand;
             GoBackButton6.FlatAppearance.BorderColor = Color.Gray;
@@ -1200,7 +1219,8 @@
             GoBackButton6.Location = new Point(3, 3);
             GoBackButton6.Name = "GoBackButton6";
             GoBackButton6.Size = new Size(60, 60);
-            GoBackButton6.TabIndex = 40;
+            GoBackButton6.TabIndex = 4;
+            GoBackButton6.TabStop = false;
             GoBackButton6.UseVisualStyleBackColor = false;
             GoBackButton6.Click += GoBackButton_Click;
             // 
@@ -1215,7 +1235,7 @@
             label7.Location = new Point(313, 66);
             label7.Name = "label7";
             label7.Size = new Size(381, 47);
-            label7.TabIndex = 38;
+            label7.TabIndex = 5;
             label7.Text = "Додавання нових слів";
             label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -1233,7 +1253,7 @@
             AddingWPanel2.Location = new Point(0, 31);
             AddingWPanel2.Name = "AddingWPanel2";
             AddingWPanel2.Size = new Size(978, 519);
-            AddingWPanel2.TabIndex = 30;
+            AddingWPanel2.TabIndex = 5;
             // 
             // CancelPrevButton2
             // 
@@ -1249,7 +1269,8 @@
             CancelPrevButton2.Location = new Point(286, 395);
             CancelPrevButton2.Name = "CancelPrevButton2";
             CancelPrevButton2.Size = new Size(195, 53);
-            CancelPrevButton2.TabIndex = 48;
+            CancelPrevButton2.TabIndex = 0;
+            CancelPrevButton2.TabStop = false;
             CancelPrevButton2.Text = "Скасувати додавання";
             CancelPrevButton2.UseVisualStyleBackColor = false;
             CancelPrevButton2.Click += CancelPrevButton_Click;
@@ -1268,7 +1289,8 @@
             AddWButton2.Location = new Point(519, 395);
             AddWButton2.Name = "AddWButton2";
             AddWButton2.Size = new Size(195, 53);
-            AddWButton2.TabIndex = 47;
+            AddWButton2.TabIndex = 1;
+            AddWButton2.TabStop = false;
             AddWButton2.Text = "Додати слова з файлу";
             AddWButton2.UseVisualStyleBackColor = false;
             AddWButton2.Click += AddWButton2_Click;
@@ -1283,7 +1305,7 @@
             EngUaStringTextBox.Name = "EngUaStringTextBox";
             EngUaStringTextBox.ScrollBars = ScrollBars.Horizontal;
             EngUaStringTextBox.Size = new Size(635, 33);
-            EngUaStringTextBox.TabIndex = 43;
+            EngUaStringTextBox.TabIndex = 2;
             EngUaStringTextBox.TabStop = false;
             EngUaStringTextBox.TextAlign = HorizontalAlignment.Center;
             EngUaStringTextBox.TextChanged += EngUaStringTextBox_TextChanged;
@@ -1296,14 +1318,14 @@
             label2.Location = new Point(292, 211);
             label2.Name = "label2";
             label2.Size = new Size(431, 25);
-            label2.TabIndex = 42;
+            label2.TabIndex = 3;
             label2.Text = "Введи рядок зі словом в спеціальному форматі";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // GoBackButton7
             // 
             GoBackButton7.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton7.BackgroundImage = Resource1.icons8_налево_96;
+            GoBackButton7.BackgroundImage = (Image)resources.GetObject("GoBackButton7.BackgroundImage");
             GoBackButton7.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton7.Cursor = Cursors.Hand;
             GoBackButton7.FlatAppearance.BorderColor = Color.Gray;
@@ -1316,7 +1338,8 @@
             GoBackButton7.Location = new Point(3, 3);
             GoBackButton7.Name = "GoBackButton7";
             GoBackButton7.Size = new Size(60, 60);
-            GoBackButton7.TabIndex = 40;
+            GoBackButton7.TabIndex = 4;
+            GoBackButton7.TabStop = false;
             GoBackButton7.UseVisualStyleBackColor = false;
             GoBackButton7.Click += GoBackButton_Click;
             // 
@@ -1331,7 +1354,7 @@
             label5.Location = new Point(313, 66);
             label5.Name = "label5";
             label5.Size = new Size(381, 47);
-            label5.TabIndex = 38;
+            label5.TabIndex = 5;
             label5.Text = "Додавання нових слів";
             label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -1353,7 +1376,7 @@
             panel1.Location = new Point(0, 23);
             panel1.Name = "panel1";
             panel1.Size = new Size(978, 519);
-            panel1.TabIndex = 31;
+            panel1.TabIndex = 6;
             // 
             // dataGridView1
             // 
@@ -1393,7 +1416,7 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(403, 270);
-            dataGridView1.TabIndex = 49;
+            dataGridView1.TabIndex = 0;
             // 
             // WordID
             // 
@@ -1429,7 +1452,8 @@
             button6.Location = new Point(286, 420);
             button6.Name = "button6";
             button6.Size = new Size(195, 53);
-            button6.TabIndex = 48;
+            button6.TabIndex = 1;
+            button6.TabStop = false;
             button6.Text = "Скасувати попереднє";
             button6.UseVisualStyleBackColor = false;
             // 
@@ -1447,7 +1471,8 @@
             button7.Location = new Point(519, 420);
             button7.Name = "button7";
             button7.Size = new Size(195, 53);
-            button7.TabIndex = 47;
+            button7.TabIndex = 2;
+            button7.TabStop = false;
             button7.Text = "Додати слово";
             button7.UseVisualStyleBackColor = false;
             // 
@@ -1459,7 +1484,7 @@
             label8.Location = new Point(87, 376);
             label8.Name = "label8";
             label8.Size = new Size(169, 18);
-            label8.TabIndex = 46;
+            label8.TabIndex = 3;
             label8.Text = "*кожен в окремому рядку";
             label8.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -1475,7 +1500,7 @@
             textBox1.Name = "textBox1";
             textBox1.ScrollBars = ScrollBars.Vertical;
             textBox1.Size = new Size(318, 152);
-            textBox1.TabIndex = 45;
+            textBox1.TabIndex = 4;
             textBox1.TabStop = false;
             // 
             // label9
@@ -1486,7 +1511,7 @@
             label9.Location = new Point(141, 195);
             label9.Name = "label9";
             label9.Size = new Size(208, 25);
-            label9.TabIndex = 44;
+            label9.TabIndex = 5;
             label9.Text = "Введи його переклади";
             label9.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -1499,7 +1524,7 @@
             textBox2.Location = new Point(91, 149);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(308, 36);
-            textBox2.TabIndex = 43;
+            textBox2.TabIndex = 6;
             textBox2.TabStop = false;
             textBox2.TextAlign = HorizontalAlignment.Center;
             // 
@@ -1511,14 +1536,14 @@
             label10.Location = new Point(133, 122);
             label10.Name = "label10";
             label10.Size = new Size(222, 25);
-            label10.TabIndex = 42;
+            label10.TabIndex = 7;
             label10.Text = "Введи англійське слово";
             label10.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // button8
             // 
             button8.BackColor = Color.FromArgb(50, 50, 50);
-            button8.BackgroundImage = Resource1.icons8_налево_96;
+            button8.BackgroundImage = (Image)resources.GetObject("button8.BackgroundImage");
             button8.BackgroundImageLayout = ImageLayout.Zoom;
             button8.Cursor = Cursors.Hand;
             button8.FlatAppearance.BorderColor = Color.Gray;
@@ -1531,7 +1556,8 @@
             button8.Location = new Point(3, 3);
             button8.Name = "button8";
             button8.Size = new Size(60, 60);
-            button8.TabIndex = 40;
+            button8.TabIndex = 8;
+            button8.TabStop = false;
             button8.UseVisualStyleBackColor = false;
             button8.Click += GoBackButton_Click;
             // 
@@ -1546,30 +1572,30 @@
             label11.Location = new Point(313, 49);
             label11.Name = "label11";
             label11.Size = new Size(381, 47);
-            label11.TabIndex = 38;
+            label11.TabIndex = 9;
             label11.Text = "Додавання нових слів";
             label11.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // MainBDForm
+            // MainForm
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(50, 50, 50);
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(978, 550);
-            Controls.Add(panel1);
-            Controls.Add(AddingWPanel1);
             Controls.Add(TopPanel);
-            Controls.Add(SettingPanel);
-            Controls.Add(MenuPanel);
             Controls.Add(LearningEngPanel);
             Controls.Add(LearningUaPanel);
             Controls.Add(LearningStatPanel);
             Controls.Add(StatPanel);
             Controls.Add(AddingWPanel3);
             Controls.Add(AddingWPanel2);
+            Controls.Add(panel1);
+            Controls.Add(AddingWPanel1);
+            Controls.Add(SettingPanel);
+            Controls.Add(MenuPanel);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "MainBDForm";
+            Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "English Words Learner (flash-cards)";
             TopPanel.ResumeLayout(false);

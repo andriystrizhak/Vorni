@@ -40,23 +40,26 @@ namespace EWL
         public MainForm()
         {
             InitializeComponent();
-            MenuPanel.BringToFront();
+            ShowPanel(MenuPanel);
 
             this.KeyPreview = true;
-            this.KeyDown += MainForm_KeyDown!;
+            this.KeyDown += Escape_KeyDown!;
+            this.KeyDown += Enter_KeyDown!;
+            this.KeyDown += RateW_KeyDown!;
+            this.KeyDown += CtrlS_KeyDown!;
+            this.KeyDown += CtrlZ_KeyDown!;
 
             WSourceComboBox.Text = WSourceComboBox.Items[0].ToString();
-
             SetCategoriesList();
         }
 
-        //TODO - Імплементувати
+        //TODO CATEGORY - Імплементувати
         #region [ Category ]
 
         void SetCategoriesList()
         {
             categories = SQLs.Get_Categories();
-            //TODO
+            //TODO CATEGORY
         }
 
         #endregion
@@ -86,7 +89,7 @@ namespace EWL
 
         #region [ Вивчати слова ]
 
-        //TODO - Додати проміжну панель чи кнопку для перемикання категорії для вивчення
+        //TODO CATEGORY - Додати проміжну панель чи кнопку для перемикання категорії для вивчення
 
         private void LearnWButton_Click(object sender, EventArgs e)
         {
@@ -190,7 +193,7 @@ namespace EWL
 
         #region [ Додати слова ]
 
-        //TODO - Додати перемикач категорії для додавання слів
+        //TODO CATEGORY - Додати перемикач категорії для додавання слів
 
         private void SeeAddingWPanelButton_Click(object sender, EventArgs e)
         {
@@ -418,6 +421,13 @@ namespace EWL
 
         //*******
 
+        #region [ Назад, до Меню ]
+
+        private void GoBackButton_Click(object sender, EventArgs e)
+            => ShowPanel(MenuPanel);
+
+        #endregion
+
         #region  Х( Поки не реалізовано )Х
         private void FullScreenButton_Click(object sender, EventArgs e)
         {
@@ -438,15 +448,70 @@ namespace EWL
 
         #endregion
 
-        #region [ Назад, до Меню ]
+        #region < Гарячі клавіші >
 
-        private void GoBackButton_Click(object sender, EventArgs e)
-            => ShowPanel(MenuPanel);
-
-        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        private void Escape_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
-                GoBackButton_Click(sender, e); //CHECK
+                GoBackButton_Click(sender, e);
+        }
+
+        private void Enter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SeeTransButton.PerformClick();
+                RetryButton.PerformClick();
+
+                AddWButton1.PerformClick();
+                AddWButton2.PerformClick();
+                AddWButton3.PerformClick();
+
+                button7.PerformClick(); //CATEGORY
+            }
+        }
+
+        private void CtrlS_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.S)
+                SaveSettingsButton.PerformClick();
+        }
+
+        private void CtrlZ_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Z)
+            {
+                DefaultSettingsButton.PerformClick();
+
+                CancelPrevButton1.PerformClick();
+                CancelPrevButton2.PerformClick();
+                CancelAddingButton.PerformClick();
+
+                button6.PerformClick(); //CATEGORY
+            }
+        }
+
+        private void RateW_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            switch (e.KeyCode)
+            {
+                case Keys.D1:
+                    Button1.PerformClick();
+                    break;
+                case Keys.D2:
+                    Button2.PerformClick();
+                    break;
+                case Keys.D3:
+                    Button3.PerformClick();
+                    break;
+                case Keys.D4:
+                    Button4.PerformClick();
+                    break;
+                case Keys.D5:
+                    Button5.PerformClick();
+                    break;
+            }
         }
 
         #endregion
