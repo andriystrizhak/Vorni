@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EWL {
+namespace Eng_Flash_Cards_Learner {
     using System;
     
     
@@ -116,6 +116,16 @@ namespace EWL {
         internal static System.Drawing.Bitmap icons8_5_в_кружке_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-5-в-кружке-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_вопрос_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-вопрос-48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

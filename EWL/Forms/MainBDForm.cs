@@ -527,11 +527,27 @@ namespace EWL
 
             panelToShow.Visible = true;
 
+
+            //if (panelToShow != MenuPanel)
+            //    this.Focus();
+
             /*
-            if (panelToShow == panel1)
-                // Встановити функцію для кнопки на panel1
-            else if (panelToShow == panel2)
-                // Встановити іншу функцію для кнопки на panel2
+            if (panelToShow == MenuPanel)
+            {
+                LearnWButton.TabStop = true;
+                SeeAddingWPanelButton.TabStop = true;
+                SettingButton.TabStop = true;
+                SeeStatButton.TabStop = true;
+            }
+            // Встановити функцію для кнопки на panel1
+            else
+            {
+                LearnWButton.TabStop = false;
+                SeeAddingWPanelButton.TabStop = false;
+                SettingButton.TabStop = false;
+                SeeStatButton.TabStop = false;
+            }
+            // Встановити іншу функцію для кнопки на panel2
             */
         }
 

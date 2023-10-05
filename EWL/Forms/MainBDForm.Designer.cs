@@ -30,10 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -98,6 +98,7 @@
             GoBackButton6 = new Button();
             label7 = new Label();
             AddingWPanel2 = new Panel();
+            SpecialFormatInfoBox = new PictureBox();
             CancelPrevButton2 = new Button();
             AddWButton2 = new Button();
             EngUaStringTextBox = new TextBox();
@@ -119,6 +120,7 @@
             label10 = new Label();
             button8 = new Button();
             label11 = new Label();
+            SpecialFormatLineTip = new ToolTip(components);
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             MenuPanel.SuspendLayout();
@@ -133,6 +135,7 @@
             ((System.ComponentModel.ISupportInitialize)NumberOfWordsNumericUpDown).BeginInit();
             AddingWPanel3.SuspendLayout();
             AddingWPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -635,7 +638,6 @@
             SeeTransButton.Name = "SeeTransButton";
             SeeTransButton.Size = new Size(320, 60);
             SeeTransButton.TabIndex = 2;
-            SeeTransButton.TabStop = false;
             SeeTransButton.Text = "Побачити переклад";
             SeeTransButton.UseVisualStyleBackColor = false;
             SeeTransButton.Click += SeeTransButton_Click;
@@ -681,7 +683,7 @@
             RetryButton.FlatStyle = FlatStyle.Flat;
             RetryButton.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
             RetryButton.ForeColor = Color.White;
-            RetryButton.Location = new Point(533, 401);
+            RetryButton.Location = new Point(533, 405);
             RetryButton.Margin = new Padding(10);
             RetryButton.MaximumSize = new Size(350, 70);
             RetryButton.MinimumSize = new Size(150, 50);
@@ -1243,6 +1245,7 @@
             // 
             AddingWPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AddingWPanel2.BorderStyle = BorderStyle.FixedSingle;
+            AddingWPanel2.Controls.Add(SpecialFormatInfoBox);
             AddingWPanel2.Controls.Add(CancelPrevButton2);
             AddingWPanel2.Controls.Add(AddWButton2);
             AddingWPanel2.Controls.Add(EngUaStringTextBox);
@@ -1254,6 +1257,18 @@
             AddingWPanel2.Name = "AddingWPanel2";
             AddingWPanel2.Size = new Size(978, 519);
             AddingWPanel2.TabIndex = 5;
+            // 
+            // SpecialFormatInfoBox
+            // 
+            SpecialFormatInfoBox.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_вопрос_48;
+            SpecialFormatInfoBox.BackgroundImageLayout = ImageLayout.Zoom;
+            SpecialFormatInfoBox.Cursor = Cursors.Help;
+            SpecialFormatInfoBox.Location = new Point(930, 12);
+            SpecialFormatInfoBox.Name = "SpecialFormatInfoBox";
+            SpecialFormatInfoBox.Size = new Size(35, 35);
+            SpecialFormatInfoBox.TabIndex = 7;
+            SpecialFormatInfoBox.TabStop = false;
+            SpecialFormatLineTip.SetToolTip(SpecialFormatInfoBox, resources.GetString("SpecialFormatInfoBox.ToolTip"));
             // 
             // CancelPrevButton2
             // 
@@ -1380,39 +1395,39 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.NullValue = "-";
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.NullValue = "-";
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.LightGray;
-            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.NullValue = "-";
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.LightGray;
+            dataGridViewCellStyle6.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.NullValue = "-";
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { WordID, EngWord, UaTranslation, Rating });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle7.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.GridColor = Color.Gray;
             dataGridView1.Location = new Point(497, 118);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.LightGray;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.LightGray;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(403, 270);
@@ -1576,6 +1591,18 @@
             label11.Text = "Додавання нових слів";
             label11.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // SpecialFormatLineTip
+            // 
+            SpecialFormatLineTip.AutoPopDelay = 20000;
+            SpecialFormatLineTip.BackColor = SystemColors.GrayText;
+            SpecialFormatLineTip.ForeColor = SystemColors.ControlLight;
+            SpecialFormatLineTip.InitialDelay = 300;
+            SpecialFormatLineTip.IsBalloon = true;
+            SpecialFormatLineTip.ReshowDelay = 100;
+            SpecialFormatLineTip.ShowAlways = true;
+            SpecialFormatLineTip.ToolTipIcon = ToolTipIcon.Info;
+            SpecialFormatLineTip.ToolTipTitle = "Спеціальний формат";
+            // 
             // MainForm
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -1619,6 +1646,7 @@
             AddingWPanel3.PerformLayout();
             AddingWPanel2.ResumeLayout(false);
             AddingWPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -1713,5 +1741,7 @@
         private DataGridViewTextBoxColumn EngWord;
         private DataGridViewTextBoxColumn UaTranslation;
         private DataGridViewTextBoxColumn Rating;
+        private PictureBox SpecialFormatInfoBox;
+        private ToolTip SpecialFormatLineTip;
     }
 }
