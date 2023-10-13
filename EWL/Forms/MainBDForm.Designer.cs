@@ -30,10 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -91,6 +91,8 @@
             GoBackButton5 = new Button();
             label4 = new Label();
             AddingWPanel3 = new Panel();
+            label12 = new Label();
+            SpecialFormatInfoBox2 = new PictureBox();
             CancelAddingButton = new Button();
             AddWButton3 = new Button();
             TxtFilePathTextBox = new TextBox();
@@ -98,7 +100,7 @@
             GoBackButton6 = new Button();
             label7 = new Label();
             AddingWPanel2 = new Panel();
-            SpecialFormatInfoBox = new PictureBox();
+            SpecialFormatInfoBox1 = new PictureBox();
             CancelPrevButton2 = new Button();
             AddWButton2 = new Button();
             EngUaStringTextBox = new TextBox();
@@ -134,8 +136,9 @@
             SettingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumberOfWordsNumericUpDown).BeginInit();
             AddingWPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox2).BeginInit();
             AddingWPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -638,6 +641,7 @@
             SeeTransButton.Name = "SeeTransButton";
             SeeTransButton.Size = new Size(320, 60);
             SeeTransButton.TabIndex = 2;
+            SeeTransButton.TabStop = false;
             SeeTransButton.Text = "Побачити переклад";
             SeeTransButton.UseVisualStyleBackColor = false;
             SeeTransButton.Click += SeeTransButton_Click;
@@ -1126,6 +1130,8 @@
             // 
             AddingWPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AddingWPanel3.BorderStyle = BorderStyle.FixedSingle;
+            AddingWPanel3.Controls.Add(label12);
+            AddingWPanel3.Controls.Add(SpecialFormatInfoBox2);
             AddingWPanel3.Controls.Add(CancelAddingButton);
             AddingWPanel3.Controls.Add(AddWButton3);
             AddingWPanel3.Controls.Add(TxtFilePathTextBox);
@@ -1137,6 +1143,31 @@
             AddingWPanel3.Name = "AddingWPanel3";
             AddingWPanel3.Size = new Size(978, 519);
             AddingWPanel3.TabIndex = 4;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(385, 296);
+            label12.Name = "label12";
+            label12.Size = new Size(240, 25);
+            label12.TabIndex = 9;
+            label12.Text = "Або перетягни файл сюди";
+            label12.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // SpecialFormatInfoBox2
+            // 
+            SpecialFormatInfoBox2.AccessibleRole = AccessibleRole.HelpBalloon;
+            SpecialFormatInfoBox2.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_вопрос_48;
+            SpecialFormatInfoBox2.BackgroundImageLayout = ImageLayout.Zoom;
+            SpecialFormatInfoBox2.Cursor = Cursors.Help;
+            SpecialFormatInfoBox2.Location = new Point(928, 15);
+            SpecialFormatInfoBox2.Name = "SpecialFormatInfoBox2";
+            SpecialFormatInfoBox2.Size = new Size(35, 35);
+            SpecialFormatInfoBox2.TabIndex = 8;
+            SpecialFormatInfoBox2.TabStop = false;
+            SpecialFormatLineTip.SetToolTip(SpecialFormatInfoBox2, resources.GetString("SpecialFormatInfoBox2.ToolTip"));
             // 
             // CancelAddingButton
             // 
@@ -1198,11 +1229,11 @@
             label6.AutoSize = true;
             label6.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(330, 211);
+            label6.Location = new Point(224, 211);
             label6.Name = "label6";
-            label6.Size = new Size(338, 25);
+            label6.Size = new Size(557, 25);
             label6.TabIndex = 3;
-            label6.Text = "Введи шлях до .txt-файлу зі словами";
+            label6.Text = "Введи шлях до .txt-файлу зі словами в Спеціальному форматі";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // GoBackButton6
@@ -1245,7 +1276,7 @@
             // 
             AddingWPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AddingWPanel2.BorderStyle = BorderStyle.FixedSingle;
-            AddingWPanel2.Controls.Add(SpecialFormatInfoBox);
+            AddingWPanel2.Controls.Add(SpecialFormatInfoBox1);
             AddingWPanel2.Controls.Add(CancelPrevButton2);
             AddingWPanel2.Controls.Add(AddWButton2);
             AddingWPanel2.Controls.Add(EngUaStringTextBox);
@@ -1258,17 +1289,18 @@
             AddingWPanel2.Size = new Size(978, 519);
             AddingWPanel2.TabIndex = 5;
             // 
-            // SpecialFormatInfoBox
+            // SpecialFormatInfoBox1
             // 
-            SpecialFormatInfoBox.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_вопрос_48;
-            SpecialFormatInfoBox.BackgroundImageLayout = ImageLayout.Zoom;
-            SpecialFormatInfoBox.Cursor = Cursors.Help;
-            SpecialFormatInfoBox.Location = new Point(930, 12);
-            SpecialFormatInfoBox.Name = "SpecialFormatInfoBox";
-            SpecialFormatInfoBox.Size = new Size(35, 35);
-            SpecialFormatInfoBox.TabIndex = 7;
-            SpecialFormatInfoBox.TabStop = false;
-            SpecialFormatLineTip.SetToolTip(SpecialFormatInfoBox, resources.GetString("SpecialFormatInfoBox.ToolTip"));
+            SpecialFormatInfoBox1.AccessibleRole = AccessibleRole.HelpBalloon;
+            SpecialFormatInfoBox1.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_вопрос_48;
+            SpecialFormatInfoBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            SpecialFormatInfoBox1.Cursor = Cursors.Help;
+            SpecialFormatInfoBox1.Location = new Point(930, 12);
+            SpecialFormatInfoBox1.Name = "SpecialFormatInfoBox1";
+            SpecialFormatInfoBox1.Size = new Size(35, 35);
+            SpecialFormatInfoBox1.TabIndex = 7;
+            SpecialFormatInfoBox1.TabStop = false;
+            SpecialFormatLineTip.SetToolTip(SpecialFormatInfoBox1, resources.GetString("SpecialFormatInfoBox1.ToolTip"));
             // 
             // CancelPrevButton2
             // 
@@ -1306,7 +1338,7 @@
             AddWButton2.Size = new Size(195, 53);
             AddWButton2.TabIndex = 1;
             AddWButton2.TabStop = false;
-            AddWButton2.Text = "Додати слова з файлу";
+            AddWButton2.Text = "Додати слово";
             AddWButton2.UseVisualStyleBackColor = false;
             AddWButton2.Click += AddWButton2_Click;
             // 
@@ -1324,6 +1356,7 @@
             EngUaStringTextBox.TabStop = false;
             EngUaStringTextBox.TextAlign = HorizontalAlignment.Center;
             EngUaStringTextBox.TextChanged += EngUaStringTextBox_TextChanged;
+            EngUaStringTextBox.KeyPress += EngUaStringTextBox_KeyPress;
             // 
             // label2
             // 
@@ -1395,39 +1428,39 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle5.NullValue = "-";
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.LightGray;
-            dataGridViewCellStyle6.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.NullValue = "-";
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.LightGray;
+            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.NullValue = "-";
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { WordID, EngWord, UaTranslation, Rating });
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle7.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.GridColor = Color.Gray;
             dataGridView1.Location = new Point(497, 118);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.LightGray;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.LightGray;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(403, 270);
@@ -1578,6 +1611,7 @@
             // 
             // label11
             // 
+            label11.AccessibleRole = AccessibleRole.StaticText;
             label11.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label11.AutoSize = true;
             label11.BackColor = Color.FromArgb(50, 50, 50);
@@ -1610,16 +1644,16 @@
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(978, 550);
             Controls.Add(TopPanel);
-            Controls.Add(LearningEngPanel);
-            Controls.Add(LearningUaPanel);
-            Controls.Add(LearningStatPanel);
-            Controls.Add(StatPanel);
             Controls.Add(AddingWPanel3);
             Controls.Add(AddingWPanel2);
-            Controls.Add(panel1);
             Controls.Add(AddingWPanel1);
             Controls.Add(SettingPanel);
             Controls.Add(MenuPanel);
+            Controls.Add(LearningEngPanel);
+            Controls.Add(panel1);
+            Controls.Add(LearningUaPanel);
+            Controls.Add(LearningStatPanel);
+            Controls.Add(StatPanel);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
@@ -1644,9 +1678,10 @@
             ((System.ComponentModel.ISupportInitialize)NumberOfWordsNumericUpDown).EndInit();
             AddingWPanel3.ResumeLayout(false);
             AddingWPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox2).EndInit();
             AddingWPanel2.ResumeLayout(false);
             AddingWPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -1741,7 +1776,9 @@
         private DataGridViewTextBoxColumn EngWord;
         private DataGridViewTextBoxColumn UaTranslation;
         private DataGridViewTextBoxColumn Rating;
-        private PictureBox SpecialFormatInfoBox;
+        private PictureBox SpecialFormatInfoBox1;
         private ToolTip SpecialFormatLineTip;
+        private PictureBox SpecialFormatInfoBox2;
+        private Label label12;
     }
 }

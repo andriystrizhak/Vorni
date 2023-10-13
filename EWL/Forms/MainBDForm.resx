@@ -398,7 +398,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAA2B4AAAJNU0Z0AUkBTAIBAQIB
-        AAFQAQQBUAEEAUYBAAFGAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABGAEBAgABRgMAAQEBAAEgBQAB
+        AAGoAQQBqAEEAUYBAAFGAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABGAEBAgABRgMAAQEBAAEgBQAB
         QAEyAQH/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/
         AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/
         AP8A/wD/AOYAAwMBBAMhATADOwFiAzsBYgM7AWIDOwFiAzsBYgMSARgoAAMPARQDNgFYAzsBYgM7AWID
@@ -1312,6 +1312,18 @@
         MCoHo3IwKgejcjAq5fT0F+gmqfhKGq6QAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="SpecialFormatLineTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>163, 17</value>
+  </metadata>
+  <data name="SpecialFormatInfoBox2.ToolTip" xml:space="preserve">
+    <value>Спеціальний формат такий:
+               1 - 2 / 2 [3]
+    де:
+1 - англійське слово чи фраза;
+2 - один з перекладів (перелічується через знак '/');
+3 - складність слова, від 1 (дуже легке)
+до 5 (дуже складне) [необов'язкове].</value>
+  </data>
   <data name="GoBackButton6.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -1327,10 +1339,7 @@
         MCoHo3IwKgejcjAq5fT0F+gmqfhKGq6QAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="SpecialFormatLineTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>163, 17</value>
-  </metadata>
-  <data name="SpecialFormatInfoBox.ToolTip" xml:space="preserve">
+  <data name="SpecialFormatInfoBox1.ToolTip" xml:space="preserve">
     <value>Спеціальний формат такий:
                1 - 2 / 2 [3]
     де:
@@ -1381,9 +1390,6 @@
         MCoHo3IwKgejcjAq5fT0F+gmqfhKGq6QAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="SpecialFormatLineTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>163, 17</value>
-  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAAAAAAEAIAAjGwAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAEAAAABAAgCAAAA0xA/MQAAAAFv

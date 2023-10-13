@@ -43,8 +43,8 @@ namespace EWL
             ShowPanel(MenuPanel);
 
             this.KeyPreview = true;
-            this.KeyDown += Escape_KeyDown!;
             this.KeyDown += Enter_KeyDown!;
+            this.KeyDown += Escape_KeyDown!;
             this.KeyDown += RateW_KeyDown!;
             this.KeyDown += CtrlS_KeyDown!;
             this.KeyDown += CtrlZ_KeyDown!;
@@ -93,9 +93,9 @@ namespace EWL
 
         private void LearnWButton_Click(object sender, EventArgs e)
         {
-            NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
+            //NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
             words = SQLs
-                .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), SQLs.Get_NumberOfWordsToLearn())
+                .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), (int)NumberOfWordsNumericUpDown.Value)
                 .Select(w => w.Item1)
                 .ToList();
             SeeEngWord();
@@ -229,7 +229,16 @@ namespace EWL
         void Show_WordIsRepeated_MessageBox()
         {
             MessageBox.Show(
-                "Таке ж слово вже існує в БД",
+                "Таке ж слово ти вже додавав до БД раніше",
+                "Не сіпайся, все добре",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+        }
+
+        void Show_InvalidLineFormat_MessageBox()
+        {
+            MessageBox.Show(
+                "Твій рядок не в 'Спеціальному форматі'",
                 "Не сіпайся, все добре",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
@@ -291,7 +300,7 @@ namespace EWL
                 && charCode != 8 && charCode != 32
                 && charCode != '(' && charCode != ')'
                 && charCode != 13 && charCode != 'і'
-                && charCode != '-' && charCode != '\'')
+                && charCode != '-' && charCode != '/')
                 e.Handled = true;
         }
         #endregion
@@ -305,9 +314,11 @@ namespace EWL
 
         private void AddWButton2_Click(object sender, EventArgs e)
         {
-            var word = Txt_FileHandler.SplitSpecialLine(EngUaStringTextBox.Text);
+            var word = Txt_FileHandler.GetWordFromLine(EngUaStringTextBox.Text);
 
-            if (!SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua))
+            if (word == null)
+                Show_InvalidLineFormat_MessageBox();
+            else if (!SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty))
                 Show_WordIsRepeated_MessageBox();
             else
             {
@@ -318,6 +329,20 @@ namespace EWL
         }
 
         //див. CancelPrevButton_Click() - для обох панелей (1 і 2)
+
+        private void EngUaStringTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int charCode = e.KeyChar;
+            if (!(charCode >= 65 && charCode <= 90)   // Великі латинські букви A-Z
+                && !(charCode >= 97 && charCode <= 122)
+                && !(charCode >= 1040 && charCode <= 1103)
+                && charCode != 8 && charCode != 32
+                && charCode != '(' && charCode != ')'
+                && charCode != 13 && charCode != 'і'
+                && charCode != '-' && charCode != '/'
+                && charCode != '[' && charCode != ']')
+                e.Handled = true;
+        }
 
         #endregion
 
@@ -493,7 +518,6 @@ namespace EWL
 
         private void RateW_KeyDown(object sender, KeyEventArgs e)
         {
-
             switch (e.KeyCode)
             {
                 case Keys.D1:
@@ -550,7 +574,6 @@ namespace EWL
             // Встановити іншу функцію для кнопки на panel2
             */
         }
-
         #endregion
 
 

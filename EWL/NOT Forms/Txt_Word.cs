@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace EWL.NOT_Forms
 {
-    internal class Txt_Word
+    public class Txt_Word
     {
         public string Eng;
         public string Ua;
+        public int Difficulty = 0;
     }
 }

@@ -107,7 +107,7 @@ namespace EWL.EF_SQLite
             return db.AllWords.Any(c => c.EngWord == engW);
         }
 
-        public static bool TryAdd_Word_ToAllWords(string engW, string uaW, int categoryID = 1)
+        public static bool TryAdd_Word_ToAllWords(string engW, string uaW, int difficulty = 0, int categoryID = 1)
         {
             if (WordIsRepeated_InAllWords(engW)) return false;
             uaW = uaW.Replace("'", "''");

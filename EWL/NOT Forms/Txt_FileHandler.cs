@@ -9,22 +9,46 @@ using EWL.EF_SQLite;
 
 namespace EWL.NOT_Forms
 {
-    static class Txt_FileHandler
+    public static class Txt_FileHandler
     {
-        //TODO
-        // - Додати спеціальний формат для рядка зі складністю
-        // - Додати можливість обробляти такий рядок
-        // і встановлювати складність слова з нього
-
         /// <summary>
         /// Розділяє рядок на слово і його переклад
         /// </summary>
-        public static Txt_Word SplitSpecialLine(string line)
+        public static Txt_Word? GetWordFromLine(string line)
         {
-            string[] wordMeaningPair = line.Split(" - ");
-            string meanings = wordMeaningPair[1].Replace(" / ", "\n");
+            string[] wordMeaningsPair;
+            string[] meaningDifficultyPair;
+            int difficulty;
+            string meanings;
+            Txt_Word? word;
 
-            return new Txt_Word { Eng = wordMeaningPair[0], Ua = meanings };
+            try
+            {
+                wordMeaningsPair = line.Split(" - ", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                word = new Txt_Word();
+
+                if (wordMeaningsPair[1].Contains("["))
+                {
+                    if (!wordMeaningsPair[1].Contains("]")) throw new ArgumentException("Wrong '[ ]' brackets format");
+
+                    meaningDifficultyPair = wordMeaningsPair[1]
+                        .Remove(wordMeaningsPair[1].IndexOf(']'))
+                        .Split(" [", StringSplitOptions.RemoveEmptyEntries);
+                    difficulty = int.Parse(meaningDifficultyPair[1]);
+
+                    if (difficulty > 5 || difficulty < 1) throw new ArgumentException("Wrong Difficulty value");
+                    word.Difficulty = difficulty;
+                }
+                meanings = wordMeaningsPair[1].Replace(" / ", "\n");
+
+                word.Eng = wordMeaningsPair[0]; 
+                word.Ua = meanings;
+            }
+            catch
+            {
+                word = null;
+            }
+            return word;
         }
 
         /// <summary>
@@ -40,12 +64,13 @@ namespace EWL.NOT_Forms
 
             var allWords = allLines
                 .Where(x => x.Contains(" - "))
-                .Select(x => SplitSpecialLine(x))
+                .Select(x => GetWordFromLine(x))
+                .Where(x => x != null)
                 .ToList();
             int addedWordsCount = 0;
 
             foreach (var word in allWords)
-                addedWordsCount += SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua) ? 1 : 0;
+                addedWordsCount += SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty) ? 1 : 0;
 
             return (allWords.Count, addedWordsCount);
         }
