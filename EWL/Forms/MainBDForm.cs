@@ -12,7 +12,7 @@ namespace EWL
         //- "//CHECK"
 
         /// <summary>
-        /// Розташування TopPanel (для переміщення вікна мишкою)
+        /// Розташування <see cref="TopPanel"/> (для переміщення вікна мишкою)
         /// </summary>
         Point lastPoint;
 
@@ -26,7 +26,7 @@ namespace EWL
         /// </summary>
         List<Word> words = new();
         /// <summary>
-        /// Індекс поточного слова для вивчення зі списку words
+        /// Індекс поточного слова для вивчення зі списку <see cref="words"/>
         /// </summary>
         int wordIndex = 0;
         /// <summary>
@@ -102,7 +102,7 @@ namespace EWL
         }
 
         /// <summary>
-        /// Підготовує й показує 'LearningEngPanel'
+        /// Підготовлює й показує <see cref="LearningEngPanel"/>
         /// </summary>
         private void SeeEngWord()
         {
@@ -213,7 +213,7 @@ namespace EWL
         }
 
         /// <summary>
-        /// Скидає всі AddingWPanel до початкового стану
+        /// Скидає всі <see cref="'AddingWPanel'"/> до початкового стану
         /// </summary>
         void Null_EngUaTextBoxes()
         {
@@ -221,7 +221,7 @@ namespace EWL
             AddUaTTextBox.Text = "";
 
             EngUaStringTextBox.Text = "";
-            TxtFilePathTextBox.Text = "";
+            TxtFilePathTextBox.Text = "           Додані файли:\r\n";
 
             AddWButton1.Enabled = false;
         }
@@ -348,8 +348,99 @@ namespace EWL
 
         #region AddingWPanel3
 
+        #region Drag Drop
+
+        /// <summary>
+        /// Вказує на те чи курсор з файлом знаходиться над Drag Drop панеллю
+        /// </summary>
+        bool isMouseOverDDP { get; set; } = false;
+        bool fileIsAdded { get => AddWButton3.Enabled; }
+        List<string> files = new();
+
+        /// <summary>
+        /// Малює пунктирну лінію біля краю <see cref="DragAndDropPanel"/>
+        /// </summary>
+        private void DragAndDropPanel_Paint(object sender, PaintEventArgs e)
+        {
+            int width = 3;
+            Pen pen = new Pen(Color.AliceBlue, width);
+            if (!isMouseOverDDP)
+                pen.DashPattern = new float[] { 5, 5 };
+            Rectangle rectangle = new Rectangle(
+                10, 10, DragAndDropPanel.Width - (20 + width), DragAndDropPanel.Height - (20 + width));
+            e.Graphics.DrawRectangle(pen, rectangle);
+        }
+
+        private void DragAndDropPanel_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy; // Показуємо, що панель приймає файли.
+
+            TxtFilePathTextBox.Visible = false;
+            ChooseFileButton.Visible = false;
+            label12.Visible = false;
+            label6.Visible = true;
+            isMouseOverDDP = true;
+            DragAndDropPanel.Invalidate();
+        }
+
+        private void DragAndDropPanel_DragLeave(object sender, EventArgs e)
+        {
+            if (fileIsAdded)
+                TxtFilePathTextBox.Visible = true;
+            ChooseFileButton.Visible = true;
+            label12.Visible = true;
+            label6.Visible = false;
+            isMouseOverDDP = false;
+            DragAndDropPanel.Invalidate();
+        }
+
+        private void DragAndDropPanel_DragDrop(object sender, DragEventArgs e)
+        {
+            var filesToAdd = ((string[])e.Data.GetData(DataFormats.FileDrop)).ToList();
+            files.AddRange(filesToAdd);
+            files = files.Distinct().ToList();
+
+            int invalidFilesCount = 0;
+            foreach (var file in files)
+            {
+                if (!file.Contains(".txt", StringComparison.OrdinalIgnoreCase))
+                    invalidFilesCount++;
+
+                //TODO - Додати сповіщення з надписом,
+                //що "деякі файли не відповідають .txt-формату"
+            }
+
+            if (invalidFilesCount >= files.Count)
+                MessageBox.Show(
+                    "Жоден перетягнутий файл не відповідає формату '.txt'",
+                    "O-oy, таке ми не приймаємо",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+            //*******************************************************
+
+            //var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (var file in files)
+            {
+                if (file.Contains(".txt", StringComparison.OrdinalIgnoreCase))
+                    TxtFilePathTextBox.Text += file.ToString() + "\r\n";
+            }
+            TxtFilePathTextBox.Visible = true;
+            label6.Visible = false;
+            isMouseOverDDP = false;
+            DragAndDropPanel.Invalidate();
+        }
+
+        #endregion
+
         private void TxtFilePathTextBox_TextChanged(object sender, EventArgs e)
             => AddWButton3.Enabled = true;
+
+        private void ChooseFileButton_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void AddWButton3_Click(object sender, EventArgs e)
         {
@@ -368,6 +459,12 @@ namespace EWL
         private void CancelAddingButton_Click(object sender, EventArgs e)
         {
             SQLs.Remove_LastWords_Permanently(addedWords);
+            MessageBox.Show(
+                $"Всі слова з останнього .txt-файлу були видалені",
+                "Звіт про видалення слів",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
             addedWords = 0;
             CancelAddingButton.Enabled = false;
         }
@@ -495,6 +592,11 @@ namespace EWL
                 button7.PerformClick(); //CATEGORY
             }
         }
+        private void SeeTransButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SeeTransButton.PerformClick();
+        }
 
         private void CtrlS_KeyDown(object sender, KeyEventArgs e)
         {
@@ -543,12 +645,21 @@ namespace EWL
 
         #region { OTHER }
 
+        /// <summary>
+        /// Показує <paramref name="panelToShow"/>, а всі інші приховує
+        /// </summary>
+        /// <param name="panelToShow">Панель, яка повинна бути показана</param>
         private void ShowPanel(Panel panelToShow)
         {
             foreach (Control panel in this.Controls)
                 if (panel is Panel && panel != TopPanel)
+                {
+                    panel.Enabled = false;
                     panel.Visible = false;
 
+                }
+
+            panelToShow.Enabled = true;
             panelToShow.Visible = true;
 
 
@@ -574,7 +685,11 @@ namespace EWL
             // Встановити іншу функцію для кнопки на panel2
             */
         }
+
         #endregion
+
+
+
 
 
 

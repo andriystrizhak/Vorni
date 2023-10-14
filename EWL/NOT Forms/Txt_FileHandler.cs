@@ -11,9 +11,12 @@ namespace EWL.NOT_Forms
 {
     public static class Txt_FileHandler
     {
+
         /// <summary>
-        /// Розділяє рядок на слово і його переклад
+        /// Розділяє рядок на слово, його переклад і складність (необов'язково)
         /// </summary>
+        /// <param name="line">Рядок в спеціальному форматі</param>
+        /// <returns>Слово типу <see cref="Txt_Word"/>, а якщо рядок некоректний то значення <see cref="null"/></returns>
         public static Txt_Word? GetWordFromLine(string line)
         {
             string[] wordMeaningsPair;
@@ -52,12 +55,12 @@ namespace EWL.NOT_Forms
         }
 
         /// <summary>
-        /// Додає слова з .txt-файлу до БД
+        /// Додає слова з <b>.txt-файлу</b> до БД
         /// </summary>
-        /// <param name="pathToTxtFile">Шлях до .txt-файлу</param>
+        /// <param name="pathToTxtFile">Шлях до <b>.txt-файлу</b></param>
         /// <returns>Результати роботи методу: 
-        /// Item1 - кількість слів в файлі,
-        /// Item2 - кількість доданих до БД слів</returns>
+        /// <paramref name="Item1"/> - кількість слів в файлі,
+        /// <paramref name="Item2"/> - кількість доданих до БД слів</returns>
         public static (int, int) AddWordsFromTxtFile(string pathToTxtFile)
         {
             string[] allLines = File.ReadAllLines(pathToTxtFile);

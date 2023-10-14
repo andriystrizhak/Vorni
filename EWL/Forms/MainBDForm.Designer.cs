@@ -91,12 +91,14 @@
             GoBackButton5 = new Button();
             label4 = new Label();
             AddingWPanel3 = new Panel();
+            DragAndDropPanel = new Panel();
+            TxtFilePathTextBox = new TextBox();
+            label6 = new Label();
+            ChooseFileButton = new Button();
             label12 = new Label();
             SpecialFormatInfoBox2 = new PictureBox();
             CancelAddingButton = new Button();
             AddWButton3 = new Button();
-            TxtFilePathTextBox = new TextBox();
-            label6 = new Label();
             GoBackButton6 = new Button();
             label7 = new Label();
             AddingWPanel2 = new Panel();
@@ -136,6 +138,7 @@
             SettingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumberOfWordsNumericUpDown).BeginInit();
             AddingWPanel3.SuspendLayout();
+            DragAndDropPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox2).BeginInit();
             AddingWPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox1).BeginInit();
@@ -617,7 +620,7 @@
             GoBackButton1.Location = new Point(3, 3);
             GoBackButton1.Name = "GoBackButton1";
             GoBackButton1.Size = new Size(60, 60);
-            GoBackButton1.TabIndex = 1;
+            GoBackButton1.TabIndex = 2;
             GoBackButton1.TabStop = false;
             GoBackButton1.UseVisualStyleBackColor = false;
             GoBackButton1.Click += GoBackButton_Click;
@@ -640,11 +643,12 @@
             SeeTransButton.MinimumSize = new Size(300, 50);
             SeeTransButton.Name = "SeeTransButton";
             SeeTransButton.Size = new Size(320, 60);
-            SeeTransButton.TabIndex = 2;
+            SeeTransButton.TabIndex = 1;
             SeeTransButton.TabStop = false;
             SeeTransButton.Text = "Побачити переклад";
             SeeTransButton.UseVisualStyleBackColor = false;
             SeeTransButton.Click += SeeTransButton_Click;
+            SeeTransButton.KeyDown += SeeTransButton_KeyDown;
             // 
             // LearningStatPanel
             // 
@@ -1130,12 +1134,10 @@
             // 
             AddingWPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AddingWPanel3.BorderStyle = BorderStyle.FixedSingle;
-            AddingWPanel3.Controls.Add(label12);
+            AddingWPanel3.Controls.Add(DragAndDropPanel);
             AddingWPanel3.Controls.Add(SpecialFormatInfoBox2);
             AddingWPanel3.Controls.Add(CancelAddingButton);
             AddingWPanel3.Controls.Add(AddWButton3);
-            AddingWPanel3.Controls.Add(TxtFilePathTextBox);
-            AddingWPanel3.Controls.Add(label6);
             AddingWPanel3.Controls.Add(GoBackButton6);
             AddingWPanel3.Controls.Add(label7);
             AddingWPanel3.ImeMode = ImeMode.Hangul;
@@ -1144,16 +1146,85 @@
             AddingWPanel3.Size = new Size(978, 519);
             AddingWPanel3.TabIndex = 4;
             // 
+            // DragAndDropPanel
+            // 
+            DragAndDropPanel.AllowDrop = true;
+            DragAndDropPanel.BackColor = Color.FromArgb(60, 60, 60);
+            DragAndDropPanel.Controls.Add(TxtFilePathTextBox);
+            DragAndDropPanel.Controls.Add(label6);
+            DragAndDropPanel.Controls.Add(ChooseFileButton);
+            DragAndDropPanel.Controls.Add(label12);
+            DragAndDropPanel.Location = new Point(100, 140);
+            DragAndDropPanel.Name = "DragAndDropPanel";
+            DragAndDropPanel.Size = new Size(768, 234);
+            DragAndDropPanel.TabIndex = 10;
+            DragAndDropPanel.DragDrop += DragAndDropPanel_DragDrop;
+            DragAndDropPanel.DragEnter += DragAndDropPanel_DragEnter;
+            DragAndDropPanel.DragLeave += DragAndDropPanel_DragLeave;
+            DragAndDropPanel.Paint += DragAndDropPanel_Paint;
+            // 
+            // TxtFilePathTextBox
+            // 
+            TxtFilePathTextBox.AcceptsReturn = true;
+            TxtFilePathTextBox.BackColor = Color.FromArgb(90, 90, 90);
+            TxtFilePathTextBox.BorderStyle = BorderStyle.FixedSingle;
+            TxtFilePathTextBox.Cursor = Cursors.IBeam;
+            TxtFilePathTextBox.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            TxtFilePathTextBox.ForeColor = Color.White;
+            TxtFilePathTextBox.Location = new Point(55, 30);
+            TxtFilePathTextBox.Multiline = true;
+            TxtFilePathTextBox.Name = "TxtFilePathTextBox";
+            TxtFilePathTextBox.ScrollBars = ScrollBars.Both;
+            TxtFilePathTextBox.Size = new Size(665, 164);
+            TxtFilePathTextBox.TabIndex = 2;
+            TxtFilePathTextBox.TabStop = false;
+            TxtFilePathTextBox.Text = "           Додані файли:\r\n";
+            TxtFilePathTextBox.TextAlign = HorizontalAlignment.Center;
+            TxtFilePathTextBox.Visible = false;
+            TxtFilePathTextBox.TextChanged += TxtFilePathTextBox_TextChanged;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Roboto Condensed", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(300, 99);
+            label6.Name = "label6";
+            label6.Size = new Size(204, 33);
+            label6.TabIndex = 3;
+            label6.Text = "Тягни його сюди!";
+            label6.TextAlign = ContentAlignment.MiddleCenter;
+            label6.Visible = false;
+            // 
+            // ChooseFileButton
+            // 
+            ChooseFileButton.BackColor = SystemColors.WindowFrame;
+            ChooseFileButton.Cursor = Cursors.Hand;
+            ChooseFileButton.FlatAppearance.BorderColor = Color.Gray;
+            ChooseFileButton.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
+            ChooseFileButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
+            ChooseFileButton.FlatStyle = FlatStyle.Flat;
+            ChooseFileButton.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            ChooseFileButton.ForeColor = Color.White;
+            ChooseFileButton.Location = new Point(291, 59);
+            ChooseFileButton.Name = "ChooseFileButton";
+            ChooseFileButton.Size = new Size(221, 65);
+            ChooseFileButton.TabIndex = 10;
+            ChooseFileButton.TabStop = false;
+            ChooseFileButton.Text = "Вибери .txt-файл";
+            ChooseFileButton.UseVisualStyleBackColor = false;
+            ChooseFileButton.Click += ChooseFileButton_Click;
+            // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label12.ForeColor = Color.White;
-            label12.Location = new Point(385, 296);
+            label12.Location = new Point(268, 152);
             label12.Name = "label12";
-            label12.Size = new Size(240, 25);
+            label12.Size = new Size(260, 25);
             label12.TabIndex = 9;
-            label12.Text = "Або перетягни файл сюди";
+            label12.Text = "... або перетягни файл сюди";
             label12.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // SpecialFormatInfoBox2
@@ -1180,7 +1251,7 @@
             CancelAddingButton.FlatStyle = FlatStyle.Flat;
             CancelAddingButton.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             CancelAddingButton.ForeColor = Color.White;
-            CancelAddingButton.Location = new Point(286, 395);
+            CancelAddingButton.Location = new Point(286, 403);
             CancelAddingButton.Name = "CancelAddingButton";
             CancelAddingButton.Size = new Size(195, 53);
             CancelAddingButton.TabIndex = 0;
@@ -1200,7 +1271,7 @@
             AddWButton3.FlatStyle = FlatStyle.Flat;
             AddWButton3.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             AddWButton3.ForeColor = Color.White;
-            AddWButton3.Location = new Point(519, 395);
+            AddWButton3.Location = new Point(519, 403);
             AddWButton3.Name = "AddWButton3";
             AddWButton3.Size = new Size(195, 53);
             AddWButton3.TabIndex = 1;
@@ -1208,33 +1279,6 @@
             AddWButton3.Text = "Додати слова з файлу";
             AddWButton3.UseVisualStyleBackColor = false;
             AddWButton3.Click += AddWButton3_Click;
-            // 
-            // TxtFilePathTextBox
-            // 
-            TxtFilePathTextBox.BackColor = Color.FromArgb(90, 90, 90);
-            TxtFilePathTextBox.Cursor = Cursors.IBeam;
-            TxtFilePathTextBox.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            TxtFilePathTextBox.ForeColor = Color.White;
-            TxtFilePathTextBox.Location = new Point(185, 250);
-            TxtFilePathTextBox.Name = "TxtFilePathTextBox";
-            TxtFilePathTextBox.ScrollBars = ScrollBars.Horizontal;
-            TxtFilePathTextBox.Size = new Size(635, 33);
-            TxtFilePathTextBox.TabIndex = 2;
-            TxtFilePathTextBox.TabStop = false;
-            TxtFilePathTextBox.TextAlign = HorizontalAlignment.Center;
-            TxtFilePathTextBox.TextChanged += TxtFilePathTextBox_TextChanged;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(224, 211);
-            label6.Name = "label6";
-            label6.Size = new Size(557, 25);
-            label6.TabIndex = 3;
-            label6.Text = "Введи шлях до .txt-файлу зі словами в Спеціальному форматі";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // GoBackButton6
             // 
@@ -1265,7 +1309,7 @@
             label7.BorderStyle = BorderStyle.FixedSingle;
             label7.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(313, 66);
+            label7.Location = new Point(313, 56);
             label7.Name = "label7";
             label7.Size = new Size(381, 47);
             label7.TabIndex = 5;
@@ -1639,6 +1683,7 @@
             // 
             // MainForm
             // 
+            AllowDrop = true;
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(50, 50, 50);
             BackgroundImageLayout = ImageLayout.None;
@@ -1678,6 +1723,8 @@
             ((System.ComponentModel.ISupportInitialize)NumberOfWordsNumericUpDown).EndInit();
             AddingWPanel3.ResumeLayout(false);
             AddingWPanel3.PerformLayout();
+            DragAndDropPanel.ResumeLayout(false);
+            DragAndDropPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox2).EndInit();
             AddingWPanel2.ResumeLayout(false);
             AddingWPanel2.PerformLayout();
@@ -1780,5 +1827,7 @@
         private ToolTip SpecialFormatLineTip;
         private PictureBox SpecialFormatInfoBox2;
         private Label label12;
+        private Panel DragAndDropPanel;
+        private Button ChooseFileButton;
     }
 }
