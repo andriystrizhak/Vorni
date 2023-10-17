@@ -221,7 +221,9 @@ namespace EWL
             AddUaTTextBox.Text = "";
 
             EngUaStringTextBox.Text = "";
-            TxtFilePathTextBox.Text = "           Додані файли:\r\n";
+            TxtFilePathTextBox.Text = "";
+            isMouseOverDDP = false;
+            //DragAndDropPanel_DragLeave() TODO - !!!
 
             AddWButton1.Enabled = false;
         }
@@ -351,10 +353,16 @@ namespace EWL
         #region Drag Drop
 
         /// <summary>
-        /// Вказує на те чи курсор з файлом знаходиться над Drag Drop панеллю
+        /// Вказує на те чи курсор з файлом знаходиться над <see cref="DragAndDropPanel"/>
         /// </summary>
         bool isMouseOverDDP { get; set; } = false;
+        /// <summary>
+        /// Вказує на те чи якісь файли вже поміщені в <see cref="DragAndDropPanel"/>
+        /// </summary>
         bool fileIsAdded { get => AddWButton3.Enabled; }
+        /// <summary>
+        /// Список доданих в <see cref="DragAndDropPanel"/> файлів
+        /// </summary>
         List<string> files = new();
 
         /// <summary>
@@ -376,6 +384,7 @@ namespace EWL
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 e.Effect = DragDropEffects.Copy; // Показуємо, що панель приймає файли.
 
+            //Title Label = false
             TxtFilePathTextBox.Visible = false;
             ChooseFileButton.Visible = false;
             label12.Visible = false;
@@ -387,7 +396,10 @@ namespace EWL
         private void DragAndDropPanel_DragLeave(object sender, EventArgs e)
         {
             if (fileIsAdded)
+            {
+                //Title Label = true
                 TxtFilePathTextBox.Visible = true;
+            }
             ChooseFileButton.Visible = true;
             label12.Visible = true;
             label6.Visible = false;
@@ -397,39 +409,37 @@ namespace EWL
 
         private void DragAndDropPanel_DragDrop(object sender, DragEventArgs e)
         {
-            var filesToAdd = ((string[])e.Data.GetData(DataFormats.FileDrop)).ToList();
-            files.AddRange(filesToAdd);
+            var filesToAdd = ((string[])e.Data.GetData(DataFormats.FileDrop));
+            files.AddRange(filesToAdd
+                .Where(x => x.Contains(".txt", StringComparison.OrdinalIgnoreCase))
+                .ToList());
             files = files.Distinct().ToList();
 
-            int invalidFilesCount = 0;
-            foreach (var file in files)
-            {
+            bool isInvalidFilesThere = false;
+            foreach (var file in filesToAdd)
                 if (!file.Contains(".txt", StringComparison.OrdinalIgnoreCase))
-                    invalidFilesCount++;
-
-                //TODO - Додати сповіщення з надписом,
-                //що "деякі файли не відповідають .txt-формату"
+                    isInvalidFilesThere = true;
+            if (isInvalidFilesThere)
+            {
+                WrongFileFormatNotifyIcon.Visible = true;
+                WrongFileFormatNotifyIcon.ShowBalloonTip(5000);
             }
 
-            if (invalidFilesCount >= files.Count)
-                MessageBox.Show(
-                    "Жоден перетягнутий файл не відповідає формату '.txt'",
-                    "O-oy, таке ми не приймаємо",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-            //*******************************************************
-
-            //var files = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (var file in files)
             {
                 if (file.Contains(".txt", StringComparison.OrdinalIgnoreCase))
                     TxtFilePathTextBox.Text += file.ToString() + "\r\n";
             }
-            TxtFilePathTextBox.Visible = true;
-            label6.Visible = false;
-            isMouseOverDDP = false;
-            DragAndDropPanel.Invalidate();
+            if (files.Count > 0)
+            {
+                //Title Label = true
+                TxtFilePathTextBox.Visible = true;
+                label6.Visible = false;
+                isMouseOverDDP = false;
+                DragAndDropPanel.Invalidate();
+            }
+            else
+                DragAndDropPanel_DragLeave(sender, e);
         }
 
         #endregion

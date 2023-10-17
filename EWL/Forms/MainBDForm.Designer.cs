@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -92,10 +92,10 @@
             label4 = new Label();
             AddingWPanel3 = new Panel();
             DragAndDropPanel = new Panel();
-            TxtFilePathTextBox = new TextBox();
             label6 = new Label();
             ChooseFileButton = new Button();
             label12 = new Label();
+            TxtFilePathTextBox = new TextBox();
             SpecialFormatInfoBox2 = new PictureBox();
             CancelAddingButton = new Button();
             AddWButton3 = new Button();
@@ -125,6 +125,7 @@
             button8 = new Button();
             label11 = new Label();
             SpecialFormatLineTip = new ToolTip(components);
+            WrongFileFormatNotifyIcon = new NotifyIcon(components);
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             MenuPanel.SuspendLayout();
@@ -208,7 +209,8 @@
             // 
             // TitleIcoPictureBox
             // 
-            TitleIcoPictureBox.Image = (Image)resources.GetObject("TitleIcoPictureBox.Image");
+            TitleIcoPictureBox.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
+            TitleIcoPictureBox.BackgroundImageLayout = ImageLayout.Zoom;
             TitleIcoPictureBox.Location = new Point(6, 5);
             TitleIcoPictureBox.Name = "TitleIcoPictureBox";
             TitleIcoPictureBox.Size = new Size(48, 21);
@@ -230,10 +232,8 @@
             // fullScreenImageList
             // 
             fullScreenImageList.ColorDepth = ColorDepth.Depth32Bit;
-            fullScreenImageList.ImageStream = (ImageListStreamer)resources.GetObject("fullScreenImageList.ImageStream");
+            fullScreenImageList.ImageSize = new Size(16, 16);
             fullScreenImageList.TransparentColor = Color.Transparent;
-            fullScreenImageList.Images.SetKeyName(0, "fullscreen_OFF.png");
-            fullScreenImageList.Images.SetKeyName(1, "fullscreen_ON.png");
             // 
             // MenuPanel
             // 
@@ -286,7 +286,6 @@
             FullScreenButton.FlatStyle = FlatStyle.Flat;
             FullScreenButton.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             FullScreenButton.ForeColor = Color.White;
-            FullScreenButton.ImageIndex = 1;
             FullScreenButton.ImageList = fullScreenImageList;
             FullScreenButton.Location = new Point(915, 1);
             FullScreenButton.Name = "FullScreenButton";
@@ -365,7 +364,8 @@
             // 
             // EWLPictureBox
             // 
-            EWLPictureBox.Image = (Image)resources.GetObject("EWLPictureBox.Image");
+            EWLPictureBox.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.Logo11;
+            EWLPictureBox.BackgroundImageLayout = ImageLayout.Zoom;
             EWLPictureBox.Location = new Point(190, 16);
             EWLPictureBox.MinimumSize = new Size(550, 100);
             EWLPictureBox.Name = "EWLPictureBox";
@@ -391,7 +391,6 @@
             // GoBackButton2
             // 
             GoBackButton2.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton2.BackgroundImage = (Image)resources.GetObject("GoBackButton2.BackgroundImage");
             GoBackButton2.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton2.Cursor = Cursors.Hand;
             GoBackButton2.FlatAppearance.BorderColor = Color.Gray;
@@ -447,7 +446,6 @@
             // 
             Button5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button5.BackColor = Color.FromArgb(50, 50, 50);
-            Button5.BackgroundImage = (Image)resources.GetObject("Button5.BackgroundImage");
             Button5.BackgroundImageLayout = ImageLayout.Zoom;
             Button5.CausesValidation = false;
             Button5.Cursor = Cursors.Hand;
@@ -471,7 +469,6 @@
             // 
             Button4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button4.BackColor = Color.FromArgb(50, 50, 50);
-            Button4.BackgroundImage = (Image)resources.GetObject("Button4.BackgroundImage");
             Button4.BackgroundImageLayout = ImageLayout.Zoom;
             Button4.CausesValidation = false;
             Button4.Cursor = Cursors.Hand;
@@ -495,7 +492,6 @@
             // 
             Button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button3.BackColor = Color.FromArgb(50, 50, 50);
-            Button3.BackgroundImage = (Image)resources.GetObject("Button3.BackgroundImage");
             Button3.BackgroundImageLayout = ImageLayout.Zoom;
             Button3.CausesValidation = false;
             Button3.Cursor = Cursors.Hand;
@@ -519,7 +515,6 @@
             // 
             Button2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button2.BackColor = Color.FromArgb(50, 50, 50);
-            Button2.BackgroundImage = (Image)resources.GetObject("Button2.BackgroundImage");
             Button2.BackgroundImageLayout = ImageLayout.Zoom;
             Button2.CausesValidation = false;
             Button2.Cursor = Cursors.Hand;
@@ -543,7 +538,6 @@
             // 
             Button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button1.BackColor = Color.FromArgb(50, 50, 50);
-            Button1.BackgroundImage = (Image)resources.GetObject("Button1.BackgroundImage");
             Button1.BackgroundImageLayout = ImageLayout.Zoom;
             Button1.CausesValidation = false;
             Button1.Cursor = Cursors.Hand;
@@ -607,7 +601,6 @@
             // GoBackButton1
             // 
             GoBackButton1.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton1.BackgroundImage = (Image)resources.GetObject("GoBackButton1.BackgroundImage");
             GoBackButton1.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton1.Cursor = Cursors.Hand;
             GoBackButton1.FlatAppearance.BorderColor = Color.Gray;
@@ -772,7 +765,6 @@
             // GoBackButton3
             // 
             GoBackButton3.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton3.BackgroundImage = (Image)resources.GetObject("GoBackButton3.BackgroundImage");
             GoBackButton3.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton3.Cursor = Cursors.Hand;
             GoBackButton3.FlatAppearance.BorderColor = Color.Gray;
@@ -949,7 +941,6 @@
             // GoBackButton4
             // 
             GoBackButton4.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton4.BackgroundImage = (Image)resources.GetObject("GoBackButton4.BackgroundImage");
             GoBackButton4.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton4.Cursor = Cursors.Hand;
             GoBackButton4.FlatAppearance.BorderColor = Color.Gray;
@@ -1097,7 +1088,6 @@
             // GoBackButton5
             // 
             GoBackButton5.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton5.BackgroundImage = (Image)resources.GetObject("GoBackButton5.BackgroundImage");
             GoBackButton5.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton5.Cursor = Cursors.Hand;
             GoBackButton5.FlatAppearance.BorderColor = Color.Gray;
@@ -1150,10 +1140,10 @@
             // 
             DragAndDropPanel.AllowDrop = true;
             DragAndDropPanel.BackColor = Color.FromArgb(60, 60, 60);
-            DragAndDropPanel.Controls.Add(TxtFilePathTextBox);
             DragAndDropPanel.Controls.Add(label6);
             DragAndDropPanel.Controls.Add(ChooseFileButton);
             DragAndDropPanel.Controls.Add(label12);
+            DragAndDropPanel.Controls.Add(TxtFilePathTextBox);
             DragAndDropPanel.Location = new Point(100, 140);
             DragAndDropPanel.Name = "DragAndDropPanel";
             DragAndDropPanel.Size = new Size(768, 234);
@@ -1162,26 +1152,6 @@
             DragAndDropPanel.DragEnter += DragAndDropPanel_DragEnter;
             DragAndDropPanel.DragLeave += DragAndDropPanel_DragLeave;
             DragAndDropPanel.Paint += DragAndDropPanel_Paint;
-            // 
-            // TxtFilePathTextBox
-            // 
-            TxtFilePathTextBox.AcceptsReturn = true;
-            TxtFilePathTextBox.BackColor = Color.FromArgb(90, 90, 90);
-            TxtFilePathTextBox.BorderStyle = BorderStyle.FixedSingle;
-            TxtFilePathTextBox.Cursor = Cursors.IBeam;
-            TxtFilePathTextBox.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            TxtFilePathTextBox.ForeColor = Color.White;
-            TxtFilePathTextBox.Location = new Point(55, 30);
-            TxtFilePathTextBox.Multiline = true;
-            TxtFilePathTextBox.Name = "TxtFilePathTextBox";
-            TxtFilePathTextBox.ScrollBars = ScrollBars.Both;
-            TxtFilePathTextBox.Size = new Size(665, 164);
-            TxtFilePathTextBox.TabIndex = 2;
-            TxtFilePathTextBox.TabStop = false;
-            TxtFilePathTextBox.Text = "           Додані файли:\r\n";
-            TxtFilePathTextBox.TextAlign = HorizontalAlignment.Center;
-            TxtFilePathTextBox.Visible = false;
-            TxtFilePathTextBox.TextChanged += TxtFilePathTextBox_TextChanged;
             // 
             // label6
             // 
@@ -1227,6 +1197,25 @@
             label12.Text = "... або перетягни файл сюди";
             label12.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // TxtFilePathTextBox
+            // 
+            TxtFilePathTextBox.AcceptsReturn = true;
+            TxtFilePathTextBox.BackColor = Color.FromArgb(90, 90, 90);
+            TxtFilePathTextBox.BorderStyle = BorderStyle.FixedSingle;
+            TxtFilePathTextBox.Cursor = Cursors.IBeam;
+            TxtFilePathTextBox.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            TxtFilePathTextBox.ForeColor = Color.White;
+            TxtFilePathTextBox.Location = new Point(55, 30);
+            TxtFilePathTextBox.Multiline = true;
+            TxtFilePathTextBox.Name = "TxtFilePathTextBox";
+            TxtFilePathTextBox.ScrollBars = ScrollBars.Both;
+            TxtFilePathTextBox.Size = new Size(665, 164);
+            TxtFilePathTextBox.TabIndex = 2;
+            TxtFilePathTextBox.TabStop = false;
+            TxtFilePathTextBox.TextAlign = HorizontalAlignment.Center;
+            TxtFilePathTextBox.Visible = false;
+            TxtFilePathTextBox.TextChanged += TxtFilePathTextBox_TextChanged;
+            // 
             // SpecialFormatInfoBox2
             // 
             SpecialFormatInfoBox2.AccessibleRole = AccessibleRole.HelpBalloon;
@@ -1238,7 +1227,6 @@
             SpecialFormatInfoBox2.Size = new Size(35, 35);
             SpecialFormatInfoBox2.TabIndex = 8;
             SpecialFormatInfoBox2.TabStop = false;
-            SpecialFormatLineTip.SetToolTip(SpecialFormatInfoBox2, resources.GetString("SpecialFormatInfoBox2.ToolTip"));
             // 
             // CancelAddingButton
             // 
@@ -1283,7 +1271,6 @@
             // GoBackButton6
             // 
             GoBackButton6.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton6.BackgroundImage = (Image)resources.GetObject("GoBackButton6.BackgroundImage");
             GoBackButton6.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton6.Cursor = Cursors.Hand;
             GoBackButton6.FlatAppearance.BorderColor = Color.Gray;
@@ -1344,7 +1331,6 @@
             SpecialFormatInfoBox1.Size = new Size(35, 35);
             SpecialFormatInfoBox1.TabIndex = 7;
             SpecialFormatInfoBox1.TabStop = false;
-            SpecialFormatLineTip.SetToolTip(SpecialFormatInfoBox1, resources.GetString("SpecialFormatInfoBox1.ToolTip"));
             // 
             // CancelPrevButton2
             // 
@@ -1417,7 +1403,6 @@
             // GoBackButton7
             // 
             GoBackButton7.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton7.BackgroundImage = (Image)resources.GetObject("GoBackButton7.BackgroundImage");
             GoBackButton7.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton7.Cursor = Cursors.Hand;
             GoBackButton7.FlatAppearance.BorderColor = Color.Gray;
@@ -1635,7 +1620,6 @@
             // button8
             // 
             button8.BackColor = Color.FromArgb(50, 50, 50);
-            button8.BackgroundImage = (Image)resources.GetObject("button8.BackgroundImage");
             button8.BackgroundImageLayout = ImageLayout.Zoom;
             button8.Cursor = Cursors.Hand;
             button8.FlatAppearance.BorderColor = Color.Gray;
@@ -1681,6 +1665,13 @@
             SpecialFormatLineTip.ToolTipIcon = ToolTipIcon.Info;
             SpecialFormatLineTip.ToolTipTitle = "Спеціальний формат";
             // 
+            // WrongFileFormatNotifyIcon
+            // 
+            WrongFileFormatNotifyIcon.BalloonTipIcon = ToolTipIcon.Error;
+            WrongFileFormatNotifyIcon.BalloonTipText = "Деякі файли в невірному форматі!\r\nДодані тільки ті, що у вірному";
+            WrongFileFormatNotifyIcon.BalloonTipTitle = "Хибний формат";
+            WrongFileFormatNotifyIcon.Icon = (Icon)resources.GetObject("WrongFileFormatNotifyIcon.Icon");
+            // 
             // MainForm
             // 
             AllowDrop = true;
@@ -1688,12 +1679,12 @@
             BackColor = Color.FromArgb(50, 50, 50);
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(978, 550);
-            Controls.Add(TopPanel);
             Controls.Add(AddingWPanel3);
+            Controls.Add(MenuPanel);
+            Controls.Add(TopPanel);
             Controls.Add(AddingWPanel2);
             Controls.Add(AddingWPanel1);
             Controls.Add(SettingPanel);
-            Controls.Add(MenuPanel);
             Controls.Add(LearningEngPanel);
             Controls.Add(panel1);
             Controls.Add(LearningUaPanel);
@@ -1829,5 +1820,6 @@
         private Label label12;
         private Panel DragAndDropPanel;
         private Button ChooseFileButton;
+        private NotifyIcon WrongFileFormatNotifyIcon;
     }
 }
