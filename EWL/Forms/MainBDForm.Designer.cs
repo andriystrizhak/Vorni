@@ -1,4 +1,6 @@
-﻿namespace EWL
+﻿using Tulpep.NotificationWindow;
+
+namespace EWL
 {
     partial class MainForm
     {
@@ -29,11 +31,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -92,6 +94,7 @@
             label4 = new Label();
             AddingWPanel3 = new Panel();
             DragAndDropPanel = new Panel();
+            label13 = new Label();
             label6 = new Label();
             ChooseFileButton = new Button();
             label12 = new Label();
@@ -102,12 +105,12 @@
             GoBackButton6 = new Button();
             label7 = new Label();
             AddingWPanel2 = new Panel();
+            GoBackButton7 = new Button();
             SpecialFormatInfoBox1 = new PictureBox();
             CancelPrevButton2 = new Button();
             AddWButton2 = new Button();
             EngUaStringTextBox = new TextBox();
             label2 = new Label();
-            GoBackButton7 = new Button();
             label5 = new Label();
             panel1 = new Panel();
             dataGridView1 = new DataGridView();
@@ -125,7 +128,7 @@
             button8 = new Button();
             label11 = new Label();
             SpecialFormatLineTip = new ToolTip(components);
-            WrongFileFormatNotifyIcon = new NotifyIcon(components);
+            WrongFileFormatPopup = new PopupNotifier();
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             MenuPanel.SuspendLayout();
@@ -391,6 +394,7 @@
             // GoBackButton2
             // 
             GoBackButton2.BackColor = Color.FromArgb(50, 50, 50);
+            GoBackButton2.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_налево_96;
             GoBackButton2.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton2.Cursor = Cursors.Hand;
             GoBackButton2.FlatAppearance.BorderColor = Color.Gray;
@@ -601,6 +605,7 @@
             // GoBackButton1
             // 
             GoBackButton1.BackColor = Color.FromArgb(50, 50, 50);
+            GoBackButton1.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_налево_96;
             GoBackButton1.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton1.Cursor = Cursors.Hand;
             GoBackButton1.FlatAppearance.BorderColor = Color.Gray;
@@ -765,6 +770,7 @@
             // GoBackButton3
             // 
             GoBackButton3.BackColor = Color.FromArgb(50, 50, 50);
+            GoBackButton3.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_налево_96;
             GoBackButton3.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton3.Cursor = Cursors.Hand;
             GoBackButton3.FlatAppearance.BorderColor = Color.Gray;
@@ -941,6 +947,7 @@
             // GoBackButton4
             // 
             GoBackButton4.BackColor = Color.FromArgb(50, 50, 50);
+            GoBackButton4.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_налево_96;
             GoBackButton4.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton4.Cursor = Cursors.Hand;
             GoBackButton4.FlatAppearance.BorderColor = Color.Gray;
@@ -1088,6 +1095,7 @@
             // GoBackButton5
             // 
             GoBackButton5.BackColor = Color.FromArgb(50, 50, 50);
+            GoBackButton5.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_налево_96;
             GoBackButton5.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton5.Cursor = Cursors.Hand;
             GoBackButton5.FlatAppearance.BorderColor = Color.Gray;
@@ -1140,18 +1148,32 @@
             // 
             DragAndDropPanel.AllowDrop = true;
             DragAndDropPanel.BackColor = Color.FromArgb(60, 60, 60);
+            DragAndDropPanel.Controls.Add(TxtFilePathTextBox);
+            DragAndDropPanel.Controls.Add(label13);
             DragAndDropPanel.Controls.Add(label6);
             DragAndDropPanel.Controls.Add(ChooseFileButton);
             DragAndDropPanel.Controls.Add(label12);
-            DragAndDropPanel.Controls.Add(TxtFilePathTextBox);
-            DragAndDropPanel.Location = new Point(100, 140);
+            DragAndDropPanel.Location = new Point(100, 129);
             DragAndDropPanel.Name = "DragAndDropPanel";
-            DragAndDropPanel.Size = new Size(768, 234);
+            DragAndDropPanel.Size = new Size(768, 250);
             DragAndDropPanel.TabIndex = 10;
             DragAndDropPanel.DragDrop += DragAndDropPanel_DragDrop;
             DragAndDropPanel.DragEnter += DragAndDropPanel_DragEnter;
             DragAndDropPanel.DragLeave += DragAndDropPanel_DragLeave;
             DragAndDropPanel.Paint += DragAndDropPanel_Paint;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.ForeColor = Color.White;
+            label13.Location = new Point(275, 23);
+            label13.Name = "label13";
+            label13.Size = new Size(251, 29);
+            label13.TabIndex = 11;
+            label13.Text = "Список доданих файлів";
+            label13.TextAlign = ContentAlignment.MiddleCenter;
+            label13.Visible = false;
             // 
             // label6
             // 
@@ -1205,11 +1227,11 @@
             TxtFilePathTextBox.Cursor = Cursors.IBeam;
             TxtFilePathTextBox.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             TxtFilePathTextBox.ForeColor = Color.White;
-            TxtFilePathTextBox.Location = new Point(55, 30);
+            TxtFilePathTextBox.Location = new Point(55, 59);
             TxtFilePathTextBox.Multiline = true;
             TxtFilePathTextBox.Name = "TxtFilePathTextBox";
             TxtFilePathTextBox.ScrollBars = ScrollBars.Both;
-            TxtFilePathTextBox.Size = new Size(665, 164);
+            TxtFilePathTextBox.Size = new Size(665, 151);
             TxtFilePathTextBox.TabIndex = 2;
             TxtFilePathTextBox.TabStop = false;
             TxtFilePathTextBox.TextAlign = HorizontalAlignment.Center;
@@ -1227,6 +1249,7 @@
             SpecialFormatInfoBox2.Size = new Size(35, 35);
             SpecialFormatInfoBox2.TabIndex = 8;
             SpecialFormatInfoBox2.TabStop = false;
+            SpecialFormatLineTip.SetToolTip(SpecialFormatInfoBox2, resources.GetString("SpecialFormatInfoBox2.ToolTip"));
             // 
             // CancelAddingButton
             // 
@@ -1239,7 +1262,7 @@
             CancelAddingButton.FlatStyle = FlatStyle.Flat;
             CancelAddingButton.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             CancelAddingButton.ForeColor = Color.White;
-            CancelAddingButton.Location = new Point(286, 403);
+            CancelAddingButton.Location = new Point(272, 412);
             CancelAddingButton.Name = "CancelAddingButton";
             CancelAddingButton.Size = new Size(195, 53);
             CancelAddingButton.TabIndex = 0;
@@ -1259,7 +1282,7 @@
             AddWButton3.FlatStyle = FlatStyle.Flat;
             AddWButton3.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             AddWButton3.ForeColor = Color.White;
-            AddWButton3.Location = new Point(519, 403);
+            AddWButton3.Location = new Point(535, 412);
             AddWButton3.Name = "AddWButton3";
             AddWButton3.Size = new Size(195, 53);
             AddWButton3.TabIndex = 1;
@@ -1271,6 +1294,7 @@
             // GoBackButton6
             // 
             GoBackButton6.BackColor = Color.FromArgb(50, 50, 50);
+            GoBackButton6.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_налево_96;
             GoBackButton6.BackgroundImageLayout = ImageLayout.Zoom;
             GoBackButton6.Cursor = Cursors.Hand;
             GoBackButton6.FlatAppearance.BorderColor = Color.Gray;
@@ -1296,7 +1320,7 @@
             label7.BorderStyle = BorderStyle.FixedSingle;
             label7.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(313, 56);
+            label7.Location = new Point(313, 48);
             label7.Name = "label7";
             label7.Size = new Size(381, 47);
             label7.TabIndex = 5;
@@ -1307,18 +1331,39 @@
             // 
             AddingWPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AddingWPanel2.BorderStyle = BorderStyle.FixedSingle;
+            AddingWPanel2.Controls.Add(GoBackButton7);
             AddingWPanel2.Controls.Add(SpecialFormatInfoBox1);
             AddingWPanel2.Controls.Add(CancelPrevButton2);
             AddingWPanel2.Controls.Add(AddWButton2);
             AddingWPanel2.Controls.Add(EngUaStringTextBox);
             AddingWPanel2.Controls.Add(label2);
-            AddingWPanel2.Controls.Add(GoBackButton7);
             AddingWPanel2.Controls.Add(label5);
             AddingWPanel2.ImeMode = ImeMode.Hangul;
             AddingWPanel2.Location = new Point(0, 31);
             AddingWPanel2.Name = "AddingWPanel2";
             AddingWPanel2.Size = new Size(978, 519);
             AddingWPanel2.TabIndex = 5;
+            // 
+            // GoBackButton7
+            // 
+            GoBackButton7.BackColor = Color.FromArgb(50, 50, 50);
+            GoBackButton7.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_налево_96;
+            GoBackButton7.BackgroundImageLayout = ImageLayout.Zoom;
+            GoBackButton7.Cursor = Cursors.Hand;
+            GoBackButton7.FlatAppearance.BorderColor = Color.Gray;
+            GoBackButton7.FlatAppearance.BorderSize = 0;
+            GoBackButton7.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 50, 50);
+            GoBackButton7.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
+            GoBackButton7.FlatStyle = FlatStyle.Flat;
+            GoBackButton7.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            GoBackButton7.ForeColor = Color.White;
+            GoBackButton7.Location = new Point(3, 3);
+            GoBackButton7.Name = "GoBackButton7";
+            GoBackButton7.Size = new Size(60, 60);
+            GoBackButton7.TabIndex = 4;
+            GoBackButton7.TabStop = false;
+            GoBackButton7.UseVisualStyleBackColor = false;
+            GoBackButton7.Click += GoBackButton_Click;
             // 
             // SpecialFormatInfoBox1
             // 
@@ -1331,6 +1376,7 @@
             SpecialFormatInfoBox1.Size = new Size(35, 35);
             SpecialFormatInfoBox1.TabIndex = 7;
             SpecialFormatInfoBox1.TabStop = false;
+            SpecialFormatLineTip.SetToolTip(SpecialFormatInfoBox1, resources.GetString("SpecialFormatInfoBox1.ToolTip"));
             // 
             // CancelPrevButton2
             // 
@@ -1343,7 +1389,7 @@
             CancelPrevButton2.FlatStyle = FlatStyle.Flat;
             CancelPrevButton2.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             CancelPrevButton2.ForeColor = Color.White;
-            CancelPrevButton2.Location = new Point(286, 395);
+            CancelPrevButton2.Location = new Point(270, 395);
             CancelPrevButton2.Name = "CancelPrevButton2";
             CancelPrevButton2.Size = new Size(195, 53);
             CancelPrevButton2.TabIndex = 0;
@@ -1363,7 +1409,7 @@
             AddWButton2.FlatStyle = FlatStyle.Flat;
             AddWButton2.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             AddWButton2.ForeColor = Color.White;
-            AddWButton2.Location = new Point(519, 395);
+            AddWButton2.Location = new Point(528, 395);
             AddWButton2.Name = "AddWButton2";
             AddWButton2.Size = new Size(195, 53);
             AddWButton2.TabIndex = 1;
@@ -1400,26 +1446,6 @@
             label2.Text = "Введи рядок зі словом в спеціальному форматі";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // GoBackButton7
-            // 
-            GoBackButton7.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton7.BackgroundImageLayout = ImageLayout.Zoom;
-            GoBackButton7.Cursor = Cursors.Hand;
-            GoBackButton7.FlatAppearance.BorderColor = Color.Gray;
-            GoBackButton7.FlatAppearance.BorderSize = 0;
-            GoBackButton7.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton7.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
-            GoBackButton7.FlatStyle = FlatStyle.Flat;
-            GoBackButton7.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            GoBackButton7.ForeColor = Color.White;
-            GoBackButton7.Location = new Point(3, 3);
-            GoBackButton7.Name = "GoBackButton7";
-            GoBackButton7.Size = new Size(60, 60);
-            GoBackButton7.TabIndex = 4;
-            GoBackButton7.TabStop = false;
-            GoBackButton7.UseVisualStyleBackColor = false;
-            GoBackButton7.Click += GoBackButton_Click;
-            // 
             // label5
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -1428,7 +1454,7 @@
             label5.BorderStyle = BorderStyle.FixedSingle;
             label5.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(313, 66);
+            label5.Location = new Point(313, 65);
             label5.Name = "label5";
             label5.Size = new Size(381, 47);
             label5.TabIndex = 5;
@@ -1665,12 +1691,30 @@
             SpecialFormatLineTip.ToolTipIcon = ToolTipIcon.Info;
             SpecialFormatLineTip.ToolTipTitle = "Спеціальний формат";
             // 
-            // WrongFileFormatNotifyIcon
+            // WrongFileFormatPopup
             // 
-            WrongFileFormatNotifyIcon.BalloonTipIcon = ToolTipIcon.Error;
-            WrongFileFormatNotifyIcon.BalloonTipText = "Деякі файли в невірному форматі!\r\nДодані тільки ті, що у вірному";
-            WrongFileFormatNotifyIcon.BalloonTipTitle = "Хибний формат";
-            WrongFileFormatNotifyIcon.Icon = (Icon)resources.GetObject("WrongFileFormatNotifyIcon.Icon");
+            WrongFileFormatPopup.BodyColor = Color.FromArgb(65, 65, 65);
+            WrongFileFormatPopup.BorderColor = Color.Gray;
+            WrongFileFormatPopup.ButtonBorderColor = Color.Gray;
+            WrongFileFormatPopup.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            WrongFileFormatPopup.ContentColor = Color.White;
+            WrongFileFormatPopup.ContentFont = new Font("Roboto Condensed", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            WrongFileFormatPopup.ContentHoverColor = SystemColors.ControlLight;
+            WrongFileFormatPopup.ContentPadding = new Padding(15, 3, 0, 0);
+            WrongFileFormatPopup.ContentText = "Деякі (або всі) додані файли в хибному форматі!\r\nВ списку будуть тільки ті, що мають вірний формат";
+            WrongFileFormatPopup.Delay = 5000;
+            WrongFileFormatPopup.GradientPower = 0;
+            WrongFileFormatPopup.HeaderColor = Color.FromArgb(192, 0, 0);
+            WrongFileFormatPopup.HeaderHeight = 12;
+            WrongFileFormatPopup.Image = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
+            WrongFileFormatPopup.ImagePadding = new Padding(2, 12, 0, 0);
+            WrongFileFormatPopup.ImageSize = new Size(125, 50);
+            WrongFileFormatPopup.IsRightToLeft = false;
+            WrongFileFormatPopup.OptionsMenu = null;
+            WrongFileFormatPopup.Size = new Size(485, 95);
+            WrongFileFormatPopup.TitleColor = Color.FromArgb(50, 50, 50);
+            WrongFileFormatPopup.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            WrongFileFormatPopup.TitleText = "Хибний формат";
             // 
             // MainForm
             // 
@@ -1680,9 +1724,9 @@
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(978, 550);
             Controls.Add(AddingWPanel3);
+            Controls.Add(AddingWPanel2);
             Controls.Add(MenuPanel);
             Controls.Add(TopPanel);
-            Controls.Add(AddingWPanel2);
             Controls.Add(AddingWPanel1);
             Controls.Add(SettingPanel);
             Controls.Add(LearningEngPanel);
@@ -1820,6 +1864,7 @@
         private Label label12;
         private Panel DragAndDropPanel;
         private Button ChooseFileButton;
-        private NotifyIcon WrongFileFormatNotifyIcon;
+        private PopupNotifier WrongFileFormatPopup;
+        private Label label13;
     }
 }

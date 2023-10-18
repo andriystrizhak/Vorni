@@ -22,6 +22,12 @@ namespace EWL
         int addedWords = 0; //CHANGE
 
         /// <summary>
+        /// 
+        /// </summary>
+        Panel CurrentPanel { get; set; }
+
+
+        /// <summary>
         /// Список слів для вивчення
         /// </summary>
         List<Word> words = new();
@@ -222,8 +228,7 @@ namespace EWL
 
             EngUaStringTextBox.Text = "";
             TxtFilePathTextBox.Text = "";
-            isMouseOverDDP = false;
-            //DragAndDropPanel_DragLeave() TODO - !!!
+            Null_AddingWPanel3();
 
             AddWButton1.Enabled = false;
         }
@@ -350,6 +355,8 @@ namespace EWL
 
         #region AddingWPanel3
 
+        #region Files Adding
+
         #region Drag Drop
 
         /// <summary>
@@ -370,12 +377,12 @@ namespace EWL
         /// </summary>
         private void DragAndDropPanel_Paint(object sender, PaintEventArgs e)
         {
-            int width = 3;
+            int width = 4;
             Pen pen = new Pen(Color.AliceBlue, width);
             if (!isMouseOverDDP)
-                pen.DashPattern = new float[] { 5, 5 };
+                pen.DashPattern = new float[] { 5, 6 };
             Rectangle rectangle = new Rectangle(
-                10, 10, DragAndDropPanel.Width - (20 + width), DragAndDropPanel.Height - (20 + width));
+                12, 12, DragAndDropPanel.Width - (20 + width), DragAndDropPanel.Height - (20 + width));
             e.Graphics.DrawRectangle(pen, rectangle);
         }
 
@@ -384,7 +391,7 @@ namespace EWL
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 e.Effect = DragDropEffects.Copy; // Показуємо, що панель приймає файли.
 
-            //Title Label = false
+            label13.Visible = false;
             TxtFilePathTextBox.Visible = false;
             ChooseFileButton.Visible = false;
             label12.Visible = false;
@@ -394,11 +401,22 @@ namespace EWL
         }
 
         private void DragAndDropPanel_DragLeave(object sender, EventArgs e)
+            => Null_AddingWPanel3();
+
+        /// <summary>
+        /// Скидає <see cref="AddingWPanel3"/> до початкового стану
+        /// </summary>
+        private void Null_AddingWPanel3()
         {
             if (fileIsAdded)
             {
-                //Title Label = true
+                label13.Visible = true;
                 TxtFilePathTextBox.Visible = true;
+            }
+            else
+            {
+                label13.Visible = false;
+                TxtFilePathTextBox.Visible = false;
             }
             ChooseFileButton.Visible = true;
             label12.Visible = true;
@@ -418,21 +436,18 @@ namespace EWL
             bool isInvalidFilesThere = false;
             foreach (var file in filesToAdd)
                 if (!file.Contains(".txt", StringComparison.OrdinalIgnoreCase))
+                {
                     isInvalidFilesThere = true;
+                    break;
+                }
             if (isInvalidFilesThere)
-            {
-                WrongFileFormatNotifyIcon.Visible = true;
-                WrongFileFormatNotifyIcon.ShowBalloonTip(5000);
-            }
+                WrongFileFormatPopup.Popup();
 
-            foreach (var file in files)
-            {
-                if (file.Contains(".txt", StringComparison.OrdinalIgnoreCase))
-                    TxtFilePathTextBox.Text += file.ToString() + "\r\n";
-            }
+            TxtFilePathTextBox.Text = string.Join("\r\n", files);
+
             if (files.Count > 0)
             {
-                //Title Label = true
+                label13.Visible = true;
                 TxtFilePathTextBox.Visible = true;
                 label6.Visible = false;
                 isMouseOverDDP = false;
@@ -445,18 +460,35 @@ namespace EWL
         #endregion
 
         private void TxtFilePathTextBox_TextChanged(object sender, EventArgs e)
-            => AddWButton3.Enabled = true;
+        {
+            if (TxtFilePathTextBox.Text != "")
+            {
+                AddWButton3.Enabled = true;
+                files = TxtFilePathTextBox.Text
+                    .Split("\r\n", StringSplitOptions.RemoveEmptyEntries)
+                    .ToList();
+            }
+            else
+            {
+                files.Clear();
+                AddWButton3.Enabled = false;
+                Null_AddingWPanel3();
+            }
+        }
 
         private void ChooseFileButton_Click(object sender, EventArgs e)
         {
-
+            //TODO
         }
+
+        #endregion
 
         private void AddWButton3_Click(object sender, EventArgs e)
         {
-            var report = Txt_FileHandler.AddWordsFromTxtFile(TxtFilePathTextBox.Text);
-            MessageBox.Show(
-                $"Всього слів в файлі: {report.Item1}\nБуло додано: {report.Item2}",
+            var report = Txt_FileHandler.AddWordsFromTxtFiles(files);
+            MessageBox.Show($"Всього оброблених файлів: {report.Item3}\n" +
+                $"Всього слів в файлах знайдено: {report.Item1}\n" +
+                $"З них було додано: {report.Item2}",
                 "Звіт про додавання слів",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -470,7 +502,7 @@ namespace EWL
         {
             SQLs.Remove_LastWords_Permanently(addedWords);
             MessageBox.Show(
-                $"Всі слова з останнього .txt-файлу були видалені",
+                $"Всі останні додані слова були видалені",
                 "Звіт про видалення слів",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -584,7 +616,7 @@ namespace EWL
 
         private void Escape_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Escape && CurrentPanel != MenuPanel)
                 GoBackButton_Click(sender, e);
         }
 
@@ -652,7 +684,6 @@ namespace EWL
 
         #endregion
 
-
         #region { OTHER }
 
         /// <summary>
@@ -666,9 +697,9 @@ namespace EWL
                 {
                     panel.Enabled = false;
                     panel.Visible = false;
-
                 }
 
+            CurrentPanel = panelToShow;
             panelToShow.Enabled = true;
             panelToShow.Visible = true;
 

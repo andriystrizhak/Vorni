@@ -763,6 +763,14 @@
             "fileVersion": "4.700.19.56404"
           }
         }
+      },
+      "Tulpep.NotificationWindow/1.1.38": {
+        "runtime": {
+          "lib/net40/Tulpep.NotificationWindow.dll": {
+            "assemblyVersion": "1.1.38.0",
+            "fileVersion": "1.1.38.0"
+          }
+        }
       }
     }
   },
@@ -1151,6 +1159,13 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "Tulpep.NotificationWindow/1.1.38": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cotu1DDvSiSqvkGIY0SOh1QN5NgXTiWJEspZCx34My+p0q9ONvtPYUZELyN+Fpo0U/KyAG5B0wEiiFdaMCesag==",
+      "path": "tulpep.notificationwindow/1.1.38",
+      "hashPath": "tulpep.notificationwindow.1.1.38.nupkg.sha512"
     }
   }
 }

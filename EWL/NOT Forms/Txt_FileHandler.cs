@@ -57,25 +57,52 @@ namespace EWL.NOT_Forms
         /// <summary>
         /// Додає слова з <b>.txt-файлу</b> до БД
         /// </summary>
-        /// <param name="pathToTxtFile">Шлях до <b>.txt-файлу</b></param>
+        /// <param name="filePath">Шлях до <b>.txt-файлу</b></param>
         /// <returns>Результати роботи методу: 
         /// <paramref name="Item1"/> - кількість слів в файлі,
-        /// <paramref name="Item2"/> - кількість доданих до БД слів</returns>
-        public static (int, int) AddWordsFromTxtFile(string pathToTxtFile)
+        /// <paramref name="Item2"/> - кількість доданих до БД слів,
+        /// <paramref name="Item3"/> - значення 1 або 0. Якщо шлях файлу коректний тоді - 1, інакше - 0</returns>
+        public static (int, int, int) AddWordsFromTxtFile(string filePath)
         {
-            string[] allLines = File.ReadAllLines(pathToTxtFile);
+            (int, int, int) result = (0, 0, 1);
+            if (!File.Exists(filePath))
+                result.Item3 = 0;
+            string[] allLines = File.ReadAllLines(filePath);
 
             var allWords = allLines
                 .Where(x => x.Contains(" - "))
                 .Select(x => GetWordFromLine(x))
                 .Where(x => x != null)
                 .ToList();
-            int addedWordsCount = 0;
+            result.Item1 = allWords.Count;
 
             foreach (var word in allWords)
-                addedWordsCount += SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty) ? 1 : 0;
+                result.Item2 += SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty) ? 1 : 0;
 
-            return (allWords.Count, addedWordsCount);
+            return result;
+        }
+
+        /// <summary>
+        /// Додає слова з кількох <b>.txt-файлів</b> до БД
+        /// </summary>
+        /// <param name="filesPaths">Список шляхів до <b>.txt-файлів</b></param>
+        /// <returns>Результати роботи методу: 
+        /// <paramref name="Item1"/> - сумарна кількість слів в файлах,
+        /// <paramref name="Item2"/> - сумарна кількість доданих до БД слів,
+        /// <paramref name="Item3"/> - кількість коректних файлів</returns>
+        public static (int, int, int) AddWordsFromTxtFiles(List<string> filesPaths)
+        {
+            (int, int, int) results = (0, 0, 0);
+            foreach (var filePath in filesPaths)
+            {
+                if (!filePath.Contains(".txt", StringComparison.OrdinalIgnoreCase))
+                    continue;
+                var result = AddWordsFromTxtFile(filePath);
+                results.Item1 += result.Item1;
+                results.Item2 += result.Item2;
+                results.Item3 += result.Item3;
+            }
+            return results;
         }
     }
 }

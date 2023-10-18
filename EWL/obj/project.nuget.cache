@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OLHrj4tnyQEDEQo2NgtvlzBK6pPyZ6kigApn0orm8CKx/zAVm9OgHReRbH7eSCZyCScMCH51wgDP3vUvOLDnKg==",
+  "dgSpecHash": "x50R3gzPl/V01ZAvgJKqJoVYoKucZrA7xVN83L4j/eYUS60t+jm1zTRzo4D3Auu6wFHvzbzqxXzjPuBNaQTGIQ==",
   "success": true,
   "projectFilePath": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Eng_Flash-Cards_Learner.csproj",
   "expectedPackageFiles": [
@@ -58,7 +58,19 @@
     "C:\\Users\\Windows-10H-20\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\Windows-10H-20\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\Windows-10H-20\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
-    "C:\\Users\\Windows-10H-20\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\Windows-10H-20\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\Windows-10H-20\\.nuget\\packages\\tulpep.notificationwindow\\1.1.38\\tulpep.notificationwindow.1.1.38.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Tulpep.NotificationWindow 1.1.38' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Tulpep.NotificationWindow",
+      "targetGraphs": [
+        "net7.0-windows7.0"
+      ]
+    }
+  ]
 }

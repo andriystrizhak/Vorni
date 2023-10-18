@@ -852,13 +852,22 @@
           "System.Drawing.Common": "4.7.0"
         }
       },
+      "Tulpep.NotificationWindow/1.1.38": {
+        "runtime": {
+          "lib/net40/Tulpep.NotificationWindow.dll": {
+            "assemblyVersion": "1.1.38.0",
+            "fileVersion": "1.1.38.0"
+          }
+        }
+      },
       "Eng_Flash-Cards_Learner/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.10",
           "NUnit": "3.13.3",
           "NUnit3TestAdapter": "4.5.0",
           "SQLite": "3.13.0",
-          "System.Data.SQLite": "1.0.118"
+          "System.Data.SQLite": "1.0.118",
+          "Tulpep.NotificationWindow": "1.1.38"
         },
         "runtime": {
           "Eng_Flash-Cards_Learner.dll": {}
@@ -1284,6 +1293,13 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "Tulpep.NotificationWindow/1.1.38": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cotu1DDvSiSqvkGIY0SOh1QN5NgXTiWJEspZCx34My+p0q9ONvtPYUZELyN+Fpo0U/KyAG5B0wEiiFdaMCesag==",
+      "path": "tulpep.notificationwindow/1.1.38",
+      "hashPath": "tulpep.notificationwindow.1.1.38.nupkg.sha512"
     },
     "Eng_Flash-Cards_Learner/1.0.0": {
       "type": "project",

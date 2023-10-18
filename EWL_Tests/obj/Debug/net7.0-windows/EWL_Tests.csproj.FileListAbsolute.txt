@@ -164,3 +164,4 @@ D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\obj\Deb
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\obj\Debug\net7.0-windows\ref\EWL_Tests.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\appsettings.json
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Vocabulary.db
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Tulpep.NotificationWindow.dll
