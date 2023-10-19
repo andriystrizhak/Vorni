@@ -32,10 +32,10 @@ namespace EWL
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -94,20 +94,20 @@ namespace EWL
             label4 = new Label();
             AddingWPanel3 = new Panel();
             DragAndDropPanel = new Panel();
+            TxtFilesPathsTextBox = new TextBox();
             label13 = new Label();
             label6 = new Label();
             ChooseFileButton = new Button();
             label12 = new Label();
-            TxtFilePathTextBox = new TextBox();
             SpecialFormatInfoBox2 = new PictureBox();
-            CancelAddingButton = new Button();
+            CancelAddingButton3 = new Button();
             AddWButton3 = new Button();
             GoBackButton6 = new Button();
             label7 = new Label();
             AddingWPanel2 = new Panel();
             GoBackButton7 = new Button();
             SpecialFormatInfoBox1 = new PictureBox();
-            CancelPrevButton2 = new Button();
+            CancelAddingButton2 = new Button();
             AddWButton2 = new Button();
             EngUaStringTextBox = new TextBox();
             label2 = new Label();
@@ -129,6 +129,18 @@ namespace EWL
             label11 = new Label();
             SpecialFormatLineTip = new ToolTip(components);
             WrongFileFormatPopup = new PopupNotifier();
+            OpenTxtFilesDialog = new OpenFileDialog();
+            InvalidLinesAndRepeatedWordsopup = new PopupNotifier();
+            InvalidLinesFormatPopup = new PopupNotifier();
+            WordsAreRepeatedPopup = new PopupNotifier();
+            AllLinesAreInvalidOrRepeatedPopup = new PopupNotifier();
+            WAddingReportPopup2 = new PopupNotifier();
+            CancelWAddingPopup2 = new PopupNotifier();
+            WAddingReportPopup3 = new PopupNotifier();
+            WordIsRepeatedPopup = new PopupNotifier();
+            WAddingReportPopup1 = new PopupNotifier();
+            CancelWAddingPopup1 = new PopupNotifier();
+            label14 = new Label();
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             MenuPanel.SuspendLayout();
@@ -883,9 +895,9 @@ namespace EWL
             AddWLabel4.ForeColor = Color.White;
             AddWLabel4.Location = new Point(322, 377);
             AddWLabel4.Name = "AddWLabel4";
-            AddWLabel4.Size = new Size(169, 18);
+            AddWLabel4.Size = new Size(282, 18);
             AddWLabel4.TabIndex = 2;
-            AddWLabel4.Text = "*кожен в окремому рядку";
+            AddWLabel4.Text = "*кожен в окремому рядку, через 'Shift+Enter'";
             AddWLabel4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // AddUaTTextBox
@@ -1134,7 +1146,7 @@ namespace EWL
             AddingWPanel3.BorderStyle = BorderStyle.FixedSingle;
             AddingWPanel3.Controls.Add(DragAndDropPanel);
             AddingWPanel3.Controls.Add(SpecialFormatInfoBox2);
-            AddingWPanel3.Controls.Add(CancelAddingButton);
+            AddingWPanel3.Controls.Add(CancelAddingButton3);
             AddingWPanel3.Controls.Add(AddWButton3);
             AddingWPanel3.Controls.Add(GoBackButton6);
             AddingWPanel3.Controls.Add(label7);
@@ -1148,7 +1160,7 @@ namespace EWL
             // 
             DragAndDropPanel.AllowDrop = true;
             DragAndDropPanel.BackColor = Color.FromArgb(60, 60, 60);
-            DragAndDropPanel.Controls.Add(TxtFilePathTextBox);
+            DragAndDropPanel.Controls.Add(TxtFilesPathsTextBox);
             DragAndDropPanel.Controls.Add(label13);
             DragAndDropPanel.Controls.Add(label6);
             DragAndDropPanel.Controls.Add(ChooseFileButton);
@@ -1161,6 +1173,24 @@ namespace EWL
             DragAndDropPanel.DragEnter += DragAndDropPanel_DragEnter;
             DragAndDropPanel.DragLeave += DragAndDropPanel_DragLeave;
             DragAndDropPanel.Paint += DragAndDropPanel_Paint;
+            // 
+            // TxtFilesPathsTextBox
+            // 
+            TxtFilesPathsTextBox.BackColor = Color.FromArgb(90, 90, 90);
+            TxtFilesPathsTextBox.BorderStyle = BorderStyle.FixedSingle;
+            TxtFilesPathsTextBox.Cursor = Cursors.IBeam;
+            TxtFilesPathsTextBox.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            TxtFilesPathsTextBox.ForeColor = Color.White;
+            TxtFilesPathsTextBox.Location = new Point(53, 60);
+            TxtFilesPathsTextBox.Multiline = true;
+            TxtFilesPathsTextBox.Name = "TxtFilesPathsTextBox";
+            TxtFilesPathsTextBox.ScrollBars = ScrollBars.Both;
+            TxtFilesPathsTextBox.Size = new Size(665, 151);
+            TxtFilesPathsTextBox.TabIndex = 2;
+            TxtFilesPathsTextBox.TabStop = false;
+            TxtFilesPathsTextBox.TextAlign = HorizontalAlignment.Center;
+            TxtFilesPathsTextBox.Visible = false;
+            TxtFilesPathsTextBox.TextChanged += TxtFilePathTextBox_TextChanged;
             // 
             // label13
             // 
@@ -1180,7 +1210,7 @@ namespace EWL
             label6.AutoSize = true;
             label6.Font = new Font("Roboto Condensed", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(300, 99);
+            label6.Location = new Point(300, 106);
             label6.Name = "label6";
             label6.Size = new Size(204, 33);
             label6.TabIndex = 3;
@@ -1198,7 +1228,7 @@ namespace EWL
             ChooseFileButton.FlatStyle = FlatStyle.Flat;
             ChooseFileButton.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
             ChooseFileButton.ForeColor = Color.White;
-            ChooseFileButton.Location = new Point(291, 59);
+            ChooseFileButton.Location = new Point(291, 76);
             ChooseFileButton.Name = "ChooseFileButton";
             ChooseFileButton.Size = new Size(221, 65);
             ChooseFileButton.TabIndex = 10;
@@ -1212,31 +1242,12 @@ namespace EWL
             label12.AutoSize = true;
             label12.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label12.ForeColor = Color.White;
-            label12.Location = new Point(268, 152);
+            label12.Location = new Point(268, 169);
             label12.Name = "label12";
             label12.Size = new Size(260, 25);
             label12.TabIndex = 9;
             label12.Text = "... або перетягни файл сюди";
             label12.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // TxtFilePathTextBox
-            // 
-            TxtFilePathTextBox.AcceptsReturn = true;
-            TxtFilePathTextBox.BackColor = Color.FromArgb(90, 90, 90);
-            TxtFilePathTextBox.BorderStyle = BorderStyle.FixedSingle;
-            TxtFilePathTextBox.Cursor = Cursors.IBeam;
-            TxtFilePathTextBox.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            TxtFilePathTextBox.ForeColor = Color.White;
-            TxtFilePathTextBox.Location = new Point(55, 59);
-            TxtFilePathTextBox.Multiline = true;
-            TxtFilePathTextBox.Name = "TxtFilePathTextBox";
-            TxtFilePathTextBox.ScrollBars = ScrollBars.Both;
-            TxtFilePathTextBox.Size = new Size(665, 151);
-            TxtFilePathTextBox.TabIndex = 2;
-            TxtFilePathTextBox.TabStop = false;
-            TxtFilePathTextBox.TextAlign = HorizontalAlignment.Center;
-            TxtFilePathTextBox.Visible = false;
-            TxtFilePathTextBox.TextChanged += TxtFilePathTextBox_TextChanged;
             // 
             // SpecialFormatInfoBox2
             // 
@@ -1251,25 +1262,25 @@ namespace EWL
             SpecialFormatInfoBox2.TabStop = false;
             SpecialFormatLineTip.SetToolTip(SpecialFormatInfoBox2, resources.GetString("SpecialFormatInfoBox2.ToolTip"));
             // 
-            // CancelAddingButton
+            // CancelAddingButton3
             // 
-            CancelAddingButton.BackColor = SystemColors.WindowFrame;
-            CancelAddingButton.Cursor = Cursors.Hand;
-            CancelAddingButton.Enabled = false;
-            CancelAddingButton.FlatAppearance.BorderColor = Color.Gray;
-            CancelAddingButton.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
-            CancelAddingButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
-            CancelAddingButton.FlatStyle = FlatStyle.Flat;
-            CancelAddingButton.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            CancelAddingButton.ForeColor = Color.White;
-            CancelAddingButton.Location = new Point(272, 412);
-            CancelAddingButton.Name = "CancelAddingButton";
-            CancelAddingButton.Size = new Size(195, 53);
-            CancelAddingButton.TabIndex = 0;
-            CancelAddingButton.TabStop = false;
-            CancelAddingButton.Text = "Скасувати додавання";
-            CancelAddingButton.UseVisualStyleBackColor = false;
-            CancelAddingButton.Click += CancelAddingButton_Click;
+            CancelAddingButton3.BackColor = SystemColors.WindowFrame;
+            CancelAddingButton3.Cursor = Cursors.Hand;
+            CancelAddingButton3.Enabled = false;
+            CancelAddingButton3.FlatAppearance.BorderColor = Color.Gray;
+            CancelAddingButton3.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
+            CancelAddingButton3.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
+            CancelAddingButton3.FlatStyle = FlatStyle.Flat;
+            CancelAddingButton3.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            CancelAddingButton3.ForeColor = Color.White;
+            CancelAddingButton3.Location = new Point(272, 412);
+            CancelAddingButton3.Name = "CancelAddingButton3";
+            CancelAddingButton3.Size = new Size(195, 53);
+            CancelAddingButton3.TabIndex = 0;
+            CancelAddingButton3.TabStop = false;
+            CancelAddingButton3.Text = "Скасувати додавання";
+            CancelAddingButton3.UseVisualStyleBackColor = false;
+            CancelAddingButton3.Click += CancelAddingButton_Click;
             // 
             // AddWButton3
             // 
@@ -1331,14 +1342,15 @@ namespace EWL
             // 
             AddingWPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AddingWPanel2.BorderStyle = BorderStyle.FixedSingle;
+            AddingWPanel2.Controls.Add(label14);
             AddingWPanel2.Controls.Add(GoBackButton7);
             AddingWPanel2.Controls.Add(SpecialFormatInfoBox1);
-            AddingWPanel2.Controls.Add(CancelPrevButton2);
+            AddingWPanel2.Controls.Add(CancelAddingButton2);
             AddingWPanel2.Controls.Add(AddWButton2);
             AddingWPanel2.Controls.Add(EngUaStringTextBox);
             AddingWPanel2.Controls.Add(label2);
             AddingWPanel2.Controls.Add(label5);
-            AddingWPanel2.ImeMode = ImeMode.Hangul;
+            AddingWPanel2.ImeMode = ImeMode.Alpha;
             AddingWPanel2.Location = new Point(0, 31);
             AddingWPanel2.Name = "AddingWPanel2";
             AddingWPanel2.Size = new Size(978, 519);
@@ -1378,25 +1390,25 @@ namespace EWL
             SpecialFormatInfoBox1.TabStop = false;
             SpecialFormatLineTip.SetToolTip(SpecialFormatInfoBox1, resources.GetString("SpecialFormatInfoBox1.ToolTip"));
             // 
-            // CancelPrevButton2
+            // CancelAddingButton2
             // 
-            CancelPrevButton2.BackColor = SystemColors.WindowFrame;
-            CancelPrevButton2.Cursor = Cursors.Hand;
-            CancelPrevButton2.Enabled = false;
-            CancelPrevButton2.FlatAppearance.BorderColor = Color.Gray;
-            CancelPrevButton2.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
-            CancelPrevButton2.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
-            CancelPrevButton2.FlatStyle = FlatStyle.Flat;
-            CancelPrevButton2.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            CancelPrevButton2.ForeColor = Color.White;
-            CancelPrevButton2.Location = new Point(270, 395);
-            CancelPrevButton2.Name = "CancelPrevButton2";
-            CancelPrevButton2.Size = new Size(195, 53);
-            CancelPrevButton2.TabIndex = 0;
-            CancelPrevButton2.TabStop = false;
-            CancelPrevButton2.Text = "Скасувати додавання";
-            CancelPrevButton2.UseVisualStyleBackColor = false;
-            CancelPrevButton2.Click += CancelPrevButton_Click;
+            CancelAddingButton2.BackColor = SystemColors.WindowFrame;
+            CancelAddingButton2.Cursor = Cursors.Hand;
+            CancelAddingButton2.Enabled = false;
+            CancelAddingButton2.FlatAppearance.BorderColor = Color.Gray;
+            CancelAddingButton2.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
+            CancelAddingButton2.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
+            CancelAddingButton2.FlatStyle = FlatStyle.Flat;
+            CancelAddingButton2.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            CancelAddingButton2.ForeColor = Color.White;
+            CancelAddingButton2.Location = new Point(270, 407);
+            CancelAddingButton2.Name = "CancelAddingButton2";
+            CancelAddingButton2.Size = new Size(195, 53);
+            CancelAddingButton2.TabIndex = 0;
+            CancelAddingButton2.TabStop = false;
+            CancelAddingButton2.Text = "Скасувати додавання";
+            CancelAddingButton2.UseVisualStyleBackColor = false;
+            CancelAddingButton2.Click += CancelAddingButton_Click;
             // 
             // AddWButton2
             // 
@@ -1409,7 +1421,7 @@ namespace EWL
             AddWButton2.FlatStyle = FlatStyle.Flat;
             AddWButton2.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             AddWButton2.ForeColor = Color.White;
-            AddWButton2.Location = new Point(528, 395);
+            AddWButton2.Location = new Point(530, 407);
             AddWButton2.Name = "AddWButton2";
             AddWButton2.Size = new Size(195, 53);
             AddWButton2.TabIndex = 1;
@@ -1424,10 +1436,11 @@ namespace EWL
             EngUaStringTextBox.Cursor = Cursors.IBeam;
             EngUaStringTextBox.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             EngUaStringTextBox.ForeColor = Color.White;
-            EngUaStringTextBox.Location = new Point(185, 250);
+            EngUaStringTextBox.Location = new Point(180, 179);
+            EngUaStringTextBox.Multiline = true;
             EngUaStringTextBox.Name = "EngUaStringTextBox";
-            EngUaStringTextBox.ScrollBars = ScrollBars.Horizontal;
-            EngUaStringTextBox.Size = new Size(635, 33);
+            EngUaStringTextBox.ScrollBars = ScrollBars.Both;
+            EngUaStringTextBox.Size = new Size(635, 184);
             EngUaStringTextBox.TabIndex = 2;
             EngUaStringTextBox.TabStop = false;
             EngUaStringTextBox.TextAlign = HorizontalAlignment.Center;
@@ -1439,11 +1452,11 @@ namespace EWL
             label2.AutoSize = true;
             label2.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(292, 211);
+            label2.Location = new Point(265, 141);
             label2.Name = "label2";
-            label2.Size = new Size(431, 25);
+            label2.Size = new Size(474, 25);
             label2.TabIndex = 3;
-            label2.Text = "Введи рядок зі словом в спеціальному форматі";
+            label2.Text = "Введи рядок(-ки) зі словом в спеціальному форматі";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -1454,7 +1467,7 @@ namespace EWL
             label5.BorderStyle = BorderStyle.FixedSingle;
             label5.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(313, 65);
+            label5.Location = new Point(313, 48);
             label5.Name = "label5";
             label5.Size = new Size(381, 47);
             label5.TabIndex = 5;
@@ -1483,39 +1496,39 @@ namespace EWL
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.NullValue = "-";
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.NullValue = "-";
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.LightGray;
-            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.NullValue = "-";
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = Color.LightGray;
+            dataGridViewCellStyle10.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle10.NullValue = "-";
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { WordID, EngWord, UaTranslation, Rating });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle11.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
             dataGridView1.GridColor = Color.Gray;
             dataGridView1.Location = new Point(497, 118);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.LightGray;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = Color.LightGray;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(403, 270);
@@ -1716,6 +1729,275 @@ namespace EWL
             WrongFileFormatPopup.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
             WrongFileFormatPopup.TitleText = "Хибний формат";
             // 
+            // OpenTxtFilesDialog
+            // 
+            OpenTxtFilesDialog.FileName = "ChooseTxtFile";
+            OpenTxtFilesDialog.Filter = "Text files (*.txt)|*.txt";
+            OpenTxtFilesDialog.InitialDirectory = "C:\\Users\\Windows-10H-20\\Desktop";
+            OpenTxtFilesDialog.Multiselect = true;
+            // 
+            // InvalidLinesAndRepeatedWordsopup
+            // 
+            InvalidLinesAndRepeatedWordsopup.BodyColor = Color.FromArgb(65, 65, 65);
+            InvalidLinesAndRepeatedWordsopup.BorderColor = Color.Gray;
+            InvalidLinesAndRepeatedWordsopup.ButtonBorderColor = Color.Gray;
+            InvalidLinesAndRepeatedWordsopup.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            InvalidLinesAndRepeatedWordsopup.ContentColor = Color.White;
+            InvalidLinesAndRepeatedWordsopup.ContentFont = new Font("Roboto Condensed", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            InvalidLinesAndRepeatedWordsopup.ContentHoverColor = SystemColors.ControlLight;
+            InvalidLinesAndRepeatedWordsopup.ContentPadding = new Padding(20, 3, 0, 0);
+            InvalidLinesAndRepeatedWordsopup.ContentText = "Деякі рядки не в 'Спеціальному форматі'.\r\nТа деякі з цих слів ти вже додавав до БД раніше.\r\nТому були додані лише правильно введені та нові слова";
+            InvalidLinesAndRepeatedWordsopup.Delay = 5000;
+            InvalidLinesAndRepeatedWordsopup.GradientPower = 0;
+            InvalidLinesAndRepeatedWordsopup.HeaderColor = Color.Gold;
+            InvalidLinesAndRepeatedWordsopup.HeaderHeight = 12;
+            InvalidLinesAndRepeatedWordsopup.Image = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
+            InvalidLinesAndRepeatedWordsopup.ImagePadding = new Padding(2, 20, 0, 0);
+            InvalidLinesAndRepeatedWordsopup.ImageSize = new Size(125, 50);
+            InvalidLinesAndRepeatedWordsopup.IsRightToLeft = false;
+            InvalidLinesAndRepeatedWordsopup.OptionsMenu = null;
+            InvalidLinesAndRepeatedWordsopup.Size = new Size(495, 105);
+            InvalidLinesAndRepeatedWordsopup.TitleColor = Color.White;
+            InvalidLinesAndRepeatedWordsopup.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            InvalidLinesAndRepeatedWordsopup.TitleText = "";
+            // 
+            // InvalidLinesFormatPopup
+            // 
+            InvalidLinesFormatPopup.BodyColor = Color.FromArgb(65, 65, 65);
+            InvalidLinesFormatPopup.BorderColor = Color.Gray;
+            InvalidLinesFormatPopup.ButtonBorderColor = Color.Gray;
+            InvalidLinesFormatPopup.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            InvalidLinesFormatPopup.ContentColor = Color.White;
+            InvalidLinesFormatPopup.ContentFont = new Font("Roboto Condensed", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            InvalidLinesFormatPopup.ContentHoverColor = SystemColors.ControlLight;
+            InvalidLinesFormatPopup.ContentPadding = new Padding(15, 4, 0, 0);
+            InvalidLinesFormatPopup.ContentText = "Деякі рядки не в 'Спеціальному форматі!\r\nВ списку будуть тільки ті, що мають вірний формат";
+            InvalidLinesFormatPopup.Delay = 5000;
+            InvalidLinesFormatPopup.GradientPower = 0;
+            InvalidLinesFormatPopup.HeaderColor = Color.Gold;
+            InvalidLinesFormatPopup.HeaderHeight = 12;
+            InvalidLinesFormatPopup.Image = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
+            InvalidLinesFormatPopup.ImagePadding = new Padding(2, 14, 0, 0);
+            InvalidLinesFormatPopup.ImageSize = new Size(125, 50);
+            InvalidLinesFormatPopup.IsRightToLeft = false;
+            InvalidLinesFormatPopup.OptionsMenu = null;
+            InvalidLinesFormatPopup.Size = new Size(485, 95);
+            InvalidLinesFormatPopup.TitleColor = Color.White;
+            InvalidLinesFormatPopup.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            InvalidLinesFormatPopup.TitleText = "";
+            // 
+            // WordsAreRepeatedPopup
+            // 
+            WordsAreRepeatedPopup.BodyColor = Color.FromArgb(65, 65, 65);
+            WordsAreRepeatedPopup.BorderColor = Color.Gray;
+            WordsAreRepeatedPopup.ButtonBorderColor = Color.Gray;
+            WordsAreRepeatedPopup.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            WordsAreRepeatedPopup.ContentColor = Color.White;
+            WordsAreRepeatedPopup.ContentFont = new Font("Roboto Condensed", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            WordsAreRepeatedPopup.ContentHoverColor = SystemColors.ControlLight;
+            WordsAreRepeatedPopup.ContentPadding = new Padding(15, 3, 0, 0);
+            WordsAreRepeatedPopup.ContentText = "Деякі з цих слів ти вже додавав до БД раніше.\r\nТому зараз були додані лише нові";
+            WordsAreRepeatedPopup.Delay = 5000;
+            WordsAreRepeatedPopup.GradientPower = 0;
+            WordsAreRepeatedPopup.HeaderColor = Color.Gold;
+            WordsAreRepeatedPopup.HeaderHeight = 12;
+            WordsAreRepeatedPopup.Image = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
+            WordsAreRepeatedPopup.ImagePadding = new Padding(2, 14, 0, 0);
+            WordsAreRepeatedPopup.ImageSize = new Size(125, 50);
+            WordsAreRepeatedPopup.IsRightToLeft = false;
+            WordsAreRepeatedPopup.OptionsMenu = null;
+            WordsAreRepeatedPopup.Size = new Size(485, 95);
+            WordsAreRepeatedPopup.TitleColor = Color.White;
+            WordsAreRepeatedPopup.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            WordsAreRepeatedPopup.TitleText = "";
+            // 
+            // AllLinesAreInvalidOrRepeatedPopup
+            // 
+            AllLinesAreInvalidOrRepeatedPopup.BodyColor = Color.FromArgb(65, 65, 65);
+            AllLinesAreInvalidOrRepeatedPopup.BorderColor = Color.Gray;
+            AllLinesAreInvalidOrRepeatedPopup.ButtonBorderColor = Color.Gray;
+            AllLinesAreInvalidOrRepeatedPopup.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            AllLinesAreInvalidOrRepeatedPopup.ContentColor = Color.White;
+            AllLinesAreInvalidOrRepeatedPopup.ContentFont = new Font("Roboto Condensed", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            AllLinesAreInvalidOrRepeatedPopup.ContentHoverColor = SystemColors.ControlLight;
+            AllLinesAreInvalidOrRepeatedPopup.ContentPadding = new Padding(25, 3, 0, 0);
+            AllLinesAreInvalidOrRepeatedPopup.ContentText = "Всі додані рядки в хибному форматі\r\nабо всі слова вже були додані раніше!\r\nЗараз не було доданe жодне слово";
+            AllLinesAreInvalidOrRepeatedPopup.Delay = 8000;
+            AllLinesAreInvalidOrRepeatedPopup.GradientPower = 0;
+            AllLinesAreInvalidOrRepeatedPopup.HeaderColor = Color.FromArgb(192, 0, 0);
+            AllLinesAreInvalidOrRepeatedPopup.HeaderHeight = 12;
+            AllLinesAreInvalidOrRepeatedPopup.Image = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
+            AllLinesAreInvalidOrRepeatedPopup.ImagePadding = new Padding(2, 17, 0, 0);
+            AllLinesAreInvalidOrRepeatedPopup.ImageSize = new Size(125, 50);
+            AllLinesAreInvalidOrRepeatedPopup.IsRightToLeft = false;
+            AllLinesAreInvalidOrRepeatedPopup.OptionsMenu = null;
+            AllLinesAreInvalidOrRepeatedPopup.Size = new Size(445, 105);
+            AllLinesAreInvalidOrRepeatedPopup.TitleColor = Color.White;
+            AllLinesAreInvalidOrRepeatedPopup.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            AllLinesAreInvalidOrRepeatedPopup.TitleText = "";
+            // 
+            // WAddingReportPopup2
+            // 
+            WAddingReportPopup2.BodyColor = Color.FromArgb(65, 65, 65);
+            WAddingReportPopup2.BorderColor = Color.Gray;
+            WAddingReportPopup2.ButtonBorderColor = Color.Gray;
+            WAddingReportPopup2.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            WAddingReportPopup2.ContentColor = Color.White;
+            WAddingReportPopup2.ContentFont = new Font("Roboto Condensed", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            WAddingReportPopup2.ContentHoverColor = SystemColors.ControlLight;
+            WAddingReportPopup2.ContentPadding = new Padding(30, 6, 0, 0);
+            WAddingReportPopup2.ContentText = null;
+            WAddingReportPopup2.Delay = 5000;
+            WAddingReportPopup2.GradientPower = 0;
+            WAddingReportPopup2.HeaderColor = Color.SteelBlue;
+            WAddingReportPopup2.HeaderHeight = 12;
+            WAddingReportPopup2.Image = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
+            WAddingReportPopup2.ImagePadding = new Padding(2, 9, 0, 0);
+            WAddingReportPopup2.ImageSize = new Size(125, 50);
+            WAddingReportPopup2.IsRightToLeft = false;
+            WAddingReportPopup2.OptionsMenu = null;
+            WAddingReportPopup2.Size = new Size(465, 85);
+            WAddingReportPopup2.TitleColor = Color.White;
+            WAddingReportPopup2.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            WAddingReportPopup2.TitleText = "";
+            // 
+            // CancelWAddingPopup2
+            // 
+            CancelWAddingPopup2.BodyColor = Color.FromArgb(65, 65, 65);
+            CancelWAddingPopup2.BorderColor = Color.Gray;
+            CancelWAddingPopup2.ButtonBorderColor = Color.Gray;
+            CancelWAddingPopup2.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            CancelWAddingPopup2.ContentColor = Color.White;
+            CancelWAddingPopup2.ContentFont = new Font("Roboto Condensed", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            CancelWAddingPopup2.ContentHoverColor = SystemColors.ControlLight;
+            CancelWAddingPopup2.ContentPadding = new Padding(25, 6, 0, 0);
+            CancelWAddingPopup2.ContentText = "Всі останні додані слова були видалені";
+            CancelWAddingPopup2.Delay = 5000;
+            CancelWAddingPopup2.GradientPower = 0;
+            CancelWAddingPopup2.HeaderColor = Color.SteelBlue;
+            CancelWAddingPopup2.HeaderHeight = 12;
+            CancelWAddingPopup2.Image = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
+            CancelWAddingPopup2.ImagePadding = new Padding(2, 9, 0, 0);
+            CancelWAddingPopup2.ImageSize = new Size(125, 50);
+            CancelWAddingPopup2.IsRightToLeft = false;
+            CancelWAddingPopup2.OptionsMenu = null;
+            CancelWAddingPopup2.Size = new Size(465, 85);
+            CancelWAddingPopup2.TitleColor = Color.White;
+            CancelWAddingPopup2.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            CancelWAddingPopup2.TitleText = "";
+            // 
+            // WAddingReportPopup3
+            // 
+            WAddingReportPopup3.BodyColor = Color.FromArgb(65, 65, 65);
+            WAddingReportPopup3.BorderColor = Color.Gray;
+            WAddingReportPopup3.ButtonBorderColor = Color.Gray;
+            WAddingReportPopup3.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            WAddingReportPopup3.ContentColor = Color.White;
+            WAddingReportPopup3.ContentFont = new Font("Roboto Condensed", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            WAddingReportPopup3.ContentHoverColor = SystemColors.ControlLight;
+            WAddingReportPopup3.ContentPadding = new Padding(25, 3, 0, 0);
+            WAddingReportPopup3.ContentText = "";
+            WAddingReportPopup3.Delay = 8000;
+            WAddingReportPopup3.GradientPower = 0;
+            WAddingReportPopup3.HeaderColor = Color.SteelBlue;
+            WAddingReportPopup3.HeaderHeight = 12;
+            WAddingReportPopup3.Image = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
+            WAddingReportPopup3.ImagePadding = new Padding(2, 17, 0, 0);
+            WAddingReportPopup3.ImageSize = new Size(125, 50);
+            WAddingReportPopup3.IsRightToLeft = false;
+            WAddingReportPopup3.OptionsMenu = null;
+            WAddingReportPopup3.Size = new Size(445, 105);
+            WAddingReportPopup3.TitleColor = Color.White;
+            WAddingReportPopup3.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            WAddingReportPopup3.TitleText = "";
+            // 
+            // WordIsRepeatedPopup
+            // 
+            WordIsRepeatedPopup.BodyColor = Color.FromArgb(65, 65, 65);
+            WordIsRepeatedPopup.BorderColor = Color.Gray;
+            WordIsRepeatedPopup.ButtonBorderColor = Color.Gray;
+            WordIsRepeatedPopup.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            WordIsRepeatedPopup.ContentColor = Color.White;
+            WordIsRepeatedPopup.ContentFont = new Font("Roboto Condensed", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            WordIsRepeatedPopup.ContentHoverColor = SystemColors.ControlLight;
+            WordIsRepeatedPopup.ContentPadding = new Padding(25, 6, 0, 0);
+            WordIsRepeatedPopup.ContentText = "Таке слово вже було додане раніше";
+            WordIsRepeatedPopup.Delay = 5000;
+            WordIsRepeatedPopup.GradientPower = 0;
+            WordIsRepeatedPopup.HeaderColor = Color.Gold;
+            WordIsRepeatedPopup.HeaderHeight = 12;
+            WordIsRepeatedPopup.Image = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
+            WordIsRepeatedPopup.ImagePadding = new Padding(2, 9, 0, 0);
+            WordIsRepeatedPopup.ImageSize = new Size(125, 50);
+            WordIsRepeatedPopup.IsRightToLeft = false;
+            WordIsRepeatedPopup.OptionsMenu = null;
+            WordIsRepeatedPopup.Size = new Size(465, 85);
+            WordIsRepeatedPopup.TitleColor = Color.White;
+            WordIsRepeatedPopup.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            WordIsRepeatedPopup.TitleText = "";
+            // 
+            // WAddingReportPopup1
+            // 
+            WAddingReportPopup1.BodyColor = Color.FromArgb(65, 65, 65);
+            WAddingReportPopup1.BorderColor = Color.Gray;
+            WAddingReportPopup1.ButtonBorderColor = Color.Gray;
+            WAddingReportPopup1.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            WAddingReportPopup1.ContentColor = Color.White;
+            WAddingReportPopup1.ContentFont = new Font("Roboto Condensed", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            WAddingReportPopup1.ContentHoverColor = SystemColors.ControlLight;
+            WAddingReportPopup1.ContentPadding = new Padding(30, 6, 0, 0);
+            WAddingReportPopup1.ContentText = "Слово успішно додане!";
+            WAddingReportPopup1.Delay = 5000;
+            WAddingReportPopup1.GradientPower = 0;
+            WAddingReportPopup1.HeaderColor = Color.SteelBlue;
+            WAddingReportPopup1.HeaderHeight = 12;
+            WAddingReportPopup1.Image = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
+            WAddingReportPopup1.ImagePadding = new Padding(2, 9, 0, 0);
+            WAddingReportPopup1.ImageSize = new Size(125, 50);
+            WAddingReportPopup1.IsRightToLeft = false;
+            WAddingReportPopup1.OptionsMenu = null;
+            WAddingReportPopup1.Size = new Size(445, 85);
+            WAddingReportPopup1.TitleColor = Color.White;
+            WAddingReportPopup1.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            WAddingReportPopup1.TitleText = "";
+            // 
+            // CancelWAddingPopup1
+            // 
+            CancelWAddingPopup1.BodyColor = Color.FromArgb(65, 65, 65);
+            CancelWAddingPopup1.BorderColor = Color.Gray;
+            CancelWAddingPopup1.ButtonBorderColor = Color.Gray;
+            CancelWAddingPopup1.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            CancelWAddingPopup1.ContentColor = Color.White;
+            CancelWAddingPopup1.ContentFont = new Font("Roboto Condensed", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            CancelWAddingPopup1.ContentHoverColor = SystemColors.ControlLight;
+            CancelWAddingPopup1.ContentPadding = new Padding(25, 6, 0, 0);
+            CancelWAddingPopup1.ContentText = "Oстаннє додане слово видалено!";
+            CancelWAddingPopup1.Delay = 5000;
+            CancelWAddingPopup1.GradientPower = 0;
+            CancelWAddingPopup1.HeaderColor = Color.SteelBlue;
+            CancelWAddingPopup1.HeaderHeight = 12;
+            CancelWAddingPopup1.Image = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
+            CancelWAddingPopup1.ImagePadding = new Padding(2, 9, 0, 0);
+            CancelWAddingPopup1.ImageSize = new Size(125, 50);
+            CancelWAddingPopup1.IsRightToLeft = false;
+            CancelWAddingPopup1.OptionsMenu = null;
+            CancelWAddingPopup1.Size = new Size(465, 85);
+            CancelWAddingPopup1.TitleColor = Color.White;
+            CancelWAddingPopup1.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            CancelWAddingPopup1.TitleText = "";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Roboto Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.ForeColor = Color.White;
+            label14.Location = new Point(278, 364);
+            label14.Name = "label14";
+            label14.Size = new Size(282, 18);
+            label14.TabIndex = 8;
+            label14.Text = "*кожен в окремому рядку, через 'Shift+Enter'";
+            label14.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             AllowDrop = true;
@@ -1723,11 +2005,11 @@ namespace EWL
             BackColor = Color.FromArgb(50, 50, 50);
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(978, 550);
-            Controls.Add(AddingWPanel3);
             Controls.Add(AddingWPanel2);
+            Controls.Add(AddingWPanel1);
+            Controls.Add(AddingWPanel3);
             Controls.Add(MenuPanel);
             Controls.Add(TopPanel);
-            Controls.Add(AddingWPanel1);
             Controls.Add(SettingPanel);
             Controls.Add(LearningEngPanel);
             Controls.Add(panel1);
@@ -1829,14 +2111,14 @@ namespace EWL
         private ComboBox WSourceComboBox;
         private Label label1;
         private Panel AddingWPanel3;
-        private Button CancelAddingButton;
+        private Button CancelAddingButton3;
         private Button AddWButton3;
-        private TextBox TxtFilePathTextBox;
+        private TextBox TxtFilesPathsTextBox;
         private Label label6;
         private Button GoBackButton6;
         private Label label7;
         private Panel AddingWPanel2;
-        private Button CancelPrevButton2;
+        private Button CancelAddingButton2;
         private Button AddWButton2;
         private TextBox EngUaStringTextBox;
         private Label label2;
@@ -1866,5 +2148,17 @@ namespace EWL
         private Button ChooseFileButton;
         private PopupNotifier WrongFileFormatPopup;
         private Label label13;
+        private OpenFileDialog OpenTxtFilesDialog;
+        private PopupNotifier InvalidLinesAndRepeatedWordsopup;
+        private PopupNotifier InvalidLinesFormatPopup;
+        private PopupNotifier WordsAreRepeatedPopup;
+        private PopupNotifier AllLinesAreInvalidOrRepeatedPopup;
+        private PopupNotifier WAddingReportPopup2;
+        private PopupNotifier CancelWAddingPopup2;
+        private PopupNotifier WAddingReportPopup3;
+        private PopupNotifier WordIsRepeatedPopup;
+        private PopupNotifier WAddingReportPopup1;
+        private PopupNotifier CancelWAddingPopup1;
+        private Label label14;
     }
 }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using EWL.EF_SQLite;
+﻿using EWL.EF_SQLite;
 
 namespace EWL.NOT_Forms
 {
@@ -23,11 +16,12 @@ namespace EWL.NOT_Forms
             string[] meaningDifficultyPair;
             int difficulty;
             string meanings;
+            string[] separators = { " - ", " — " };
             Txt_Word? word;
 
             try
             {
-                wordMeaningsPair = line.Split(" - ", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                wordMeaningsPair = line.Split(separators, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
                 word = new Txt_Word();
 
                 if (wordMeaningsPair[1].Contains("["))
@@ -77,7 +71,8 @@ namespace EWL.NOT_Forms
             result.Item1 = allWords.Count;
 
             foreach (var word in allWords)
-                result.Item2 += SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty) ? 1 : 0;
+                result.Item2 += SQLs.TryAdd_Word_ToAllWords(
+                    word.Eng, word.Ua, word.Difficulty) ? 1 : 0;
 
             return result;
         }

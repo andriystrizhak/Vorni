@@ -1,6 +1,7 @@
 ﻿using EWL.EF_SQLite;
 using EWL.NOT_Forms;
 using System.Data;
+using static EWL.NOT_Forms.Txt_FileHandler;
 
 namespace EWL
 {
@@ -19,22 +20,16 @@ namespace EWL
         /// <summary>
         /// Кількість слів доданих за один раз в розділі "Додати слова"
         /// </summary>
-        int addedWords = 0; //CHANGE
-
-        /// <summary>
-        /// 
-        /// </summary>
-        Panel CurrentPanel { get; set; }
-
+        int addedWordsCount = 0;
 
         /// <summary>
         /// Список слів для вивчення
         /// </summary>
-        List<Word> words = new();
+        List<Word> words { get; set; } = new();
         /// <summary>
         /// Індекс поточного слова для вивчення зі списку <see cref="words"/>
         /// </summary>
-        int wordIndex = 0;
+        int wordIndex { get; set; } = 0;
         /// <summary>
         /// Оцінки поточних слів
         /// </summary>
@@ -200,15 +195,16 @@ namespace EWL
         #region [ Додати слова ]
 
         //TODO CATEGORY - Додати перемикач категорії для додавання слів
+        //TODO - Додати перемикач способу додавання слів
 
         private void SeeAddingWPanelButton_Click(object sender, EventArgs e)
         {
-            addedWords = 0;
+            addedWordsCount = 0;
             int wAddingMode = SQLs.Get_WordAddingMode();
 
             Null_EngUaTextBoxes();
             CancelPrevButton1.Enabled = false;
-            CancelPrevButton2.Enabled = false;
+            CancelAddingButton2.Enabled = false;
 
             if (wAddingMode == 0)
                 ShowPanel(AddingWPanel1);
@@ -227,28 +223,10 @@ namespace EWL
             AddUaTTextBox.Text = "";
 
             EngUaStringTextBox.Text = "";
-            TxtFilePathTextBox.Text = "";
+            TxtFilesPathsTextBox.Text = "";
             Null_AddingWPanel3();
 
             AddWButton1.Enabled = false;
-        }
-
-        void Show_WordIsRepeated_MessageBox()
-        {
-            MessageBox.Show(
-                "Таке ж слово ти вже додавав до БД раніше",
-                "Не сіпайся, все добре",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning);
-        }
-
-        void Show_InvalidLineFormat_MessageBox()
-        {
-            MessageBox.Show(
-                "Твій рядок не в 'Спеціальному форматі'",
-                "Не сіпайся, все добре",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning);
         }
 
         #region ( Властивості контролів AddingWPanel-s )
@@ -261,10 +239,11 @@ namespace EWL
             string uaTrans = AddUaTTextBox.Text;
 
             if (!SQLs.TryAdd_Word_ToAllWords(engWord, uaTrans))
-                Show_WordIsRepeated_MessageBox();
+                WordIsRepeatedPopup.Popup();
             else
             {
-                addedWords++;
+                WAddingReportPopup1.Popup();
+                addedWordsCount++;
                 Null_EngUaTextBoxes();
                 CancelPrevButton1.Enabled = true;
             }
@@ -273,11 +252,12 @@ namespace EWL
         private void CancelPrevButton_Click(object sender, EventArgs e)
         {
             SQLs.Remove_LastWords_Permanently(1);
-            addedWords--;
-            if (addedWords == 0)
+            CancelWAddingPopup1.Popup();
+            addedWordsCount--;
+            if (addedWordsCount == 0)
             {
                 CancelPrevButton1.Enabled = false;
-                CancelPrevButton2.Enabled = false;
+                CancelAddingButton2.Enabled = false;
             }
         }
 
@@ -317,25 +297,60 @@ namespace EWL
         #region AddingWPanel2
 
         private void EngUaStringTextBox_TextChanged(object sender, EventArgs e)
-            => AddWButton2.Enabled = true;
+        {
+            if (EngUaStringTextBox.Text != "")
+                AddWButton2.Enabled = true;
+            else
+                AddWButton2.Enabled = false;
+        }
 
         private void AddWButton2_Click(object sender, EventArgs e)
         {
-            var word = Txt_FileHandler.GetWordFromLine(EngUaStringTextBox.Text);
+            var lines = EngUaStringTextBox.Lines;
+            addedWordsCount = 0;
 
-            if (word == null)
-                Show_InvalidLineFormat_MessageBox();
-            else if (!SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty))
-                Show_WordIsRepeated_MessageBox();
-            else
+            bool isAnyInvalidLineThere = false;
+            bool isAnyRepeatedWordThere = false;
+
+            foreach (var line in lines)
             {
-                addedWords++;
-                CancelPrevButton2.Enabled = true;
+                var word = GetWordFromLine(line);
+                if (word == null)
+                    isAnyInvalidLineThere = true;
+                else if (!SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty))
+                    isAnyRepeatedWordThere = true;
+                else
+                    addedWordsCount++;
+            }
+            ShowAddingWPanel2_Popup(isAnyInvalidLineThere, isAnyRepeatedWordThere);
+        }
+
+        /// <summary>
+        /// Виводить підходящий Popup
+        /// </summary>
+        /// <param name="isAnyInvalidLineThere">Чи були серед всіх рядків ті, які в хибному форматі</param>
+        /// <param name="isAnyRepeatedWordThere">Чи були серед всіх слів ті, які вже додавалися раніше</param>
+        void ShowAddingWPanel2_Popup(bool isAnyInvalidLineThere, bool isAnyRepeatedWordThere)
+        {
+            if (addedWordsCount <= 0)
+                AllLinesAreInvalidOrRepeatedPopup.Popup();
+            else if (isAnyInvalidLineThere && isAnyRepeatedWordThere)
+                InvalidLinesAndRepeatedWordsopup.Popup();
+            else if (isAnyInvalidLineThere)
+                InvalidLinesFormatPopup.Popup();
+            else if (isAnyRepeatedWordThere)
+                WordsAreRepeatedPopup.Popup();
+
+            if (addedWordsCount > 0)
+            {
+                WAddingReportPopup2.ContentText = $"Було успішно додано слів: {addedWordsCount}";
+                WAddingReportPopup2.Popup();
+                CancelAddingButton2.Enabled = true;
                 EngUaStringTextBox.Text = "";
             }
         }
 
-        //див. CancelPrevButton_Click() - для обох панелей (1 і 2)
+        //див. CancelAddingButton_Click() - для обох панелей (3 і 2)
 
         private void EngUaStringTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -389,10 +404,10 @@ namespace EWL
         private void DragAndDropPanel_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy; // Показуємо, що панель приймає файли.
+                e.Effect = DragDropEffects.Copy;
 
             label13.Visible = false;
-            TxtFilePathTextBox.Visible = false;
+            TxtFilesPathsTextBox.Visible = false;
             ChooseFileButton.Visible = false;
             label12.Visible = false;
             label6.Visible = true;
@@ -411,12 +426,12 @@ namespace EWL
             if (fileIsAdded)
             {
                 label13.Visible = true;
-                TxtFilePathTextBox.Visible = true;
+                TxtFilesPathsTextBox.Visible = true;
             }
             else
             {
                 label13.Visible = false;
-                TxtFilePathTextBox.Visible = false;
+                TxtFilesPathsTextBox.Visible = false;
             }
             ChooseFileButton.Visible = true;
             label12.Visible = true;
@@ -443,12 +458,12 @@ namespace EWL
             if (isInvalidFilesThere)
                 WrongFileFormatPopup.Popup();
 
-            TxtFilePathTextBox.Text = string.Join("\r\n", files);
+            TxtFilesPathsTextBox.Text = string.Join("\r\n", files);
 
             if (files.Count > 0)
             {
                 label13.Visible = true;
-                TxtFilePathTextBox.Visible = true;
+                TxtFilesPathsTextBox.Visible = true;
                 label6.Visible = false;
                 isMouseOverDDP = false;
                 DragAndDropPanel.Invalidate();
@@ -459,12 +474,30 @@ namespace EWL
 
         #endregion
 
+        #region Files Dialog
+
+        private void ChooseFileButton_Click(object sender, EventArgs e)
+        {
+            OpenTxtFilesDialog.ShowDialog();
+            if (OpenTxtFilesDialog.FileName.Contains(".txt", StringComparison.OrdinalIgnoreCase))
+            {
+                TxtFilesPathsTextBox.Text = string.Join("\r\n", OpenTxtFilesDialog.FileNames);
+                TxtFilesPathsTextBox.Visible = true;
+            }
+            else
+                TxtFilesPathsTextBox.Text = "";
+        }
+
+        #endregion
+
+        #endregion
+
         private void TxtFilePathTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (TxtFilePathTextBox.Text != "")
+            if (TxtFilesPathsTextBox.Text != "")
             {
                 AddWButton3.Enabled = true;
-                files = TxtFilePathTextBox.Text
+                files = TxtFilesPathsTextBox.Text
                     .Split("\r\n", StringSplitOptions.RemoveEmptyEntries)
                     .ToList();
             }
@@ -476,39 +509,29 @@ namespace EWL
             }
         }
 
-        private void ChooseFileButton_Click(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        #endregion
-
         private void AddWButton3_Click(object sender, EventArgs e)
         {
             var report = Txt_FileHandler.AddWordsFromTxtFiles(files);
-            MessageBox.Show($"Всього оброблених файлів: {report.Item3}\n" +
+            WAddingReportPopup3.ContentText =
+                $"Всього оброблених файлів: {report.Item3}\n" +
                 $"Всього слів в файлах знайдено: {report.Item1}\n" +
-                $"З них було додано: {report.Item2}",
-                "Звіт про додавання слів",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                $"З них було додано: {report.Item2}";
+            WAddingReportPopup3.Popup();
 
-            addedWords = report.Item2;
-            TxtFilePathTextBox.Text = "";
-            CancelAddingButton.Enabled = true;
+            addedWordsCount = report.Item2;
+            TxtFilesPathsTextBox.Text = "";
+            if (addedWordsCount > 0)
+                CancelAddingButton3.Enabled = true;
         }
 
         private void CancelAddingButton_Click(object sender, EventArgs e)
         {
-            SQLs.Remove_LastWords_Permanently(addedWords);
-            MessageBox.Show(
-                $"Всі останні додані слова були видалені",
-                "Звіт про видалення слів",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            SQLs.Remove_LastWords_Permanently(addedWordsCount);
+            CancelWAddingPopup2.Popup();
 
-            addedWords = 0;
-            CancelAddingButton.Enabled = false;
+            addedWordsCount = 0;
+            CancelAddingButton2.Enabled = false;
+            CancelAddingButton3.Enabled = false;
         }
 
         #endregion
@@ -622,7 +645,8 @@ namespace EWL
 
         private void Enter_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (!(e.Shift && e.KeyCode == Keys.Enter)
+                && e.KeyCode == Keys.Enter)
             {
                 SeeTransButton.PerformClick();
                 RetryButton.PerformClick();
@@ -653,8 +677,8 @@ namespace EWL
                 DefaultSettingsButton.PerformClick();
 
                 CancelPrevButton1.PerformClick();
-                CancelPrevButton2.PerformClick();
-                CancelAddingButton.PerformClick();
+                CancelAddingButton2.PerformClick();
+                CancelAddingButton3.PerformClick();
 
                 button6.PerformClick(); //CATEGORY
             }
@@ -685,6 +709,11 @@ namespace EWL
         #endregion
 
         #region { OTHER }
+
+        /// <summary>
+        /// Панель, яка на поточний момент демонструється
+        /// </summary>
+        Panel CurrentPanel { get; set; }
 
         /// <summary>
         /// Показує <paramref name="panelToShow"/>, а всі інші приховує
