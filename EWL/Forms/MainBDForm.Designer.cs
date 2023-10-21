@@ -32,10 +32,10 @@ namespace EWL
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -94,6 +94,7 @@ namespace EWL
             label4 = new Label();
             AddingWPanel3 = new Panel();
             DragAndDropPanel = new Panel();
+            LoadingWheelGif = new PictureBox();
             TxtFilesPathsTextBox = new TextBox();
             label13 = new Label();
             label6 = new Label();
@@ -105,6 +106,7 @@ namespace EWL
             GoBackButton6 = new Button();
             label7 = new Label();
             AddingWPanel2 = new Panel();
+            label14 = new Label();
             GoBackButton7 = new Button();
             SpecialFormatInfoBox1 = new PictureBox();
             CancelAddingButton2 = new Button();
@@ -140,7 +142,6 @@ namespace EWL
             WordIsRepeatedPopup = new PopupNotifier();
             WAddingReportPopup1 = new PopupNotifier();
             CancelWAddingPopup1 = new PopupNotifier();
-            label14 = new Label();
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             MenuPanel.SuspendLayout();
@@ -155,6 +156,7 @@ namespace EWL
             ((System.ComponentModel.ISupportInitialize)NumberOfWordsNumericUpDown).BeginInit();
             AddingWPanel3.SuspendLayout();
             DragAndDropPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)LoadingWheelGif).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox2).BeginInit();
             AddingWPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox1).BeginInit();
@@ -658,7 +660,7 @@ namespace EWL
             SeeTransButton.Text = "Побачити переклад";
             SeeTransButton.UseVisualStyleBackColor = false;
             SeeTransButton.Click += SeeTransButton_Click;
-            SeeTransButton.KeyDown += SeeTransButton_KeyDown;
+            SeeTransButton.KeyDown += Enter_KeyDown;
             // 
             // LearningStatPanel
             // 
@@ -1160,6 +1162,7 @@ namespace EWL
             // 
             DragAndDropPanel.AllowDrop = true;
             DragAndDropPanel.BackColor = Color.FromArgb(60, 60, 60);
+            DragAndDropPanel.Controls.Add(LoadingWheelGif);
             DragAndDropPanel.Controls.Add(TxtFilesPathsTextBox);
             DragAndDropPanel.Controls.Add(label13);
             DragAndDropPanel.Controls.Add(label6);
@@ -1173,6 +1176,17 @@ namespace EWL
             DragAndDropPanel.DragEnter += DragAndDropPanel_DragEnter;
             DragAndDropPanel.DragLeave += DragAndDropPanel_DragLeave;
             DragAndDropPanel.Paint += DragAndDropPanel_Paint;
+            // 
+            // LoadingWheelGif
+            // 
+            LoadingWheelGif.Image = (Image)resources.GetObject("LoadingWheelGif.Image");
+            LoadingWheelGif.Location = new Point(345, 72);
+            LoadingWheelGif.Name = "LoadingWheelGif";
+            LoadingWheelGif.Size = new Size(110, 110);
+            LoadingWheelGif.SizeMode = PictureBoxSizeMode.Zoom;
+            LoadingWheelGif.TabIndex = 13;
+            LoadingWheelGif.TabStop = false;
+            LoadingWheelGif.Visible = false;
             // 
             // TxtFilesPathsTextBox
             // 
@@ -1356,6 +1370,18 @@ namespace EWL
             AddingWPanel2.Size = new Size(978, 519);
             AddingWPanel2.TabIndex = 5;
             // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Roboto Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.ForeColor = Color.White;
+            label14.Location = new Point(278, 366);
+            label14.Name = "label14";
+            label14.Size = new Size(282, 18);
+            label14.TabIndex = 8;
+            label14.Text = "*кожен в окремому рядку, через 'Shift+Enter'";
+            label14.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // GoBackButton7
             // 
             GoBackButton7.BackColor = Color.FromArgb(50, 50, 50);
@@ -1496,39 +1522,39 @@ namespace EWL
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle9.NullValue = "-";
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = Color.LightGray;
-            dataGridViewCellStyle10.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle10.NullValue = "-";
-            dataGridViewCellStyle10.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.LightGray;
+            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.NullValue = "-";
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { WordID, EngWord, UaTranslation, Rating });
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle11.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.GridColor = Color.Gray;
             dataGridView1.Location = new Point(497, 118);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.LightGray;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.LightGray;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(403, 270);
@@ -1986,18 +2012,6 @@ namespace EWL
             CancelWAddingPopup1.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
             CancelWAddingPopup1.TitleText = "";
             // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Roboto Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.ForeColor = Color.White;
-            label14.Location = new Point(278, 364);
-            label14.Name = "label14";
-            label14.Size = new Size(282, 18);
-            label14.TabIndex = 8;
-            label14.Text = "*кожен в окремому рядку, через 'Shift+Enter'";
-            label14.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // MainForm
             // 
             AllowDrop = true;
@@ -2005,19 +2019,20 @@ namespace EWL
             BackColor = Color.FromArgb(50, 50, 50);
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(978, 550);
+            Controls.Add(LearningEngPanel);
+            Controls.Add(AddingWPanel3);
             Controls.Add(AddingWPanel2);
             Controls.Add(AddingWPanel1);
-            Controls.Add(AddingWPanel3);
             Controls.Add(MenuPanel);
             Controls.Add(TopPanel);
             Controls.Add(SettingPanel);
-            Controls.Add(LearningEngPanel);
             Controls.Add(panel1);
             Controls.Add(LearningUaPanel);
             Controls.Add(LearningStatPanel);
             Controls.Add(StatPanel);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            KeyPreview = true;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "English Words Learner (flash-cards)";
@@ -2042,6 +2057,7 @@ namespace EWL
             AddingWPanel3.PerformLayout();
             DragAndDropPanel.ResumeLayout(false);
             DragAndDropPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)LoadingWheelGif).EndInit();
             ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox2).EndInit();
             AddingWPanel2.ResumeLayout(false);
             AddingWPanel2.PerformLayout();
@@ -2160,5 +2176,6 @@ namespace EWL
         private PopupNotifier WAddingReportPopup1;
         private PopupNotifier CancelWAddingPopup1;
         private Label label14;
+        private PictureBox LoadingWheelGif;
     }
 }

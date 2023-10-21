@@ -40,16 +40,16 @@ namespace EWL
 
         public MainForm()
         {
+            KeyDown += Enter_KeyDown!;
+            KeyDown += Escape_KeyDown!;
+            KeyDown += RateW_KeyDown!;
+            KeyDown += CtrlS_KeyDown!;
+            KeyDown += CtrlZ_KeyDown!;
+
             InitializeComponent();
             ShowPanel(MenuPanel);
 
-            this.KeyPreview = true;
-            this.KeyDown += Enter_KeyDown!;
-            this.KeyDown += Escape_KeyDown!;
-            this.KeyDown += RateW_KeyDown!;
-            this.KeyDown += CtrlS_KeyDown!;
-            this.KeyDown += CtrlZ_KeyDown!;
-
+            //Джерело слів (???)
             WSourceComboBox.Text = WSourceComboBox.Items[0].ToString();
             SetCategoriesList();
         }
@@ -68,7 +68,13 @@ namespace EWL
         #region [ TopPanel ]
 
         private void CloseButton_Click(object sender, EventArgs e)
-            => this.Close();
+        {
+            DialogResult closeForm = MessageBox.Show(
+                "Ти точно хочеш вийти?", "Па-па?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (closeForm == DialogResult.Yes) Close();
+        }
 
         private void MinimizeButton_Click(object sender, EventArgs e)
             => this.WindowState = FormWindowState.Minimized;
@@ -509,25 +515,47 @@ namespace EWL
             }
         }
 
-        private void AddWButton3_Click(object sender, EventArgs e)
+        private async void AddWButton3_Click(object sender, EventArgs e)
         {
-            var report = Txt_FileHandler.AddWordsFromTxtFiles(files);
+            TxtFilesPathsTextBox.Visible = false;
+            label13.Visible = false;
+            LoadingWheelGif.Visible = true;
+
+            (int, int, int) report = (0, 0, 0);
+            await Task.Run(() => report = Txt_FileHandler.AddWordsFromTxtFiles(files));
+
+            LoadingWheelGif.Visible = false;
+
             WAddingReportPopup3.ContentText =
                 $"Всього оброблених файлів: {report.Item3}\n" +
                 $"Всього слів в файлах знайдено: {report.Item1}\n" +
                 $"З них було додано: {report.Item2}";
             WAddingReportPopup3.Popup();
 
-            addedWordsCount = report.Item2;
             TxtFilesPathsTextBox.Text = "";
+            addedWordsCount = report.Item2;
             if (addedWordsCount > 0)
                 CancelAddingButton3.Enabled = true;
         }
 
-        private void CancelAddingButton_Click(object sender, EventArgs e)
+        private async void CancelAddingButton_Click(object sender, EventArgs e)
         {
-            SQLs.Remove_LastWords_Permanently(addedWordsCount);
+            if (CurrentPanel == AddingWPanel3)
+            {
+                label12.Visible = false;
+                ChooseFileButton.Visible = false;
+                LoadingWheelGif.Visible = true;
+            }
+
+            await Task.Run(() => SQLs.Remove_LastWords_Permanently(addedWordsCount));
             CancelWAddingPopup2.Popup();
+
+            if (CurrentPanel == AddingWPanel3)
+            {
+                LoadingWheelGif.Visible = false;
+                label12.Visible = true;
+                ChooseFileButton.Visible = true;
+            }
 
             addedWordsCount = 0;
             CancelAddingButton2.Enabled = false;
@@ -760,6 +788,11 @@ namespace EWL
 
 
 
+        #region ₴( Сюди автоматично додаються нові методи )₴
+
+
+
+        #endregion
 
 
 

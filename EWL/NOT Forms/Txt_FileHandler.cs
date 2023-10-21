@@ -4,6 +4,7 @@ namespace EWL.NOT_Forms
 {
     public static class Txt_FileHandler
     {
+        static string[] separators = { " \u002D ", " \u2013 ", " \u2014 " }; //TODO - додати ЮТФ-ки всіх тирешок
 
         /// <summary>
         /// Розділяє рядок на слово, його переклад і складність (необов'язково)
@@ -16,7 +17,6 @@ namespace EWL.NOT_Forms
             string[] meaningDifficultyPair;
             int difficulty;
             string meanings;
-            string[] separators = { " - ", " — " };
             Txt_Word? word;
 
             try
@@ -64,7 +64,13 @@ namespace EWL.NOT_Forms
             string[] allLines = File.ReadAllLines(filePath);
 
             var allWords = allLines
-                .Where(x => x.Contains(" - "))
+                .Where(x => separators.Any(s => x.Contains(s)))
+                .Select(x =>
+                { 
+                    foreach (var s in separators)
+                        x.Replace(s, " - ");
+                    return x;
+                })
                 .Select(x => GetWordFromLine(x))
                 .Where(x => x != null)
                 .ToList();
