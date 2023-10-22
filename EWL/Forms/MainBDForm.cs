@@ -643,8 +643,8 @@ namespace EWL
                 $"\n3 — {ratings[3]} слів ({((float)ratings[3] / count):P1})" +
                 $"\n2 — {ratings[2]} слів ({((float)ratings[2] / count):P1})" +
                 $"\n1 — {ratings[1]} слів ({((float)ratings[1] / count):P1})" +
-                (ratings[0] > 0 
-                ? $"\n\nЩе не вивчалися — {ratings[0]} слів ({((float)ratings[0] / count):P1})" 
+                (ratings[0] > 0
+                ? $"\n\nЩе не вивчалися — {ratings[0]} слів ({((float)ratings[0] / count):P1})"
                 : "\n\nВсі слова вже вивчалися тобою");
 
             ShowPanel(StatPanel);
@@ -764,7 +764,8 @@ namespace EWL
         private void ShowPanel(Panel panelToShow)
         {
             foreach (Control panel in this.Controls)
-                if (panel is Panel && panel != TopPanel)
+                if (panel is Panel && panel != TopPanel
+                    && panel != SIdebarPanel)
                 {
                     panel.Enabled = false;
                     panel.Visible = false;
@@ -818,13 +819,5 @@ namespace EWL
         // - додати вкладку "Мої словники"
         //      - можливість створювати власні словники, керувати ними та їх вмістом
         //      -  
-
-
-        /*
-        private void LearningUaPanel_Enter(object sender, EventArgs e)
-            => isLearningUaPanelActive = true;
-        private void LearningUaPanel_Leave(object sender, EventArgs e)
-            => isLearningUaPanelActive = true;
-        */
     }
 }

@@ -32,10 +32,10 @@ namespace EWL
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -88,6 +88,7 @@ namespace EWL
             label3 = new Label();
             GoBackButton5 = new Button();
             label4 = new Label();
+            AddingWPanel = new Panel();
             AddingWPanel3 = new Panel();
             DragAndDropPanel = new Panel();
             LoadingWheelGif = new PictureBox();
@@ -142,6 +143,8 @@ namespace EWL
             SeeTransButton = new Button();
             EngWLabel1 = new Label();
             GoBackButton1 = new Button();
+            SIdebarPanel = new Panel();
+            WelcomePanel = new Panel();
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             MenuPanel.SuspendLayout();
@@ -166,7 +169,7 @@ namespace EWL
             // 
             // CloseButton
             // 
-            CloseButton.BackColor = Color.FromArgb(65, 65, 65);
+            CloseButton.BackColor = Color.FromArgb(35, 35, 35);
             CloseButton.BackgroundImageLayout = ImageLayout.None;
             CloseButton.Cursor = Cursors.Hand;
             CloseButton.FlatAppearance.BorderColor = Color.DimGray;
@@ -188,14 +191,14 @@ namespace EWL
             // 
             // TopPanel
             // 
-            TopPanel.BackColor = Color.FromArgb(65, 65, 65);
+            TopPanel.BackColor = Color.FromArgb(35, 35, 35);
             TopPanel.BorderStyle = BorderStyle.FixedSingle;
             TopPanel.Controls.Add(MinimizeButton);
             TopPanel.Controls.Add(TitleIcoPictureBox);
             TopPanel.Controls.Add(CloseButton);
             TopPanel.Controls.Add(TitleLabel);
             TopPanel.Cursor = Cursors.SizeAll;
-            TopPanel.Location = new Point(0, -18);
+            TopPanel.Location = new Point(0, 0);
             TopPanel.Name = "TopPanel";
             TopPanel.Size = new Size(978, 31);
             TopPanel.TabIndex = 0;
@@ -204,7 +207,7 @@ namespace EWL
             // 
             // MinimizeButton
             // 
-            MinimizeButton.BackColor = Color.FromArgb(65, 65, 65);
+            MinimizeButton.BackColor = Color.FromArgb(35, 35, 35);
             MinimizeButton.BackgroundImageLayout = ImageLayout.None;
             MinimizeButton.Cursor = Cursors.Hand;
             MinimizeButton.FlatAppearance.BorderColor = Color.DimGray;
@@ -228,7 +231,7 @@ namespace EWL
             // 
             TitleIcoPictureBox.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
             TitleIcoPictureBox.BackgroundImageLayout = ImageLayout.Zoom;
-            TitleIcoPictureBox.Location = new Point(6, 5);
+            TitleIcoPictureBox.Location = new Point(6, 4);
             TitleIcoPictureBox.Name = "TitleIcoPictureBox";
             TitleIcoPictureBox.Size = new Size(48, 21);
             TitleIcoPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
@@ -263,9 +266,9 @@ namespace EWL
             MenuPanel.Controls.Add(SeeStatButton);
             MenuPanel.Controls.Add(EWLPictureBox);
             MenuPanel.ImeMode = ImeMode.Hangul;
-            MenuPanel.Location = new Point(0, 31);
+            MenuPanel.Location = new Point(44, 31);
             MenuPanel.Name = "MenuPanel";
-            MenuPanel.Size = new Size(978, 519);
+            MenuPanel.Size = new Size(934, 519);
             MenuPanel.TabIndex = 9;
             // 
             // SettingButton
@@ -280,7 +283,7 @@ namespace EWL
             SettingButton.FlatStyle = FlatStyle.Flat;
             SettingButton.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             SettingButton.ForeColor = Color.White;
-            SettingButton.Location = new Point(316, 335);
+            SettingButton.Location = new Point(295, 336);
             SettingButton.Margin = new Padding(10, 10, 10, 100);
             SettingButton.MinimumSize = new Size(350, 50);
             SettingButton.Name = "SettingButton";
@@ -304,7 +307,7 @@ namespace EWL
             FullScreenButton.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             FullScreenButton.ForeColor = Color.White;
             FullScreenButton.ImageList = fullScreenImageList;
-            FullScreenButton.Location = new Point(915, 1);
+            FullScreenButton.Location = new Point(871, 1);
             FullScreenButton.Name = "FullScreenButton";
             FullScreenButton.Size = new Size(60, 60);
             FullScreenButton.TabIndex = 4;
@@ -325,7 +328,7 @@ namespace EWL
             LearnWButton.FlatStyle = FlatStyle.Flat;
             LearnWButton.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             LearnWButton.ForeColor = Color.White;
-            LearnWButton.Location = new Point(316, 200);
+            LearnWButton.Location = new Point(295, 201);
             LearnWButton.Margin = new Padding(10, 10, 10, 100);
             LearnWButton.MinimumSize = new Size(350, 50);
             LearnWButton.Name = "LearnWButton";
@@ -347,7 +350,7 @@ namespace EWL
             SeeAddingWPanelButton.FlatStyle = FlatStyle.Flat;
             SeeAddingWPanelButton.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             SeeAddingWPanelButton.ForeColor = Color.White;
-            SeeAddingWPanelButton.Location = new Point(316, 267);
+            SeeAddingWPanelButton.Location = new Point(295, 268);
             SeeAddingWPanelButton.Margin = new Padding(10, 10, 10, 100);
             SeeAddingWPanelButton.MinimumSize = new Size(350, 50);
             SeeAddingWPanelButton.Name = "SeeAddingWPanelButton";
@@ -369,7 +372,7 @@ namespace EWL
             SeeStatButton.FlatStyle = FlatStyle.Flat;
             SeeStatButton.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             SeeStatButton.ForeColor = Color.White;
-            SeeStatButton.Location = new Point(316, 403);
+            SeeStatButton.Location = new Point(295, 404);
             SeeStatButton.Margin = new Padding(10, 10, 10, 100);
             SeeStatButton.MinimumSize = new Size(350, 50);
             SeeStatButton.Name = "SeeStatButton";
@@ -383,7 +386,7 @@ namespace EWL
             // 
             EWLPictureBox.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.Logo11;
             EWLPictureBox.BackgroundImageLayout = ImageLayout.Zoom;
-            EWLPictureBox.Location = new Point(190, 16);
+            EWLPictureBox.Location = new Point(169, 17);
             EWLPictureBox.MinimumSize = new Size(550, 100);
             EWLPictureBox.Name = "EWLPictureBox";
             EWLPictureBox.Size = new Size(586, 150);
@@ -400,9 +403,9 @@ namespace EWL
             LearningUaPanel.Controls.Add(RateTableLayoutPanel);
             LearningUaPanel.Controls.Add(EngWLabel2);
             LearningUaPanel.ImeMode = ImeMode.Hangul;
-            LearningUaPanel.Location = new Point(0, 31);
+            LearningUaPanel.Location = new Point(44, 31);
             LearningUaPanel.Name = "LearningUaPanel";
-            LearningUaPanel.Size = new Size(978, 519);
+            LearningUaPanel.Size = new Size(934, 519);
             LearningUaPanel.TabIndex = 1;
             // 
             // GoBackButton2
@@ -433,9 +436,9 @@ namespace EWL
             TranslationLabel.BorderStyle = BorderStyle.FixedSingle;
             TranslationLabel.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
             TranslationLabel.ForeColor = Color.White;
-            TranslationLabel.Location = new Point(208, 182);
+            TranslationLabel.Location = new Point(197, 182);
             TranslationLabel.Name = "TranslationLabel";
-            TranslationLabel.Size = new Size(575, 152);
+            TranslationLabel.Size = new Size(531, 152);
             TranslationLabel.TabIndex = 1;
             TranslationLabel.Text = "ХХХ";
             TranslationLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -453,7 +456,7 @@ namespace EWL
             RateTableLayoutPanel.Controls.Add(Button3, 2, 0);
             RateTableLayoutPanel.Controls.Add(Button2, 1, 0);
             RateTableLayoutPanel.Controls.Add(Button1, 0, 0);
-            RateTableLayoutPanel.Location = new Point(221, 361);
+            RateTableLayoutPanel.Location = new Point(192, 361);
             RateTableLayoutPanel.Name = "RateTableLayoutPanel";
             RateTableLayoutPanel.RowCount = 1;
             RateTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -587,9 +590,9 @@ namespace EWL
             EngWLabel2.BorderStyle = BorderStyle.FixedSingle;
             EngWLabel2.Font = new Font("Impact", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
             EngWLabel2.ForeColor = Color.White;
-            EngWLabel2.Location = new Point(272, 76);
+            EngWLabel2.Location = new Point(261, 76);
             EngWLabel2.Name = "EngWLabel2";
-            EngWLabel2.Size = new Size(447, 76);
+            EngWLabel2.Size = new Size(403, 76);
             EngWLabel2.TabIndex = 3;
             EngWLabel2.Text = "ХХХ";
             EngWLabel2.TextAlign = ContentAlignment.MiddleCenter;
@@ -604,9 +607,9 @@ namespace EWL
             LearningStatPanel.Controls.Add(GoMenuButton);
             LearningStatPanel.Controls.Add(LearningStatLabel);
             LearningStatPanel.ImeMode = ImeMode.Hangul;
-            LearningStatPanel.Location = new Point(0, 31);
+            LearningStatPanel.Location = new Point(44, 31);
             LearningStatPanel.Name = "LearningStatPanel";
-            LearningStatPanel.Size = new Size(978, 519);
+            LearningStatPanel.Size = new Size(934, 519);
             LearningStatPanel.TabIndex = 2;
             // 
             // LearningRatingLabel
@@ -616,9 +619,9 @@ namespace EWL
             LearningRatingLabel.BorderStyle = BorderStyle.FixedSingle;
             LearningRatingLabel.Font = new Font("Roboto Condensed", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             LearningRatingLabel.ForeColor = Color.White;
-            LearningRatingLabel.Location = new Point(291, 329);
+            LearningRatingLabel.Location = new Point(273, 329);
             LearningRatingLabel.Name = "LearningRatingLabel";
-            LearningRatingLabel.Size = new Size(422, 37);
+            LearningRatingLabel.Size = new Size(378, 37);
             LearningRatingLabel.TabIndex = 0;
             LearningRatingLabel.Text = "XXX";
             LearningRatingLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -635,12 +638,12 @@ namespace EWL
             RetryButton.FlatStyle = FlatStyle.Flat;
             RetryButton.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
             RetryButton.ForeColor = Color.White;
-            RetryButton.Location = new Point(533, 405);
+            RetryButton.Location = new Point(515, 405);
             RetryButton.Margin = new Padding(10);
             RetryButton.MaximumSize = new Size(350, 70);
             RetryButton.MinimumSize = new Size(150, 50);
             RetryButton.Name = "RetryButton";
-            RetryButton.Size = new Size(250, 70);
+            RetryButton.Size = new Size(206, 69);
             RetryButton.TabIndex = 1;
             RetryButton.Text = "Тренуватись ще";
             RetryButton.UseVisualStyleBackColor = false;
@@ -654,7 +657,7 @@ namespace EWL
             StatLabel1.BorderStyle = BorderStyle.FixedSingle;
             StatLabel1.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             StatLabel1.ForeColor = Color.White;
-            StatLabel1.Location = new Point(304, 46);
+            StatLabel1.Location = new Point(286, 46);
             StatLabel1.Name = "StatLabel1";
             StatLabel1.Size = new Size(411, 47);
             StatLabel1.TabIndex = 2;
@@ -673,12 +676,12 @@ namespace EWL
             GoMenuButton.FlatStyle = FlatStyle.Flat;
             GoMenuButton.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
             GoMenuButton.ForeColor = Color.White;
-            GoMenuButton.Location = new Point(225, 405);
+            GoMenuButton.Location = new Point(207, 405);
             GoMenuButton.Margin = new Padding(10);
             GoMenuButton.MaximumSize = new Size(350, 70);
             GoMenuButton.MinimumSize = new Size(150, 50);
             GoMenuButton.Name = "GoMenuButton";
-            GoMenuButton.Size = new Size(250, 70);
+            GoMenuButton.Size = new Size(206, 69);
             GoMenuButton.TabIndex = 3;
             GoMenuButton.Text = "Завершити";
             GoMenuButton.UseVisualStyleBackColor = false;
@@ -691,9 +694,9 @@ namespace EWL
             LearningStatLabel.BorderStyle = BorderStyle.FixedSingle;
             LearningStatLabel.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             LearningStatLabel.ForeColor = Color.White;
-            LearningStatLabel.Location = new Point(215, 110);
+            LearningStatLabel.Location = new Point(197, 110);
             LearningStatLabel.Name = "LearningStatLabel";
-            LearningStatLabel.Size = new Size(575, 266);
+            LearningStatLabel.Size = new Size(531, 266);
             LearningStatLabel.TabIndex = 4;
             LearningStatLabel.Text = "ХХХ";
             LearningStatLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -706,9 +709,9 @@ namespace EWL
             StatPanel.Controls.Add(StatHeaderLabel);
             StatPanel.Controls.Add(StatLabel);
             StatPanel.ImeMode = ImeMode.Hangul;
-            StatPanel.Location = new Point(0, 31);
+            StatPanel.Location = new Point(44, 31);
             StatPanel.Name = "StatPanel";
-            StatPanel.Size = new Size(978, 519);
+            StatPanel.Size = new Size(934, 519);
             StatPanel.TabIndex = 3;
             // 
             // GoBackButton3
@@ -740,7 +743,7 @@ namespace EWL
             StatHeaderLabel.BorderStyle = BorderStyle.FixedSingle;
             StatHeaderLabel.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             StatHeaderLabel.ForeColor = Color.White;
-            StatHeaderLabel.Location = new Point(313, 51);
+            StatHeaderLabel.Location = new Point(297, 51);
             StatHeaderLabel.Name = "StatHeaderLabel";
             StatHeaderLabel.Size = new Size(371, 47);
             StatHeaderLabel.TabIndex = 1;
@@ -754,9 +757,9 @@ namespace EWL
             StatLabel.BorderStyle = BorderStyle.FixedSingle;
             StatLabel.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             StatLabel.ForeColor = Color.White;
-            StatLabel.Location = new Point(203, 122);
+            StatLabel.Location = new Point(187, 122);
             StatLabel.Name = "StatLabel";
-            StatLabel.Size = new Size(586, 333);
+            StatLabel.Size = new Size(542, 333);
             StatLabel.TabIndex = 2;
             StatLabel.Text = "ХХХ";
             StatLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -775,9 +778,9 @@ namespace EWL
             AddingWPanel1.Controls.Add(GoBackButton4);
             AddingWPanel1.Controls.Add(AddWLabel1);
             AddingWPanel1.ImeMode = ImeMode.Hangul;
-            AddingWPanel1.Location = new Point(0, 31);
+            AddingWPanel1.Location = new Point(44, 31);
             AddingWPanel1.Name = "AddingWPanel1";
-            AddingWPanel1.Size = new Size(978, 519);
+            AddingWPanel1.Size = new Size(934, 519);
             AddingWPanel1.TabIndex = 7;
             // 
             // CancelPrevButton1
@@ -791,7 +794,7 @@ namespace EWL
             CancelPrevButton1.FlatStyle = FlatStyle.Flat;
             CancelPrevButton1.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             CancelPrevButton1.ForeColor = Color.White;
-            CancelPrevButton1.Location = new Point(286, 420);
+            CancelPrevButton1.Location = new Point(253, 420);
             CancelPrevButton1.Name = "CancelPrevButton1";
             CancelPrevButton1.Size = new Size(195, 53);
             CancelPrevButton1.TabIndex = 0;
@@ -811,7 +814,7 @@ namespace EWL
             AddWButton1.FlatStyle = FlatStyle.Flat;
             AddWButton1.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             AddWButton1.ForeColor = Color.White;
-            AddWButton1.Location = new Point(519, 420);
+            AddWButton1.Location = new Point(486, 420);
             AddWButton1.Name = "AddWButton1";
             AddWButton1.Size = new Size(195, 53);
             AddWButton1.TabIndex = 3;
@@ -824,7 +827,7 @@ namespace EWL
             AddWLabel4.AutoSize = true;
             AddWLabel4.Font = new Font("Roboto Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             AddWLabel4.ForeColor = Color.White;
-            AddWLabel4.Location = new Point(322, 377);
+            AddWLabel4.Location = new Point(289, 377);
             AddWLabel4.Name = "AddWLabel4";
             AddWLabel4.Size = new Size(282, 18);
             AddWLabel4.TabIndex = 2;
@@ -838,7 +841,7 @@ namespace EWL
             AddUaTTextBox.Cursor = Cursors.IBeam;
             AddUaTTextBox.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             AddUaTTextBox.ForeColor = Color.White;
-            AddUaTTextBox.Location = new Point(307, 224);
+            AddUaTTextBox.Location = new Point(274, 224);
             AddUaTTextBox.Multiline = true;
             AddUaTTextBox.Name = "AddUaTTextBox";
             AddUaTTextBox.ScrollBars = ScrollBars.Vertical;
@@ -852,7 +855,7 @@ namespace EWL
             AddWLabel3.AutoSize = true;
             AddWLabel3.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             AddWLabel3.ForeColor = Color.White;
-            AddWLabel3.Location = new Point(396, 197);
+            AddWLabel3.Location = new Point(363, 197);
             AddWLabel3.Name = "AddWLabel3";
             AddWLabel3.Size = new Size(208, 25);
             AddWLabel3.TabIndex = 4;
@@ -865,7 +868,7 @@ namespace EWL
             AddEngWTextBox.Cursor = Cursors.IBeam;
             AddEngWTextBox.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
             AddEngWTextBox.ForeColor = Color.White;
-            AddEngWTextBox.Location = new Point(346, 151);
+            AddEngWTextBox.Location = new Point(313, 151);
             AddEngWTextBox.Name = "AddEngWTextBox";
             AddEngWTextBox.Size = new Size(308, 36);
             AddEngWTextBox.TabIndex = 1;
@@ -878,7 +881,7 @@ namespace EWL
             AddWLabel2.AutoSize = true;
             AddWLabel2.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             AddWLabel2.ForeColor = Color.White;
-            AddWLabel2.Location = new Point(388, 124);
+            AddWLabel2.Location = new Point(355, 124);
             AddWLabel2.Name = "AddWLabel2";
             AddWLabel2.Size = new Size(222, 25);
             AddWLabel2.TabIndex = 6;
@@ -914,7 +917,7 @@ namespace EWL
             AddWLabel1.BorderStyle = BorderStyle.FixedSingle;
             AddWLabel1.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             AddWLabel1.ForeColor = Color.White;
-            AddWLabel1.Location = new Point(313, 49);
+            AddWLabel1.Location = new Point(280, 49);
             AddWLabel1.Name = "AddWLabel1";
             AddWLabel1.Size = new Size(381, 47);
             AddWLabel1.TabIndex = 8;
@@ -934,9 +937,9 @@ namespace EWL
             SettingPanel.Controls.Add(GoBackButton5);
             SettingPanel.Controls.Add(label4);
             SettingPanel.ImeMode = ImeMode.Hangul;
-            SettingPanel.Location = new Point(0, 31);
+            SettingPanel.Location = new Point(44, 31);
             SettingPanel.Name = "SettingPanel";
-            SettingPanel.Size = new Size(978, 519);
+            SettingPanel.Size = new Size(934, 519);
             SettingPanel.TabIndex = 8;
             // 
             // label1
@@ -944,7 +947,7 @@ namespace EWL
             label1.AutoSize = true;
             label1.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(360, 259);
+            label1.Location = new Point(328, 259);
             label1.Name = "label1";
             label1.Size = new Size(278, 25);
             label1.TabIndex = 0;
@@ -960,7 +963,7 @@ namespace EWL
             WSourceComboBox.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             WSourceComboBox.ForeColor = Color.White;
             WSourceComboBox.Items.AddRange(new object[] { "слово - переклад", "рядок в спец. форматі", "текстовий файл зі словами" });
-            WSourceComboBox.Location = new Point(363, 299);
+            WSourceComboBox.Location = new Point(331, 299);
             WSourceComboBox.Name = "WSourceComboBox";
             WSourceComboBox.Size = new Size(273, 31);
             WSourceComboBox.TabIndex = 2;
@@ -972,7 +975,7 @@ namespace EWL
             NumberOfWordsNumericUpDown.BorderStyle = BorderStyle.FixedSingle;
             NumberOfWordsNumericUpDown.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             NumberOfWordsNumericUpDown.ForeColor = Color.White;
-            NumberOfWordsNumericUpDown.Location = new Point(419, 193);
+            NumberOfWordsNumericUpDown.Location = new Point(387, 193);
             NumberOfWordsNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             NumberOfWordsNumericUpDown.Name = "NumberOfWordsNumericUpDown";
             NumberOfWordsNumericUpDown.Size = new Size(159, 30);
@@ -991,7 +994,7 @@ namespace EWL
             DefaultSettingsButton.FlatStyle = FlatStyle.Flat;
             DefaultSettingsButton.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             DefaultSettingsButton.ForeColor = Color.White;
-            DefaultSettingsButton.Location = new Point(286, 389);
+            DefaultSettingsButton.Location = new Point(254, 389);
             DefaultSettingsButton.Name = "DefaultSettingsButton";
             DefaultSettingsButton.Size = new Size(195, 53);
             DefaultSettingsButton.TabIndex = 3;
@@ -1011,7 +1014,7 @@ namespace EWL
             SaveSettingsButton.FlatStyle = FlatStyle.Flat;
             SaveSettingsButton.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             SaveSettingsButton.ForeColor = Color.White;
-            SaveSettingsButton.Location = new Point(519, 389);
+            SaveSettingsButton.Location = new Point(487, 389);
             SaveSettingsButton.Name = "SaveSettingsButton";
             SaveSettingsButton.Size = new Size(195, 53);
             SaveSettingsButton.TabIndex = 4;
@@ -1025,7 +1028,7 @@ namespace EWL
             label3.AutoSize = true;
             label3.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(366, 154);
+            label3.Location = new Point(334, 154);
             label3.Name = "label3";
             label3.Size = new Size(260, 25);
             label3.TabIndex = 5;
@@ -1061,12 +1064,21 @@ namespace EWL
             label4.BorderStyle = BorderStyle.FixedSingle;
             label4.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(364, 63);
+            label4.Location = new Point(332, 63);
             label4.Name = "label4";
             label4.Size = new Size(262, 47);
             label4.TabIndex = 7;
             label4.Text = "Налаштування";
             label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // AddingWPanel
+            // 
+            AddingWPanel.BorderStyle = BorderStyle.FixedSingle;
+            AddingWPanel.ImeMode = ImeMode.Hangul;
+            AddingWPanel.Location = new Point(44, 31);
+            AddingWPanel.Name = "AddingWPanel";
+            AddingWPanel.Size = new Size(934, 519);
+            AddingWPanel.TabIndex = 9;
             // 
             // AddingWPanel3
             // 
@@ -1079,9 +1091,9 @@ namespace EWL
             AddingWPanel3.Controls.Add(GoBackButton6);
             AddingWPanel3.Controls.Add(label7);
             AddingWPanel3.ImeMode = ImeMode.Hangul;
-            AddingWPanel3.Location = new Point(0, 31);
+            AddingWPanel3.Location = new Point(44, 31);
             AddingWPanel3.Name = "AddingWPanel3";
-            AddingWPanel3.Size = new Size(978, 519);
+            AddingWPanel3.Size = new Size(934, 519);
             AddingWPanel3.TabIndex = 4;
             // 
             // DragAndDropPanel
@@ -1094,7 +1106,7 @@ namespace EWL
             DragAndDropPanel.Controls.Add(label6);
             DragAndDropPanel.Controls.Add(ChooseFileButton);
             DragAndDropPanel.Controls.Add(label12);
-            DragAndDropPanel.Location = new Point(100, 129);
+            DragAndDropPanel.Location = new Point(84, 129);
             DragAndDropPanel.Name = "DragAndDropPanel";
             DragAndDropPanel.Size = new Size(768, 250);
             DragAndDropPanel.TabIndex = 10;
@@ -1212,7 +1224,7 @@ namespace EWL
             CancelAddingButton3.FlatStyle = FlatStyle.Flat;
             CancelAddingButton3.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             CancelAddingButton3.ForeColor = Color.White;
-            CancelAddingButton3.Location = new Point(272, 412);
+            CancelAddingButton3.Location = new Point(256, 412);
             CancelAddingButton3.Name = "CancelAddingButton3";
             CancelAddingButton3.Size = new Size(195, 53);
             CancelAddingButton3.TabIndex = 0;
@@ -1232,7 +1244,7 @@ namespace EWL
             AddWButton3.FlatStyle = FlatStyle.Flat;
             AddWButton3.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             AddWButton3.ForeColor = Color.White;
-            AddWButton3.Location = new Point(535, 412);
+            AddWButton3.Location = new Point(519, 412);
             AddWButton3.Name = "AddWButton3";
             AddWButton3.Size = new Size(195, 53);
             AddWButton3.TabIndex = 1;
@@ -1270,7 +1282,7 @@ namespace EWL
             label7.BorderStyle = BorderStyle.FixedSingle;
             label7.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(313, 48);
+            label7.Location = new Point(297, 48);
             label7.Name = "label7";
             label7.Size = new Size(381, 47);
             label7.TabIndex = 5;
@@ -1290,9 +1302,9 @@ namespace EWL
             AddingWPanel2.Controls.Add(label2);
             AddingWPanel2.Controls.Add(label5);
             AddingWPanel2.ImeMode = ImeMode.Alpha;
-            AddingWPanel2.Location = new Point(0, 31);
+            AddingWPanel2.Location = new Point(44, 31);
             AddingWPanel2.Name = "AddingWPanel2";
-            AddingWPanel2.Size = new Size(978, 519);
+            AddingWPanel2.Size = new Size(934, 519);
             AddingWPanel2.TabIndex = 5;
             // 
             // label14
@@ -1300,7 +1312,7 @@ namespace EWL
             label14.AutoSize = true;
             label14.Font = new Font("Roboto Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label14.ForeColor = Color.White;
-            label14.Location = new Point(278, 366);
+            label14.Location = new Point(250, 366);
             label14.Name = "label14";
             label14.Size = new Size(282, 18);
             label14.TabIndex = 8;
@@ -1352,7 +1364,7 @@ namespace EWL
             CancelAddingButton2.FlatStyle = FlatStyle.Flat;
             CancelAddingButton2.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             CancelAddingButton2.ForeColor = Color.White;
-            CancelAddingButton2.Location = new Point(270, 407);
+            CancelAddingButton2.Location = new Point(247, 407);
             CancelAddingButton2.Name = "CancelAddingButton2";
             CancelAddingButton2.Size = new Size(195, 53);
             CancelAddingButton2.TabIndex = 0;
@@ -1372,7 +1384,7 @@ namespace EWL
             AddWButton2.FlatStyle = FlatStyle.Flat;
             AddWButton2.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             AddWButton2.ForeColor = Color.White;
-            AddWButton2.Location = new Point(530, 407);
+            AddWButton2.Location = new Point(507, 407);
             AddWButton2.Name = "AddWButton2";
             AddWButton2.Size = new Size(195, 53);
             AddWButton2.TabIndex = 1;
@@ -1387,7 +1399,7 @@ namespace EWL
             EngUaStringTextBox.Cursor = Cursors.IBeam;
             EngUaStringTextBox.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             EngUaStringTextBox.ForeColor = Color.White;
-            EngUaStringTextBox.Location = new Point(180, 179);
+            EngUaStringTextBox.Location = new Point(155, 179);
             EngUaStringTextBox.Multiline = true;
             EngUaStringTextBox.Name = "EngUaStringTextBox";
             EngUaStringTextBox.ScrollBars = ScrollBars.Both;
@@ -1402,7 +1414,7 @@ namespace EWL
             label2.AutoSize = true;
             label2.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(265, 141);
+            label2.Location = new Point(240, 141);
             label2.Name = "label2";
             label2.Size = new Size(474, 25);
             label2.TabIndex = 3;
@@ -1417,7 +1429,7 @@ namespace EWL
             label5.BorderStyle = BorderStyle.FixedSingle;
             label5.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(313, 48);
+            label5.Location = new Point(287, 48);
             label5.Name = "label5";
             label5.Size = new Size(381, 47);
             label5.TabIndex = 5;
@@ -1439,46 +1451,46 @@ namespace EWL
             panel1.Controls.Add(button8);
             panel1.Controls.Add(label11);
             panel1.ImeMode = ImeMode.Hangul;
-            panel1.Location = new Point(0, 23);
+            panel1.Location = new Point(43, 31);
             panel1.Name = "panel1";
-            panel1.Size = new Size(978, 519);
+            panel1.Size = new Size(934, 519);
             panel1.TabIndex = 6;
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.NullValue = "-";
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.NullValue = "-";
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.LightGray;
-            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.NullValue = "-";
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.LightGray;
+            dataGridViewCellStyle6.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.NullValue = "-";
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { WordID, EngWord, UaTranslation, Rating });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle7.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.GridColor = Color.Gray;
-            dataGridView1.Location = new Point(497, 118);
+            dataGridView1.Location = new Point(472, 118);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.LightGray;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.LightGray;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(403, 270);
@@ -1515,7 +1527,7 @@ namespace EWL
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             button6.ForeColor = Color.White;
-            button6.Location = new Point(286, 420);
+            button6.Location = new Point(261, 420);
             button6.Name = "button6";
             button6.Size = new Size(195, 53);
             button6.TabIndex = 1;
@@ -1534,7 +1546,7 @@ namespace EWL
             button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             button7.ForeColor = Color.White;
-            button7.Location = new Point(519, 420);
+            button7.Location = new Point(494, 420);
             button7.Name = "button7";
             button7.Size = new Size(195, 53);
             button7.TabIndex = 2;
@@ -1547,7 +1559,7 @@ namespace EWL
             label8.AutoSize = true;
             label8.Font = new Font("Roboto Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(87, 376);
+            label8.Location = new Point(62, 376);
             label8.Name = "label8";
             label8.Size = new Size(169, 18);
             label8.TabIndex = 3;
@@ -1561,7 +1573,7 @@ namespace EWL
             textBox1.Cursor = Cursors.IBeam;
             textBox1.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(86, 222);
+            textBox1.Location = new Point(61, 222);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
             textBox1.ScrollBars = ScrollBars.Vertical;
@@ -1574,7 +1586,7 @@ namespace EWL
             label9.AutoSize = true;
             label9.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(141, 195);
+            label9.Location = new Point(116, 195);
             label9.Name = "label9";
             label9.Size = new Size(208, 25);
             label9.TabIndex = 5;
@@ -1587,7 +1599,7 @@ namespace EWL
             textBox2.Cursor = Cursors.IBeam;
             textBox2.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
             textBox2.ForeColor = Color.White;
-            textBox2.Location = new Point(91, 149);
+            textBox2.Location = new Point(66, 149);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(308, 36);
             textBox2.TabIndex = 6;
@@ -1599,7 +1611,7 @@ namespace EWL
             label10.AutoSize = true;
             label10.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label10.ForeColor = Color.White;
-            label10.Location = new Point(133, 122);
+            label10.Location = new Point(108, 122);
             label10.Name = "label10";
             label10.Size = new Size(222, 25);
             label10.TabIndex = 7;
@@ -1635,7 +1647,7 @@ namespace EWL
             label11.BorderStyle = BorderStyle.FixedSingle;
             label11.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(313, 49);
+            label11.Location = new Point(288, 49);
             label11.Name = "label11";
             label11.Size = new Size(381, 47);
             label11.TabIndex = 9;
@@ -1944,9 +1956,9 @@ namespace EWL
             LearningEngPanel.Controls.Add(EngWLabel1);
             LearningEngPanel.Controls.Add(GoBackButton1);
             LearningEngPanel.ImeMode = ImeMode.Hangul;
-            LearningEngPanel.Location = new Point(0, 31);
+            LearningEngPanel.Location = new Point(44, 31);
             LearningEngPanel.Name = "LearningEngPanel";
-            LearningEngPanel.Size = new Size(978, 519);
+            LearningEngPanel.Size = new Size(934, 519);
             LearningEngPanel.TabIndex = 11;
             // 
             // SeeTransButton
@@ -1959,7 +1971,7 @@ namespace EWL
             SeeTransButton.FlatStyle = FlatStyle.Flat;
             SeeTransButton.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
             SeeTransButton.ForeColor = Color.White;
-            SeeTransButton.Location = new Point(328, 379);
+            SeeTransButton.Location = new Point(322, 379);
             SeeTransButton.Name = "SeeTransButton";
             SeeTransButton.Size = new Size(323, 65);
             SeeTransButton.TabIndex = 1;
@@ -1976,7 +1988,7 @@ namespace EWL
             EngWLabel1.ForeColor = Color.White;
             EngWLabel1.Location = new Point(162, 169);
             EngWLabel1.Name = "EngWLabel1";
-            EngWLabel1.Size = new Size(653, 111);
+            EngWLabel1.Size = new Size(609, 111);
             EngWLabel1.TabIndex = 0;
             EngWLabel1.Text = "ХХХ";
             EngWLabel1.TextAlign = ContentAlignment.MiddleCenter;
@@ -2002,13 +2014,35 @@ namespace EWL
             GoBackButton1.UseVisualStyleBackColor = false;
             GoBackButton1.Click += GoBackButton_Click;
             // 
+            // SIdebarPanel
+            // 
+            SIdebarPanel.BackColor = Color.FromArgb(40, 40, 40);
+            SIdebarPanel.BorderStyle = BorderStyle.FixedSingle;
+            SIdebarPanel.Location = new Point(0, 31);
+            SIdebarPanel.Name = "SIdebarPanel";
+            SIdebarPanel.Size = new Size(45, 519);
+            SIdebarPanel.TabIndex = 0;
+            // 
+            // WelcomePanel
+            // 
+            WelcomePanel.BorderStyle = BorderStyle.FixedSingle;
+            WelcomePanel.ImeMode = ImeMode.Hangul;
+            WelcomePanel.Location = new Point(44, 31);
+            WelcomePanel.Name = "WelcomePanel";
+            WelcomePanel.Size = new Size(934, 519);
+            WelcomePanel.TabIndex = 10;
+            // 
             // MainForm
             // 
             AllowDrop = true;
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(50, 50, 50);
-            BackgroundImageLayout = ImageLayout.None;
+            BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(978, 550);
+            Controls.Add(WelcomePanel);
+            Controls.Add(SIdebarPanel);
+            Controls.Add(TopPanel);
+            Controls.Add(AddingWPanel);
             Controls.Add(SettingPanel);
             Controls.Add(AddingWPanel2);
             Controls.Add(AddingWPanel3);
@@ -2016,10 +2050,10 @@ namespace EWL
             Controls.Add(LearningStatPanel);
             Controls.Add(LearningEngPanel);
             Controls.Add(MenuPanel);
-            Controls.Add(TopPanel);
             Controls.Add(panel1);
             Controls.Add(StatPanel);
             Controls.Add(LearningUaPanel);
+            ForeColor = SystemColors.ControlLightLight;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
@@ -2167,5 +2201,8 @@ namespace EWL
         private Label EngWLabel1;
         private Button GoBackButton1;
         private Button SeeTransButton;
+        private Panel AddingWPanel;
+        private Panel SIdebarPanel;
+        private Panel WelcomePanel;
     }
 }
