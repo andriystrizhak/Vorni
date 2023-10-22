@@ -97,6 +97,7 @@ namespace EWL
         #region [ Вивчати слова ]
 
         //TODO CATEGORY - Додати проміжну панель чи кнопку для перемикання категорії для вивчення
+        //TODO - Додати до проміжної панелі вибір СПОСОБУ вивченн (картки чи тести)
 
         private void LearnWButton_Click(object sender, EventArgs e)
         {
@@ -113,10 +114,13 @@ namespace EWL
         /// </summary>
         private void SeeEngWord()
         {
+            words = words.OrderBy(w => w.Rating).ToList();
+
             EngWLabel1.Text = words[wordIndex].EngWord;
             EngWLabel2.Text = words[wordIndex].EngWord;
 
             ShowPanel(LearningEngPanel);
+            SeeTransButton.Focus();
         }
 
         #region ( Властивості контролів LearningWPanel )
@@ -156,6 +160,7 @@ namespace EWL
                 wordIndex = 0;
                 OutputLearningStatistic();
                 ShowPanel(LearningStatPanel);
+                RetryButton.Focus();
             }
         }
         #endregion
@@ -213,11 +218,20 @@ namespace EWL
             CancelAddingButton2.Enabled = false;
 
             if (wAddingMode == 0)
+            {
                 ShowPanel(AddingWPanel1);
+                AddEngWTextBox.Focus();
+            }
             if (wAddingMode == 1)
+            {
                 ShowPanel(AddingWPanel2);
+                EngUaStringTextBox.Focus();
+            }
             if (wAddingMode == 2)
+            {
                 ShowPanel(AddingWPanel3);
+                ChooseFileButton.Focus();
+            }
         }
 
         /// <summary>
@@ -577,6 +591,7 @@ namespace EWL
             SaveSettingsButton.Enabled = false;
             DefaultSettingsButton.Enabled = true;
             ShowPanel(SettingPanel);
+            NumberOfWordsNumericUpDown.Focus();
         }
 
         #region Властивості контролів SettingPanel
@@ -613,6 +628,7 @@ namespace EWL
         #region [ Переглянути статистику ]
 
         //TODO - Додати перемикач категорії для статистики
+        //TODO - Додати можливість перегляду графіків
 
         private void SeeStatButton_Click(object sender, EventArgs e)
         {
@@ -627,7 +643,9 @@ namespace EWL
                 $"\n3 — {ratings[3]} слів ({((float)ratings[3] / count):P1})" +
                 $"\n2 — {ratings[2]} слів ({((float)ratings[2] / count):P1})" +
                 $"\n1 — {ratings[1]} слів ({((float)ratings[1] / count):P1})" +
-                $"\n\nЩе не вивчалися — {ratings[0]} слів ({((float)ratings[0] / count):P1})";
+                (ratings[0] > 0 
+                ? $"\n\nЩе не вивчалися — {ratings[0]} слів ({((float)ratings[0] / count):P1})" 
+                : "\n\nВсі слова вже вивчалися тобою");
 
             ShowPanel(StatPanel);
         }
@@ -639,7 +657,10 @@ namespace EWL
         #region [ Назад, до Меню ]
 
         private void GoBackButton_Click(object sender, EventArgs e)
-            => ShowPanel(MenuPanel);
+        {
+            ShowPanel(MenuPanel);
+            LearnWButton.Focus();
+        }
 
         #endregion
 
@@ -673,29 +694,22 @@ namespace EWL
 
         private void Enter_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!(e.Shift && e.KeyCode == Keys.Enter)
-                && e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
-                SeeTransButton.PerformClick();
-                RetryButton.PerformClick();
-
-                AddWButton1.PerformClick();
-                AddWButton2.PerformClick();
-                AddWButton3.PerformClick();
-
                 button7.PerformClick(); //CATEGORY
             }
-        }
-        private void SeeTransButton_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                SeeTransButton.PerformClick();
         }
 
         private void CtrlS_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.S)
+            {
                 SaveSettingsButton.PerformClick();
+
+                AddWButton1.PerformClick();
+                AddWButton2.PerformClick();
+                AddWButton3.PerformClick();
+            }
         }
 
         private void CtrlZ_KeyDown(object sender, KeyEventArgs e)

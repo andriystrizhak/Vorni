@@ -59,10 +59,6 @@ namespace EWL
             Button2 = new Button();
             Button1 = new Button();
             EngWLabel2 = new Label();
-            LearningEngPanel = new Panel();
-            EngWLabel1 = new Label();
-            GoBackButton1 = new Button();
-            SeeTransButton = new Button();
             LearningStatPanel = new Panel();
             LearningRatingLabel = new Label();
             RetryButton = new Button();
@@ -142,13 +138,16 @@ namespace EWL
             WordIsRepeatedPopup = new PopupNotifier();
             WAddingReportPopup1 = new PopupNotifier();
             CancelWAddingPopup1 = new PopupNotifier();
+            LearningEngPanel = new Panel();
+            SeeTransButton = new Button();
+            EngWLabel1 = new Label();
+            GoBackButton1 = new Button();
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)EWLPictureBox).BeginInit();
             LearningUaPanel.SuspendLayout();
             RateTableLayoutPanel.SuspendLayout();
-            LearningEngPanel.SuspendLayout();
             LearningStatPanel.SuspendLayout();
             StatPanel.SuspendLayout();
             AddingWPanel1.SuspendLayout();
@@ -162,6 +161,7 @@ namespace EWL
             ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            LearningEngPanel.SuspendLayout();
             SuspendLayout();
             // 
             // CloseButton
@@ -464,6 +464,7 @@ namespace EWL
             // 
             Button5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button5.BackColor = Color.FromArgb(50, 50, 50);
+            Button5.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_5_в_кружке_100;
             Button5.BackgroundImageLayout = ImageLayout.Zoom;
             Button5.CausesValidation = false;
             Button5.Cursor = Cursors.Hand;
@@ -487,6 +488,7 @@ namespace EWL
             // 
             Button4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button4.BackColor = Color.FromArgb(50, 50, 50);
+            Button4.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_4_в_кружке_100;
             Button4.BackgroundImageLayout = ImageLayout.Zoom;
             Button4.CausesValidation = false;
             Button4.Cursor = Cursors.Hand;
@@ -510,6 +512,7 @@ namespace EWL
             // 
             Button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button3.BackColor = Color.FromArgb(50, 50, 50);
+            Button3.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_3_в_кружке_100;
             Button3.BackgroundImageLayout = ImageLayout.Zoom;
             Button3.CausesValidation = false;
             Button3.Cursor = Cursors.Hand;
@@ -533,6 +536,7 @@ namespace EWL
             // 
             Button2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button2.BackColor = Color.FromArgb(50, 50, 50);
+            Button2.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_2_в_кружке_100__1_;
             Button2.BackgroundImageLayout = ImageLayout.Zoom;
             Button2.CausesValidation = false;
             Button2.Cursor = Cursors.Hand;
@@ -556,6 +560,7 @@ namespace EWL
             // 
             Button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Button1.BackColor = Color.FromArgb(50, 50, 50);
+            Button1.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_1_в_кружке_100__1_;
             Button1.BackgroundImageLayout = ImageLayout.Zoom;
             Button1.CausesValidation = false;
             Button1.Cursor = Cursors.Hand;
@@ -588,79 +593,6 @@ namespace EWL
             EngWLabel2.TabIndex = 3;
             EngWLabel2.Text = "ХХХ";
             EngWLabel2.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // LearningEngPanel
-            // 
-            LearningEngPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            LearningEngPanel.BorderStyle = BorderStyle.FixedSingle;
-            LearningEngPanel.Controls.Add(EngWLabel1);
-            LearningEngPanel.Controls.Add(GoBackButton1);
-            LearningEngPanel.Controls.Add(SeeTransButton);
-            LearningEngPanel.ImeMode = ImeMode.Hangul;
-            LearningEngPanel.Location = new Point(0, 31);
-            LearningEngPanel.Name = "LearningEngPanel";
-            LearningEngPanel.Size = new Size(978, 519);
-            LearningEngPanel.TabIndex = 10;
-            // 
-            // EngWLabel1
-            // 
-            EngWLabel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            EngWLabel1.BackColor = Color.FromArgb(75, 75, 75);
-            EngWLabel1.BorderStyle = BorderStyle.FixedSingle;
-            EngWLabel1.Font = new Font("Impact", 36F, FontStyle.Regular, GraphicsUnit.Point);
-            EngWLabel1.ForeColor = Color.White;
-            EngWLabel1.Location = new Point(250, 176);
-            EngWLabel1.Name = "EngWLabel1";
-            EngWLabel1.Size = new Size(469, 95);
-            EngWLabel1.TabIndex = 0;
-            EngWLabel1.Text = "ХХХ";
-            EngWLabel1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // GoBackButton1
-            // 
-            GoBackButton1.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton1.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_налево_96;
-            GoBackButton1.BackgroundImageLayout = ImageLayout.Zoom;
-            GoBackButton1.Cursor = Cursors.Hand;
-            GoBackButton1.FlatAppearance.BorderColor = Color.Gray;
-            GoBackButton1.FlatAppearance.BorderSize = 0;
-            GoBackButton1.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton1.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
-            GoBackButton1.FlatStyle = FlatStyle.Flat;
-            GoBackButton1.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            GoBackButton1.ForeColor = Color.White;
-            GoBackButton1.Location = new Point(3, 3);
-            GoBackButton1.Name = "GoBackButton1";
-            GoBackButton1.Size = new Size(60, 60);
-            GoBackButton1.TabIndex = 2;
-            GoBackButton1.TabStop = false;
-            GoBackButton1.UseVisualStyleBackColor = false;
-            GoBackButton1.Click += GoBackButton_Click;
-            // 
-            // SeeTransButton
-            // 
-            SeeTransButton.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SeeTransButton.BackColor = SystemColors.WindowFrame;
-            SeeTransButton.CausesValidation = false;
-            SeeTransButton.Cursor = Cursors.Hand;
-            SeeTransButton.FlatAppearance.BorderColor = Color.FromArgb(130, 130, 130);
-            SeeTransButton.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
-            SeeTransButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
-            SeeTransButton.FlatStyle = FlatStyle.Flat;
-            SeeTransButton.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            SeeTransButton.ForeColor = Color.White;
-            SeeTransButton.Location = new Point(330, 388);
-            SeeTransButton.Margin = new Padding(10);
-            SeeTransButton.MaximumSize = new Size(350, 70);
-            SeeTransButton.MinimumSize = new Size(300, 50);
-            SeeTransButton.Name = "SeeTransButton";
-            SeeTransButton.Size = new Size(320, 60);
-            SeeTransButton.TabIndex = 1;
-            SeeTransButton.TabStop = false;
-            SeeTransButton.Text = "Побачити переклад";
-            SeeTransButton.UseVisualStyleBackColor = false;
-            SeeTransButton.Click += SeeTransButton_Click;
-            SeeTransButton.KeyDown += Enter_KeyDown;
             // 
             // LearningStatPanel
             // 
@@ -710,7 +642,6 @@ namespace EWL
             RetryButton.Name = "RetryButton";
             RetryButton.Size = new Size(250, 70);
             RetryButton.TabIndex = 1;
-            RetryButton.TabStop = false;
             RetryButton.Text = "Тренуватись ще";
             RetryButton.UseVisualStyleBackColor = false;
             RetryButton.Click += RetryButton_Click;
@@ -749,7 +680,6 @@ namespace EWL
             GoMenuButton.Name = "GoMenuButton";
             GoMenuButton.Size = new Size(250, 70);
             GoMenuButton.TabIndex = 3;
-            GoMenuButton.TabStop = false;
             GoMenuButton.Text = "Завершити";
             GoMenuButton.UseVisualStyleBackColor = false;
             GoMenuButton.Click += GoBackButton_Click;
@@ -884,8 +814,7 @@ namespace EWL
             AddWButton1.Location = new Point(519, 420);
             AddWButton1.Name = "AddWButton1";
             AddWButton1.Size = new Size(195, 53);
-            AddWButton1.TabIndex = 1;
-            AddWButton1.TabStop = false;
+            AddWButton1.TabIndex = 3;
             AddWButton1.Text = "Додати слово";
             AddWButton1.UseVisualStyleBackColor = false;
             AddWButton1.Click += AddWButton1_Click;
@@ -914,8 +843,7 @@ namespace EWL
             AddUaTTextBox.Name = "AddUaTTextBox";
             AddUaTTextBox.ScrollBars = ScrollBars.Vertical;
             AddUaTTextBox.Size = new Size(382, 152);
-            AddUaTTextBox.TabIndex = 3;
-            AddUaTTextBox.TabStop = false;
+            AddUaTTextBox.TabIndex = 2;
             AddUaTTextBox.TextChanged += EngUaTextBox_TextChanged;
             AddUaTTextBox.KeyPress += UaTextBox_KeyPress;
             // 
@@ -940,8 +868,7 @@ namespace EWL
             AddEngWTextBox.Location = new Point(346, 151);
             AddEngWTextBox.Name = "AddEngWTextBox";
             AddEngWTextBox.Size = new Size(308, 36);
-            AddEngWTextBox.TabIndex = 5;
-            AddEngWTextBox.TabStop = false;
+            AddEngWTextBox.TabIndex = 1;
             AddEngWTextBox.TextAlign = HorizontalAlignment.Center;
             AddEngWTextBox.TextChanged += EngUaTextBox_TextChanged;
             AddEngWTextBox.KeyPress += EngTextBox_KeyPress;
@@ -1036,8 +963,7 @@ namespace EWL
             WSourceComboBox.Location = new Point(363, 299);
             WSourceComboBox.Name = "WSourceComboBox";
             WSourceComboBox.Size = new Size(273, 31);
-            WSourceComboBox.TabIndex = 1;
-            WSourceComboBox.TabStop = false;
+            WSourceComboBox.TabIndex = 2;
             WSourceComboBox.SelectedIndexChanged += WSourceComboBox_SelectedIndexChanged;
             // 
             // NumberOfWordsNumericUpDown
@@ -1050,7 +976,7 @@ namespace EWL
             NumberOfWordsNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             NumberOfWordsNumericUpDown.Name = "NumberOfWordsNumericUpDown";
             NumberOfWordsNumericUpDown.Size = new Size(159, 30);
-            NumberOfWordsNumericUpDown.TabIndex = 2;
+            NumberOfWordsNumericUpDown.TabIndex = 1;
             NumberOfWordsNumericUpDown.TextAlign = HorizontalAlignment.Center;
             NumberOfWordsNumericUpDown.Value = new decimal(new int[] { 10, 0, 0, 0 });
             NumberOfWordsNumericUpDown.ValueChanged += WordCountNumericUpDown_ValueChanged;
@@ -1245,8 +1171,7 @@ namespace EWL
             ChooseFileButton.Location = new Point(291, 76);
             ChooseFileButton.Name = "ChooseFileButton";
             ChooseFileButton.Size = new Size(221, 65);
-            ChooseFileButton.TabIndex = 10;
-            ChooseFileButton.TabStop = false;
+            ChooseFileButton.TabIndex = 1;
             ChooseFileButton.Text = "Вибери .txt-файл";
             ChooseFileButton.UseVisualStyleBackColor = false;
             ChooseFileButton.Click += ChooseFileButton_Click;
@@ -1467,8 +1392,7 @@ namespace EWL
             EngUaStringTextBox.Name = "EngUaStringTextBox";
             EngUaStringTextBox.ScrollBars = ScrollBars.Both;
             EngUaStringTextBox.Size = new Size(635, 184);
-            EngUaStringTextBox.TabIndex = 2;
-            EngUaStringTextBox.TabStop = false;
+            EngUaStringTextBox.TabIndex = 1;
             EngUaStringTextBox.TextAlign = HorizontalAlignment.Center;
             EngUaStringTextBox.TextChanged += EngUaStringTextBox_TextChanged;
             EngUaStringTextBox.KeyPress += EngUaStringTextBox_KeyPress;
@@ -2012,6 +1936,72 @@ namespace EWL
             CancelWAddingPopup1.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
             CancelWAddingPopup1.TitleText = "";
             // 
+            // LearningEngPanel
+            // 
+            LearningEngPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            LearningEngPanel.BorderStyle = BorderStyle.FixedSingle;
+            LearningEngPanel.Controls.Add(SeeTransButton);
+            LearningEngPanel.Controls.Add(EngWLabel1);
+            LearningEngPanel.Controls.Add(GoBackButton1);
+            LearningEngPanel.ImeMode = ImeMode.Hangul;
+            LearningEngPanel.Location = new Point(0, 31);
+            LearningEngPanel.Name = "LearningEngPanel";
+            LearningEngPanel.Size = new Size(978, 519);
+            LearningEngPanel.TabIndex = 11;
+            // 
+            // SeeTransButton
+            // 
+            SeeTransButton.BackColor = SystemColors.WindowFrame;
+            SeeTransButton.Cursor = Cursors.Hand;
+            SeeTransButton.FlatAppearance.BorderColor = Color.FromArgb(130, 130, 130);
+            SeeTransButton.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
+            SeeTransButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
+            SeeTransButton.FlatStyle = FlatStyle.Flat;
+            SeeTransButton.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            SeeTransButton.ForeColor = Color.White;
+            SeeTransButton.Location = new Point(328, 379);
+            SeeTransButton.Name = "SeeTransButton";
+            SeeTransButton.Size = new Size(323, 65);
+            SeeTransButton.TabIndex = 1;
+            SeeTransButton.Text = "Побачити переклад";
+            SeeTransButton.UseVisualStyleBackColor = false;
+            SeeTransButton.Click += SeeTransButton_Click;
+            // 
+            // EngWLabel1
+            // 
+            EngWLabel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            EngWLabel1.BackColor = Color.FromArgb(75, 75, 75);
+            EngWLabel1.BorderStyle = BorderStyle.FixedSingle;
+            EngWLabel1.Font = new Font("Impact", 36F, FontStyle.Regular, GraphicsUnit.Point);
+            EngWLabel1.ForeColor = Color.White;
+            EngWLabel1.Location = new Point(162, 169);
+            EngWLabel1.Name = "EngWLabel1";
+            EngWLabel1.Size = new Size(653, 111);
+            EngWLabel1.TabIndex = 0;
+            EngWLabel1.Text = "ХХХ";
+            EngWLabel1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // GoBackButton1
+            // 
+            GoBackButton1.BackColor = Color.FromArgb(50, 50, 50);
+            GoBackButton1.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_налево_96;
+            GoBackButton1.BackgroundImageLayout = ImageLayout.Zoom;
+            GoBackButton1.Cursor = Cursors.Hand;
+            GoBackButton1.FlatAppearance.BorderColor = Color.Gray;
+            GoBackButton1.FlatAppearance.BorderSize = 0;
+            GoBackButton1.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 50, 50);
+            GoBackButton1.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
+            GoBackButton1.FlatStyle = FlatStyle.Flat;
+            GoBackButton1.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            GoBackButton1.ForeColor = Color.White;
+            GoBackButton1.Location = new Point(3, 3);
+            GoBackButton1.Name = "GoBackButton1";
+            GoBackButton1.Size = new Size(60, 60);
+            GoBackButton1.TabIndex = 2;
+            GoBackButton1.TabStop = false;
+            GoBackButton1.UseVisualStyleBackColor = false;
+            GoBackButton1.Click += GoBackButton_Click;
+            // 
             // MainForm
             // 
             AllowDrop = true;
@@ -2019,17 +2009,17 @@ namespace EWL
             BackColor = Color.FromArgb(50, 50, 50);
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(978, 550);
-            Controls.Add(LearningEngPanel);
-            Controls.Add(AddingWPanel3);
+            Controls.Add(SettingPanel);
             Controls.Add(AddingWPanel2);
+            Controls.Add(AddingWPanel3);
             Controls.Add(AddingWPanel1);
+            Controls.Add(LearningStatPanel);
+            Controls.Add(LearningEngPanel);
             Controls.Add(MenuPanel);
             Controls.Add(TopPanel);
-            Controls.Add(SettingPanel);
             Controls.Add(panel1);
-            Controls.Add(LearningUaPanel);
-            Controls.Add(LearningStatPanel);
             Controls.Add(StatPanel);
+            Controls.Add(LearningUaPanel);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
@@ -2043,7 +2033,6 @@ namespace EWL
             ((System.ComponentModel.ISupportInitialize)EWLPictureBox).EndInit();
             LearningUaPanel.ResumeLayout(false);
             RateTableLayoutPanel.ResumeLayout(false);
-            LearningEngPanel.ResumeLayout(false);
             LearningStatPanel.ResumeLayout(false);
             LearningStatPanel.PerformLayout();
             StatPanel.ResumeLayout(false);
@@ -2065,6 +2054,7 @@ namespace EWL
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            LearningEngPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -2093,10 +2083,6 @@ namespace EWL
         private Button Button2;
         private Button GoBackButton;
         private Label TranslationLabel;
-        private Panel LearningEngPanel;
-        private Button GoBackButton1;
-        private Button SeeTransButton;
-        private Label EngWLabel1;
         private Button GoBackButton2;
         private Panel LearningStatPanel;
         private Button GoMenuButton;
@@ -2177,5 +2163,9 @@ namespace EWL
         private PopupNotifier CancelWAddingPopup1;
         private Label label14;
         private PictureBox LoadingWheelGif;
+        private Panel LearningEngPanel;
+        private Label EngWLabel1;
+        private Button GoBackButton1;
+        private Button SeeTransButton;
     }
 }
