@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "Eng_Flash-Cards_Learner/1.0.0": {
         "dependencies": {
+          "Guna.UI2.WinForms": "2.0.4.5",
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.10",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.10",
           "NUnit": "3.13.3",
@@ -24,7 +25,7 @@
       "EntityFramework/6.4.4": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
-          "System.CodeDom": "4.7.0",
+          "System.CodeDom": "7.0.0",
           "System.ComponentModel.Annotations": "4.7.0",
           "System.Configuration.ConfigurationManager": "4.7.0",
           "System.Data.SqlClient": "4.8.1"
@@ -37,6 +38,17 @@
           "lib/netstandard2.1/EntityFramework.dll": {
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.400.420.21404"
+          }
+        }
+      },
+      "Guna.UI2.WinForms/2.0.4.5": {
+        "dependencies": {
+          "System.Management": "7.0.0"
+        },
+        "runtime": {
+          "lib/net7.0-windows7.0/Guna.UI2.dll": {
+            "assemblyVersion": "2.0.4.5",
+            "fileVersion": "2.0.4.5"
           }
         }
       },
@@ -258,7 +270,7 @@
       },
       "Mono.TextTemplating/2.2.1": {
         "dependencies": {
-          "System.CodeDom": "4.7.0"
+          "System.CodeDom": "7.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/Mono.TextTemplating.dll": {
@@ -525,7 +537,7 @@
           }
         }
       },
-      "System.CodeDom/4.7.0": {},
+      "System.CodeDom/7.0.0": {},
       "System.ComponentModel.Annotations/4.7.0": {},
       "System.Configuration.ConfigurationManager/4.7.0": {
         "dependencies": {
@@ -588,6 +600,25 @@
           "Microsoft.Win32.SystemEvents": "4.7.0"
         }
       },
+      "System.Management/7.0.0": {
+        "dependencies": {
+          "System.CodeDom": "7.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/System.Management.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "7.0.22.51805"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net7.0/System.Management.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "7.0.22.51805"
+          }
+        }
+      },
       "System.Memory/4.5.3": {},
       "System.Security.AccessControl/4.7.0": {
         "dependencies": {
@@ -644,6 +675,13 @@
       "sha512": "sha512-yj1+/4tci7Panu3jKDHYizxwVm0Jvm7b7m057b5h4u8NUHGCR8WIWirBTw+8EptRffwftIWPBeIRGNKD1ewEMQ==",
       "path": "entityframework/6.4.4",
       "hashPath": "entityframework.6.4.4.nupkg.sha512"
+    },
+    "Guna.UI2.WinForms/2.0.4.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lR50db4NzBC0QLAr27q9nrpYsIfWKjOgGnROrPi8AxbwLFE3nTup6ZOpVE/vbrr86eLV//8ys9sIW7j0ix2h+Q==",
+      "path": "guna.ui2.winforms/2.0.4.5",
+      "hashPath": "guna.ui2.winforms.2.0.4.5.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",
@@ -911,12 +949,12 @@
       "path": "stub.system.data.sqlite.core.netstandard/1.0.118",
       "hashPath": "stub.system.data.sqlite.core.netstandard.1.0.118.nupkg.sha512"
     },
-    "System.CodeDom/4.7.0": {
+    "System.CodeDom/7.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Hs9pw/kmvH3lXaZ1LFKj3pLQsiGfj2xo3sxSzwiLlRL6UcMZUTeCfoJ9Udalvn3yq5dLlPEZzYegrTQ1/LhPOQ==",
-      "path": "system.codedom/4.7.0",
-      "hashPath": "system.codedom.4.7.0.nupkg.sha512"
+      "sha512": "sha512-GLltyqEsE5/3IE+zYRP5sNa1l44qKl9v+bfdMcwg+M9qnQf47wK3H0SUR/T+3N4JEQXF3vV4CSuuo0rsg+nq2A==",
+      "path": "system.codedom/7.0.0",
+      "hashPath": "system.codedom.7.0.0.nupkg.sha512"
     },
     "System.ComponentModel.Annotations/4.7.0": {
       "type": "package",
@@ -966,6 +1004,13 @@
       "sha512": "sha512-v+XbyYHaZjDfn0ENmJEV1VYLgGgCTx1gnfOBcppowbpOAriglYgGCvFCPr2EEZyBvXlpxbEsTwkOlInl107ahA==",
       "path": "system.drawing.common/4.7.0",
       "hashPath": "system.drawing.common.4.7.0.nupkg.sha512"
+    },
+    "System.Management/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A4jed4QUviDOm7fJNKAJObEAEkEUXmkGL/w0iyCYTzrl1rezTj8LGFHfsVst4Vb9JwFcTpboiDrvdST48avBpw==",
+      "path": "system.management/7.0.0",
+      "hashPath": "system.management.7.0.0.nupkg.sha512"
     },
     "System.Memory/4.5.3": {
       "type": "package",

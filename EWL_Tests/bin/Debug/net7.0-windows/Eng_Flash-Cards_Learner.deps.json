@@ -13,6 +13,7 @@
           "NUnit": "3.13.3",
           "NUnit3TestAdapter": "4.5.0",
           "SQLite": "3.13.0",
+          "Siticone.Desktop.UI": "2.1.1",
           "System.Data.SQLite": "1.0.118",
           "Tulpep.NotificationWindow": "1.1.38",
           "MySql.Data": "8.0.33.0"
@@ -315,6 +316,14 @@
             "rid": "win-x86",
             "assetType": "native",
             "fileVersion": "4.6.25512.1"
+          }
+        }
+      },
+      "Siticone.Desktop.UI/2.1.1": {
+        "runtime": {
+          "lib/net40/Siticone.Desktop.UI.dll": {
+            "assemblyVersion": "2.1.1.0",
+            "fileVersion": "2.1.1.0"
           }
         }
       },
@@ -868,6 +877,13 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "Siticone.Desktop.UI/2.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ra7IVuwB11Q2yCo541FcPFmcxDyY7TSUmGg2ddbf+rNN18NrPXJ2CKMY0ZbuL+JRIig/jrJcU7ymJHfxKnEWvw==",
+      "path": "siticone.desktop.ui/2.1.1",
+      "hashPath": "siticone.desktop.ui.2.1.1.nupkg.sha512"
     },
     "SQLite/3.13.0": {
       "type": "package",

@@ -32,10 +32,10 @@ namespace EWL
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -145,6 +145,7 @@ namespace EWL
             GoBackButton1 = new Button();
             SIdebarPanel = new Panel();
             WelcomePanel = new Panel();
+            sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             MenuPanel.SuspendLayout();
@@ -169,7 +170,7 @@ namespace EWL
             // 
             // CloseButton
             // 
-            CloseButton.BackColor = Color.FromArgb(35, 35, 35);
+            CloseButton.BackColor = Color.FromArgb(65, 65, 65);
             CloseButton.BackgroundImageLayout = ImageLayout.None;
             CloseButton.Cursor = Cursors.Hand;
             CloseButton.FlatAppearance.BorderColor = Color.DimGray;
@@ -179,9 +180,9 @@ namespace EWL
             CloseButton.FlatStyle = FlatStyle.Flat;
             CloseButton.Font = new Font("Nirmala UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             CloseButton.ForeColor = Color.White;
-            CloseButton.Location = new Point(927, 1);
+            CloseButton.Location = new Point(989, 1);
             CloseButton.Name = "CloseButton";
-            CloseButton.Size = new Size(48, 27);
+            CloseButton.Size = new Size(48, 30);
             CloseButton.TabIndex = 2;
             CloseButton.TabStop = false;
             CloseButton.Text = "x";
@@ -191,23 +192,22 @@ namespace EWL
             // 
             // TopPanel
             // 
-            TopPanel.BackColor = Color.FromArgb(35, 35, 35);
-            TopPanel.BorderStyle = BorderStyle.FixedSingle;
+            TopPanel.BackColor = Color.FromArgb(65, 65, 65);
             TopPanel.Controls.Add(MinimizeButton);
             TopPanel.Controls.Add(TitleIcoPictureBox);
             TopPanel.Controls.Add(CloseButton);
             TopPanel.Controls.Add(TitleLabel);
             TopPanel.Cursor = Cursors.SizeAll;
-            TopPanel.Location = new Point(0, 0);
+            TopPanel.Location = new Point(59, 1);
             TopPanel.Name = "TopPanel";
-            TopPanel.Size = new Size(978, 31);
+            TopPanel.Size = new Size(1040, 34);
             TopPanel.TabIndex = 0;
             TopPanel.MouseDown += TopPanel_MouseDown;
             TopPanel.MouseMove += TopPanel_MouseMove;
             // 
             // MinimizeButton
             // 
-            MinimizeButton.BackColor = Color.FromArgb(35, 35, 35);
+            MinimizeButton.BackColor = Color.FromArgb(65, 65, 65);
             MinimizeButton.BackgroundImageLayout = ImageLayout.None;
             MinimizeButton.Cursor = Cursors.Hand;
             MinimizeButton.FlatAppearance.BorderColor = Color.DimGray;
@@ -217,9 +217,9 @@ namespace EWL
             MinimizeButton.FlatStyle = FlatStyle.Flat;
             MinimizeButton.Font = new Font("Nirmala UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             MinimizeButton.ForeColor = Color.White;
-            MinimizeButton.Location = new Point(877, 1);
+            MinimizeButton.Location = new Point(940, 1);
             MinimizeButton.Name = "MinimizeButton";
-            MinimizeButton.Size = new Size(48, 27);
+            MinimizeButton.Size = new Size(48, 30);
             MinimizeButton.TabIndex = 0;
             MinimizeButton.TabStop = false;
             MinimizeButton.Text = "–";
@@ -231,7 +231,7 @@ namespace EWL
             // 
             TitleIcoPictureBox.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.Untitled_3_1;
             TitleIcoPictureBox.BackgroundImageLayout = ImageLayout.Zoom;
-            TitleIcoPictureBox.Location = new Point(6, 4);
+            TitleIcoPictureBox.Location = new Point(363, 6);
             TitleIcoPictureBox.Name = "TitleIcoPictureBox";
             TitleIcoPictureBox.Size = new Size(48, 21);
             TitleIcoPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
@@ -243,7 +243,7 @@ namespace EWL
             TitleLabel.AutoSize = true;
             TitleLabel.Font = new Font("Segoe UI", 8.75F, FontStyle.Regular, GraphicsUnit.Point);
             TitleLabel.ForeColor = Color.White;
-            TitleLabel.Location = new Point(58, 7);
+            TitleLabel.Location = new Point(416, 10);
             TitleLabel.Name = "TitleLabel";
             TitleLabel.Size = new Size(193, 15);
             TitleLabel.TabIndex = 3;
@@ -258,7 +258,7 @@ namespace EWL
             // MenuPanel
             // 
             MenuPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            MenuPanel.BorderStyle = BorderStyle.FixedSingle;
+            MenuPanel.BackColor = Color.FromArgb(65, 65, 65);
             MenuPanel.Controls.Add(SettingButton);
             MenuPanel.Controls.Add(FullScreenButton);
             MenuPanel.Controls.Add(LearnWButton);
@@ -266,9 +266,9 @@ namespace EWL
             MenuPanel.Controls.Add(SeeStatButton);
             MenuPanel.Controls.Add(EWLPictureBox);
             MenuPanel.ImeMode = ImeMode.Hangul;
-            MenuPanel.Location = new Point(44, 31);
+            MenuPanel.Location = new Point(59, 34);
             MenuPanel.Name = "MenuPanel";
-            MenuPanel.Size = new Size(934, 519);
+            MenuPanel.Size = new Size(1040, 614);
             MenuPanel.TabIndex = 9;
             // 
             // SettingButton
@@ -287,7 +287,7 @@ namespace EWL
             SettingButton.Margin = new Padding(10, 10, 10, 100);
             SettingButton.MinimumSize = new Size(350, 50);
             SettingButton.Name = "SettingButton";
-            SettingButton.Size = new Size(350, 50);
+            SettingButton.Size = new Size(1390, 50);
             SettingButton.TabIndex = 3;
             SettingButton.Text = "Налаштування";
             SettingButton.UseVisualStyleBackColor = false;
@@ -307,7 +307,7 @@ namespace EWL
             FullScreenButton.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             FullScreenButton.ForeColor = Color.White;
             FullScreenButton.ImageList = fullScreenImageList;
-            FullScreenButton.Location = new Point(871, 1);
+            FullScreenButton.Location = new Point(1903, 1);
             FullScreenButton.Name = "FullScreenButton";
             FullScreenButton.Size = new Size(60, 60);
             FullScreenButton.TabIndex = 4;
@@ -332,7 +332,7 @@ namespace EWL
             LearnWButton.Margin = new Padding(10, 10, 10, 100);
             LearnWButton.MinimumSize = new Size(350, 50);
             LearnWButton.Name = "LearnWButton";
-            LearnWButton.Size = new Size(350, 50);
+            LearnWButton.Size = new Size(1390, 50);
             LearnWButton.TabIndex = 1;
             LearnWButton.Text = "Вивчати слова";
             LearnWButton.UseVisualStyleBackColor = false;
@@ -354,7 +354,7 @@ namespace EWL
             SeeAddingWPanelButton.Margin = new Padding(10, 10, 10, 100);
             SeeAddingWPanelButton.MinimumSize = new Size(350, 50);
             SeeAddingWPanelButton.Name = "SeeAddingWPanelButton";
-            SeeAddingWPanelButton.Size = new Size(350, 50);
+            SeeAddingWPanelButton.Size = new Size(1390, 50);
             SeeAddingWPanelButton.TabIndex = 2;
             SeeAddingWPanelButton.Text = "Додати слова";
             SeeAddingWPanelButton.UseVisualStyleBackColor = false;
@@ -376,7 +376,7 @@ namespace EWL
             SeeStatButton.Margin = new Padding(10, 10, 10, 100);
             SeeStatButton.MinimumSize = new Size(350, 50);
             SeeStatButton.Name = "SeeStatButton";
-            SeeStatButton.Size = new Size(350, 50);
+            SeeStatButton.Size = new Size(1390, 50);
             SeeStatButton.TabIndex = 4;
             SeeStatButton.Text = "Переглянути статистику";
             SeeStatButton.UseVisualStyleBackColor = false;
@@ -397,15 +397,15 @@ namespace EWL
             // LearningUaPanel
             // 
             LearningUaPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            LearningUaPanel.BorderStyle = BorderStyle.FixedSingle;
+            LearningUaPanel.BackColor = Color.FromArgb(65, 65, 65);
             LearningUaPanel.Controls.Add(GoBackButton2);
             LearningUaPanel.Controls.Add(TranslationLabel);
             LearningUaPanel.Controls.Add(RateTableLayoutPanel);
             LearningUaPanel.Controls.Add(EngWLabel2);
             LearningUaPanel.ImeMode = ImeMode.Hangul;
-            LearningUaPanel.Location = new Point(44, 31);
+            LearningUaPanel.Location = new Point(59, 34);
             LearningUaPanel.Name = "LearningUaPanel";
-            LearningUaPanel.Size = new Size(934, 519);
+            LearningUaPanel.Size = new Size(1040, 614);
             LearningUaPanel.TabIndex = 1;
             // 
             // GoBackButton2
@@ -438,7 +438,7 @@ namespace EWL
             TranslationLabel.ForeColor = Color.White;
             TranslationLabel.Location = new Point(197, 182);
             TranslationLabel.Name = "TranslationLabel";
-            TranslationLabel.Size = new Size(531, 152);
+            TranslationLabel.Size = new Size(1563, 159);
             TranslationLabel.TabIndex = 1;
             TranslationLabel.Text = "ХХХ";
             TranslationLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -592,7 +592,7 @@ namespace EWL
             EngWLabel2.ForeColor = Color.White;
             EngWLabel2.Location = new Point(261, 76);
             EngWLabel2.Name = "EngWLabel2";
-            EngWLabel2.Size = new Size(403, 76);
+            EngWLabel2.Size = new Size(1435, 83);
             EngWLabel2.TabIndex = 3;
             EngWLabel2.Text = "ХХХ";
             EngWLabel2.TextAlign = ContentAlignment.MiddleCenter;
@@ -600,16 +600,16 @@ namespace EWL
             // LearningStatPanel
             // 
             LearningStatPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            LearningStatPanel.BorderStyle = BorderStyle.FixedSingle;
+            LearningStatPanel.BackColor = Color.FromArgb(65, 65, 65);
             LearningStatPanel.Controls.Add(LearningRatingLabel);
             LearningStatPanel.Controls.Add(RetryButton);
             LearningStatPanel.Controls.Add(StatLabel1);
             LearningStatPanel.Controls.Add(GoMenuButton);
             LearningStatPanel.Controls.Add(LearningStatLabel);
             LearningStatPanel.ImeMode = ImeMode.Hangul;
-            LearningStatPanel.Location = new Point(44, 31);
+            LearningStatPanel.Location = new Point(59, 34);
             LearningStatPanel.Name = "LearningStatPanel";
-            LearningStatPanel.Size = new Size(934, 519);
+            LearningStatPanel.Size = new Size(1040, 614);
             LearningStatPanel.TabIndex = 2;
             // 
             // LearningRatingLabel
@@ -621,7 +621,7 @@ namespace EWL
             LearningRatingLabel.ForeColor = Color.White;
             LearningRatingLabel.Location = new Point(273, 329);
             LearningRatingLabel.Name = "LearningRatingLabel";
-            LearningRatingLabel.Size = new Size(378, 37);
+            LearningRatingLabel.Size = new Size(1410, 44);
             LearningRatingLabel.TabIndex = 0;
             LearningRatingLabel.Text = "XXX";
             LearningRatingLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -643,7 +643,7 @@ namespace EWL
             RetryButton.MaximumSize = new Size(350, 70);
             RetryButton.MinimumSize = new Size(150, 50);
             RetryButton.Name = "RetryButton";
-            RetryButton.Size = new Size(206, 69);
+            RetryButton.Size = new Size(350, 65);
             RetryButton.TabIndex = 1;
             RetryButton.Text = "Тренуватись ще";
             RetryButton.UseVisualStyleBackColor = false;
@@ -681,7 +681,7 @@ namespace EWL
             GoMenuButton.MaximumSize = new Size(350, 70);
             GoMenuButton.MinimumSize = new Size(150, 50);
             GoMenuButton.Name = "GoMenuButton";
-            GoMenuButton.Size = new Size(206, 69);
+            GoMenuButton.Size = new Size(350, 65);
             GoMenuButton.TabIndex = 3;
             GoMenuButton.Text = "Завершити";
             GoMenuButton.UseVisualStyleBackColor = false;
@@ -696,7 +696,7 @@ namespace EWL
             LearningStatLabel.ForeColor = Color.White;
             LearningStatLabel.Location = new Point(197, 110);
             LearningStatLabel.Name = "LearningStatLabel";
-            LearningStatLabel.Size = new Size(531, 266);
+            LearningStatLabel.Size = new Size(1563, 273);
             LearningStatLabel.TabIndex = 4;
             LearningStatLabel.Text = "ХХХ";
             LearningStatLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -704,14 +704,14 @@ namespace EWL
             // StatPanel
             // 
             StatPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            StatPanel.BorderStyle = BorderStyle.FixedSingle;
+            StatPanel.BackColor = Color.FromArgb(65, 65, 65);
             StatPanel.Controls.Add(GoBackButton3);
             StatPanel.Controls.Add(StatHeaderLabel);
             StatPanel.Controls.Add(StatLabel);
             StatPanel.ImeMode = ImeMode.Hangul;
-            StatPanel.Location = new Point(44, 31);
+            StatPanel.Location = new Point(59, 34);
             StatPanel.Name = "StatPanel";
-            StatPanel.Size = new Size(934, 519);
+            StatPanel.Size = new Size(1040, 614);
             StatPanel.TabIndex = 3;
             // 
             // GoBackButton3
@@ -759,7 +759,7 @@ namespace EWL
             StatLabel.ForeColor = Color.White;
             StatLabel.Location = new Point(187, 122);
             StatLabel.Name = "StatLabel";
-            StatLabel.Size = new Size(542, 333);
+            StatLabel.Size = new Size(1574, 340);
             StatLabel.TabIndex = 2;
             StatLabel.Text = "ХХХ";
             StatLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -767,7 +767,7 @@ namespace EWL
             // AddingWPanel1
             // 
             AddingWPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AddingWPanel1.BorderStyle = BorderStyle.FixedSingle;
+            AddingWPanel1.BackColor = Color.FromArgb(65, 65, 65);
             AddingWPanel1.Controls.Add(CancelPrevButton1);
             AddingWPanel1.Controls.Add(AddWButton1);
             AddingWPanel1.Controls.Add(AddWLabel4);
@@ -778,9 +778,9 @@ namespace EWL
             AddingWPanel1.Controls.Add(GoBackButton4);
             AddingWPanel1.Controls.Add(AddWLabel1);
             AddingWPanel1.ImeMode = ImeMode.Hangul;
-            AddingWPanel1.Location = new Point(44, 31);
+            AddingWPanel1.Location = new Point(59, 34);
             AddingWPanel1.Name = "AddingWPanel1";
-            AddingWPanel1.Size = new Size(934, 519);
+            AddingWPanel1.Size = new Size(1040, 614);
             AddingWPanel1.TabIndex = 7;
             // 
             // CancelPrevButton1
@@ -927,7 +927,7 @@ namespace EWL
             // SettingPanel
             // 
             SettingPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SettingPanel.BorderStyle = BorderStyle.FixedSingle;
+            SettingPanel.BackColor = Color.FromArgb(65, 65, 65);
             SettingPanel.Controls.Add(label1);
             SettingPanel.Controls.Add(WSourceComboBox);
             SettingPanel.Controls.Add(NumberOfWordsNumericUpDown);
@@ -937,9 +937,9 @@ namespace EWL
             SettingPanel.Controls.Add(GoBackButton5);
             SettingPanel.Controls.Add(label4);
             SettingPanel.ImeMode = ImeMode.Hangul;
-            SettingPanel.Location = new Point(44, 31);
+            SettingPanel.Location = new Point(59, 34);
             SettingPanel.Name = "SettingPanel";
-            SettingPanel.Size = new Size(934, 519);
+            SettingPanel.Size = new Size(1040, 614);
             SettingPanel.TabIndex = 8;
             // 
             // label1
@@ -1073,17 +1073,17 @@ namespace EWL
             // 
             // AddingWPanel
             // 
-            AddingWPanel.BorderStyle = BorderStyle.FixedSingle;
+            AddingWPanel.BackColor = Color.FromArgb(65, 65, 65);
             AddingWPanel.ImeMode = ImeMode.Hangul;
-            AddingWPanel.Location = new Point(44, 31);
+            AddingWPanel.Location = new Point(59, 34);
             AddingWPanel.Name = "AddingWPanel";
-            AddingWPanel.Size = new Size(934, 519);
+            AddingWPanel.Size = new Size(1040, 614);
             AddingWPanel.TabIndex = 9;
             // 
             // AddingWPanel3
             // 
             AddingWPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AddingWPanel3.BorderStyle = BorderStyle.FixedSingle;
+            AddingWPanel3.BackColor = Color.FromArgb(65, 65, 65);
             AddingWPanel3.Controls.Add(DragAndDropPanel);
             AddingWPanel3.Controls.Add(SpecialFormatInfoBox2);
             AddingWPanel3.Controls.Add(CancelAddingButton3);
@@ -1091,9 +1091,9 @@ namespace EWL
             AddingWPanel3.Controls.Add(GoBackButton6);
             AddingWPanel3.Controls.Add(label7);
             AddingWPanel3.ImeMode = ImeMode.Hangul;
-            AddingWPanel3.Location = new Point(44, 31);
+            AddingWPanel3.Location = new Point(59, 34);
             AddingWPanel3.Name = "AddingWPanel3";
-            AddingWPanel3.Size = new Size(934, 519);
+            AddingWPanel3.Size = new Size(1040, 614);
             AddingWPanel3.TabIndex = 4;
             // 
             // DragAndDropPanel
@@ -1292,7 +1292,7 @@ namespace EWL
             // AddingWPanel2
             // 
             AddingWPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AddingWPanel2.BorderStyle = BorderStyle.FixedSingle;
+            AddingWPanel2.BackColor = Color.FromArgb(65, 65, 65);
             AddingWPanel2.Controls.Add(label14);
             AddingWPanel2.Controls.Add(GoBackButton7);
             AddingWPanel2.Controls.Add(SpecialFormatInfoBox1);
@@ -1302,9 +1302,9 @@ namespace EWL
             AddingWPanel2.Controls.Add(label2);
             AddingWPanel2.Controls.Add(label5);
             AddingWPanel2.ImeMode = ImeMode.Alpha;
-            AddingWPanel2.Location = new Point(44, 31);
+            AddingWPanel2.Location = new Point(59, 34);
             AddingWPanel2.Name = "AddingWPanel2";
-            AddingWPanel2.Size = new Size(934, 519);
+            AddingWPanel2.Size = new Size(1040, 614);
             AddingWPanel2.TabIndex = 5;
             // 
             // label14
@@ -1439,7 +1439,7 @@ namespace EWL
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.BackColor = Color.FromArgb(65, 65, 65);
             panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(button6);
             panel1.Controls.Add(button7);
@@ -1451,46 +1451,46 @@ namespace EWL
             panel1.Controls.Add(button8);
             panel1.Controls.Add(label11);
             panel1.ImeMode = ImeMode.Hangul;
-            panel1.Location = new Point(43, 31);
+            panel1.Location = new Point(59, 34);
             panel1.Name = "panel1";
-            panel1.Size = new Size(934, 519);
+            panel1.Size = new Size(1040, 614);
             panel1.TabIndex = 6;
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle5.NullValue = "-";
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.LightGray;
-            dataGridViewCellStyle6.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.NullValue = "-";
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.LightGray;
+            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.NullValue = "-";
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { WordID, EngWord, UaTranslation, Rating });
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle7.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.GridColor = Color.Gray;
             dataGridView1.Location = new Point(472, 118);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.LightGray;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.LightGray;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(403, 270);
@@ -1951,14 +1951,14 @@ namespace EWL
             // LearningEngPanel
             // 
             LearningEngPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            LearningEngPanel.BorderStyle = BorderStyle.FixedSingle;
+            LearningEngPanel.BackColor = Color.FromArgb(65, 65, 65);
             LearningEngPanel.Controls.Add(SeeTransButton);
             LearningEngPanel.Controls.Add(EngWLabel1);
             LearningEngPanel.Controls.Add(GoBackButton1);
             LearningEngPanel.ImeMode = ImeMode.Hangul;
-            LearningEngPanel.Location = new Point(44, 31);
+            LearningEngPanel.Location = new Point(59, 34);
             LearningEngPanel.Name = "LearningEngPanel";
-            LearningEngPanel.Size = new Size(934, 519);
+            LearningEngPanel.Size = new Size(1040, 614);
             LearningEngPanel.TabIndex = 11;
             // 
             // SeeTransButton
@@ -1988,7 +1988,7 @@ namespace EWL
             EngWLabel1.ForeColor = Color.White;
             EngWLabel1.Location = new Point(162, 169);
             EngWLabel1.Name = "EngWLabel1";
-            EngWLabel1.Size = new Size(609, 111);
+            EngWLabel1.Size = new Size(1641, 118);
             EngWLabel1.TabIndex = 0;
             EngWLabel1.Text = "ХХХ";
             EngWLabel1.TextAlign = ContentAlignment.MiddleCenter;
@@ -2017,31 +2017,35 @@ namespace EWL
             // SIdebarPanel
             // 
             SIdebarPanel.BackColor = Color.FromArgb(40, 40, 40);
-            SIdebarPanel.BorderStyle = BorderStyle.FixedSingle;
-            SIdebarPanel.Location = new Point(0, 31);
+            SIdebarPanel.Location = new Point(1, 1);
             SIdebarPanel.Name = "SIdebarPanel";
-            SIdebarPanel.Size = new Size(45, 519);
+            SIdebarPanel.Size = new Size(59, 648);
             SIdebarPanel.TabIndex = 0;
             // 
             // WelcomePanel
             // 
-            WelcomePanel.BorderStyle = BorderStyle.FixedSingle;
+            WelcomePanel.BackColor = Color.FromArgb(65, 65, 65);
             WelcomePanel.ImeMode = ImeMode.Hangul;
-            WelcomePanel.Location = new Point(44, 31);
+            WelcomePanel.Location = new Point(59, 34);
             WelcomePanel.Name = "WelcomePanel";
-            WelcomePanel.Size = new Size(934, 519);
+            WelcomePanel.Size = new Size(1040, 614);
             WelcomePanel.TabIndex = 10;
+            // 
+            // sqliteCommand1
+            // 
+            sqliteCommand1.CommandTimeout = 30;
+            sqliteCommand1.Connection = null;
+            sqliteCommand1.Transaction = null;
+            sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
             // 
             // MainForm
             // 
             AllowDrop = true;
             AutoScaleMode = AutoScaleMode.None;
-            BackColor = Color.FromArgb(50, 50, 50);
+            BackColor = Color.FromArgb(65, 65, 65);
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(978, 550);
+            ClientSize = new Size(1100, 650);
             Controls.Add(WelcomePanel);
-            Controls.Add(SIdebarPanel);
-            Controls.Add(TopPanel);
             Controls.Add(AddingWPanel);
             Controls.Add(SettingPanel);
             Controls.Add(AddingWPanel2);
@@ -2053,6 +2057,8 @@ namespace EWL
             Controls.Add(panel1);
             Controls.Add(StatPanel);
             Controls.Add(LearningUaPanel);
+            Controls.Add(SIdebarPanel);
+            Controls.Add(TopPanel);
             ForeColor = SystemColors.ControlLightLight;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -2204,5 +2210,6 @@ namespace EWL
         private Panel AddingWPanel;
         private Panel SIdebarPanel;
         private Panel WelcomePanel;
+        private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
     }
 }
