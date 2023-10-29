@@ -165,4 +165,6 @@ D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\obj\Deb
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\appsettings.json
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Vocabulary.db
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Tulpep.NotificationWindow.dll
-D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Siticone.Desktop.UI.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Guna.UI2.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\System.Management.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\runtimes\win\lib\net7.0\System.Management.dll

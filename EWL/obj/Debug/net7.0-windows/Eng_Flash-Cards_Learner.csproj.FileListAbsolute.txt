@@ -357,3 +357,4 @@ D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net7.0-windows\Guna.UI2.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net7.0-windows\System.Management.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net7.0-windows\runtimes\win\lib\net7.0\System.Management.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net7.0-windows\Eng_Flash_Cards_Learner.Forms.UserControls.US_SettingPanel.resources

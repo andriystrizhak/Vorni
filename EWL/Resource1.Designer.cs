@@ -63,6 +63,36 @@ namespace Eng_Flash_Cards_Learner {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap closeoutline_2 {
+            get {
+                object obj = ResourceManager.GetObject("closeoutline_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap closeoutline_21 {
+            get {
+                object obj = ResourceManager.GetObject("closeoutline_21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap closeoutline_3 {
+            get {
+                object obj = ResourceManager.GetObject("closeoutline_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fullscreen_ON {
             get {
                 object obj = ResourceManager.GetObject("fullscreen_ON", resourceCulture);
@@ -143,6 +173,66 @@ namespace Eng_Flash_Cards_Learner {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_удалить_2 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-удалить-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_удалить_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-удалить-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_удалить_60 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-удалить-60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IMG_57361_0_ {
+            get {
+                object obj = ResourceManager.GetObject("IMG_57361(0)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IMG_57361_1_ {
+            get {
+                object obj = ResourceManager.GetObject("IMG_57361(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IMG_57361_2_ {
+            get {
+                object obj = ResourceManager.GetObject("IMG_57361(2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);
@@ -186,6 +276,16 @@ namespace Eng_Flash_Cards_Learner {
         internal static System.Drawing.Bitmap Untitled_3_1 {
             get {
                 object obj = ResourceManager.GetObject("Untitled 3.1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Untitled_3_2 {
+            get {
+                object obj = ResourceManager.GetObject("Untitled 3.2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
