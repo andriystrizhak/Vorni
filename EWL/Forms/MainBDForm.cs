@@ -1,5 +1,6 @@
 ﻿using EWL.EF_SQLite;
 using EWL.NOT_Forms;
+using Guna.UI2.WinForms;
 using System.Data;
 using static EWL.NOT_Forms.Txt_FileHandler;
 
@@ -590,8 +591,29 @@ namespace EWL
             WSourceComboBox.SelectedIndex = SQLs.Get_WordAddingMode();
             SaveSettingsButton.Enabled = false;
             DefaultSettingsButton.Enabled = true;
-            ShowPanel(SettingPanel);
+
+            ShowSettingPanel(); //
+            //ShowPanel(SettingPanel);
             NumberOfWordsNumericUpDown.Focus();
+        }
+
+        void ShowSettingPanel()
+        {
+            //panel2.BackColor = Color.FromArgb(0, 0, 0, 0);
+
+            //ShadowTransparentPanel.Enabled = true;
+            //ShadowTransparentPanel.Visible = true;
+            //ShadowTransparentPanel.BringToFront();
+
+
+
+            SettingPanel.Enabled = true;
+            SettingPanel.Visible = true;
+            SettingPanel.BringToFront();
+
+            guna2GradientPanel1.Enabled = true;
+            guna2GradientPanel1.Visible = true;
+            guna2GradientPanel1.BringToFront();
         }
 
         #region Властивості контролів SettingPanel
@@ -798,9 +820,20 @@ namespace EWL
             // Встановити іншу функцію для кнопки на panel2
             */
         }
-
         #endregion
 
+
+        private void NumberOfWordsNumericUpDown_MouseHover(object sender, EventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void NumberOfWordsNumericUpDown_MouseLeave(object sender, EventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(74, 84, 93);
+
+        private void NumberOfWordsNumericUpDown_MouseMove(object sender, MouseEventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void NumberOfWordsNumericUpDown_MouseEnter(object sender, EventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
 
 
         #region ₴( Сюди автоматично додаються нові методи )₴

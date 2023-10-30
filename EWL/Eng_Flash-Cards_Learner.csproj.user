@@ -10,8 +10,8 @@
     <Compile Update="Forms\SetUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\UserControls\US_SettingPanel.cs">
-      <SubType>UserControl</SubType>
+    <Compile Update="Forms\UserControls\UC_TransparentPanel.cs">
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
 </Project>

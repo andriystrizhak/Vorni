@@ -93,6 +93,26 @@ namespace Eng_Flash_Cards_Learner {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap envelop {
+            get {
+                object obj = ResourceManager.GetObject("envelop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap envelop2 {
+            get {
+                object obj = ResourceManager.GetObject("envelop2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fullscreen_ON {
             get {
                 object obj = ResourceManager.GetObject("fullscreen_ON", resourceCulture);
@@ -146,6 +166,16 @@ namespace Eng_Flash_Cards_Learner {
         internal static System.Drawing.Bitmap icons8_5_в_кружке_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-5-в-кружке-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_github_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-github-100", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

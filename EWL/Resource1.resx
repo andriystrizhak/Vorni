@@ -133,14 +133,17 @@
   <data name="icons8-удалить-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-удалить-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-github-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-github-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-налево-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-налево-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Untitled 3.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Untitled 3.1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-2-в-кружке-100 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-2-в-кружке-100 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="envelop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\envelop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,17 +154,20 @@
   <data name="fullscreen_ON" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\fullscreen_ON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-удалить-60" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\icons8-удалить-60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Untitled 3.1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Untitled 3.1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IMG_57361(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\IMG_57361(1).JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-вопрос-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-вопрос-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Logo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logo11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Logo11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="closeoutline_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\closeoutline_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-4-в-кружке-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-4-в-кружке-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,16 +181,19 @@
   <data name="IMG_57361(0)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\IMG_57361(0).JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-вопрос-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\icons8-вопрос-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Logo11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Logo11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Untitled 3.2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Untitled 3.2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="closeoutline_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\closeoutline_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-удалить-60" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-удалить-60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IMG_57361(2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\IMG_57361(2).JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="envelop2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\envelop2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
