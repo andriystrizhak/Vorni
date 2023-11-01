@@ -3,6 +3,7 @@ using EWL.NOT_Forms;
 using Guna.UI2.WinForms;
 using System.Data;
 using static EWL.NOT_Forms.Txt_FileHandler;
+using DevExpress.XtraSplashScreen;
 
 namespace EWL
 {
@@ -605,15 +606,29 @@ namespace EWL
             //ShadowTransparentPanel.Visible = true;
             //ShadowTransparentPanel.BringToFront();
 
+            ShowProgressPanel();
 
 
             SettingPanel.Enabled = true;
             SettingPanel.Visible = true;
             SettingPanel.BringToFront();
 
-            guna2GradientPanel1.Enabled = true;
-            guna2GradientPanel1.Visible = true;
-            guna2GradientPanel1.BringToFront();
+            //guna2GradientPanel1.Enabled = true;
+            //guna2GradientPanel1.Visible = true;
+            //guna2GradientPanel1.BringToFront();
+        }
+
+        IOverlaySplashScreenHandle ShowProgressPanel(OverlayWindowOptions windowOptions = null)
+        {
+            IOverlaySplashScreenHandle _handle = null;
+            try
+            {
+                _handle = SplashScreenManager.ShowOverlayForm(CurrentPanel, windowOptions ?? OverlayWindowOptions.Default);
+            }
+            catch
+            {
+            }
+            return _handle;
         }
 
         #region Властивості контролів SettingPanel

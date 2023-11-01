@@ -168,3 +168,17 @@ D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Deb
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Guna.UI2.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\System.Management.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\runtimes\win\lib\net7.0\System.Management.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Avalonia.Base.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Avalonia.Controls.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Avalonia.DesignerSupport.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Avalonia.Dialogs.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Avalonia.Markup.Xaml.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Avalonia.Markup.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Avalonia.Metal.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Avalonia.MicroCom.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Avalonia.OpenGL.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Avalonia.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Avalonia.Remote.Protocol.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\MicroCom.Runtime.dll
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\obj\Debug\net7.0-windows\Avalonia\Resources.Inputs.cache
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\CustomMessageBox.Avalonia.dll

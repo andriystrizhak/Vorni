@@ -15,9 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CustomMessageBox.Avalonia" Version="11.0.0.2" />
+    <PackageReference Include="DevExpress.Win.Dashboard.CustomItemExtension" Version="23.1.0.2" />
     <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -29,6 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="DevExpress.XtraEditors.v23.1">
+      <HintPath>bin\Debug\net7.0-windows\DevExpress.XtraEditors.v23.1.5.0.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector NET 8.0.33.1\MySql.Data.dll</HintPath>
     </Reference>

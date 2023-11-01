@@ -45,15 +45,11 @@ namespace EWL
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -98,7 +94,6 @@ namespace EWL
             GoBackButton4 = new Button();
             AddWLabel1 = new Label();
             SettingPanel = new Panel();
-            guna2NumericUpDown1 = new Guna.UI2.WinForms.Guna2NumericUpDown();
             guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -180,7 +175,6 @@ namespace EWL
             SaveSettingsButton1 = new Button();
             MainFGuna2Elipse = new Guna.UI2.WinForms.Guna2Elipse(components);
             SettingPGuna2Elipse = new Guna.UI2.WinForms.Guna2Elipse(components);
-            guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
@@ -192,7 +186,6 @@ namespace EWL
             StatPanel.SuspendLayout();
             AddingWPanel1.SuspendLayout();
             SettingPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2NumericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
@@ -329,7 +322,7 @@ namespace EWL
             SettingButton.Margin = new Padding(10, 10, 10, 100);
             SettingButton.MinimumSize = new Size(350, 50);
             SettingButton.Name = "SettingButton";
-            SettingButton.Size = new Size(1390, 50);
+            SettingButton.Size = new Size(600, 50);
             SettingButton.TabIndex = 3;
             SettingButton.Text = "Налаштування";
             SettingButton.UseVisualStyleBackColor = false;
@@ -374,7 +367,7 @@ namespace EWL
             LearnWButton.Margin = new Padding(10, 10, 10, 100);
             LearnWButton.MinimumSize = new Size(350, 50);
             LearnWButton.Name = "LearnWButton";
-            LearnWButton.Size = new Size(1390, 50);
+            LearnWButton.Size = new Size(600, 50);
             LearnWButton.TabIndex = 1;
             LearnWButton.Text = "Вивчати слова";
             LearnWButton.UseVisualStyleBackColor = false;
@@ -396,7 +389,7 @@ namespace EWL
             SeeAddingWPanelButton.Margin = new Padding(10, 10, 10, 100);
             SeeAddingWPanelButton.MinimumSize = new Size(350, 50);
             SeeAddingWPanelButton.Name = "SeeAddingWPanelButton";
-            SeeAddingWPanelButton.Size = new Size(1390, 50);
+            SeeAddingWPanelButton.Size = new Size(600, 50);
             SeeAddingWPanelButton.TabIndex = 2;
             SeeAddingWPanelButton.Text = "Додати слова";
             SeeAddingWPanelButton.UseVisualStyleBackColor = false;
@@ -418,7 +411,7 @@ namespace EWL
             SeeStatButton.Margin = new Padding(10, 10, 10, 100);
             SeeStatButton.MinimumSize = new Size(350, 50);
             SeeStatButton.Name = "SeeStatButton";
-            SeeStatButton.Size = new Size(1390, 50);
+            SeeStatButton.Size = new Size(600, 50);
             SeeStatButton.TabIndex = 4;
             SeeStatButton.Text = "Переглянути статистику";
             SeeStatButton.UseVisualStyleBackColor = false;
@@ -480,7 +473,7 @@ namespace EWL
             TranslationLabel.ForeColor = Color.White;
             TranslationLabel.Location = new Point(197, 182);
             TranslationLabel.Name = "TranslationLabel";
-            TranslationLabel.Size = new Size(1563, 159);
+            TranslationLabel.Size = new Size(600, 159);
             TranslationLabel.TabIndex = 1;
             TranslationLabel.Text = "ХХХ";
             TranslationLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -634,7 +627,7 @@ namespace EWL
             EngWLabel2.ForeColor = Color.White;
             EngWLabel2.Location = new Point(261, 76);
             EngWLabel2.Name = "EngWLabel2";
-            EngWLabel2.Size = new Size(1435, 83);
+            EngWLabel2.Size = new Size(600, 83);
             EngWLabel2.TabIndex = 3;
             EngWLabel2.Text = "ХХХ";
             EngWLabel2.TextAlign = ContentAlignment.MiddleCenter;
@@ -663,7 +656,7 @@ namespace EWL
             LearningRatingLabel.ForeColor = Color.White;
             LearningRatingLabel.Location = new Point(273, 329);
             LearningRatingLabel.Name = "LearningRatingLabel";
-            LearningRatingLabel.Size = new Size(1410, 44);
+            LearningRatingLabel.Size = new Size(600, 44);
             LearningRatingLabel.TabIndex = 0;
             LearningRatingLabel.Text = "XXX";
             LearningRatingLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -738,7 +731,7 @@ namespace EWL
             LearningStatLabel.ForeColor = Color.White;
             LearningStatLabel.Location = new Point(197, 110);
             LearningStatLabel.Name = "LearningStatLabel";
-            LearningStatLabel.Size = new Size(1563, 273);
+            LearningStatLabel.Size = new Size(600, 273);
             LearningStatLabel.TabIndex = 4;
             LearningStatLabel.Text = "ХХХ";
             LearningStatLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -801,7 +794,7 @@ namespace EWL
             StatLabel.ForeColor = Color.White;
             StatLabel.Location = new Point(187, 122);
             StatLabel.Name = "StatLabel";
-            StatLabel.Size = new Size(1574, 340);
+            StatLabel.Size = new Size(600, 340);
             StatLabel.TabIndex = 2;
             StatLabel.Text = "ХХХ";
             StatLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -971,7 +964,6 @@ namespace EWL
             SettingPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             SettingPanel.AutoScroll = true;
             SettingPanel.BackColor = Color.FromArgb(33, 38, 42);
-            SettingPanel.Controls.Add(guna2NumericUpDown1);
             SettingPanel.Controls.Add(guna2Separator1);
             SettingPanel.Controls.Add(guna2PictureBox2);
             SettingPanel.Controls.Add(guna2PictureBox1);
@@ -997,17 +989,6 @@ namespace EWL
             SettingPanel.Size = new Size(380, 454);
             SettingPanel.TabIndex = 8;
             // 
-            // guna2NumericUpDown1
-            // 
-            guna2NumericUpDown1.BackColor = Color.Transparent;
-            guna2NumericUpDown1.CustomizableEdges = customizableEdges1;
-            guna2NumericUpDown1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2NumericUpDown1.Location = new Point(310, 282);
-            guna2NumericUpDown1.Name = "guna2NumericUpDown1";
-            guna2NumericUpDown1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2NumericUpDown1.Size = new Size(8, 8);
-            guna2NumericUpDown1.TabIndex = 72;
-            // 
             // guna2Separator1
             // 
             guna2Separator1.FillColor = Color.FromArgb(74, 84, 93);
@@ -1019,13 +1000,13 @@ namespace EWL
             // guna2PictureBox2
             // 
             guna2PictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            guna2PictureBox2.CustomizableEdges = customizableEdges3;
+            guna2PictureBox2.CustomizableEdges = customizableEdges1;
             guna2PictureBox2.FillColor = Color.FromArgb(33, 38, 42);
             guna2PictureBox2.Image = Eng_Flash_Cards_Learner.Resource1.envelop2;
             guna2PictureBox2.ImageRotate = 0F;
             guna2PictureBox2.Location = new Point(124, 127);
             guna2PictureBox2.Name = "guna2PictureBox2";
-            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2PictureBox2.Size = new Size(25, 25);
             guna2PictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox2.TabIndex = 70;
@@ -1034,13 +1015,13 @@ namespace EWL
             // guna2PictureBox1
             // 
             guna2PictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            guna2PictureBox1.CustomizableEdges = customizableEdges5;
+            guna2PictureBox1.CustomizableEdges = customizableEdges3;
             guna2PictureBox1.FillColor = Color.FromArgb(33, 38, 42);
             guna2PictureBox1.Image = Eng_Flash_Cards_Learner.Resource1.icons8_github_100;
             guna2PictureBox1.ImageRotate = 0F;
             guna2PictureBox1.Location = new Point(124, 99);
             guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2PictureBox1.Size = new Size(25, 25);
             guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox1.TabIndex = 69;
@@ -1109,7 +1090,7 @@ namespace EWL
             guna2CirclePictureBox1.ImageRotate = 0F;
             guna2CirclePictureBox1.Location = new Point(30, 72);
             guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges7;
+            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges5;
             guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox1.Size = new Size(80, 80);
             guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -1146,7 +1127,7 @@ namespace EWL
             CloseSettingsButton.Location = new Point(327, 16);
             CloseSettingsButton.Name = "CloseSettingsButton";
             CloseSettingsButton.PressedColor = Color.FromArgb(57, 64, 72);
-            CloseSettingsButton.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            CloseSettingsButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
             CloseSettingsButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             CloseSettingsButton.Size = new Size(40, 38);
             CloseSettingsButton.TabIndex = 62;
@@ -1156,7 +1137,7 @@ namespace EWL
             WSourceComboBox.BackColor = Color.FromArgb(33, 38, 42);
             WSourceComboBox.BorderColor = Color.FromArgb(74, 84, 93);
             WSourceComboBox.BorderRadius = 13;
-            WSourceComboBox.CustomizableEdges = customizableEdges9;
+            WSourceComboBox.CustomizableEdges = customizableEdges7;
             WSourceComboBox.DrawMode = DrawMode.OwnerDrawFixed;
             WSourceComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             WSourceComboBox.FillColor = Color.FromArgb(33, 38, 42);
@@ -1173,7 +1154,7 @@ namespace EWL
             WSourceComboBox.ItemsAppearance.SelectedFont = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
             WSourceComboBox.Location = new Point(36, 306);
             WSourceComboBox.Name = "WSourceComboBox";
-            WSourceComboBox.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            WSourceComboBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
             WSourceComboBox.Size = new Size(307, 35);
             WSourceComboBox.TabIndex = 61;
             WSourceComboBox.TextOffset = new Point(7, 1);
@@ -1183,7 +1164,7 @@ namespace EWL
             NumberOfWordsNumericUpDown.BackColor = Color.FromArgb(33, 38, 42);
             NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(74, 84, 93);
             NumberOfWordsNumericUpDown.BorderRadius = 13;
-            NumberOfWordsNumericUpDown.CustomizableEdges = customizableEdges11;
+            NumberOfWordsNumericUpDown.CustomizableEdges = customizableEdges9;
             NumberOfWordsNumericUpDown.FillColor = Color.FromArgb(33, 38, 42);
             NumberOfWordsNumericUpDown.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
             NumberOfWordsNumericUpDown.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -1191,7 +1172,7 @@ namespace EWL
             NumberOfWordsNumericUpDown.Location = new Point(36, 212);
             NumberOfWordsNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             NumberOfWordsNumericUpDown.Name = "NumberOfWordsNumericUpDown";
-            NumberOfWordsNumericUpDown.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            NumberOfWordsNumericUpDown.ShadowDecoration.CustomizableEdges = customizableEdges10;
             NumberOfWordsNumericUpDown.Size = new Size(307, 35);
             NumberOfWordsNumericUpDown.TabIndex = 1;
             NumberOfWordsNumericUpDown.TextOffset = new Point(7, 1);
@@ -1205,7 +1186,7 @@ namespace EWL
             DefaultSettingsButton.BorderColor = Color.FromArgb(33, 38, 42);
             DefaultSettingsButton.BorderRadius = 15;
             DefaultSettingsButton.BorderThickness = 1;
-            DefaultSettingsButton.CustomizableEdges = customizableEdges13;
+            DefaultSettingsButton.CustomizableEdges = customizableEdges11;
             DefaultSettingsButton.DisabledState.BorderColor = Color.FromArgb(74, 84, 93);
             DefaultSettingsButton.DisabledState.CustomBorderColor = Color.FromArgb(74, 84, 93);
             DefaultSettingsButton.DisabledState.FillColor = Color.FromArgb(33, 38, 42);
@@ -1218,7 +1199,7 @@ namespace EWL
             DefaultSettingsButton.HoverState.FillColor = Color.FromArgb(53, 60, 68);
             DefaultSettingsButton.Location = new Point(36, 393);
             DefaultSettingsButton.Name = "DefaultSettingsButton";
-            DefaultSettingsButton.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            DefaultSettingsButton.ShadowDecoration.CustomizableEdges = customizableEdges12;
             DefaultSettingsButton.Size = new Size(110, 40);
             DefaultSettingsButton.TabIndex = 59;
             DefaultSettingsButton.Text = "За замовч.";
@@ -1228,7 +1209,7 @@ namespace EWL
             // 
             SaveSettingsButton.Animated = true;
             SaveSettingsButton.BorderRadius = 15;
-            SaveSettingsButton.CustomizableEdges = customizableEdges15;
+            SaveSettingsButton.CustomizableEdges = customizableEdges13;
             SaveSettingsButton.DisabledState.BorderColor = Color.DarkGray;
             SaveSettingsButton.DisabledState.CustomBorderColor = Color.DarkGray;
             SaveSettingsButton.DisabledState.FillColor = Color.FromArgb(73, 1, 116);
@@ -1239,7 +1220,7 @@ namespace EWL
             SaveSettingsButton.ForeColor = Color.White;
             SaveSettingsButton.Location = new Point(233, 393);
             SaveSettingsButton.Name = "SaveSettingsButton";
-            SaveSettingsButton.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            SaveSettingsButton.ShadowDecoration.CustomizableEdges = customizableEdges14;
             SaveSettingsButton.Size = new Size(110, 40);
             SaveSettingsButton.TabIndex = 58;
             SaveSettingsButton.Text = "Зберегти";
@@ -2221,7 +2202,7 @@ namespace EWL
             EngWLabel1.ForeColor = Color.White;
             EngWLabel1.Location = new Point(162, 169);
             EngWLabel1.Name = "EngWLabel1";
-            EngWLabel1.Size = new Size(1641, 118);
+            EngWLabel1.Size = new Size(641, 118);
             EngWLabel1.TabIndex = 0;
             EngWLabel1.Text = "ХХХ";
             EngWLabel1.TextAlign = ContentAlignment.MiddleCenter;
@@ -2348,23 +2329,9 @@ namespace EWL
             SettingPGuna2Elipse.BorderRadius = 25;
             SettingPGuna2Elipse.TargetControl = SettingPanel;
             // 
-            // guna2GradientPanel1
-            // 
-            guna2GradientPanel1.BackColor = Color.FromArgb(33, 38, 42);
-            guna2GradientPanel1.BorderRadius = 10;
-            guna2GradientPanel1.CustomizableEdges = customizableEdges17;
-            guna2GradientPanel1.FillColor2 = Color.FromArgb(24, 27, 32);
-            guna2GradientPanel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            guna2GradientPanel1.Location = new Point(687, 25);
-            guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            guna2GradientPanel1.Size = new Size(380, 454);
-            guna2GradientPanel1.TabIndex = 9;
-            // 
             // guna2Elipse1
             // 
             guna2Elipse1.BorderRadius = 25;
-            guna2Elipse1.TargetControl = guna2GradientPanel1;
             // 
             // MainForm
             // 
@@ -2373,7 +2340,6 @@ namespace EWL
             BackColor = Color.FromArgb(24, 27, 32);
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1100, 650);
-            Controls.Add(guna2GradientPanel1);
             Controls.Add(SettingPanel);
             Controls.Add(TopPanel);
             Controls.Add(SIdebarPanel);
@@ -2410,7 +2376,6 @@ namespace EWL
             AddingWPanel1.PerformLayout();
             SettingPanel.ResumeLayout(false);
             SettingPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2NumericUpDown1).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
@@ -2543,7 +2508,6 @@ namespace EWL
         private Button DefaultSettingsButton1;
         private Button SaveSettingsButton1;
         private Guna.UI2.WinForms.Guna2Elipse SettingPGuna2Elipse;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
@@ -2563,6 +2527,5 @@ namespace EWL
         private Button GoBackButton5;
         private Label label4;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private Guna.UI2.WinForms.Guna2NumericUpDown guna2NumericUpDown1;
     }
 }
