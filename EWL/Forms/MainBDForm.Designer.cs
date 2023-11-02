@@ -175,7 +175,7 @@ namespace EWL
             SaveSettingsButton1 = new Button();
             MainFGuna2Elipse = new Guna.UI2.WinForms.Guna2Elipse(components);
             SettingPGuna2Elipse = new Guna.UI2.WinForms.Guna2Elipse(components);
-            guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
+            progressPanel1 = new DevExpress.XtraWaitForm.ProgressPanel();
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             MenuPanel.SuspendLayout();
@@ -301,7 +301,7 @@ namespace EWL
             MenuPanel.Controls.Add(SeeStatButton);
             MenuPanel.Controls.Add(EWLPictureBox);
             MenuPanel.ImeMode = ImeMode.Hangul;
-            MenuPanel.Location = new Point(59, 34);
+            MenuPanel.Location = new Point(59, 35);
             MenuPanel.Name = "MenuPanel";
             MenuPanel.Size = new Size(1040, 614);
             MenuPanel.TabIndex = 9;
@@ -438,7 +438,7 @@ namespace EWL
             LearningUaPanel.Controls.Add(RateTableLayoutPanel);
             LearningUaPanel.Controls.Add(EngWLabel2);
             LearningUaPanel.ImeMode = ImeMode.Hangul;
-            LearningUaPanel.Location = new Point(59, 34);
+            LearningUaPanel.Location = new Point(59, 35);
             LearningUaPanel.Name = "LearningUaPanel";
             LearningUaPanel.Size = new Size(1040, 614);
             LearningUaPanel.TabIndex = 1;
@@ -642,7 +642,7 @@ namespace EWL
             LearningStatPanel.Controls.Add(GoMenuButton);
             LearningStatPanel.Controls.Add(LearningStatLabel);
             LearningStatPanel.ImeMode = ImeMode.Hangul;
-            LearningStatPanel.Location = new Point(59, 34);
+            LearningStatPanel.Location = new Point(59, 35);
             LearningStatPanel.Name = "LearningStatPanel";
             LearningStatPanel.Size = new Size(1040, 614);
             LearningStatPanel.TabIndex = 2;
@@ -744,7 +744,7 @@ namespace EWL
             StatPanel.Controls.Add(StatHeaderLabel);
             StatPanel.Controls.Add(StatLabel);
             StatPanel.ImeMode = ImeMode.Hangul;
-            StatPanel.Location = new Point(59, 34);
+            StatPanel.Location = new Point(59, 35);
             StatPanel.Name = "StatPanel";
             StatPanel.Size = new Size(1040, 614);
             StatPanel.TabIndex = 3;
@@ -813,7 +813,7 @@ namespace EWL
             AddingWPanel1.Controls.Add(GoBackButton4);
             AddingWPanel1.Controls.Add(AddWLabel1);
             AddingWPanel1.ImeMode = ImeMode.Hangul;
-            AddingWPanel1.Location = new Point(59, 34);
+            AddingWPanel1.Location = new Point(59, 35);
             AddingWPanel1.Name = "AddingWPanel1";
             AddingWPanel1.Size = new Size(1040, 614);
             AddingWPanel1.TabIndex = 7;
@@ -1289,7 +1289,7 @@ namespace EWL
             // 
             AddingWPanel.BackColor = Color.FromArgb(24, 27, 32);
             AddingWPanel.ImeMode = ImeMode.Hangul;
-            AddingWPanel.Location = new Point(59, 34);
+            AddingWPanel.Location = new Point(59, 35);
             AddingWPanel.Name = "AddingWPanel";
             AddingWPanel.Size = new Size(1040, 614);
             AddingWPanel.TabIndex = 9;
@@ -1305,7 +1305,7 @@ namespace EWL
             AddingWPanel3.Controls.Add(GoBackButton6);
             AddingWPanel3.Controls.Add(label7);
             AddingWPanel3.ImeMode = ImeMode.Hangul;
-            AddingWPanel3.Location = new Point(59, 34);
+            AddingWPanel3.Location = new Point(59, 35);
             AddingWPanel3.Name = "AddingWPanel3";
             AddingWPanel3.Size = new Size(1040, 614);
             AddingWPanel3.TabIndex = 4;
@@ -1516,7 +1516,7 @@ namespace EWL
             AddingWPanel2.Controls.Add(label2);
             AddingWPanel2.Controls.Add(label5);
             AddingWPanel2.ImeMode = ImeMode.Alpha;
-            AddingWPanel2.Location = new Point(59, 34);
+            AddingWPanel2.Location = new Point(59, 35);
             AddingWPanel2.Name = "AddingWPanel2";
             AddingWPanel2.Size = new Size(1040, 614);
             AddingWPanel2.TabIndex = 5;
@@ -1665,7 +1665,7 @@ namespace EWL
             panel1.Controls.Add(button8);
             panel1.Controls.Add(label11);
             panel1.ImeMode = ImeMode.Hangul;
-            panel1.Location = new Point(59, 34);
+            panel1.Location = new Point(59, 35);
             panel1.Name = "panel1";
             panel1.Size = new Size(1040, 614);
             panel1.TabIndex = 6;
@@ -2170,7 +2170,7 @@ namespace EWL
             LearningEngPanel.Controls.Add(EngWLabel1);
             LearningEngPanel.Controls.Add(GoBackButton1);
             LearningEngPanel.ImeMode = ImeMode.Hangul;
-            LearningEngPanel.Location = new Point(59, 34);
+            LearningEngPanel.Location = new Point(59, 35);
             LearningEngPanel.Name = "LearningEngPanel";
             LearningEngPanel.Size = new Size(1040, 614);
             LearningEngPanel.TabIndex = 11;
@@ -2245,7 +2245,7 @@ namespace EWL
             WelcomePanel.Controls.Add(DefaultSettingsButton1);
             WelcomePanel.Controls.Add(SaveSettingsButton1);
             WelcomePanel.ImeMode = ImeMode.Hangul;
-            WelcomePanel.Location = new Point(59, 34);
+            WelcomePanel.Location = new Point(59, 35);
             WelcomePanel.Name = "WelcomePanel";
             WelcomePanel.Size = new Size(1040, 614);
             WelcomePanel.TabIndex = 10;
@@ -2329,9 +2329,13 @@ namespace EWL
             SettingPGuna2Elipse.BorderRadius = 25;
             SettingPGuna2Elipse.TargetControl = SettingPanel;
             // 
-            // guna2Elipse1
+            // progressPanel1
             // 
-            guna2Elipse1.BorderRadius = 25;
+            progressPanel1.Appearance.BackColor = Color.Transparent;
+            progressPanel1.Appearance.Options.UseBackColor = true;
+            progressPanel1.Location = new Point(0, 0);
+            progressPanel1.Name = "progressPanel1";
+            progressPanel1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -2341,6 +2345,7 @@ namespace EWL
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1100, 650);
             Controls.Add(SettingPanel);
+            Controls.Add(MenuPanel);
             Controls.Add(TopPanel);
             Controls.Add(SIdebarPanel);
             Controls.Add(WelcomePanel);
@@ -2350,13 +2355,13 @@ namespace EWL
             Controls.Add(AddingWPanel1);
             Controls.Add(LearningStatPanel);
             Controls.Add(LearningEngPanel);
-            Controls.Add(MenuPanel);
             Controls.Add(panel1);
             Controls.Add(StatPanel);
             Controls.Add(LearningUaPanel);
             ForeColor = SystemColors.ControlLightLight;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            IsMdiContainer = true;
             KeyPreview = true;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -2526,6 +2531,6 @@ namespace EWL
         private Label label3;
         private Button GoBackButton5;
         private Label label4;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private DevExpress.XtraWaitForm.ProgressPanel progressPanel1;
     }
 }

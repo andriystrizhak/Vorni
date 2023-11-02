@@ -4,6 +4,8 @@ using Guna.UI2.WinForms;
 using System.Data;
 using static EWL.NOT_Forms.Txt_FileHandler;
 using DevExpress.XtraSplashScreen;
+using Eng_Flash_Cards_Learner.Forms.UserControls;
+using Eng_Flash_Cards_Learner.Forms.ChildForms;
 
 namespace EWL
 {
@@ -71,11 +73,14 @@ namespace EWL
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
+            var handler = ShowProgressPanel(this);
+
             DialogResult closeForm = MessageBox.Show(
                 "Ти точно хочеш вийти?", "Па-па?",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (closeForm == DialogResult.Yes) Close();
+            handler.Close();
         }
 
         private void MinimizeButton_Click(object sender, EventArgs e)
@@ -600,36 +605,18 @@ namespace EWL
 
         void ShowSettingPanel()
         {
-            //panel2.BackColor = Color.FromArgb(0, 0, 0, 0);
+            var handler = ShowProgressPanel(CurrentPanel);
 
-            //ShadowTransparentPanel.Enabled = true;
-            //ShadowTransparentPanel.Visible = true;
-            //ShadowTransparentPanel.BringToFront();
+            //this.Enabled = false;
 
-            ShowProgressPanel();
+            //this.ParentForm;
+            new SettingsForm(this, handler).Show();
 
-
-            SettingPanel.Enabled = true;
-            SettingPanel.Visible = true;
-            SettingPanel.BringToFront();
-
-            //guna2GradientPanel1.Enabled = true;
-            //guna2GradientPanel1.Visible = true;
-            //guna2GradientPanel1.BringToFront();
+            //SettingPanel.Enabled = true;
+            //SettingPanel.Visible = true;
+            //SettingPanel.BringToFront();
         }
 
-        IOverlaySplashScreenHandle ShowProgressPanel(OverlayWindowOptions windowOptions = null)
-        {
-            IOverlaySplashScreenHandle _handle = null;
-            try
-            {
-                _handle = SplashScreenManager.ShowOverlayForm(CurrentPanel, windowOptions ?? OverlayWindowOptions.Default);
-            }
-            catch
-            {
-            }
-            return _handle;
-        }
 
         #region Властивості контролів SettingPanel
 
@@ -811,30 +798,27 @@ namespace EWL
             CurrentPanel = panelToShow;
             panelToShow.Enabled = true;
             panelToShow.Visible = true;
-
-
-            //if (panelToShow != MenuPanel)
-            //    this.Focus();
-
-            /*
-            if (panelToShow == MenuPanel)
-            {
-                LearnWButton.TabStop = true;
-                SeeAddingWPanelButton.TabStop = true;
-                SettingButton.TabStop = true;
-                SeeStatButton.TabStop = true;
-            }
-            // Встановити функцію для кнопки на panel1
-            else
-            {
-                LearnWButton.TabStop = false;
-                SeeAddingWPanelButton.TabStop = false;
-                SettingButton.TabStop = false;
-                SeeStatButton.TabStop = false;
-            }
-            // Встановити іншу функцію для кнопки на panel2
-            */
         }
+
+        /// <summary>
+        /// Накладає напівпрозору панель на <paramref name="owner"/>, обмежуючи до неї доступ
+        /// </summary>
+        /// <param name="owner"><see cref="Control"/> на який буде накладена ProgressPanel</param>
+        /// <param name="windowOptions">Опції вигляду ProgressPanel</param>
+        /// <returns>Повертає <see cref="IOverlaySplashScreenHandle"/> з допомогою якого можна керувати ProgressPanel</returns>
+        IOverlaySplashScreenHandle ShowProgressPanel(Control owner, OverlayWindowOptions windowOptions = null)
+        {
+            IOverlaySplashScreenHandle _handle = null;
+            try
+            {
+                _handle = SplashScreenManager.ShowOverlayForm(owner, backColor: Color.Black, customPainter: new MyCustomOverlayPainter(), imageSize: new Size(0, 0), disableInput: true);
+            }
+            catch
+            {
+            }
+            return _handle;
+        }
+
         #endregion
 
 
