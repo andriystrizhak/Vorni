@@ -593,30 +593,9 @@ namespace EWL
 
         private void SettingButton_Click(object sender, EventArgs e)
         {
-            NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
-            WSourceComboBox.SelectedIndex = SQLs.Get_WordAddingMode();
-            SaveSettingsButton.Enabled = false;
-            DefaultSettingsButton.Enabled = true;
-
-            ShowSettingPanel(); //
-            //ShowPanel(SettingPanel);
-            NumberOfWordsNumericUpDown.Focus();
-        }
-
-        void ShowSettingPanel()
-        {
             var handler = ShowProgressPanel(CurrentPanel);
-
-            //this.Enabled = false;
-
-            //this.ParentForm;
-            new SettingsForm(this, handler).Show();
-
-            //SettingPanel.Enabled = true;
-            //SettingPanel.Visible = true;
-            //SettingPanel.BringToFront();
+            new SettingsForm(this, handler).ShowDialog();
         }
-
 
         #region Властивості контролів SettingPanel
 
@@ -819,21 +798,20 @@ namespace EWL
             return _handle;
         }
 
+        //public IOverlaySplashScreenHandle ShowOverlayForm2(Control owner, OverlayWindowOptions options)
+        //{
+        //    IOverlayWindowOwner overlayWindowOwner = new DefaultOverlayWindowOwner(owner, options);
+        //    overlayWindowOwner.Initialize();
+        //    OverlayWindowController overlayWindowController =  //new SettingsForm(this, SplashScreenManager.ShowOverlayForm(owner, backColor: Color.Black, customPainter: new MyCustomOverlayPainter(), imageSize: new Size(0, 0), disableInput: true));
+        //
+        //    new SettingsForm(this, SplashScreenManager.ShowOverlayForm(owner, backColor: Color.Black, customPainter: new MyCustomOverlayPainter(), imageSize: new Size(0, 0), disableInput: true)).Show()
+        //
+        //    //overlayWindowController. = new SettingsForm(this, null);
+        //    overlayWindowController.Show();
+        //    return null; //new DefaultOverlaySplashScreenHandle(overlayWindowController);
+        //}
+
         #endregion
-
-
-        private void NumberOfWordsNumericUpDown_MouseHover(object sender, EventArgs e)
-            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
-
-        private void NumberOfWordsNumericUpDown_MouseLeave(object sender, EventArgs e)
-            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(74, 84, 93);
-
-        private void NumberOfWordsNumericUpDown_MouseMove(object sender, MouseEventArgs e)
-            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
-
-        private void NumberOfWordsNumericUpDown_MouseEnter(object sender, EventArgs e)
-            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
-
 
         #region ₴( Сюди автоматично додаються нові методи )₴
 

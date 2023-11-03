@@ -10,7 +10,8 @@ namespace Eng_Flash_Cards_Learner.Forms.UserControls
 {
     internal class MyCustomOverlayPainter : OverlayWindowPainterBase
     {
-            static MyCustomOverlayPainter() { }
+        static MyCustomOverlayPainter() { }
+
         protected override void Draw(OverlayWindowCustomDrawContext context)
         {
             context.Handled = true;

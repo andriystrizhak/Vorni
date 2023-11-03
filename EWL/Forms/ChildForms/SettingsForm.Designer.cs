@@ -62,7 +62,6 @@
             SaveSettingsButton = new Guna.UI2.WinForms.Guna2Button();
             label1 = new Label();
             label3 = new Label();
-            GoBackButton5 = new Button();
             label4 = new Label();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
             SettingPanel.SuspendLayout();
@@ -74,6 +73,7 @@
             // 
             // SettingPanel
             // 
+            SettingPanel.AutoScroll = true;
             SettingPanel.BorderColor = Color.FromArgb(74, 84, 93);
             SettingPanel.BorderRadius = 17;
             SettingPanel.BorderThickness = 1;
@@ -93,7 +93,6 @@
             SettingPanel.Controls.Add(SaveSettingsButton);
             SettingPanel.Controls.Add(label1);
             SettingPanel.Controls.Add(label3);
-            SettingPanel.Controls.Add(GoBackButton5);
             SettingPanel.Controls.Add(label4);
             SettingPanel.CustomizableEdges = customizableEdges15;
             SettingPanel.Location = new Point(0, 0);
@@ -109,6 +108,7 @@
             guna2Separator1.Name = "guna2Separator1";
             guna2Separator1.Size = new Size(307, 8);
             guna2Separator1.TabIndex = 89;
+            guna2Separator1.TabStop = false;
             // 
             // guna2PictureBox2
             // 
@@ -162,7 +162,7 @@
             linkLabel2.Location = new Point(147, 133);
             linkLabel2.Name = "linkLabel2";
             linkLabel2.Size = new Size(187, 15);
-            linkLabel2.TabIndex = 85;
+            linkLabel2.TabIndex = 7;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "andriystrizhakpetrov@gmail.com";
             linkLabel2.VisitedLinkColor = Color.FromArgb(160, 84, 254);
@@ -177,7 +177,7 @@
             linkLabel1.Location = new Point(146, 106);
             linkLabel1.Name = "linkLabel1";
             linkLabel1.Size = new Size(150, 15);
-            linkLabel1.TabIndex = 84;
+            linkLabel1.TabIndex = 6;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "github.com/andriystrizhak";
             linkLabel1.VisitedLinkColor = Color.FromArgb(160, 84, 254);
@@ -225,6 +225,9 @@
             // CloseSettingsButton
             // 
             CloseSettingsButton.BackgroundImageLayout = ImageLayout.Zoom;
+            CloseSettingsButton.BorderColor = Color.FromArgb(33, 38, 42);
+            CloseSettingsButton.BorderThickness = 1;
+            CloseSettingsButton.CheckedState.BorderColor = Color.FromArgb(53, 60, 68);
             CloseSettingsButton.CheckedState.FillColor = Color.FromArgb(53, 60, 68);
             CloseSettingsButton.DisabledState.BorderColor = Color.DarkGray;
             CloseSettingsButton.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -233,6 +236,7 @@
             CloseSettingsButton.FillColor = Color.FromArgb(33, 38, 42);
             CloseSettingsButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             CloseSettingsButton.ForeColor = Color.White;
+            CloseSettingsButton.HoverState.BorderColor = Color.FromArgb(33, 38, 42);
             CloseSettingsButton.HoverState.FillColor = Color.FromArgb(33, 38, 42);
             CloseSettingsButton.HoverState.Image = Resource1.icons8_удалить_2;
             CloseSettingsButton.Image = Resource1.icons8_удалить_60;
@@ -243,8 +247,10 @@
             CloseSettingsButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
             CloseSettingsButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             CloseSettingsButton.Size = new Size(40, 38);
-            CloseSettingsButton.TabIndex = 80;
+            CloseSettingsButton.TabIndex = 3;
             CloseSettingsButton.Click += CloseSettingsButton_Click;
+            CloseSettingsButton.Enter += CloseSettingsButton_Enter;
+            CloseSettingsButton.Leave += CloseSettingsButton_Leave;
             // 
             // WSourceComboBox
             // 
@@ -270,8 +276,9 @@
             WSourceComboBox.Name = "WSourceComboBox";
             WSourceComboBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
             WSourceComboBox.Size = new Size(307, 35);
-            WSourceComboBox.TabIndex = 79;
+            WSourceComboBox.TabIndex = 5;
             WSourceComboBox.TextOffset = new Point(7, 1);
+            WSourceComboBox.SelectedValueChanged += WSourceComboBox_SelectedIndexChanged;
             // 
             // NumberOfWordsNumericUpDown
             // 
@@ -288,11 +295,16 @@
             NumberOfWordsNumericUpDown.Name = "NumberOfWordsNumericUpDown";
             NumberOfWordsNumericUpDown.ShadowDecoration.CustomizableEdges = customizableEdges10;
             NumberOfWordsNumericUpDown.Size = new Size(307, 35);
-            NumberOfWordsNumericUpDown.TabIndex = 72;
+            NumberOfWordsNumericUpDown.TabIndex = 4;
             NumberOfWordsNumericUpDown.TextOffset = new Point(7, 1);
             NumberOfWordsNumericUpDown.UpDownButtonFillColor = Color.FromArgb(53, 60, 68);
             NumberOfWordsNumericUpDown.UpDownButtonForeColor = Color.White;
             NumberOfWordsNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            NumberOfWordsNumericUpDown.ValueChanged += WordCountNumericUpDown_ValueChanged;
+            NumberOfWordsNumericUpDown.MouseEnter += NumberOfWordsNumericUpDown_MouseEnter;
+            NumberOfWordsNumericUpDown.MouseLeave += NumberOfWordsNumericUpDown_MouseLeave;
+            NumberOfWordsNumericUpDown.MouseHover += NumberOfWordsNumericUpDown_MouseHover;
+            NumberOfWordsNumericUpDown.MouseMove += NumberOfWordsNumericUpDown_MouseMove;
             // 
             // DefaultSettingsButton
             // 
@@ -315,14 +327,19 @@
             DefaultSettingsButton.Name = "DefaultSettingsButton";
             DefaultSettingsButton.ShadowDecoration.CustomizableEdges = customizableEdges12;
             DefaultSettingsButton.Size = new Size(110, 40);
-            DefaultSettingsButton.TabIndex = 78;
+            DefaultSettingsButton.TabIndex = 2;
             DefaultSettingsButton.Text = "За замовч.";
             DefaultSettingsButton.TextOffset = new Point(0, -1);
+            DefaultSettingsButton.Click += DefaultSettingsButton_Click;
+            DefaultSettingsButton.Enter += DefaultSettingsButton_Enter;
+            DefaultSettingsButton.Leave += DefaultSettingsButton_Leave;
             // 
             // SaveSettingsButton
             // 
             SaveSettingsButton.Animated = true;
+            SaveSettingsButton.BorderColor = Color.FromArgb(138, 44, 254);
             SaveSettingsButton.BorderRadius = 15;
+            SaveSettingsButton.BorderThickness = 1;
             SaveSettingsButton.CustomizableEdges = customizableEdges13;
             SaveSettingsButton.DisabledState.BorderColor = Color.DarkGray;
             SaveSettingsButton.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -336,9 +353,12 @@
             SaveSettingsButton.Name = "SaveSettingsButton";
             SaveSettingsButton.ShadowDecoration.CustomizableEdges = customizableEdges14;
             SaveSettingsButton.Size = new Size(110, 40);
-            SaveSettingsButton.TabIndex = 77;
+            SaveSettingsButton.TabIndex = 1;
             SaveSettingsButton.Text = "Зберегти";
             SaveSettingsButton.TextOffset = new Point(0, -1);
+            SaveSettingsButton.Click += SaveSettingsButton_Click;
+            SaveSettingsButton.Enter += SaveSettingsButton_Enter;
+            SaveSettingsButton.Leave += SaveSettingsButton_Leave;
             // 
             // label1
             // 
@@ -363,27 +383,6 @@
             label3.TabIndex = 74;
             label3.Text = "Кількість слів";
             label3.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // GoBackButton5
-            // 
-            GoBackButton5.BackColor = Color.FromArgb(33, 38, 42);
-            GoBackButton5.BackgroundImage = Resource1.icons8_налево_96;
-            GoBackButton5.BackgroundImageLayout = ImageLayout.Zoom;
-            GoBackButton5.Cursor = Cursors.Hand;
-            GoBackButton5.FlatAppearance.BorderColor = Color.Gray;
-            GoBackButton5.FlatAppearance.BorderSize = 0;
-            GoBackButton5.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton5.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
-            GoBackButton5.FlatStyle = FlatStyle.Flat;
-            GoBackButton5.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            GoBackButton5.ForeColor = Color.White;
-            GoBackButton5.Location = new Point(250, 19);
-            GoBackButton5.Name = "GoBackButton5";
-            GoBackButton5.Size = new Size(60, 60);
-            GoBackButton5.TabIndex = 75;
-            GoBackButton5.TabStop = false;
-            GoBackButton5.UseVisualStyleBackColor = false;
-            GoBackButton5.Visible = false;
             // 
             // label4
             // 
@@ -412,8 +411,9 @@
             ClientSize = new Size(380, 454);
             Controls.Add(SettingPanel);
             FormBorderStyle = FormBorderStyle.None;
+            KeyPreview = true;
             Name = "SettingsForm";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "SettingsForm";
             SettingPanel.ResumeLayout(false);
             SettingPanel.PerformLayout();
@@ -444,7 +444,6 @@
         private Guna.UI2.WinForms.Guna2Button SaveSettingsButton;
         private Label label1;
         private Label label3;
-        private Button GoBackButton5;
         private Label label4;
     }
 }
