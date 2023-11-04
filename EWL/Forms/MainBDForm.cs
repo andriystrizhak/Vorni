@@ -20,6 +20,11 @@ namespace EWL
         /// Розташування <see cref="TopPanel"/> (для переміщення вікна мишкою)
         /// </summary>
         Point lastPoint;
+        /// <summary>
+        /// Розташування <see cref="EngUaStringTextBox"/> (для розширення EngUaStringTextBox мишкою)
+        /// </summary>
+        Point lastResizeBoxPoint;
+
 
         /// <summary>
         /// Кількість слів доданих за один раз в розділі "Додати слова"
@@ -54,7 +59,7 @@ namespace EWL
             ShowPanel(MenuPanel);
 
             //Джерело слів (???)
-            WSourceComboBox.Text = WSourceComboBox.Items[0].ToString();
+            //WSourceComboBox.Text = WSourceComboBox.Items[0].ToString();
             SetCategoriesList();
         }
 
@@ -110,7 +115,7 @@ namespace EWL
         {
             //NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
             words = SQLs
-                .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), (int)NumberOfWordsNumericUpDown.Value)
+                .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), SQLs.Get_NumberOfWordsToLearn())
                 .Select(w => w.Item1)
                 .ToList();
             SeeEngWord();
@@ -222,7 +227,7 @@ namespace EWL
 
             Null_EngUaTextBoxes();
             CancelPrevButton1.Enabled = false;
-            CancelAddingButton2.Enabled = false;
+            CancelAddingButton.Enabled = false;
 
             if (wAddingMode == 0)
             {
@@ -242,7 +247,7 @@ namespace EWL
         }
 
         /// <summary>
-        /// Скидає всі <see cref="'AddingWPanel'"/> до початкового стану
+        /// Скидає <see cref="AddingWPanel"/> до початкового стану
         /// </summary>
         void Null_EngUaTextBoxes()
         {
@@ -284,7 +289,7 @@ namespace EWL
             if (addedWordsCount == 0)
             {
                 CancelPrevButton1.Enabled = false;
-                CancelAddingButton2.Enabled = false;
+                CancelAddingButton.Enabled = false;
             }
         }
 
@@ -323,35 +328,6 @@ namespace EWL
 
         #region AddingWPanel2
 
-        private void EngUaStringTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (EngUaStringTextBox.Text != "")
-                AddWButton2.Enabled = true;
-            else
-                AddWButton2.Enabled = false;
-        }
-
-        private void AddWButton2_Click(object sender, EventArgs e)
-        {
-            var lines = EngUaStringTextBox.Lines;
-            addedWordsCount = 0;
-
-            bool isAnyInvalidLineThere = false;
-            bool isAnyRepeatedWordThere = false;
-
-            foreach (var line in lines)
-            {
-                var word = GetWordFromLine(line);
-                if (word == null)
-                    isAnyInvalidLineThere = true;
-                else if (!SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty))
-                    isAnyRepeatedWordThere = true;
-                else
-                    addedWordsCount++;
-            }
-            ShowAddingWPanel2_Popup(isAnyInvalidLineThere, isAnyRepeatedWordThere);
-        }
-
         /// <summary>
         /// Виводить підходящий Popup
         /// </summary>
@@ -372,12 +348,43 @@ namespace EWL
             {
                 WAddingReportPopup2.ContentText = $"Було успішно додано слів: {addedWordsCount}";
                 WAddingReportPopup2.Popup();
-                CancelAddingButton2.Enabled = true;
+                CancelAddingButton.Enabled = true;
                 EngUaStringTextBox.Text = "";
             }
         }
 
         //див. CancelAddingButton_Click() - для обох панелей (3 і 2)
+
+        #region Focus events
+
+        private void EngUaStringTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (EngUaStringTextBox.Text != "")
+                AddWButton.Enabled = true;
+            else
+                AddWButton.Enabled = false;
+        }
+
+        private void AddWButton_Click(object sender, EventArgs e)
+        {
+            var lines = EngUaStringTextBox.Lines;
+            addedWordsCount = 0;
+
+            bool isAnyInvalidLineThere = false;
+            bool isAnyRepeatedWordThere = false;
+
+            foreach (var line in lines)
+            {
+                var word = GetWordFromLine(line);
+                if (word == null)
+                    isAnyInvalidLineThere = true;
+                else if (!SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty))
+                    isAnyRepeatedWordThere = true;
+                else
+                    addedWordsCount++;
+            }
+            ShowAddingWPanel2_Popup(isAnyInvalidLineThere, isAnyRepeatedWordThere);
+        }
 
         private void EngUaStringTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -392,6 +399,45 @@ namespace EWL
                 && charCode != '[' && charCode != ']')
                 e.Handled = true;
         }
+
+        private void EngUaStringTextBox_SizeChanged(object sender, EventArgs e)
+        {
+            EngUaStringTextBox.Width = 833;
+            if (EngUaStringTextBox.Height < 35)
+                EngUaStringTextBox.Height = 35;
+            else if (EngUaStringTextBox.Height > 336)
+                EngUaStringTextBox.Height = 336;
+            
+            var point = new Point((EngUaStringTextBox.Location.X + EngUaStringTextBox.Width) - 25, (EngUaStringTextBox.Location.Y + EngUaStringTextBox.Height) - 25);
+            TextBox2ResizeBox.Location = point;
+            EngUaStringTextBox.TextOffset = new Point(0, 0);
+        }
+
+        #region Add/Cancel buttons focuse events
+
+        private void CancelAddingButton_Enter(object sender, EventArgs e)
+        {
+            CancelAddingButton.BorderColor = Color.FromArgb(170, 101, 254);
+        }
+
+        private void CancelAddingButton_Leave(object sender, EventArgs e)
+        {
+            CancelAddingButton.BorderColor = Color.FromArgb(33, 38, 42);
+        }
+
+        private void AddWButton_Enter(object sender, EventArgs e)
+        {
+            AddWButton.BorderColor = Color.FromArgb(190, 131, 254);
+        }
+
+        private void AddWButton_Leave(object sender, EventArgs e)
+        {
+            AddWButton.BorderColor = Color.FromArgb(138, 44, 254);
+        }
+
+        #endregion
+
+        #endregion
 
         #endregion
 
@@ -579,7 +625,7 @@ namespace EWL
             }
 
             addedWordsCount = 0;
-            CancelAddingButton2.Enabled = false;
+            CancelAddingButton.Enabled = false;
             CancelAddingButton3.Enabled = false;
         }
 
@@ -596,35 +642,6 @@ namespace EWL
             var handler = ShowProgressPanel(CurrentPanel);
             new SettingsForm(this, handler).ShowDialog();
         }
-
-        #region Властивості контролів SettingPanel
-
-        //TODO - Додати перемикач категорії для вивчення
-
-        private void WordCountNumericUpDown_ValueChanged(object sender, EventArgs e)
-            => SaveSettingsButton.Enabled = true;
-        private void WSourceComboBox_SelectedIndexChanged(object sender, EventArgs e)
-            => SaveSettingsButton.Enabled = true;
-
-        private void SaveSettingsButton_Click(object sender, EventArgs e)
-        {
-            SaveSettingsButton.Enabled = false;
-            DefaultSettingsButton.Enabled = true;
-
-            SQLs.Set_NumberOfWordsToLearn((int)NumberOfWordsNumericUpDown.Value);
-            SQLs.Set_WordAddingMode(WSourceComboBox.SelectedIndex);
-        }
-
-        private void DefaultSettingsButton_Click(object sender, EventArgs e)
-        {
-            DefaultSettingsButton.Enabled = false;
-            SQLs.Set_NumberOfWordsToLearn(10);
-            SQLs.Set_WordAddingMode(0);
-
-            NumberOfWordsNumericUpDown.Value = 10;
-            WSourceComboBox.SelectedIndex = 0;
-        }
-        #endregion
 
         #endregion
 
@@ -707,10 +724,10 @@ namespace EWL
         {
             if (e.Control && e.KeyCode == Keys.S)
             {
-                SaveSettingsButton.PerformClick();
+                AddWButton.PerformClick();
 
                 AddWButton1.PerformClick();
-                AddWButton2.PerformClick();
+                AddWButton.PerformClick();
                 AddWButton3.PerformClick();
             }
         }
@@ -719,10 +736,10 @@ namespace EWL
         {
             if (e.Control && e.KeyCode == Keys.Z)
             {
-                DefaultSettingsButton.PerformClick();
+                CancelAddingButton.PerformClick();
 
                 CancelPrevButton1.PerformClick();
-                CancelAddingButton2.PerformClick();
+                CancelAddingButton.PerformClick();
                 CancelAddingButton3.PerformClick();
 
                 button6.PerformClick(); //CATEGORY
@@ -797,19 +814,6 @@ namespace EWL
             }
             return _handle;
         }
-
-        //public IOverlaySplashScreenHandle ShowOverlayForm2(Control owner, OverlayWindowOptions options)
-        //{
-        //    IOverlayWindowOwner overlayWindowOwner = new DefaultOverlayWindowOwner(owner, options);
-        //    overlayWindowOwner.Initialize();
-        //    OverlayWindowController overlayWindowController =  //new SettingsForm(this, SplashScreenManager.ShowOverlayForm(owner, backColor: Color.Black, customPainter: new MyCustomOverlayPainter(), imageSize: new Size(0, 0), disableInput: true));
-        //
-        //    new SettingsForm(this, SplashScreenManager.ShowOverlayForm(owner, backColor: Color.Black, customPainter: new MyCustomOverlayPainter(), imageSize: new Size(0, 0), disableInput: true)).Show()
-        //
-        //    //overlayWindowController. = new SettingsForm(this, null);
-        //    overlayWindowController.Show();
-        //    return null; //new DefaultOverlaySplashScreenHandle(overlayWindowController);
-        //}
 
         #endregion
 

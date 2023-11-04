@@ -32,6 +32,12 @@ namespace EWL
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -94,12 +100,13 @@ namespace EWL
             GoBackButton6 = new Button();
             label7 = new Label();
             AddingWPanel2 = new Panel();
-            label14 = new Label();
+            CancelAddingButton = new Guna.UI2.WinForms.Guna2Button();
+            AddWButton = new Guna.UI2.WinForms.Guna2Button();
+            TextBox2ResizeBox = new Guna.UI2.WinForms.Guna2ResizeBox();
+            EngUaStringTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             GoBackButton7 = new Button();
             SpecialFormatInfoBox1 = new PictureBox();
-            CancelAddingButton2 = new Button();
-            AddWButton2 = new Button();
-            EngUaStringTextBox = new TextBox();
+            EngUaStringTextBox1 = new TextBox();
             label2 = new Label();
             label5 = new Label();
             panel1 = new Panel();
@@ -137,7 +144,6 @@ namespace EWL
             SIdebarPanel = new Panel();
             WelcomePanel = new Panel();
             MainFGuna2Elipse = new Guna.UI2.WinForms.Guna2Elipse(components);
-            SettingPGuna2Elipse = new Guna.UI2.WinForms.Guna2Elipse(components);
             progressPanel1 = new DevExpress.XtraWaitForm.ProgressPanel();
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
@@ -1137,12 +1143,13 @@ namespace EWL
             // 
             AddingWPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AddingWPanel2.BackColor = Color.FromArgb(24, 27, 32);
-            AddingWPanel2.Controls.Add(label14);
+            AddingWPanel2.Controls.Add(CancelAddingButton);
+            AddingWPanel2.Controls.Add(AddWButton);
+            AddingWPanel2.Controls.Add(TextBox2ResizeBox);
+            AddingWPanel2.Controls.Add(EngUaStringTextBox);
             AddingWPanel2.Controls.Add(GoBackButton7);
             AddingWPanel2.Controls.Add(SpecialFormatInfoBox1);
-            AddingWPanel2.Controls.Add(CancelAddingButton2);
-            AddingWPanel2.Controls.Add(AddWButton2);
-            AddingWPanel2.Controls.Add(EngUaStringTextBox);
+            AddingWPanel2.Controls.Add(EngUaStringTextBox1);
             AddingWPanel2.Controls.Add(label2);
             AddingWPanel2.Controls.Add(label5);
             AddingWPanel2.ImeMode = ImeMode.Alpha;
@@ -1151,17 +1158,112 @@ namespace EWL
             AddingWPanel2.Size = new Size(1040, 614);
             AddingWPanel2.TabIndex = 5;
             // 
-            // label14
+            // CancelAddingButton
             // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Roboto Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.ForeColor = Color.White;
-            label14.Location = new Point(250, 366);
-            label14.Name = "label14";
-            label14.Size = new Size(282, 18);
-            label14.TabIndex = 8;
-            label14.Text = "*кожен в окремому рядку, через 'Shift+Enter'";
-            label14.TextAlign = ContentAlignment.MiddleCenter;
+            CancelAddingButton.Animated = true;
+            CancelAddingButton.BackColor = Color.Transparent;
+            CancelAddingButton.BorderColor = Color.FromArgb(24, 27, 32);
+            CancelAddingButton.BorderRadius = 15;
+            CancelAddingButton.BorderThickness = 1;
+            CancelAddingButton.CustomizableEdges = customizableEdges1;
+            CancelAddingButton.DisabledState.BorderColor = Color.FromArgb(33, 38, 42);
+            CancelAddingButton.DisabledState.CustomBorderColor = Color.FromArgb(33, 38, 42);
+            CancelAddingButton.DisabledState.FillColor = Color.FromArgb(33, 38, 42);
+            CancelAddingButton.DisabledState.ForeColor = Color.DimGray;
+            CancelAddingButton.Enabled = false;
+            CancelAddingButton.FillColor = Color.FromArgb(24, 27, 32);
+            CancelAddingButton.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            CancelAddingButton.ForeColor = Color.White;
+            CancelAddingButton.HoverState.BorderColor = Color.FromArgb(170, 101, 254);
+            CancelAddingButton.HoverState.FillColor = Color.FromArgb(53, 60, 68);
+            CancelAddingButton.Location = new Point(223, 506);
+            CancelAddingButton.Name = "CancelAddingButton";
+            CancelAddingButton.ShadowDecoration.BorderRadius = 17;
+            CancelAddingButton.ShadowDecoration.Color = Color.FromArgb(138, 44, 254);
+            CancelAddingButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            CancelAddingButton.ShadowDecoration.Enabled = true;
+            CancelAddingButton.Size = new Size(206, 52);
+            CancelAddingButton.TabIndex = 3;
+            CancelAddingButton.Text = "Скасувати додавання";
+            CancelAddingButton.TextOffset = new Point(0, -1);
+            CancelAddingButton.Click += CancelAddingButton_Click;
+            CancelAddingButton.Enter += CancelAddingButton_Enter;
+            CancelAddingButton.Leave += CancelAddingButton_Leave;
+            // 
+            // AddWButton
+            // 
+            AddWButton.Animated = true;
+            AddWButton.BorderColor = Color.FromArgb(138, 44, 254);
+            AddWButton.BorderRadius = 15;
+            AddWButton.BorderThickness = 1;
+            AddWButton.CustomizableEdges = customizableEdges3;
+            AddWButton.DisabledState.BorderColor = Color.FromArgb(73, 1, 116);
+            AddWButton.DisabledState.CustomBorderColor = Color.FromArgb(73, 1, 116);
+            AddWButton.DisabledState.FillColor = Color.FromArgb(73, 1, 116);
+            AddWButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            AddWButton.Enabled = false;
+            AddWButton.FillColor = Color.FromArgb(138, 44, 254);
+            AddWButton.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            AddWButton.ForeColor = Color.White;
+            AddWButton.Location = new Point(615, 506);
+            AddWButton.Name = "AddWButton";
+            AddWButton.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            AddWButton.Size = new Size(206, 52);
+            AddWButton.TabIndex = 11;
+            AddWButton.Text = "Додати слово";
+            AddWButton.TextOffset = new Point(0, -1);
+            AddWButton.Click += AddWButton_Click;
+            AddWButton.Enter += AddWButton_Enter;
+            AddWButton.Leave += AddWButton_Leave;
+            // 
+            // TextBox2ResizeBox
+            // 
+            TextBox2ResizeBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            TextBox2ResizeBox.BackColor = Color.Transparent;
+            TextBox2ResizeBox.Cursor = Cursors.SizeNWSE;
+            TextBox2ResizeBox.FillColor = Color.FromArgb(74, 84, 93);
+            TextBox2ResizeBox.ForeColor = Color.Black;
+            TextBox2ResizeBox.Location = new Point(916, 388);
+            TextBox2ResizeBox.Name = "TextBox2ResizeBox";
+            TextBox2ResizeBox.RightToLeft = RightToLeft.No;
+            TextBox2ResizeBox.Size = new Size(20, 20);
+            TextBox2ResizeBox.TabIndex = 10;
+            TextBox2ResizeBox.TabStop = false;
+            TextBox2ResizeBox.TargetControl = EngUaStringTextBox;
+            // 
+            // EngUaStringTextBox
+            // 
+            EngUaStringTextBox.AcceptsReturn = true;
+            EngUaStringTextBox.AutoScroll = true;
+            EngUaStringTextBox.BorderColor = Color.FromArgb(74, 84, 93);
+            EngUaStringTextBox.BorderRadius = 14;
+            EngUaStringTextBox.CustomizableEdges = customizableEdges5;
+            EngUaStringTextBox.DefaultText = "";
+            EngUaStringTextBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            EngUaStringTextBox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            EngUaStringTextBox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            EngUaStringTextBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            EngUaStringTextBox.FillColor = Color.FromArgb(24, 27, 32);
+            EngUaStringTextBox.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
+            EngUaStringTextBox.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            EngUaStringTextBox.HoverState.BorderColor = Color.FromArgb(170, 101, 254);
+            EngUaStringTextBox.Location = new Point(108, 137);
+            EngUaStringTextBox.Margin = new Padding(3, 4, 3, 4);
+            EngUaStringTextBox.MaximumSize = new Size(833, 336);
+            EngUaStringTextBox.MinimumSize = new Size(833, 15);
+            EngUaStringTextBox.Multiline = true;
+            EngUaStringTextBox.Name = "EngUaStringTextBox";
+            EngUaStringTextBox.PasswordChar = '\0';
+            EngUaStringTextBox.PlaceholderForeColor = Color.FromArgb(147, 166, 181);
+            EngUaStringTextBox.PlaceholderText = "*кожен в окремому рядку, через 'Shift+Enter'";
+            EngUaStringTextBox.SelectedText = "";
+            EngUaStringTextBox.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            EngUaStringTextBox.Size = new Size(833, 276);
+            EngUaStringTextBox.TabIndex = 1;
+            EngUaStringTextBox.TextAlign = HorizontalAlignment.Center;
+            EngUaStringTextBox.TextChanged += EngUaStringTextBox_TextChanged;
+            EngUaStringTextBox.SizeChanged += EngUaStringTextBox_SizeChanged;
+            EngUaStringTextBox.KeyPress += EngUaStringTextBox_KeyPress;
             // 
             // GoBackButton7
             // 
@@ -1190,77 +1292,39 @@ namespace EWL
             SpecialFormatInfoBox1.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_вопрос_48;
             SpecialFormatInfoBox1.BackgroundImageLayout = ImageLayout.Zoom;
             SpecialFormatInfoBox1.Cursor = Cursors.Help;
-            SpecialFormatInfoBox1.Location = new Point(930, 12);
+            SpecialFormatInfoBox1.Location = new Point(397, 68);
             SpecialFormatInfoBox1.Name = "SpecialFormatInfoBox1";
-            SpecialFormatInfoBox1.Size = new Size(35, 35);
+            SpecialFormatInfoBox1.Size = new Size(20, 20);
             SpecialFormatInfoBox1.TabIndex = 7;
             SpecialFormatInfoBox1.TabStop = false;
             SpecialFormatLineTip.SetToolTip(SpecialFormatInfoBox1, resources.GetString("SpecialFormatInfoBox1.ToolTip"));
             // 
-            // CancelAddingButton2
+            // EngUaStringTextBox1
             // 
-            CancelAddingButton2.BackColor = SystemColors.WindowFrame;
-            CancelAddingButton2.Cursor = Cursors.Hand;
-            CancelAddingButton2.Enabled = false;
-            CancelAddingButton2.FlatAppearance.BorderColor = Color.Gray;
-            CancelAddingButton2.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
-            CancelAddingButton2.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
-            CancelAddingButton2.FlatStyle = FlatStyle.Flat;
-            CancelAddingButton2.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            CancelAddingButton2.ForeColor = Color.White;
-            CancelAddingButton2.Location = new Point(247, 407);
-            CancelAddingButton2.Name = "CancelAddingButton2";
-            CancelAddingButton2.Size = new Size(195, 53);
-            CancelAddingButton2.TabIndex = 0;
-            CancelAddingButton2.TabStop = false;
-            CancelAddingButton2.Text = "Скасувати додавання";
-            CancelAddingButton2.UseVisualStyleBackColor = false;
-            CancelAddingButton2.Click += CancelAddingButton_Click;
-            // 
-            // AddWButton2
-            // 
-            AddWButton2.BackColor = SystemColors.WindowFrame;
-            AddWButton2.Cursor = Cursors.Hand;
-            AddWButton2.Enabled = false;
-            AddWButton2.FlatAppearance.BorderColor = Color.Gray;
-            AddWButton2.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
-            AddWButton2.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
-            AddWButton2.FlatStyle = FlatStyle.Flat;
-            AddWButton2.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            AddWButton2.ForeColor = Color.White;
-            AddWButton2.Location = new Point(507, 407);
-            AddWButton2.Name = "AddWButton2";
-            AddWButton2.Size = new Size(195, 53);
-            AddWButton2.TabIndex = 1;
-            AddWButton2.TabStop = false;
-            AddWButton2.Text = "Додати слово";
-            AddWButton2.UseVisualStyleBackColor = false;
-            AddWButton2.Click += AddWButton2_Click;
-            // 
-            // EngUaStringTextBox
-            // 
-            EngUaStringTextBox.BackColor = Color.FromArgb(90, 90, 90);
-            EngUaStringTextBox.Cursor = Cursors.IBeam;
-            EngUaStringTextBox.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            EngUaStringTextBox.ForeColor = Color.White;
-            EngUaStringTextBox.Location = new Point(155, 179);
-            EngUaStringTextBox.Multiline = true;
-            EngUaStringTextBox.Name = "EngUaStringTextBox";
-            EngUaStringTextBox.ScrollBars = ScrollBars.Both;
-            EngUaStringTextBox.Size = new Size(635, 184);
-            EngUaStringTextBox.TabIndex = 1;
-            EngUaStringTextBox.TextAlign = HorizontalAlignment.Center;
-            EngUaStringTextBox.TextChanged += EngUaStringTextBox_TextChanged;
-            EngUaStringTextBox.KeyPress += EngUaStringTextBox_KeyPress;
+            EngUaStringTextBox1.BackColor = Color.FromArgb(90, 90, 90);
+            EngUaStringTextBox1.Cursor = Cursors.IBeam;
+            EngUaStringTextBox1.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            EngUaStringTextBox1.ForeColor = Color.White;
+            EngUaStringTextBox1.Location = new Point(340, 196);
+            EngUaStringTextBox1.Multiline = true;
+            EngUaStringTextBox1.Name = "EngUaStringTextBox1";
+            EngUaStringTextBox1.ScrollBars = ScrollBars.Both;
+            EngUaStringTextBox1.Size = new Size(635, 184);
+            EngUaStringTextBox1.TabIndex = 1;
+            EngUaStringTextBox1.TabStop = false;
+            EngUaStringTextBox1.TextAlign = HorizontalAlignment.Center;
+            EngUaStringTextBox1.Visible = false;
+            EngUaStringTextBox1.TextChanged += EngUaStringTextBox_TextChanged;
+            EngUaStringTextBox1.KeyPress += EngUaStringTextBox_KeyPress;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(240, 141);
+            label2.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.FromArgb(147, 166, 181);
+            label2.Location = new Point(109, 98);
             label2.Name = "label2";
-            label2.Size = new Size(474, 25);
+            label2.Size = new Size(366, 19);
             label2.TabIndex = 3;
             label2.Text = "Введи рядок(-ки) зі словом в спеціальному форматі";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -1269,13 +1333,12 @@ namespace EWL
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.BackColor = Color.FromArgb(50, 50, 50);
-            label5.BorderStyle = BorderStyle.FixedSingle;
-            label5.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.BackColor = Color.FromArgb(24, 27, 32);
+            label5.Font = new Font("Calibri", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(287, 48);
+            label5.Location = new Point(108, 58);
             label5.Name = "label5";
-            label5.Size = new Size(381, 47);
+            label5.Size = new Size(292, 36);
             label5.TabIndex = 5;
             label5.Text = "Додавання нових слів";
             label5.TextAlign = ContentAlignment.MiddleCenter;
@@ -1512,12 +1575,12 @@ namespace EWL
             // 
             // WrongFileFormatPopup
             // 
-            WrongFileFormatPopup.BodyColor = Color.FromArgb(65, 65, 65);
-            WrongFileFormatPopup.BorderColor = Color.Gray;
-            WrongFileFormatPopup.ButtonBorderColor = Color.Gray;
-            WrongFileFormatPopup.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            WrongFileFormatPopup.BodyColor = Color.FromArgb(24, 27, 32);
+            WrongFileFormatPopup.BorderColor = Color.FromArgb(74, 84, 93);
+            WrongFileFormatPopup.ButtonBorderColor = Color.FromArgb(74, 84, 93);
+            WrongFileFormatPopup.ButtonHoverColor = Color.FromArgb(19, 22, 27);
             WrongFileFormatPopup.ContentColor = Color.White;
-            WrongFileFormatPopup.ContentFont = new Font("Roboto Condensed", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            WrongFileFormatPopup.ContentFont = new Font("Calibri", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             WrongFileFormatPopup.ContentHoverColor = SystemColors.ControlLight;
             WrongFileFormatPopup.ContentPadding = new Padding(15, 3, 0, 0);
             WrongFileFormatPopup.ContentText = "Деякі (або всі) додані файли в хибному форматі!\r\nВ списку будуть тільки ті, що мають вірний формат";
@@ -1544,12 +1607,12 @@ namespace EWL
             // 
             // InvalidLinesAndRepeatedWordsopup
             // 
-            InvalidLinesAndRepeatedWordsopup.BodyColor = Color.FromArgb(65, 65, 65);
-            InvalidLinesAndRepeatedWordsopup.BorderColor = Color.Gray;
-            InvalidLinesAndRepeatedWordsopup.ButtonBorderColor = Color.Gray;
-            InvalidLinesAndRepeatedWordsopup.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            InvalidLinesAndRepeatedWordsopup.BodyColor = Color.FromArgb(24, 27, 32);
+            InvalidLinesAndRepeatedWordsopup.BorderColor = Color.FromArgb(74, 84, 93);
+            InvalidLinesAndRepeatedWordsopup.ButtonBorderColor = Color.FromArgb(74, 84, 93);
+            InvalidLinesAndRepeatedWordsopup.ButtonHoverColor = Color.FromArgb(19, 22, 27);
             InvalidLinesAndRepeatedWordsopup.ContentColor = Color.White;
-            InvalidLinesAndRepeatedWordsopup.ContentFont = new Font("Roboto Condensed", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            InvalidLinesAndRepeatedWordsopup.ContentFont = new Font("Calibri", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             InvalidLinesAndRepeatedWordsopup.ContentHoverColor = SystemColors.ControlLight;
             InvalidLinesAndRepeatedWordsopup.ContentPadding = new Padding(20, 3, 0, 0);
             InvalidLinesAndRepeatedWordsopup.ContentText = "Деякі рядки не в 'Спеціальному форматі'.\r\nТа деякі з цих слів ти вже додавав до БД раніше.\r\nТому були додані лише правильно введені та нові слова";
@@ -1569,12 +1632,12 @@ namespace EWL
             // 
             // InvalidLinesFormatPopup
             // 
-            InvalidLinesFormatPopup.BodyColor = Color.FromArgb(65, 65, 65);
-            InvalidLinesFormatPopup.BorderColor = Color.Gray;
-            InvalidLinesFormatPopup.ButtonBorderColor = Color.Gray;
-            InvalidLinesFormatPopup.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            InvalidLinesFormatPopup.BodyColor = Color.FromArgb(24, 27, 32);
+            InvalidLinesFormatPopup.BorderColor = Color.FromArgb(74, 84, 93);
+            InvalidLinesFormatPopup.ButtonBorderColor = Color.FromArgb(74, 84, 93);
+            InvalidLinesFormatPopup.ButtonHoverColor = Color.FromArgb(19, 22, 27);
             InvalidLinesFormatPopup.ContentColor = Color.White;
-            InvalidLinesFormatPopup.ContentFont = new Font("Roboto Condensed", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            InvalidLinesFormatPopup.ContentFont = new Font("Calibri", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             InvalidLinesFormatPopup.ContentHoverColor = SystemColors.ControlLight;
             InvalidLinesFormatPopup.ContentPadding = new Padding(15, 4, 0, 0);
             InvalidLinesFormatPopup.ContentText = "Деякі рядки не в 'Спеціальному форматі!\r\nВ списку будуть тільки ті, що мають вірний формат";
@@ -1594,12 +1657,12 @@ namespace EWL
             // 
             // WordsAreRepeatedPopup
             // 
-            WordsAreRepeatedPopup.BodyColor = Color.FromArgb(65, 65, 65);
-            WordsAreRepeatedPopup.BorderColor = Color.Gray;
-            WordsAreRepeatedPopup.ButtonBorderColor = Color.Gray;
-            WordsAreRepeatedPopup.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            WordsAreRepeatedPopup.BodyColor = Color.FromArgb(24, 27, 32);
+            WordsAreRepeatedPopup.BorderColor = Color.FromArgb(74, 84, 93);
+            WordsAreRepeatedPopup.ButtonBorderColor = Color.FromArgb(74, 84, 93);
+            WordsAreRepeatedPopup.ButtonHoverColor = Color.FromArgb(19, 22, 27);
             WordsAreRepeatedPopup.ContentColor = Color.White;
-            WordsAreRepeatedPopup.ContentFont = new Font("Roboto Condensed", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            WordsAreRepeatedPopup.ContentFont = new Font("Calibri", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             WordsAreRepeatedPopup.ContentHoverColor = SystemColors.ControlLight;
             WordsAreRepeatedPopup.ContentPadding = new Padding(15, 3, 0, 0);
             WordsAreRepeatedPopup.ContentText = "Деякі з цих слів ти вже додавав до БД раніше.\r\nТому зараз були додані лише нові";
@@ -1619,12 +1682,12 @@ namespace EWL
             // 
             // AllLinesAreInvalidOrRepeatedPopup
             // 
-            AllLinesAreInvalidOrRepeatedPopup.BodyColor = Color.FromArgb(65, 65, 65);
-            AllLinesAreInvalidOrRepeatedPopup.BorderColor = Color.Gray;
-            AllLinesAreInvalidOrRepeatedPopup.ButtonBorderColor = Color.Gray;
-            AllLinesAreInvalidOrRepeatedPopup.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            AllLinesAreInvalidOrRepeatedPopup.BodyColor = Color.FromArgb(24, 27, 32);
+            AllLinesAreInvalidOrRepeatedPopup.BorderColor = Color.FromArgb(74, 84, 93);
+            AllLinesAreInvalidOrRepeatedPopup.ButtonBorderColor = Color.FromArgb(74, 84, 93);
+            AllLinesAreInvalidOrRepeatedPopup.ButtonHoverColor = Color.FromArgb(19, 22, 27);
             AllLinesAreInvalidOrRepeatedPopup.ContentColor = Color.White;
-            AllLinesAreInvalidOrRepeatedPopup.ContentFont = new Font("Roboto Condensed", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            AllLinesAreInvalidOrRepeatedPopup.ContentFont = new Font("Calibri", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             AllLinesAreInvalidOrRepeatedPopup.ContentHoverColor = SystemColors.ControlLight;
             AllLinesAreInvalidOrRepeatedPopup.ContentPadding = new Padding(25, 3, 0, 0);
             AllLinesAreInvalidOrRepeatedPopup.ContentText = "Всі додані рядки в хибному форматі\r\nабо всі слова вже були додані раніше!\r\nЗараз не було доданe жодне слово";
@@ -1644,12 +1707,12 @@ namespace EWL
             // 
             // WAddingReportPopup2
             // 
-            WAddingReportPopup2.BodyColor = Color.FromArgb(65, 65, 65);
-            WAddingReportPopup2.BorderColor = Color.Gray;
-            WAddingReportPopup2.ButtonBorderColor = Color.Gray;
-            WAddingReportPopup2.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            WAddingReportPopup2.BodyColor = Color.FromArgb(24, 27, 32);
+            WAddingReportPopup2.BorderColor = Color.FromArgb(74, 84, 93);
+            WAddingReportPopup2.ButtonBorderColor = Color.FromArgb(74, 84, 93);
+            WAddingReportPopup2.ButtonHoverColor = Color.FromArgb(19, 22, 27);
             WAddingReportPopup2.ContentColor = Color.White;
-            WAddingReportPopup2.ContentFont = new Font("Roboto Condensed", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            WAddingReportPopup2.ContentFont = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             WAddingReportPopup2.ContentHoverColor = SystemColors.ControlLight;
             WAddingReportPopup2.ContentPadding = new Padding(30, 6, 0, 0);
             WAddingReportPopup2.ContentText = null;
@@ -1669,12 +1732,12 @@ namespace EWL
             // 
             // CancelWAddingPopup2
             // 
-            CancelWAddingPopup2.BodyColor = Color.FromArgb(65, 65, 65);
-            CancelWAddingPopup2.BorderColor = Color.Gray;
-            CancelWAddingPopup2.ButtonBorderColor = Color.Gray;
-            CancelWAddingPopup2.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            CancelWAddingPopup2.BodyColor = Color.FromArgb(24, 27, 32);
+            CancelWAddingPopup2.BorderColor = Color.FromArgb(74, 84, 93);
+            CancelWAddingPopup2.ButtonBorderColor = Color.FromArgb(74, 84, 93);
+            CancelWAddingPopup2.ButtonHoverColor = Color.FromArgb(19, 22, 27);
             CancelWAddingPopup2.ContentColor = Color.White;
-            CancelWAddingPopup2.ContentFont = new Font("Roboto Condensed", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            CancelWAddingPopup2.ContentFont = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             CancelWAddingPopup2.ContentHoverColor = SystemColors.ControlLight;
             CancelWAddingPopup2.ContentPadding = new Padding(25, 6, 0, 0);
             CancelWAddingPopup2.ContentText = "Всі останні додані слова були видалені";
@@ -1694,12 +1757,12 @@ namespace EWL
             // 
             // WAddingReportPopup3
             // 
-            WAddingReportPopup3.BodyColor = Color.FromArgb(65, 65, 65);
-            WAddingReportPopup3.BorderColor = Color.Gray;
-            WAddingReportPopup3.ButtonBorderColor = Color.Gray;
-            WAddingReportPopup3.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            WAddingReportPopup3.BodyColor = Color.FromArgb(24, 27, 32);
+            WAddingReportPopup3.BorderColor = Color.FromArgb(74, 84, 93);
+            WAddingReportPopup3.ButtonBorderColor = Color.FromArgb(74, 84, 93);
+            WAddingReportPopup3.ButtonHoverColor = Color.FromArgb(19, 22, 27);
             WAddingReportPopup3.ContentColor = Color.White;
-            WAddingReportPopup3.ContentFont = new Font("Roboto Condensed", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            WAddingReportPopup3.ContentFont = new Font("Calibri", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             WAddingReportPopup3.ContentHoverColor = SystemColors.ControlLight;
             WAddingReportPopup3.ContentPadding = new Padding(25, 3, 0, 0);
             WAddingReportPopup3.ContentText = "";
@@ -1719,12 +1782,12 @@ namespace EWL
             // 
             // WordIsRepeatedPopup
             // 
-            WordIsRepeatedPopup.BodyColor = Color.FromArgb(65, 65, 65);
-            WordIsRepeatedPopup.BorderColor = Color.Gray;
-            WordIsRepeatedPopup.ButtonBorderColor = Color.Gray;
-            WordIsRepeatedPopup.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            WordIsRepeatedPopup.BodyColor = Color.FromArgb(24, 27, 32);
+            WordIsRepeatedPopup.BorderColor = Color.FromArgb(74, 84, 93);
+            WordIsRepeatedPopup.ButtonBorderColor = Color.FromArgb(74, 84, 93);
+            WordIsRepeatedPopup.ButtonHoverColor = Color.FromArgb(19, 22, 27);
             WordIsRepeatedPopup.ContentColor = Color.White;
-            WordIsRepeatedPopup.ContentFont = new Font("Roboto Condensed", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            WordIsRepeatedPopup.ContentFont = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             WordIsRepeatedPopup.ContentHoverColor = SystemColors.ControlLight;
             WordIsRepeatedPopup.ContentPadding = new Padding(25, 6, 0, 0);
             WordIsRepeatedPopup.ContentText = "Таке слово вже було додане раніше";
@@ -1744,12 +1807,12 @@ namespace EWL
             // 
             // WAddingReportPopup1
             // 
-            WAddingReportPopup1.BodyColor = Color.FromArgb(65, 65, 65);
-            WAddingReportPopup1.BorderColor = Color.Gray;
-            WAddingReportPopup1.ButtonBorderColor = Color.Gray;
-            WAddingReportPopup1.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            WAddingReportPopup1.BodyColor = Color.FromArgb(24, 27, 32);
+            WAddingReportPopup1.BorderColor = Color.FromArgb(74, 84, 93);
+            WAddingReportPopup1.ButtonBorderColor = Color.FromArgb(74, 84, 93);
+            WAddingReportPopup1.ButtonHoverColor = Color.FromArgb(19, 22, 27);
             WAddingReportPopup1.ContentColor = Color.White;
-            WAddingReportPopup1.ContentFont = new Font("Roboto Condensed", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            WAddingReportPopup1.ContentFont = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             WAddingReportPopup1.ContentHoverColor = SystemColors.ControlLight;
             WAddingReportPopup1.ContentPadding = new Padding(30, 6, 0, 0);
             WAddingReportPopup1.ContentText = "Слово успішно додане!";
@@ -1769,12 +1832,12 @@ namespace EWL
             // 
             // CancelWAddingPopup1
             // 
-            CancelWAddingPopup1.BodyColor = Color.FromArgb(65, 65, 65);
-            CancelWAddingPopup1.BorderColor = Color.Gray;
-            CancelWAddingPopup1.ButtonBorderColor = Color.Gray;
-            CancelWAddingPopup1.ButtonHoverColor = Color.FromArgb(60, 60, 60);
+            CancelWAddingPopup1.BodyColor = Color.FromArgb(24, 27, 32);
+            CancelWAddingPopup1.BorderColor = Color.FromArgb(74, 84, 93);
+            CancelWAddingPopup1.ButtonBorderColor = Color.FromArgb(74, 84, 93);
+            CancelWAddingPopup1.ButtonHoverColor = Color.FromArgb(19, 22, 27);
             CancelWAddingPopup1.ContentColor = Color.White;
-            CancelWAddingPopup1.ContentFont = new Font("Roboto Condensed", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            CancelWAddingPopup1.ContentFont = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             CancelWAddingPopup1.ContentHoverColor = SystemColors.ControlLight;
             CancelWAddingPopup1.ContentPadding = new Padding(25, 6, 0, 0);
             CancelWAddingPopup1.ContentText = "Oстаннє додане слово видалено!";
@@ -1878,12 +1941,8 @@ namespace EWL
             // 
             // MainFGuna2Elipse
             // 
-            MainFGuna2Elipse.BorderRadius = 35;
+            MainFGuna2Elipse.BorderRadius = 25;
             MainFGuna2Elipse.TargetControl = this;
-            // 
-            // SettingPGuna2Elipse
-            // 
-            SettingPGuna2Elipse.BorderRadius = 25;
             // 
             // progressPanel1
             // 
@@ -1902,9 +1961,6 @@ namespace EWL
             ClientSize = new Size(1100, 650);
             Controls.Add(TopPanel);
             Controls.Add(SIdebarPanel);
-            Controls.Add(MenuPanel);
-            Controls.Add(WelcomePanel);
-            Controls.Add(AddingWPanel);
             Controls.Add(AddingWPanel2);
             Controls.Add(AddingWPanel3);
             Controls.Add(AddingWPanel1);
@@ -1913,6 +1969,9 @@ namespace EWL
             Controls.Add(panel1);
             Controls.Add(StatPanel);
             Controls.Add(LearningUaPanel);
+            Controls.Add(MenuPanel);
+            Controls.Add(WelcomePanel);
+            Controls.Add(AddingWPanel);
             ForeColor = SystemColors.ControlLightLight;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -2002,9 +2061,6 @@ namespace EWL
         private Button GoBackButton6;
         private Label label7;
         private Panel AddingWPanel2;
-        private Button CancelAddingButton2;
-        private Button AddWButton2;
-        private TextBox EngUaStringTextBox;
         private Label label2;
         private Button GoBackButton7;
         private Label label5;
@@ -2043,7 +2099,6 @@ namespace EWL
         private PopupNotifier WordIsRepeatedPopup;
         private PopupNotifier WAddingReportPopup1;
         private PopupNotifier CancelWAddingPopup1;
-        private Label label14;
         private PictureBox LoadingWheelGif;
         private Panel LearningEngPanel;
         private Label EngWLabel1;
@@ -2053,7 +2108,11 @@ namespace EWL
         private Panel SIdebarPanel;
         private Panel WelcomePanel;
         private Guna.UI2.WinForms.Guna2Elipse MainFGuna2Elipse;
-        private Guna.UI2.WinForms.Guna2Elipse SettingPGuna2Elipse;
         private DevExpress.XtraWaitForm.ProgressPanel progressPanel1;
+        private Guna.UI2.WinForms.Guna2TextBox EngUaStringTextBox;
+        private Guna.UI2.WinForms.Guna2ResizeBox TextBox2ResizeBox;
+        private Guna.UI2.WinForms.Guna2Button CancelAddingButton;
+        private Guna.UI2.WinForms.Guna2Button AddWButton;
+        private TextBox EngUaStringTextBox1;
     }
 }

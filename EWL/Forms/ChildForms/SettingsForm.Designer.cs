@@ -313,8 +313,8 @@
             DefaultSettingsButton.BorderRadius = 15;
             DefaultSettingsButton.BorderThickness = 1;
             DefaultSettingsButton.CustomizableEdges = customizableEdges11;
-            DefaultSettingsButton.DisabledState.BorderColor = Color.FromArgb(74, 84, 93);
-            DefaultSettingsButton.DisabledState.CustomBorderColor = Color.FromArgb(74, 84, 93);
+            DefaultSettingsButton.DisabledState.BorderColor = Color.FromArgb(33, 38, 42);
+            DefaultSettingsButton.DisabledState.CustomBorderColor = Color.FromArgb(33, 38, 42);
             DefaultSettingsButton.DisabledState.FillColor = Color.FromArgb(33, 38, 42);
             DefaultSettingsButton.DisabledState.ForeColor = Color.DimGray;
             DefaultSettingsButton.Enabled = false;
@@ -341,8 +341,8 @@
             SaveSettingsButton.BorderRadius = 15;
             SaveSettingsButton.BorderThickness = 1;
             SaveSettingsButton.CustomizableEdges = customizableEdges13;
-            SaveSettingsButton.DisabledState.BorderColor = Color.DarkGray;
-            SaveSettingsButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            SaveSettingsButton.DisabledState.BorderColor = Color.FromArgb(73, 1, 116);
+            SaveSettingsButton.DisabledState.CustomBorderColor = Color.FromArgb(73, 1, 116);
             SaveSettingsButton.DisabledState.FillColor = Color.FromArgb(73, 1, 116);
             SaveSettingsButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             SaveSettingsButton.Enabled = false;
