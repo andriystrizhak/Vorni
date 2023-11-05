@@ -120,6 +120,28 @@
   <metadata name="fullScreenImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>5, 119</value>
   </metadata>
+  <metadata name="SpecialFormatLineTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>8, 148</value>
+  </metadata>
+  <data name="SpecialFormatInfoBox2.ToolTip" xml:space="preserve">
+    <value>Приклад спеціального формату рядка:
+                    1 - 2 / 2 / ... [3]
+   де:
+1 - англійське слово/фраза;
+2 - його переклад(-и) через "/";
+3 - складність, від "1"(дуже легко) до "5"(дуже складно).
+
+Додаваний .txt-файл має містити рядки такого формату. 
+Можна додавати кілька файлів водночас.</value>
+  </data>
+  <data name="pictureBox1.ToolTip" xml:space="preserve">
+    <value>Приклад спеціального формату рядка:
+                    1 - 2 / 2 / ... [3]
+   де:
+1 - англійське слово/фраза;
+2 - його переклад(-и) через "/";
+3 - складність, від "1"(дуже легко) до "5"(дуже складно).</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="LoadingWheelGif.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -303,20 +325,6 @@
         zaVH5q8fofQjgNc+RJ2ngKv7EKyD4vvvIwyHSe6/AwD37MQjEbwhwzc/AgRviSd9Egr46YDr1ythmQHI
         dy/++OSXb/756KdPSRAAOw==
 </value>
-  </data>
-  <metadata name="SpecialFormatLineTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>8, 148</value>
-  </metadata>
-  <data name="SpecialFormatInfoBox2.ToolTip" xml:space="preserve">
-    <value>Приклад спеціального формату рядка:
-                    1 - 2 / 2 / ... [3]
-   де:
-1 - англійське слово/фраза;
-2 - його переклад(-и) через "/";
-3 - складність, від "1"(дуже легко) до "5"(дуже складно).
-
-Додаваний .txt-файл має містити рядки такого формату. 
-Можна додавати кілька файлів водночас.</value>
   </data>
   <data name="SpecialFormatInfoBox1.ToolTip" xml:space="preserve">
     <value>Приклад спеціального формату рядка:

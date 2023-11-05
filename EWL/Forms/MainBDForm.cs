@@ -440,20 +440,20 @@ namespace EWL
         #region Drag Drop
 
         /// <summary>
-        /// Вказує на те чи курсор з файлом знаходиться над <see cref="DragAndDropPanel"/>
+        /// Вказує на те чи курсор з файлом знаходиться над <see cref="DragAndDropPanel1"/>
         /// </summary>
         bool isMouseOverDDP { get; set; } = false;
         /// <summary>
-        /// Вказує на те чи якісь файли вже поміщені в <see cref="DragAndDropPanel"/>
+        /// Вказує на те чи якісь файли вже поміщені в <see cref="DragAndDropPanel1"/>
         /// </summary>
         bool fileIsAdded { get => AddWButton3.Enabled; }
         /// <summary>
-        /// Список доданих в <see cref="DragAndDropPanel"/> файлів
+        /// Список доданих в <see cref="DragAndDropPanel1"/> файлів
         /// </summary>
         List<string> files = new();
 
         /// <summary>
-        /// Малює пунктирну лінію біля краю <see cref="DragAndDropPanel"/>
+        /// Малює пунктирну лінію біля краю <see cref="DragAndDropPanel1"/>
         /// </summary>
         private void DragAndDropPanel_Paint(object sender, PaintEventArgs e)
         {
@@ -462,7 +462,7 @@ namespace EWL
             if (!isMouseOverDDP)
                 pen.DashPattern = new float[] { 5, 6 };
             Rectangle rectangle = new Rectangle(
-                12, 12, DragAndDropPanel.Width - (20 + width), DragAndDropPanel.Height - (20 + width));
+                12, 12, DragAndDropPanel1.Width - (20 + width), DragAndDropPanel1.Height - (20 + width));
             e.Graphics.DrawRectangle(pen, rectangle);
         }
 
@@ -477,7 +477,9 @@ namespace EWL
             label12.Visible = false;
             label6.Visible = true;
             isMouseOverDDP = true;
-            DragAndDropPanel.Invalidate();
+
+            DragAndDropPanel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            DragAndDropPanel.BorderColor = Color.White;
         }
 
         private void DragAndDropPanel_DragLeave(object sender, EventArgs e)
@@ -502,7 +504,9 @@ namespace EWL
             label12.Visible = true;
             label6.Visible = false;
             isMouseOverDDP = false;
-            DragAndDropPanel.Invalidate();
+
+            DragAndDropPanel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            DragAndDropPanel.BorderColor = Color.FromArgb(74, 84, 93);
         }
 
         private void DragAndDropPanel_DragDrop(object sender, DragEventArgs e)
@@ -531,7 +535,9 @@ namespace EWL
                 TxtFilesPathsTextBox.Visible = true;
                 label6.Visible = false;
                 isMouseOverDDP = false;
-                DragAndDropPanel.Invalidate();
+
+                DragAndDropPanel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                DragAndDropPanel.BorderColor = Color.FromArgb(74, 84, 93);
             }
             else
                 DragAndDropPanel_DragLeave(sender, e);

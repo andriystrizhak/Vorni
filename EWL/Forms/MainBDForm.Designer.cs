@@ -31,17 +31,29 @@ namespace EWL
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -87,18 +99,32 @@ namespace EWL
             AddWLabel1 = new Label();
             AddingWPanel = new Panel();
             AddingWPanel3 = new Panel();
-            DragAndDropPanel = new Panel();
-            LoadingWheelGif = new PictureBox();
-            TxtFilesPathsTextBox = new TextBox();
-            label13 = new Label();
+            panel2 = new Panel();
+            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            guna2ResizeBox1 = new Guna.UI2.WinForms.Guna2ResizeBox();
+            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            button9 = new Button();
+            pictureBox1 = new PictureBox();
+            textBox3 = new TextBox();
+            label1 = new Label();
+            label3 = new Label();
+            DragAndDropPanel = new Guna.UI2.WinForms.Guna2Panel();
+            TxtFilesPathsTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             label6 = new Label();
-            ChooseFileButton = new Button();
+            ChooseFileButton = new Guna.UI2.WinForms.Guna2Button();
+            label13 = new Label();
             label12 = new Label();
+            label4 = new Label();
+            label14 = new Label();
+            DragAndDropPanel1 = new Panel();
+            LoadingWheelGif = new PictureBox();
+            TxtFilesPathsTextBox1 = new TextBox();
+            ChooseFileButton1 = new Button();
             SpecialFormatInfoBox2 = new PictureBox();
             CancelAddingButton3 = new Button();
             AddWButton3 = new Button();
             GoBackButton6 = new Button();
-            label7 = new Label();
             AddingWPanel2 = new Panel();
             CancelAddingButton = new Guna.UI2.WinForms.Guna2Button();
             AddWButton = new Guna.UI2.WinForms.Guna2Button();
@@ -155,7 +181,10 @@ namespace EWL
             StatPanel.SuspendLayout();
             AddingWPanel1.SuspendLayout();
             AddingWPanel3.SuspendLayout();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             DragAndDropPanel.SuspendLayout();
+            DragAndDropPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)LoadingWheelGif).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox2).BeginInit();
             AddingWPanel2.SuspendLayout();
@@ -934,87 +963,281 @@ namespace EWL
             // 
             AddingWPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AddingWPanel3.BackColor = Color.FromArgb(24, 27, 32);
-            AddingWPanel3.Controls.Add(DragAndDropPanel);
             AddingWPanel3.Controls.Add(SpecialFormatInfoBox2);
+            AddingWPanel3.Controls.Add(panel2);
+            AddingWPanel3.Controls.Add(DragAndDropPanel);
+            AddingWPanel3.Controls.Add(label4);
+            AddingWPanel3.Controls.Add(label14);
+            AddingWPanel3.Controls.Add(DragAndDropPanel1);
             AddingWPanel3.Controls.Add(CancelAddingButton3);
             AddingWPanel3.Controls.Add(AddWButton3);
             AddingWPanel3.Controls.Add(GoBackButton6);
-            AddingWPanel3.Controls.Add(label7);
             AddingWPanel3.ImeMode = ImeMode.Hangul;
             AddingWPanel3.Location = new Point(59, 35);
             AddingWPanel3.Name = "AddingWPanel3";
             AddingWPanel3.Size = new Size(1040, 614);
             AddingWPanel3.TabIndex = 4;
             // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.BackColor = Color.FromArgb(24, 27, 32);
+            panel2.Controls.Add(guna2Button1);
+            panel2.Controls.Add(guna2Button2);
+            panel2.Controls.Add(guna2ResizeBox1);
+            panel2.Controls.Add(guna2TextBox1);
+            panel2.Controls.Add(button9);
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(textBox3);
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(label3);
+            panel2.ImeMode = ImeMode.Alpha;
+            panel2.Location = new Point(834, 485);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1040, 614);
+            panel2.TabIndex = 11;
+            panel2.Visible = false;
+            // 
+            // guna2Button1
+            // 
+            guna2Button1.Animated = true;
+            guna2Button1.BackColor = Color.Transparent;
+            guna2Button1.BorderColor = Color.FromArgb(24, 27, 32);
+            guna2Button1.BorderRadius = 15;
+            guna2Button1.BorderThickness = 1;
+            guna2Button1.CustomizableEdges = customizableEdges25;
+            guna2Button1.DisabledState.BorderColor = Color.FromArgb(33, 38, 42);
+            guna2Button1.DisabledState.CustomBorderColor = Color.FromArgb(33, 38, 42);
+            guna2Button1.DisabledState.FillColor = Color.FromArgb(33, 38, 42);
+            guna2Button1.DisabledState.ForeColor = Color.DimGray;
+            guna2Button1.Enabled = false;
+            guna2Button1.FillColor = Color.FromArgb(24, 27, 32);
+            guna2Button1.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            guna2Button1.ForeColor = Color.White;
+            guna2Button1.HoverState.BorderColor = Color.FromArgb(170, 101, 254);
+            guna2Button1.HoverState.FillColor = Color.FromArgb(53, 60, 68);
+            guna2Button1.Location = new Point(109, 508);
+            guna2Button1.Name = "guna2Button1";
+            guna2Button1.ShadowDecoration.BorderRadius = 17;
+            guna2Button1.ShadowDecoration.Color = Color.FromArgb(138, 44, 254);
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            guna2Button1.ShadowDecoration.Enabled = true;
+            guna2Button1.Size = new Size(400, 52);
+            guna2Button1.TabIndex = 3;
+            guna2Button1.Text = "Скасувати додавання";
+            guna2Button1.TextOffset = new Point(0, -1);
+            // 
+            // guna2Button2
+            // 
+            guna2Button2.Animated = true;
+            guna2Button2.BorderColor = Color.FromArgb(138, 44, 254);
+            guna2Button2.BorderRadius = 15;
+            guna2Button2.BorderThickness = 1;
+            guna2Button2.CustomizableEdges = customizableEdges27;
+            guna2Button2.DisabledState.BorderColor = Color.FromArgb(73, 1, 116);
+            guna2Button2.DisabledState.CustomBorderColor = Color.FromArgb(73, 1, 116);
+            guna2Button2.DisabledState.FillColor = Color.FromArgb(73, 1, 116);
+            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button2.Enabled = false;
+            guna2Button2.FillColor = Color.FromArgb(138, 44, 254);
+            guna2Button2.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            guna2Button2.ForeColor = Color.White;
+            guna2Button2.Location = new Point(541, 508);
+            guna2Button2.Name = "guna2Button2";
+            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            guna2Button2.Size = new Size(400, 52);
+            guna2Button2.TabIndex = 11;
+            guna2Button2.Text = "Додати слово";
+            guna2Button2.TextOffset = new Point(0, -1);
+            // 
+            // guna2ResizeBox1
+            // 
+            guna2ResizeBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            guna2ResizeBox1.BackColor = Color.Transparent;
+            guna2ResizeBox1.Cursor = Cursors.SizeNWSE;
+            guna2ResizeBox1.FillColor = Color.FromArgb(74, 84, 93);
+            guna2ResizeBox1.ForeColor = Color.Black;
+            guna2ResizeBox1.Location = new Point(1756, 904);
+            guna2ResizeBox1.Name = "guna2ResizeBox1";
+            guna2ResizeBox1.RightToLeft = RightToLeft.No;
+            guna2ResizeBox1.Size = new Size(20, 20);
+            guna2ResizeBox1.TabIndex = 10;
+            guna2ResizeBox1.TabStop = false;
+            guna2ResizeBox1.TargetControl = guna2TextBox1;
+            // 
+            // guna2TextBox1
+            // 
+            guna2TextBox1.AcceptsReturn = true;
+            guna2TextBox1.AutoScroll = true;
+            guna2TextBox1.BorderColor = Color.FromArgb(74, 84, 93);
+            guna2TextBox1.BorderRadius = 14;
+            guna2TextBox1.CustomizableEdges = customizableEdges29;
+            guna2TextBox1.DefaultText = "";
+            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.FillColor = Color.FromArgb(24, 27, 32);
+            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
+            guna2TextBox1.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2TextBox1.ForeColor = Color.White;
+            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(170, 101, 254);
+            guna2TextBox1.Location = new Point(108, 131);
+            guna2TextBox1.Margin = new Padding(4, 6, 4, 6);
+            guna2TextBox1.MaximumSize = new Size(833, 514);
+            guna2TextBox1.MinimumSize = new Size(833, 23);
+            guna2TextBox1.Multiline = true;
+            guna2TextBox1.Name = "guna2TextBox1";
+            guna2TextBox1.PasswordChar = '\0';
+            guna2TextBox1.PlaceholderForeColor = Color.FromArgb(147, 166, 181);
+            guna2TextBox1.PlaceholderText = "idea - ідея / уявлення / думка / задум / поняття / концепція [1]";
+            guna2TextBox1.SelectedText = "";
+            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            guna2TextBox1.Size = new Size(833, 284);
+            guna2TextBox1.TabIndex = 1;
+            guna2TextBox1.TextAlign = HorizontalAlignment.Center;
+            // 
+            // button9
+            // 
+            button9.BackColor = Color.FromArgb(50, 50, 50);
+            button9.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_налево_96;
+            button9.BackgroundImageLayout = ImageLayout.Zoom;
+            button9.Cursor = Cursors.Hand;
+            button9.FlatAppearance.BorderColor = Color.Gray;
+            button9.FlatAppearance.BorderSize = 0;
+            button9.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 50, 50);
+            button9.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
+            button9.FlatStyle = FlatStyle.Flat;
+            button9.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button9.ForeColor = Color.White;
+            button9.Location = new Point(3, 3);
+            button9.Name = "button9";
+            button9.Size = new Size(60, 60);
+            button9.TabIndex = 4;
+            button9.TabStop = false;
+            button9.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.AccessibleRole = AccessibleRole.HelpBalloon;
+            pictureBox1.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_вопрос_481;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Cursor = Cursors.Help;
+            pictureBox1.Location = new Point(474, 98);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(20, 20);
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            SpecialFormatLineTip.SetToolTip(pictureBox1, resources.GetString("pictureBox1.ToolTip"));
+            // 
+            // textBox3
+            // 
+            textBox3.BackColor = Color.Red;
+            textBox3.Cursor = Cursors.IBeam;
+            textBox3.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            textBox3.ForeColor = Color.White;
+            textBox3.Location = new Point(340, 196);
+            textBox3.Multiline = true;
+            textBox3.Name = "textBox3";
+            textBox3.ScrollBars = ScrollBars.Both;
+            textBox3.Size = new Size(635, 184);
+            textBox3.TabIndex = 1;
+            textBox3.TabStop = false;
+            textBox3.TextAlign = HorizontalAlignment.Center;
+            textBox3.Visible = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.FromArgb(147, 166, 181);
+            label1.Location = new Point(109, 98);
+            label1.Name = "label1";
+            label1.Size = new Size(366, 19);
+            label1.TabIndex = 3;
+            label1.Text = "Введи рядок(-ки) зі словом в спеціальному форматі";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(24, 27, 32);
+            label3.Font = new Font("Calibri", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(108, 58);
+            label3.Name = "label3";
+            label3.Size = new Size(292, 36);
+            label3.TabIndex = 5;
+            label3.Text = "Додавання нових слів";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // DragAndDropPanel
             // 
             DragAndDropPanel.AllowDrop = true;
-            DragAndDropPanel.BackColor = Color.FromArgb(60, 60, 60);
-            DragAndDropPanel.Controls.Add(LoadingWheelGif);
+            DragAndDropPanel.BackColor = Color.FromArgb(24, 27, 32);
+            DragAndDropPanel.BorderColor = Color.FromArgb(74, 84, 93);
+            DragAndDropPanel.BorderRadius = 20;
+            DragAndDropPanel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            DragAndDropPanel.BorderThickness = 3;
             DragAndDropPanel.Controls.Add(TxtFilesPathsTextBox);
-            DragAndDropPanel.Controls.Add(label13);
             DragAndDropPanel.Controls.Add(label6);
             DragAndDropPanel.Controls.Add(ChooseFileButton);
+            DragAndDropPanel.Controls.Add(label13);
             DragAndDropPanel.Controls.Add(label12);
-            DragAndDropPanel.Location = new Point(84, 129);
+            DragAndDropPanel.CustomizableEdges = customizableEdges23;
+            DragAndDropPanel.FillColor = Color.FromArgb(33, 38, 42);
+            DragAndDropPanel.Location = new Point(84, 147);
             DragAndDropPanel.Name = "DragAndDropPanel";
-            DragAndDropPanel.Size = new Size(768, 250);
-            DragAndDropPanel.TabIndex = 10;
+            DragAndDropPanel.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            DragAndDropPanel.Size = new Size(866, 274);
+            DragAndDropPanel.TabIndex = 15;
             DragAndDropPanel.DragDrop += DragAndDropPanel_DragDrop;
             DragAndDropPanel.DragEnter += DragAndDropPanel_DragEnter;
             DragAndDropPanel.DragLeave += DragAndDropPanel_DragLeave;
-            DragAndDropPanel.Paint += DragAndDropPanel_Paint;
-            // 
-            // LoadingWheelGif
-            // 
-            LoadingWheelGif.Image = (Image)resources.GetObject("LoadingWheelGif.Image");
-            LoadingWheelGif.Location = new Point(345, 72);
-            LoadingWheelGif.Name = "LoadingWheelGif";
-            LoadingWheelGif.Size = new Size(110, 110);
-            LoadingWheelGif.SizeMode = PictureBoxSizeMode.Zoom;
-            LoadingWheelGif.TabIndex = 13;
-            LoadingWheelGif.TabStop = false;
-            LoadingWheelGif.Visible = false;
             // 
             // TxtFilesPathsTextBox
             // 
-            TxtFilesPathsTextBox.BackColor = Color.FromArgb(90, 90, 90);
-            TxtFilesPathsTextBox.BorderStyle = BorderStyle.FixedSingle;
-            TxtFilesPathsTextBox.Cursor = Cursors.IBeam;
-            TxtFilesPathsTextBox.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            TxtFilesPathsTextBox.AcceptsReturn = true;
+            TxtFilesPathsTextBox.AutoScroll = true;
+            TxtFilesPathsTextBox.BackColor = Color.FromArgb(33, 38, 42);
+            TxtFilesPathsTextBox.BorderColor = Color.FromArgb(74, 84, 93);
+            TxtFilesPathsTextBox.BorderRadius = 14;
+            TxtFilesPathsTextBox.CustomizableEdges = customizableEdges19;
+            TxtFilesPathsTextBox.DefaultText = "";
+            TxtFilesPathsTextBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            TxtFilesPathsTextBox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            TxtFilesPathsTextBox.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            TxtFilesPathsTextBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            TxtFilesPathsTextBox.FillColor = Color.FromArgb(24, 27, 32);
+            TxtFilesPathsTextBox.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
+            TxtFilesPathsTextBox.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             TxtFilesPathsTextBox.ForeColor = Color.White;
-            TxtFilesPathsTextBox.Location = new Point(53, 60);
+            TxtFilesPathsTextBox.HoverState.BorderColor = Color.FromArgb(170, 101, 254);
+            TxtFilesPathsTextBox.Location = new Point(47, 59);
+            TxtFilesPathsTextBox.Margin = new Padding(4, 6, 4, 6);
             TxtFilesPathsTextBox.Multiline = true;
             TxtFilesPathsTextBox.Name = "TxtFilesPathsTextBox";
-            TxtFilesPathsTextBox.ScrollBars = ScrollBars.Both;
-            TxtFilesPathsTextBox.Size = new Size(665, 151);
-            TxtFilesPathsTextBox.TabIndex = 2;
-            TxtFilesPathsTextBox.TabStop = false;
+            TxtFilesPathsTextBox.PasswordChar = '\0';
+            TxtFilesPathsTextBox.PlaceholderForeColor = Color.FromArgb(147, 166, 181);
+            TxtFilesPathsTextBox.PlaceholderText = "";
+            TxtFilesPathsTextBox.SelectedText = "";
+            TxtFilesPathsTextBox.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            TxtFilesPathsTextBox.Size = new Size(776, 188);
+            TxtFilesPathsTextBox.TabIndex = 16;
             TxtFilesPathsTextBox.TextAlign = HorizontalAlignment.Center;
             TxtFilesPathsTextBox.Visible = false;
             TxtFilesPathsTextBox.TextChanged += TxtFilePathTextBox_TextChanged;
             // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.ForeColor = Color.White;
-            label13.Location = new Point(275, 23);
-            label13.Name = "label13";
-            label13.Size = new Size(251, 29);
-            label13.TabIndex = 11;
-            label13.Text = "Список доданих файлів";
-            label13.TextAlign = ContentAlignment.MiddleCenter;
-            label13.Visible = false;
-            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Roboto Condensed", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.BackColor = Color.FromArgb(33, 38, 42);
+            label6.Font = new Font("Calibri", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(300, 106);
+            label6.Location = new Point(332, 118);
             label6.Name = "label6";
-            label6.Size = new Size(204, 33);
+            label6.Size = new Size(230, 36);
             label6.TabIndex = 3;
             label6.Text = "Тягни його сюди!";
             label6.TextAlign = ContentAlignment.MiddleCenter;
@@ -1022,43 +1245,154 @@ namespace EWL
             // 
             // ChooseFileButton
             // 
-            ChooseFileButton.BackColor = SystemColors.WindowFrame;
-            ChooseFileButton.Cursor = Cursors.Hand;
-            ChooseFileButton.FlatAppearance.BorderColor = Color.Gray;
-            ChooseFileButton.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
-            ChooseFileButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
-            ChooseFileButton.FlatStyle = FlatStyle.Flat;
-            ChooseFileButton.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            ChooseFileButton.Animated = true;
+            ChooseFileButton.BackColor = Color.FromArgb(33, 38, 42);
+            ChooseFileButton.BorderColor = Color.FromArgb(138, 44, 254);
+            ChooseFileButton.BorderRadius = 15;
+            ChooseFileButton.BorderThickness = 1;
+            ChooseFileButton.CustomizableEdges = customizableEdges21;
+            ChooseFileButton.DisabledState.BorderColor = Color.FromArgb(73, 1, 116);
+            ChooseFileButton.DisabledState.CustomBorderColor = Color.FromArgb(73, 1, 116);
+            ChooseFileButton.DisabledState.FillColor = Color.FromArgb(73, 1, 116);
+            ChooseFileButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            ChooseFileButton.FillColor = Color.FromArgb(138, 44, 254);
+            ChooseFileButton.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point);
             ChooseFileButton.ForeColor = Color.White;
-            ChooseFileButton.Location = new Point(291, 76);
+            ChooseFileButton.Location = new Point(289, 80);
             ChooseFileButton.Name = "ChooseFileButton";
-            ChooseFileButton.Size = new Size(221, 65);
-            ChooseFileButton.TabIndex = 1;
+            ChooseFileButton.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            ChooseFileButton.Size = new Size(318, 84);
+            ChooseFileButton.TabIndex = 12;
             ChooseFileButton.Text = "Вибери .txt-файл";
-            ChooseFileButton.UseVisualStyleBackColor = false;
+            ChooseFileButton.TextOffset = new Point(0, -1);
             ChooseFileButton.Click += ChooseFileButton_Click;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.FromArgb(33, 38, 42);
+            label13.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.ForeColor = Color.FromArgb(147, 166, 181);
+            label13.Location = new Point(319, 18);
+            label13.Name = "label13";
+            label13.Size = new Size(258, 29);
+            label13.TabIndex = 11;
+            label13.Text = "Список доданих файлів";
+            label13.TextAlign = ContentAlignment.MiddleCenter;
+            label13.Visible = false;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.ForeColor = Color.White;
-            label12.Location = new Point(268, 169);
+            label12.BackColor = Color.FromArgb(33, 38, 42);
+            label12.Font = new Font("Calibri", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.ForeColor = Color.FromArgb(147, 166, 181);
+            label12.Location = new Point(314, 194);
             label12.Name = "label12";
-            label12.Size = new Size(260, 25);
+            label12.Size = new Size(269, 26);
             label12.TabIndex = 9;
             label12.Text = "... або перетягни файл сюди";
             label12.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = Color.FromArgb(147, 166, 181);
+            label4.Location = new Point(85, 97);
+            label4.Name = "label4";
+            label4.Size = new Size(372, 38);
+            label4.TabIndex = 12;
+            label4.Text = "Додай .txt-файли з рядками в спеціальному форматі\r\nМожна додавати кілька файлів\r\n";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label14
+            // 
+            label14.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label14.AutoSize = true;
+            label14.BackColor = Color.FromArgb(24, 27, 32);
+            label14.Font = new Font("Calibri", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label14.ForeColor = Color.White;
+            label14.Location = new Point(84, 57);
+            label14.Name = "label14";
+            label14.Size = new Size(292, 36);
+            label14.TabIndex = 13;
+            label14.Text = "Додавання нових слів";
+            label14.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // DragAndDropPanel1
+            // 
+            DragAndDropPanel1.AllowDrop = true;
+            DragAndDropPanel1.BackColor = Color.FromArgb(60, 60, 60);
+            DragAndDropPanel1.Controls.Add(LoadingWheelGif);
+            DragAndDropPanel1.Controls.Add(TxtFilesPathsTextBox1);
+            DragAndDropPanel1.Controls.Add(ChooseFileButton1);
+            DragAndDropPanel1.Location = new Point(53, 353);
+            DragAndDropPanel1.Name = "DragAndDropPanel1";
+            DragAndDropPanel1.Size = new Size(768, 250);
+            DragAndDropPanel1.TabIndex = 10;
+            DragAndDropPanel1.Visible = false;
+            DragAndDropPanel1.DragDrop += DragAndDropPanel_DragDrop;
+            DragAndDropPanel1.DragEnter += DragAndDropPanel_DragEnter;
+            DragAndDropPanel1.DragLeave += DragAndDropPanel_DragLeave;
+            DragAndDropPanel1.Paint += DragAndDropPanel_Paint;
+            // 
+            // LoadingWheelGif
+            // 
+            LoadingWheelGif.Image = (Image)resources.GetObject("LoadingWheelGif.Image");
+            LoadingWheelGif.Location = new Point(-18, 221);
+            LoadingWheelGif.Name = "LoadingWheelGif";
+            LoadingWheelGif.Size = new Size(110, 110);
+            LoadingWheelGif.SizeMode = PictureBoxSizeMode.Zoom;
+            LoadingWheelGif.TabIndex = 13;
+            LoadingWheelGif.TabStop = false;
+            LoadingWheelGif.Visible = false;
+            // 
+            // TxtFilesPathsTextBox1
+            // 
+            TxtFilesPathsTextBox1.BackColor = Color.FromArgb(90, 90, 90);
+            TxtFilesPathsTextBox1.BorderStyle = BorderStyle.FixedSingle;
+            TxtFilesPathsTextBox1.Cursor = Cursors.IBeam;
+            TxtFilesPathsTextBox1.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            TxtFilesPathsTextBox1.ForeColor = Color.White;
+            TxtFilesPathsTextBox1.Location = new Point(-61, 196);
+            TxtFilesPathsTextBox1.Multiline = true;
+            TxtFilesPathsTextBox1.Name = "TxtFilesPathsTextBox1";
+            TxtFilesPathsTextBox1.ScrollBars = ScrollBars.Both;
+            TxtFilesPathsTextBox1.Size = new Size(665, 151);
+            TxtFilesPathsTextBox1.TabIndex = 2;
+            TxtFilesPathsTextBox1.TabStop = false;
+            TxtFilesPathsTextBox1.TextAlign = HorizontalAlignment.Center;
+            TxtFilesPathsTextBox1.Visible = false;
+            TxtFilesPathsTextBox1.TextChanged += TxtFilePathTextBox_TextChanged;
+            // 
+            // ChooseFileButton1
+            // 
+            ChooseFileButton1.BackColor = SystemColors.WindowFrame;
+            ChooseFileButton1.Cursor = Cursors.Hand;
+            ChooseFileButton1.FlatAppearance.BorderColor = Color.Gray;
+            ChooseFileButton1.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
+            ChooseFileButton1.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
+            ChooseFileButton1.FlatStyle = FlatStyle.Flat;
+            ChooseFileButton1.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            ChooseFileButton1.ForeColor = Color.White;
+            ChooseFileButton1.Location = new Point(291, 76);
+            ChooseFileButton1.Name = "ChooseFileButton1";
+            ChooseFileButton1.Size = new Size(221, 65);
+            ChooseFileButton1.TabIndex = 1;
+            ChooseFileButton1.Text = "Вибери .txt-файл";
+            ChooseFileButton1.UseVisualStyleBackColor = false;
+            ChooseFileButton1.Click += ChooseFileButton_Click;
+            // 
             // SpecialFormatInfoBox2
             // 
             SpecialFormatInfoBox2.AccessibleRole = AccessibleRole.HelpBalloon;
-            SpecialFormatInfoBox2.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_вопрос_48;
+            SpecialFormatInfoBox2.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_вопрос_481;
             SpecialFormatInfoBox2.BackgroundImageLayout = ImageLayout.Zoom;
             SpecialFormatInfoBox2.Cursor = Cursors.Help;
-            SpecialFormatInfoBox2.Location = new Point(928, 15);
+            SpecialFormatInfoBox2.Location = new Point(455, 96);
             SpecialFormatInfoBox2.Name = "SpecialFormatInfoBox2";
-            SpecialFormatInfoBox2.Size = new Size(35, 35);
+            SpecialFormatInfoBox2.Size = new Size(20, 20);
             SpecialFormatInfoBox2.TabIndex = 8;
             SpecialFormatInfoBox2.TabStop = false;
             SpecialFormatLineTip.SetToolTip(SpecialFormatInfoBox2, resources.GetString("SpecialFormatInfoBox2.ToolTip"));
@@ -1074,7 +1408,7 @@ namespace EWL
             CancelAddingButton3.FlatStyle = FlatStyle.Flat;
             CancelAddingButton3.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             CancelAddingButton3.ForeColor = Color.White;
-            CancelAddingButton3.Location = new Point(256, 412);
+            CancelAddingButton3.Location = new Point(252, 485);
             CancelAddingButton3.Name = "CancelAddingButton3";
             CancelAddingButton3.Size = new Size(195, 53);
             CancelAddingButton3.TabIndex = 0;
@@ -1094,7 +1428,7 @@ namespace EWL
             AddWButton3.FlatStyle = FlatStyle.Flat;
             AddWButton3.Font = new Font("Roboto Condensed", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             AddWButton3.ForeColor = Color.White;
-            AddWButton3.Location = new Point(519, 412);
+            AddWButton3.Location = new Point(515, 485);
             AddWButton3.Name = "AddWButton3";
             AddWButton3.Size = new Size(195, 53);
             AddWButton3.TabIndex = 1;
@@ -1124,21 +1458,6 @@ namespace EWL
             GoBackButton6.UseVisualStyleBackColor = false;
             GoBackButton6.Click += GoBackButton_Click;
             // 
-            // label7
-            // 
-            label7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label7.AutoSize = true;
-            label7.BackColor = Color.FromArgb(50, 50, 50);
-            label7.BorderStyle = BorderStyle.FixedSingle;
-            label7.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(297, 48);
-            label7.Name = "label7";
-            label7.Size = new Size(381, 47);
-            label7.TabIndex = 5;
-            label7.Text = "Додавання нових слів";
-            label7.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // AddingWPanel2
             // 
             AddingWPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -1165,7 +1484,7 @@ namespace EWL
             CancelAddingButton.BorderColor = Color.FromArgb(24, 27, 32);
             CancelAddingButton.BorderRadius = 15;
             CancelAddingButton.BorderThickness = 1;
-            CancelAddingButton.CustomizableEdges = customizableEdges1;
+            CancelAddingButton.CustomizableEdges = customizableEdges31;
             CancelAddingButton.DisabledState.BorderColor = Color.FromArgb(33, 38, 42);
             CancelAddingButton.DisabledState.CustomBorderColor = Color.FromArgb(33, 38, 42);
             CancelAddingButton.DisabledState.FillColor = Color.FromArgb(33, 38, 42);
@@ -1180,7 +1499,7 @@ namespace EWL
             CancelAddingButton.Name = "CancelAddingButton";
             CancelAddingButton.ShadowDecoration.BorderRadius = 17;
             CancelAddingButton.ShadowDecoration.Color = Color.FromArgb(138, 44, 254);
-            CancelAddingButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            CancelAddingButton.ShadowDecoration.CustomizableEdges = customizableEdges32;
             CancelAddingButton.ShadowDecoration.Enabled = true;
             CancelAddingButton.Size = new Size(400, 52);
             CancelAddingButton.TabIndex = 3;
@@ -1196,7 +1515,7 @@ namespace EWL
             AddWButton.BorderColor = Color.FromArgb(138, 44, 254);
             AddWButton.BorderRadius = 15;
             AddWButton.BorderThickness = 1;
-            AddWButton.CustomizableEdges = customizableEdges3;
+            AddWButton.CustomizableEdges = customizableEdges33;
             AddWButton.DisabledState.BorderColor = Color.FromArgb(73, 1, 116);
             AddWButton.DisabledState.CustomBorderColor = Color.FromArgb(73, 1, 116);
             AddWButton.DisabledState.FillColor = Color.FromArgb(73, 1, 116);
@@ -1207,7 +1526,7 @@ namespace EWL
             AddWButton.ForeColor = Color.White;
             AddWButton.Location = new Point(541, 508);
             AddWButton.Name = "AddWButton";
-            AddWButton.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            AddWButton.ShadowDecoration.CustomizableEdges = customizableEdges34;
             AddWButton.Size = new Size(400, 52);
             AddWButton.TabIndex = 11;
             AddWButton.Text = "Додати слово";
@@ -1237,7 +1556,7 @@ namespace EWL
             EngUaStringTextBox.AutoScroll = true;
             EngUaStringTextBox.BorderColor = Color.FromArgb(74, 84, 93);
             EngUaStringTextBox.BorderRadius = 14;
-            EngUaStringTextBox.CustomizableEdges = customizableEdges5;
+            EngUaStringTextBox.CustomizableEdges = customizableEdges35;
             EngUaStringTextBox.DefaultText = "";
             EngUaStringTextBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             EngUaStringTextBox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -1258,7 +1577,7 @@ namespace EWL
             EngUaStringTextBox.PlaceholderForeColor = Color.FromArgb(147, 166, 181);
             EngUaStringTextBox.PlaceholderText = "idea - ідея / уявлення / думка / задум / поняття / концепція [1]";
             EngUaStringTextBox.SelectedText = "";
-            EngUaStringTextBox.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            EngUaStringTextBox.ShadowDecoration.CustomizableEdges = customizableEdges36;
             EngUaStringTextBox.Size = new Size(833, 284);
             EngUaStringTextBox.TabIndex = 1;
             EngUaStringTextBox.TextAlign = HorizontalAlignment.Center;
@@ -1366,39 +1685,39 @@ namespace EWL
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.NullValue = "-";
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.NullValue = "-";
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.LightGray;
-            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.NullValue = "-";
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.LightGray;
+            dataGridViewCellStyle6.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.NullValue = "-";
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { WordID, EngWord, UaTranslation, Rating });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle7.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.GridColor = Color.Gray;
             dataGridView1.Location = new Point(472, 118);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.LightGray;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.LightGray;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(403, 270);
@@ -1962,7 +2281,6 @@ namespace EWL
             ClientSize = new Size(1100, 650);
             Controls.Add(TopPanel);
             Controls.Add(SIdebarPanel);
-            Controls.Add(AddingWPanel2);
             Controls.Add(AddingWPanel3);
             Controls.Add(AddingWPanel1);
             Controls.Add(LearningStatPanel);
@@ -1973,6 +2291,7 @@ namespace EWL
             Controls.Add(MenuPanel);
             Controls.Add(WelcomePanel);
             Controls.Add(AddingWPanel);
+            Controls.Add(AddingWPanel2);
             ForeColor = SystemColors.ControlLightLight;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -1995,8 +2314,13 @@ namespace EWL
             AddingWPanel1.PerformLayout();
             AddingWPanel3.ResumeLayout(false);
             AddingWPanel3.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             DragAndDropPanel.ResumeLayout(false);
             DragAndDropPanel.PerformLayout();
+            DragAndDropPanel1.ResumeLayout(false);
+            DragAndDropPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)LoadingWheelGif).EndInit();
             ((System.ComponentModel.ISupportInitialize)SpecialFormatInfoBox2).EndInit();
             AddingWPanel2.ResumeLayout(false);
@@ -2057,10 +2381,9 @@ namespace EWL
         private Panel AddingWPanel3;
         private Button CancelAddingButton3;
         private Button AddWButton3;
-        private TextBox TxtFilesPathsTextBox;
+        private TextBox TxtFilesPathsTextBox1;
         private Label label6;
         private Button GoBackButton6;
-        private Label label7;
         private Panel AddingWPanel2;
         private Label label2;
         private Button GoBackButton7;
@@ -2085,8 +2408,8 @@ namespace EWL
         private ToolTip SpecialFormatLineTip;
         private PictureBox SpecialFormatInfoBox2;
         private Label label12;
-        private Panel DragAndDropPanel;
-        private Button ChooseFileButton;
+        private Panel DragAndDropPanel1;
+        private Button ChooseFileButton1;
         private PopupNotifier WrongFileFormatPopup;
         private Label label13;
         private OpenFileDialog OpenTxtFilesDialog;
@@ -2115,5 +2438,20 @@ namespace EWL
         private Guna.UI2.WinForms.Guna2Button CancelAddingButton;
         private Guna.UI2.WinForms.Guna2Button AddWButton;
         private TextBox EngUaStringTextBox1;
+        private Label label4;
+        private Label label14;
+        private Panel panel2;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2ResizeBox guna2ResizeBox1;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Button button9;
+        private PictureBox pictureBox1;
+        private TextBox textBox3;
+        private Label label1;
+        private Label label3;
+        private Guna.UI2.WinForms.Guna2Panel DragAndDropPanel;
+        private Guna.UI2.WinForms.Guna2Button ChooseFileButton;
+        private Guna.UI2.WinForms.Guna2TextBox TxtFilesPathsTextBox;
     }
 }
