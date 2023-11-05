@@ -407,7 +407,7 @@ namespace EWL
                 EngUaStringTextBox.Height = 35;
             else if (EngUaStringTextBox.Height > 336)
                 EngUaStringTextBox.Height = 336;
-            
+
             var point = new Point((EngUaStringTextBox.Location.X + EngUaStringTextBox.Width) - 25, (EngUaStringTextBox.Location.Y + EngUaStringTextBox.Height) - 25);
             TextBox2ResizeBox.Location = point;
             EngUaStringTextBox.TextOffset = new Point(0, 0);
@@ -416,24 +416,16 @@ namespace EWL
         #region Add/Cancel buttons focuse events
 
         private void CancelAddingButton_Enter(object sender, EventArgs e)
-        {
-            CancelAddingButton.BorderColor = Color.FromArgb(170, 101, 254);
-        }
+            => CancelAddingButton.BorderColor = Color.FromArgb(170, 101, 254);
 
         private void CancelAddingButton_Leave(object sender, EventArgs e)
-        {
-            CancelAddingButton.BorderColor = Color.FromArgb(33, 38, 42);
-        }
+            => CancelAddingButton.BorderColor = Color.FromArgb(33, 38, 42);
 
         private void AddWButton_Enter(object sender, EventArgs e)
-        {
-            AddWButton.BorderColor = Color.FromArgb(190, 131, 254);
-        }
+            => AddWButton.BorderColor = Color.FromArgb(190, 131, 254);
 
         private void AddWButton_Leave(object sender, EventArgs e)
-        {
-            AddWButton.BorderColor = Color.FromArgb(138, 44, 254);
-        }
+            => AddWButton.BorderColor = Color.FromArgb(138, 44, 254);
 
         #endregion
 

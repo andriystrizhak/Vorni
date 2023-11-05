@@ -31,13 +31,17 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
             WSourceComboBox.SelectedIndex = SQLs.Get_WordAddingMode();
             SetDefaultSButtonAvailability();
             SaveSettingsButton.Focus();
+            SettingFormElipse.TargetControl = this;
         }
 
-        private void CloseSettingsButton_Click(object sender, EventArgs e)
-        {
-            handler.Close();
-            Close();
-        }
+        /// <summary>
+        /// Метод що робить основну панель видимою одразу після завантаження й показу форми 
+        /// (прибирає візуальні баги появи панелі)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SettingForm_Shown(object sender, EventArgs e)
+            => SettingPanel.Visible = true;
 
 
         //TODO - Додати перемикач категорії для вивчення
@@ -60,6 +64,14 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
                 && WSourceComboBox.SelectedIndex == DefaultAddingWModeIndex);
 
 
+        #region Buttons click events
+
+        private void CloseSettingsButton_Click(object sender, EventArgs e)
+        {
+            handler.Close();
+            Close();
+        }
+
         private void SaveSettingsButton_Click(object sender, EventArgs e)
         {
             SaveSettingsButton.Enabled = false;
@@ -79,35 +91,9 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
             WSourceComboBox.SelectedIndex = DefaultAddingWModeIndex;
         }
 
-        #region NumberOfWordsNumericUpDown
-
-        private void NumberOfWordsNumericUpDown_MouseHover(object sender, EventArgs e)
-            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
-
-        private void NumberOfWordsNumericUpDown_MouseLeave(object sender, EventArgs e)
-            => NumberOfWordsNumericUpDownReaction();
-
-        private void NumberOfWordsNumericUpDown_MouseMove(object sender, MouseEventArgs e)
-            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
-
-        private void NumberOfWordsNumericUpDown_MouseEnter(object sender, EventArgs e)
-            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
-
-        void NumberOfWordsNumericUpDownReaction()
-        {
-            //if (Cursor != Cursors.IBeam)
-            NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(74, 84, 93);
-        }
-
         #endregion
 
-        private void Escape_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-                CloseSettingsButton.PerformClick();
-        }
-
-        #region Button focuse event
+        #region Buttons focus events
 
         private void DefaultSettingsButton_Enter(object sender, EventArgs e)
         {
@@ -140,5 +126,33 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
         }
 
         #endregion
+
+        #region NumberOfWordsNumericUpDown focus events
+
+        private void NumberOfWordsNumericUpDown_MouseHover(object sender, EventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void NumberOfWordsNumericUpDown_MouseMove(object sender, MouseEventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void NumberOfWordsNumericUpDown_MouseEnter(object sender, EventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void NumberOfWordsNumericUpDown_MouseLeave(object sender, EventArgs e)
+            => NumberOfWordsNumericUpDownReaction();
+
+        void NumberOfWordsNumericUpDownReaction()
+        {
+            //if (Cursor != Cursors.IBeam)
+            NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(74, 84, 93);
+        }
+
+        #endregion
+
+        private void Escape_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                CloseSettingsButton.PerformClick();
+        }
     }
 }

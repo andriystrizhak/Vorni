@@ -7,6 +7,9 @@
     <Compile Update="Forms\ChildForms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\ChildForms\TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\MainBDForm.cs">
       <SubType>Form</SubType>
     </Compile>

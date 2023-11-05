@@ -45,6 +45,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             SettingPanel = new Guna.UI2.WinForms.Guna2Panel();
             guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -63,7 +64,7 @@
             label1 = new Label();
             label3 = new Label();
             label4 = new Label();
-            guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
+            SettingFormElipse = new Guna.UI2.WinForms.Guna2Elipse(components);
             SettingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
@@ -95,11 +96,13 @@
             SettingPanel.Controls.Add(label3);
             SettingPanel.Controls.Add(label4);
             SettingPanel.CustomizableEdges = customizableEdges15;
+            SettingPanel.FillColor = Color.FromArgb(33, 38, 42);
             SettingPanel.Location = new Point(0, 0);
             SettingPanel.Name = "SettingPanel";
             SettingPanel.ShadowDecoration.CustomizableEdges = customizableEdges16;
             SettingPanel.Size = new Size(379, 453);
             SettingPanel.TabIndex = 0;
+            SettingPanel.Visible = false;
             // 
             // guna2Separator1
             // 
@@ -298,7 +301,6 @@
             NumberOfWordsNumericUpDown.TabIndex = 4;
             NumberOfWordsNumericUpDown.TextOffset = new Point(7, 1);
             NumberOfWordsNumericUpDown.UpDownButtonFillColor = Color.FromArgb(53, 60, 68);
-            NumberOfWordsNumericUpDown.UpDownButtonForeColor = Color.White;
             NumberOfWordsNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
             NumberOfWordsNumericUpDown.ValueChanged += WordCountNumericUpDown_ValueChanged;
             NumberOfWordsNumericUpDown.MouseEnter += NumberOfWordsNumericUpDown_MouseEnter;
@@ -394,27 +396,35 @@
             label4.Location = new Point(17, 20);
             label4.Name = "label4";
             label4.Size = new Size(165, 29);
-            label4.TabIndex = 76;
+            label4.TabIndex = 0;
             label4.Text = "Налаштування";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // guna2Elipse1
+            // SettingFormElipse
             // 
-            guna2Elipse1.BorderRadius = 31;
-            guna2Elipse1.TargetControl = this;
+            SettingFormElipse.BorderRadius = 31;
             // 
             // SettingsForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(33, 38, 42);
             ClientSize = new Size(380, 454);
             Controls.Add(SettingPanel);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
+            MaximizeBox = false;
+            MaximumSize = new Size(380, 454);
+            MdiChildrenMinimizedAnchorBottom = false;
+            MinimizeBox = false;
+            MinimumSize = new Size(380, 454);
             Name = "SettingsForm";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SettingsForm";
+            Shown += SettingForm_Shown;
             SettingPanel.ResumeLayout(false);
             SettingPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
@@ -427,7 +437,7 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel SettingPanel;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private Guna.UI2.WinForms.Guna2Elipse SettingFormElipse;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;

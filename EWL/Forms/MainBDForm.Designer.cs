@@ -1176,13 +1176,13 @@ namespace EWL
             CancelAddingButton.ForeColor = Color.White;
             CancelAddingButton.HoverState.BorderColor = Color.FromArgb(170, 101, 254);
             CancelAddingButton.HoverState.FillColor = Color.FromArgb(53, 60, 68);
-            CancelAddingButton.Location = new Point(223, 506);
+            CancelAddingButton.Location = new Point(109, 508);
             CancelAddingButton.Name = "CancelAddingButton";
             CancelAddingButton.ShadowDecoration.BorderRadius = 17;
             CancelAddingButton.ShadowDecoration.Color = Color.FromArgb(138, 44, 254);
             CancelAddingButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
             CancelAddingButton.ShadowDecoration.Enabled = true;
-            CancelAddingButton.Size = new Size(206, 52);
+            CancelAddingButton.Size = new Size(400, 52);
             CancelAddingButton.TabIndex = 3;
             CancelAddingButton.Text = "Скасувати додавання";
             CancelAddingButton.TextOffset = new Point(0, -1);
@@ -1205,10 +1205,10 @@ namespace EWL
             AddWButton.FillColor = Color.FromArgb(138, 44, 254);
             AddWButton.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             AddWButton.ForeColor = Color.White;
-            AddWButton.Location = new Point(615, 506);
+            AddWButton.Location = new Point(541, 508);
             AddWButton.Name = "AddWButton";
             AddWButton.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            AddWButton.Size = new Size(206, 52);
+            AddWButton.Size = new Size(400, 52);
             AddWButton.TabIndex = 11;
             AddWButton.Text = "Додати слово";
             AddWButton.TextOffset = new Point(0, -1);
@@ -1223,7 +1223,7 @@ namespace EWL
             TextBox2ResizeBox.Cursor = Cursors.SizeNWSE;
             TextBox2ResizeBox.FillColor = Color.FromArgb(74, 84, 93);
             TextBox2ResizeBox.ForeColor = Color.Black;
-            TextBox2ResizeBox.Location = new Point(916, 388);
+            TextBox2ResizeBox.Location = new Point(916, 390);
             TextBox2ResizeBox.Name = "TextBox2ResizeBox";
             TextBox2ResizeBox.RightToLeft = RightToLeft.No;
             TextBox2ResizeBox.Size = new Size(20, 20);
@@ -1245,20 +1245,21 @@ namespace EWL
             EngUaStringTextBox.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             EngUaStringTextBox.FillColor = Color.FromArgb(24, 27, 32);
             EngUaStringTextBox.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
-            EngUaStringTextBox.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            EngUaStringTextBox.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            EngUaStringTextBox.ForeColor = Color.White;
             EngUaStringTextBox.HoverState.BorderColor = Color.FromArgb(170, 101, 254);
-            EngUaStringTextBox.Location = new Point(108, 137);
-            EngUaStringTextBox.Margin = new Padding(3, 4, 3, 4);
-            EngUaStringTextBox.MaximumSize = new Size(833, 336);
-            EngUaStringTextBox.MinimumSize = new Size(833, 15);
+            EngUaStringTextBox.Location = new Point(108, 131);
+            EngUaStringTextBox.Margin = new Padding(4, 6, 4, 6);
+            EngUaStringTextBox.MaximumSize = new Size(833, 514);
+            EngUaStringTextBox.MinimumSize = new Size(833, 23);
             EngUaStringTextBox.Multiline = true;
             EngUaStringTextBox.Name = "EngUaStringTextBox";
             EngUaStringTextBox.PasswordChar = '\0';
             EngUaStringTextBox.PlaceholderForeColor = Color.FromArgb(147, 166, 181);
-            EngUaStringTextBox.PlaceholderText = "*кожен в окремому рядку, через 'Shift+Enter'";
+            EngUaStringTextBox.PlaceholderText = "idea - ідея / уявлення / думка / задум / поняття / концепція [1]";
             EngUaStringTextBox.SelectedText = "";
             EngUaStringTextBox.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            EngUaStringTextBox.Size = new Size(833, 276);
+            EngUaStringTextBox.Size = new Size(833, 284);
             EngUaStringTextBox.TabIndex = 1;
             EngUaStringTextBox.TextAlign = HorizontalAlignment.Center;
             EngUaStringTextBox.TextChanged += EngUaStringTextBox_TextChanged;
@@ -1289,10 +1290,10 @@ namespace EWL
             // SpecialFormatInfoBox1
             // 
             SpecialFormatInfoBox1.AccessibleRole = AccessibleRole.HelpBalloon;
-            SpecialFormatInfoBox1.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_вопрос_48;
+            SpecialFormatInfoBox1.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_вопрос_481;
             SpecialFormatInfoBox1.BackgroundImageLayout = ImageLayout.Zoom;
             SpecialFormatInfoBox1.Cursor = Cursors.Help;
-            SpecialFormatInfoBox1.Location = new Point(397, 68);
+            SpecialFormatInfoBox1.Location = new Point(474, 98);
             SpecialFormatInfoBox1.Name = "SpecialFormatInfoBox1";
             SpecialFormatInfoBox1.Size = new Size(20, 20);
             SpecialFormatInfoBox1.TabIndex = 7;
@@ -1301,7 +1302,7 @@ namespace EWL
             // 
             // EngUaStringTextBox1
             // 
-            EngUaStringTextBox1.BackColor = Color.FromArgb(90, 90, 90);
+            EngUaStringTextBox1.BackColor = Color.Red;
             EngUaStringTextBox1.Cursor = Cursors.IBeam;
             EngUaStringTextBox1.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             EngUaStringTextBox1.ForeColor = Color.White;
