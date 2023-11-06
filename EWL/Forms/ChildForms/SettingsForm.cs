@@ -30,7 +30,7 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
             NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
             WSourceComboBox.SelectedIndex = SQLs.Get_WordAddingMode();
             SetDefaultSButtonAvailability();
-            SaveSettingsButton.Focus();
+            NumberOfWordsNumericUpDown.Focus();
             SettingFormElipse.TargetControl = this;
         }
 
@@ -41,8 +41,10 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SettingForm_Shown(object sender, EventArgs e)
-            => SettingPanel.Visible = true;
-
+        {
+            SettingPanel.Visible = true;
+            SaveSettingsButton.Enabled = false;
+        }
 
         //TODO - Додати перемикач категорії для вивчення
         int DefaultNumberOfWordsToLearn = 10;
@@ -52,7 +54,7 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
             => SetDefaultAndSaveSButtonAvailability();
         private void WSourceComboBox_SelectedIndexChanged(object sender, EventArgs e)
             => SetDefaultAndSaveSButtonAvailability();
-
+            
         void SetDefaultAndSaveSButtonAvailability()
         {
             SetDefaultSButtonAvailability();

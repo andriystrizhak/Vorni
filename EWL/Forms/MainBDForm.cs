@@ -229,21 +229,23 @@ namespace EWL
             CancelPrevButton1.Enabled = false;
             CancelAddingButton.Enabled = false;
 
-            if (wAddingMode == 0)
-            {
-                ShowPanel(AddingWPanel1);
-                AddEngWTextBox.Focus();
-            }
-            if (wAddingMode == 1)
-            {
-                ShowPanel(AddingWPanel2);
-                EngUaStringTextBox.Focus();
-            }
-            if (wAddingMode == 2)
-            {
-                ShowPanel(AddingWPanel3);
-                ChooseFileButton.Focus();
-            }
+            ShowPanel(AddingWPanel);
+
+            //if (wAddingMode == 0)
+            //{
+            //    ShowPanel(AddingWPanel1);
+            //    AddEngWTextBox.Focus();
+            //}
+            //if (wAddingMode == 1)
+            //{
+            //    ShowPanel(AddingWPanel2);
+            //    EngUaStringTextBox.Focus();
+            //}
+            //if (wAddingMode == 2)
+            //{
+            //    ShowPanel(AddingWPanel3);
+            //    ChooseFileButton.Focus();
+            //}
         }
 
         /// <summary>
@@ -452,20 +454,6 @@ namespace EWL
         /// </summary>
         List<string> files = new();
 
-        /// <summary>
-        /// Малює пунктирну лінію біля краю <see cref="DragAndDropPanel1"/>
-        /// </summary>
-        private void DragAndDropPanel_Paint(object sender, PaintEventArgs e)
-        {
-            int width = 4;
-            Pen pen = new Pen(Color.AliceBlue, width);
-            if (!isMouseOverDDP)
-                pen.DashPattern = new float[] { 5, 6 };
-            Rectangle rectangle = new Rectangle(
-                12, 12, DragAndDropPanel1.Width - (20 + width), DragAndDropPanel1.Height - (20 + width));
-            e.Graphics.DrawRectangle(pen, rectangle);
-        }
-
         private void DragAndDropPanel_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -582,14 +570,13 @@ namespace EWL
 
         private async void AddWButton3_Click(object sender, EventArgs e)
         {
-            TxtFilesPathsTextBox.Visible = false;
-            label13.Visible = false;
-            LoadingWheelGif.Visible = true;
+            var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
+            var handle = ShowProgressPanel(DragAndDropPanel, windowOptions);
 
             (int, int, int) report = (0, 0, 0);
             await Task.Run(() => report = Txt_FileHandler.AddWordsFromTxtFiles(files));
 
-            LoadingWheelGif.Visible = false;
+            handle.Close();
 
             WAddingReportPopup3.ContentText =
                 $"Всього оброблених файлів: {report.Item3}\n" +
@@ -597,7 +584,9 @@ namespace EWL
                 $"З них було додано: {report.Item2}";
             WAddingReportPopup3.Popup();
 
+            label13.Visible = false;
             TxtFilesPathsTextBox.Text = "";
+
             addedWordsCount = report.Item2;
             if (addedWordsCount > 0)
                 CancelAddingButton3.Enabled = true;
@@ -605,22 +594,18 @@ namespace EWL
 
         private async void CancelAddingButton_Click(object sender, EventArgs e)
         {
-            if (CurrentPanel == AddingWPanel3)
+            IOverlaySplashScreenHandle handle = null;
+            if (CurrentPanel == AddingWPanel3) //TODO - треба буде змінити умову (на номер таб-вкладки)
             {
-                label12.Visible = false;
-                ChooseFileButton.Visible = false;
-                LoadingWheelGif.Visible = true;
+                var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
+                handle = ShowProgressPanel(DragAndDropPanel, windowOptions);
             }
 
             await Task.Run(() => SQLs.Remove_LastWords_Permanently(addedWordsCount));
             CancelWAddingPopup2.Popup();
 
             if (CurrentPanel == AddingWPanel3)
-            {
-                LoadingWheelGif.Visible = false;
-                label12.Visible = true;
-                ChooseFileButton.Visible = true;
-            }
+                handle.Close();
 
             addedWordsCount = 0;
             CancelAddingButton.Enabled = false;
@@ -802,10 +787,11 @@ namespace EWL
         /// <returns>Повертає <see cref="IOverlaySplashScreenHandle"/> з допомогою якого можна керувати ProgressPanel</returns>
         IOverlaySplashScreenHandle ShowProgressPanel(Control owner, OverlayWindowOptions windowOptions = null)
         {
+            if (windowOptions == null) windowOptions = new OverlayWindowOptions(backColor: Color.Black, customPainter: new MyCustomOverlayPainter(), disableInput: true);
             IOverlaySplashScreenHandle _handle = null;
             try
             {
-                _handle = SplashScreenManager.ShowOverlayForm(owner, backColor: Color.Black, customPainter: new MyCustomOverlayPainter(), imageSize: new Size(0, 0), disableInput: true);
+                _handle = SplashScreenManager.ShowOverlayForm(owner, windowOptions);
             }
             catch
             {
