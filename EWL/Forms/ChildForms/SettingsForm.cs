@@ -54,7 +54,7 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
             => SetDefaultAndSaveSButtonAvailability();
         private void WSourceComboBox_SelectedIndexChanged(object sender, EventArgs e)
             => SetDefaultAndSaveSButtonAvailability();
-            
+
         void SetDefaultAndSaveSButtonAvailability()
         {
             SetDefaultSButtonAvailability();
@@ -81,6 +81,8 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
 
             SQLs.Set_NumberOfWordsToLearn((int)NumberOfWordsNumericUpDown.Value);
             SQLs.Set_WordAddingMode(WSourceComboBox.SelectedIndex);
+
+            CloseSettingsButton.PerformClick();
         }
 
         private void DefaultSettingsButton_Click(object sender, EventArgs e)

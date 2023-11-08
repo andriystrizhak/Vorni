@@ -58,8 +58,6 @@ namespace EWL
             InitializeComponent();
             ShowPanel(MenuPanel);
 
-            //Джерело слів (???)
-            //WSourceComboBox.Text = WSourceComboBox.Items[0].ToString();
             SetCategoriesList();
         }
 
@@ -218,7 +216,6 @@ namespace EWL
         #region [ Додати слова ]
 
         //TODO CATEGORY - Додати перемикач категорії для додавання слів
-        //TODO - Додати перемикач способу додавання слів
 
         private void SeeAddingWPanelButton_Click(object sender, EventArgs e)
         {
@@ -226,26 +223,21 @@ namespace EWL
             int wAddingMode = SQLs.Get_WordAddingMode();
 
             Null_EngUaTextBoxes();
-            CancelPrevButton1.Enabled = false;
-            CancelAddingButton.Enabled = false;
-
+            AddWTabControl.SelectedIndex = wAddingMode;
             ShowPanel(AddingWPanel);
 
-            //if (wAddingMode == 0)
-            //{
-            //    ShowPanel(AddingWPanel1);
-            //    AddEngWTextBox.Focus();
-            //}
-            //if (wAddingMode == 1)
-            //{
-            //    ShowPanel(AddingWPanel2);
-            //    EngUaStringTextBox.Focus();
-            //}
-            //if (wAddingMode == 2)
-            //{
-            //    ShowPanel(AddingWPanel3);
-            //    ChooseFileButton.Focus();
-            //}
+            switch (wAddingMode)
+            {
+                case 0:
+                    AddEngWTextBox.Focus();
+                    break;
+                case 1:
+                    EngUaStringTextBox.Focus();
+                    break;
+                case 2:
+                    ChooseFileButton.Focus();
+                    break;
+            }
         }
 
         /// <summary>
@@ -260,14 +252,15 @@ namespace EWL
             TxtFilesPathsTextBox.Text = "";
             Null_AddingWPanel3();
 
-            AddWButton1.Enabled = false;
+            AddWButton.Enabled = false;
+            CancelAddingButton.Enabled = false;
         }
 
         #region ( Властивості контролів AddingWPanel-s )
 
         #region AddingWPanel1
 
-        private void AddWButton1_Click(object sender, EventArgs e)
+        private void AddWButton1_DoClick()
         {
             string engWord = AddEngWTextBox.Text;
             string uaTrans = AddUaTTextBox.Text;
@@ -279,20 +272,17 @@ namespace EWL
                 WAddingReportPopup1.Popup();
                 addedWordsCount++;
                 Null_EngUaTextBoxes();
-                CancelPrevButton1.Enabled = true;
+                CancelAddingButton.Enabled = true;
             }
         }
 
-        private void CancelPrevButton_Click(object sender, EventArgs e)
+        private void CancelAddingButton1_DoClick()
         {
             SQLs.Remove_LastWords_Permanently(1);
             CancelWAddingPopup1.Popup();
             addedWordsCount--;
             if (addedWordsCount == 0)
-            {
-                CancelPrevButton1.Enabled = false;
                 CancelAddingButton.Enabled = false;
-            }
         }
 
         #region ( Властивості текстових полів AddingWPanel1 )
@@ -300,7 +290,9 @@ namespace EWL
         private void EngUaTextBox_TextChanged(object sender, EventArgs e)
         {
             if (AddEngWTextBox.Text != "" && AddUaTTextBox.Text != "")
-                AddWButton1.Enabled = true;
+                AddWButton.Enabled = true;
+            else
+                AddWButton.Enabled = false;
         }
 
         private void EngTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -355,8 +347,6 @@ namespace EWL
             }
         }
 
-        //див. CancelAddingButton_Click() - для обох панелей (3 і 2)
-
         #region Focus events
 
         private void EngUaStringTextBox_TextChanged(object sender, EventArgs e)
@@ -367,7 +357,7 @@ namespace EWL
                 AddWButton.Enabled = false;
         }
 
-        private void AddWButton_Click(object sender, EventArgs e)
+        private void AddWButton2_DoClick()
         {
             var lines = EngUaStringTextBox.Lines;
             addedWordsCount = 0;
@@ -415,22 +405,6 @@ namespace EWL
             EngUaStringTextBox.TextOffset = new Point(0, 0);
         }
 
-        #region Add/Cancel buttons focuse events
-
-        private void CancelAddingButton_Enter(object sender, EventArgs e)
-            => CancelAddingButton.BorderColor = Color.FromArgb(170, 101, 254);
-
-        private void CancelAddingButton_Leave(object sender, EventArgs e)
-            => CancelAddingButton.BorderColor = Color.FromArgb(33, 38, 42);
-
-        private void AddWButton_Enter(object sender, EventArgs e)
-            => AddWButton.BorderColor = Color.FromArgb(190, 131, 254);
-
-        private void AddWButton_Leave(object sender, EventArgs e)
-            => AddWButton.BorderColor = Color.FromArgb(138, 44, 254);
-
-        #endregion
-
         #endregion
 
         #endregion
@@ -448,7 +422,7 @@ namespace EWL
         /// <summary>
         /// Вказує на те чи якісь файли вже поміщені в <see cref="DragAndDropPanel1"/>
         /// </summary>
-        bool fileIsAdded { get => AddWButton3.Enabled; }
+        bool fileIsAdded { get => TxtFilesPathsTextBox.Text != ""; } //AddWButton3.Enabled; }
         /// <summary>
         /// Список доданих в <see cref="DragAndDropPanel1"/> файлів
         /// </summary>
@@ -555,7 +529,7 @@ namespace EWL
         {
             if (TxtFilesPathsTextBox.Text != "")
             {
-                AddWButton3.Enabled = true;
+                AddWButton.Enabled = true;
                 files = TxtFilesPathsTextBox.Text
                     .Split("\r\n", StringSplitOptions.RemoveEmptyEntries)
                     .ToList();
@@ -563,13 +537,15 @@ namespace EWL
             else
             {
                 files.Clear();
-                AddWButton3.Enabled = false;
+                AddWButton.Enabled = false;
                 Null_AddingWPanel3();
             }
         }
 
-        private async void AddWButton3_Click(object sender, EventArgs e)
+        //ADD TO - універсальної кнопки
+        private async void AddWButton3_DoClick()
         {
+            CloseButton.Enabled = false;
             var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
             var handle = ShowProgressPanel(DragAndDropPanel, windowOptions);
 
@@ -577,6 +553,7 @@ namespace EWL
             await Task.Run(() => report = Txt_FileHandler.AddWordsFromTxtFiles(files));
 
             handle.Close();
+            CloseButton.Enabled = true;
 
             WAddingReportPopup3.ContentText =
                 $"Всього оброблених файлів: {report.Item3}\n" +
@@ -589,14 +566,15 @@ namespace EWL
 
             addedWordsCount = report.Item2;
             if (addedWordsCount > 0)
-                CancelAddingButton3.Enabled = true;
+                CancelAddingButton.Enabled = true;
         }
 
-        private async void CancelAddingButton_Click(object sender, EventArgs e)
+        private async void CancelAddingButton23_DoClick()
         {
             IOverlaySplashScreenHandle handle = null;
-            if (CurrentPanel == AddingWPanel3) //TODO - треба буде змінити умову (на номер таб-вкладки)
+            if (AddWTabControl.SelectedIndex == 2)
             {
+                CloseButton.Enabled = false;
                 var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
                 handle = ShowProgressPanel(DragAndDropPanel, windowOptions);
             }
@@ -604,13 +582,84 @@ namespace EWL
             await Task.Run(() => SQLs.Remove_LastWords_Permanently(addedWordsCount));
             CancelWAddingPopup2.Popup();
 
-            if (CurrentPanel == AddingWPanel3)
-                handle.Close();
+            handle?.Close();
+            CloseButton.Enabled = true;
 
             addedWordsCount = 0;
             CancelAddingButton.Enabled = false;
-            CancelAddingButton3.Enabled = false;
         }
+
+        #endregion
+
+        #region Add/Cancel buttons
+
+        private void AddWButton_Click(object sender, EventArgs e)
+        {
+            switch (AddWTabControl.SelectedIndex)
+            {
+                case 0:
+                    AddWButton1_DoClick();
+                    break;
+                case 1:
+                    AddWButton2_DoClick();
+                    break;
+                case 2:
+                    AddWButton3_DoClick();
+                    break;
+            }
+        }
+
+        private void CancelAddingButton_Click(object sender, EventArgs e)
+        {
+            switch (AddWTabControl.SelectedIndex)
+            {
+                case 0:
+                    CancelAddingButton1_DoClick();
+                    break;
+                case 1:
+                case 2:
+                    CancelAddingButton23_DoClick();
+                    break;
+            }
+        }
+
+        private void AddWTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            addedWordsCount = 0;
+            CancelAddingButton.Enabled = false;
+
+            switch (AddWTabControl.SelectedIndex)
+            {
+                case 0:
+                    EngUaTextBox_TextChanged(sender, e);
+                    AddWButton.Text = "Додати слово";
+                    break;
+                case 1:
+                    EngUaStringTextBox_TextChanged(sender, e);
+                    AddWButton.Text = "Додати слова";
+                    break;
+                case 2:
+                    TxtFilePathTextBox_TextChanged(sender, e);
+                    AddWButton.Text = "Додати слова";
+                    break;
+            }
+        }
+
+        #region Focus
+
+        private void CancelAddingButton_Enter(object sender, EventArgs e)
+            => CancelAddingButton.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void CancelAddingButton_Leave(object sender, EventArgs e)
+            => CancelAddingButton.BorderColor = Color.FromArgb(33, 38, 42);
+
+        private void AddWButton_Enter(object sender, EventArgs e)
+            => AddWButton.BorderColor = Color.FromArgb(190, 131, 254);
+
+        private void AddWButton_Leave(object sender, EventArgs e)
+            => AddWButton.BorderColor = Color.FromArgb(138, 44, 254);
+
+        #endregion
 
         #endregion
 
@@ -706,13 +755,7 @@ namespace EWL
         private void CtrlS_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.S)
-            {
                 AddWButton.PerformClick();
-
-                AddWButton1.PerformClick();
-                AddWButton.PerformClick();
-                AddWButton3.PerformClick();
-            }
         }
 
         private void CtrlZ_KeyDown(object sender, KeyEventArgs e)
@@ -720,10 +763,6 @@ namespace EWL
             if (e.Control && e.KeyCode == Keys.Z)
             {
                 CancelAddingButton.PerformClick();
-
-                CancelPrevButton1.PerformClick();
-                CancelAddingButton.PerformClick();
-                CancelAddingButton3.PerformClick();
 
                 button6.PerformClick(); //CATEGORY
             }
@@ -798,7 +837,6 @@ namespace EWL
             }
             return _handle;
         }
-
         #endregion
 
         #region ₴( Сюди автоматично додаються нові методи )₴
@@ -810,9 +848,7 @@ namespace EWL
 
 
         //TODOTODO 
-        // - додати в правий верхній куток (всіх панелей додавання слів в БД) кнопку для перемикання режимів додавання слів до БД
         // - додати кнопку зі справкою щодо:
-        //      - правил введення спеціального рядка зі словом
         //      - суть "Вивчення" слів у відповідному розділі
         // - додати вкладку "Мої словники"
         //      - можливість створювати власні словники, керувати ними та їх вмістом
