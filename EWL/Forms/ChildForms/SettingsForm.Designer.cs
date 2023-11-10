@@ -252,6 +252,7 @@
             CloseSettingsButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             CloseSettingsButton.Size = new Size(40, 38);
             CloseSettingsButton.TabIndex = 3;
+            CloseSettingsButton.TabStop = false;
             CloseSettingsButton.Click += CloseSettingsButton_Click;
             CloseSettingsButton.Enter += CloseSettingsButton_Enter;
             CloseSettingsButton.Leave += CloseSettingsButton_Leave;
@@ -315,6 +316,8 @@
             DefaultSettingsButton.BorderColor = Color.FromArgb(24, 27, 32);
             DefaultSettingsButton.BorderRadius = 15;
             DefaultSettingsButton.BorderThickness = 1;
+            DefaultSettingsButton.CheckedState.BorderColor = Color.FromArgb(170, 101, 254);
+            DefaultSettingsButton.CheckedState.FillColor = Color.FromArgb(30, 1, 70);
             DefaultSettingsButton.CustomizableEdges = customizableEdges11;
             DefaultSettingsButton.DisabledState.BorderColor = Color.FromArgb(24, 27, 32);
             DefaultSettingsButton.DisabledState.CustomBorderColor = Color.FromArgb(24, 27, 32);
@@ -325,7 +328,7 @@
             DefaultSettingsButton.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
             DefaultSettingsButton.ForeColor = Color.White;
             DefaultSettingsButton.HoverState.BorderColor = Color.FromArgb(170, 101, 254);
-            DefaultSettingsButton.HoverState.FillColor = Color.FromArgb(53, 60, 68);
+            DefaultSettingsButton.HoverState.FillColor = Color.FromArgb(33, 38, 42);
             DefaultSettingsButton.Location = new Point(30, 395);
             DefaultSettingsButton.Name = "DefaultSettingsButton";
             DefaultSettingsButton.ShadowDecoration.CustomizableEdges = customizableEdges12;
