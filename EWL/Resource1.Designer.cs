@@ -213,6 +213,16 @@ namespace Eng_Flash_Cards_Learner {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_тест_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-тест-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_удалить_2 {
             get {
                 object obj = ResourceManager.GetObject("icons8-удалить-2", resourceCulture);
@@ -236,6 +246,16 @@ namespace Eng_Flash_Cards_Learner {
         internal static System.Drawing.Bitmap icons8_удалить_60 {
             get {
                 object obj = ResourceManager.GetObject("icons8-удалить-60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_флэш_карточки_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-флэш-карточки-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

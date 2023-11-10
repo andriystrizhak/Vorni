@@ -158,7 +158,7 @@
     <value>19, 75</value>
   </metadata>
   <metadata name="OpenTxtFilesDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>158, 150</value>
+    <value>154, 124</value>
   </metadata>
   <metadata name="InvalidLinesAndRepeatedWordsopup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>20, 12</value>
@@ -196,6 +196,17 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>177</value>
   </metadata>
+  <metadata name="LearningMethodHtmllTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>366, 151</value>
+  </metadata>
+  <data name="FCMethodButton.ToolTip" xml:space="preserve">
+    <value>Буде показане слово, а тобі потрібно його перекласти.&lt;br&gt;
+Потім ти дивишся його значення і оцінюєш наскільки &lt;br&gt;
+добре ти його знав(-ла) від 1 до 5. &lt;br&gt;
+&lt;br&gt;
+Згодом ці слова показуватимуться тобі з частотою, яка &lt;br&gt;
+залежатиме від наданої тобою раніше оцінки.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -320,5 +331,11 @@
   </data>
   <metadata name="progressPanel1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>951, 155</value>
+  </metadata>
+  <metadata name="LearningMethodToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>163, 150</value>
+  </metadata>
+  <metadata name="SpecialFormatLineHtmlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>366, 125</value>
   </metadata>
 </root>

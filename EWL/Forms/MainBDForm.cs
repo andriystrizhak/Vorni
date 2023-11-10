@@ -6,6 +6,7 @@ using static EWL.NOT_Forms.Txt_FileHandler;
 using DevExpress.XtraSplashScreen;
 using Eng_Flash_Cards_Learner.Forms.UserControls;
 using Eng_Flash_Cards_Learner.Forms.ChildForms;
+using DevExpress.XtraWizard;
 
 namespace EWL
 {
@@ -111,12 +112,14 @@ namespace EWL
 
         private void LearnWButton_Click(object sender, EventArgs e)
         {
-            //NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
+            //TODO - тут буде визначатися який спосіб вивчення розпочати
+
+            ShowPanel(LearningPanel);
             words = SQLs
                 .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), SQLs.Get_NumberOfWordsToLearn())
                 .Select(w => w.Item1)
                 .ToList();
-            SeeEngWord();
+            //SeeEngWord();
         }
 
         /// <summary>
@@ -807,7 +810,7 @@ namespace EWL
         {
             foreach (Control panel in this.Controls)
                 if (panel is Panel && panel != TopPanel
-                    && panel != SIdebarPanel)
+                    && panel != SidebarPanel)
                 {
                     panel.Enabled = false;
                     panel.Visible = false;
@@ -836,6 +839,20 @@ namespace EWL
             {
             }
             return _handle;
+        }
+
+        private void This_Paint(object sender, PaintEventArgs e)
+        {
+            var pen = new Pen(Color.White, 20);
+            //var bound = this.Bounds;
+            //bound.X -= 10;
+            //bound.Y -= 10;
+            //e.Graphics.DrawRectangle(pen, 1, 1, 500, 500);
+
+            Rectangle borderRectangle = this.ClientRectangle;
+            borderRectangle.Inflate(-1, -1);
+
+            ControlPaint.DrawBorder(e.Graphics, borderRectangle, Color.White, ButtonBorderStyle.Solid);
         }
         #endregion
 

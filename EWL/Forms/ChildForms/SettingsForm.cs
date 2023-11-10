@@ -31,6 +31,7 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
             WSourceComboBox.SelectedIndex = SQLs.Get_WordAddingMode();
             SetDefaultSButtonAvailability();
             NumberOfWordsNumericUpDown.Focus();
+            NumberOfWordsNumericUpDown.UpDownButtonForeColor = Color.White;
             SettingFormElipse.TargetControl = this;
         }
 
@@ -106,7 +107,7 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
 
         private void DefaultSettingsButton_Leave(object sender, EventArgs e)
         {
-            DefaultSettingsButton.BorderColor = Color.FromArgb(33, 38, 42);
+            DefaultSettingsButton.BorderColor = Color.FromArgb(24, 27, 32);
         }
 
         private void SaveSettingsButton_Enter(object sender, EventArgs e)
@@ -126,7 +127,7 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
 
         private void CloseSettingsButton_Leave(object sender, EventArgs e)
         {
-            CloseSettingsButton.BorderColor = Color.FromArgb(33, 38, 42);
+            CloseSettingsButton.BorderColor = Color.FromArgb(24, 27, 32);
         }
 
         #endregion

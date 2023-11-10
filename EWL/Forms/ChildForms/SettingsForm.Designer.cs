@@ -75,6 +75,7 @@
             // SettingPanel
             // 
             SettingPanel.AutoScroll = true;
+            SettingPanel.BackColor = Color.FromArgb(24, 27, 32);
             SettingPanel.BorderColor = Color.FromArgb(74, 84, 93);
             SettingPanel.BorderRadius = 17;
             SettingPanel.BorderThickness = 1;
@@ -96,7 +97,7 @@
             SettingPanel.Controls.Add(label3);
             SettingPanel.Controls.Add(label4);
             SettingPanel.CustomizableEdges = customizableEdges15;
-            SettingPanel.FillColor = Color.FromArgb(33, 38, 42);
+            SettingPanel.FillColor = Color.FromArgb(24, 27, 32);
             SettingPanel.Location = new Point(0, 0);
             SettingPanel.Name = "SettingPanel";
             SettingPanel.ShadowDecoration.CustomizableEdges = customizableEdges16;
@@ -189,7 +190,7 @@
             // 
             NameLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             NameLabel.AutoSize = true;
-            NameLabel.BackColor = Color.FromArgb(33, 38, 42);
+            NameLabel.BackColor = Color.FromArgb(24, 27, 32);
             NameLabel.Font = new Font("Calibri", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
             NameLabel.ForeColor = Color.White;
             NameLabel.Location = new Point(115, 75);
@@ -228,7 +229,7 @@
             // CloseSettingsButton
             // 
             CloseSettingsButton.BackgroundImageLayout = ImageLayout.Zoom;
-            CloseSettingsButton.BorderColor = Color.FromArgb(33, 38, 42);
+            CloseSettingsButton.BorderColor = Color.FromArgb(24, 27, 32);
             CloseSettingsButton.BorderThickness = 1;
             CloseSettingsButton.CheckedState.BorderColor = Color.FromArgb(53, 60, 68);
             CloseSettingsButton.CheckedState.FillColor = Color.FromArgb(53, 60, 68);
@@ -236,11 +237,11 @@
             CloseSettingsButton.DisabledState.CustomBorderColor = Color.DarkGray;
             CloseSettingsButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             CloseSettingsButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            CloseSettingsButton.FillColor = Color.FromArgb(33, 38, 42);
+            CloseSettingsButton.FillColor = Color.FromArgb(24, 27, 32);
             CloseSettingsButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             CloseSettingsButton.ForeColor = Color.White;
-            CloseSettingsButton.HoverState.BorderColor = Color.FromArgb(33, 38, 42);
-            CloseSettingsButton.HoverState.FillColor = Color.FromArgb(33, 38, 42);
+            CloseSettingsButton.HoverState.BorderColor = Color.FromArgb(24, 27, 32);
+            CloseSettingsButton.HoverState.FillColor = Color.FromArgb(24, 27, 32);
             CloseSettingsButton.HoverState.Image = Resource1.icons8_удалить_2;
             CloseSettingsButton.Image = Resource1.icons8_удалить_60;
             CloseSettingsButton.ImageSize = new Size(22, 22);
@@ -257,13 +258,13 @@
             // 
             // WSourceComboBox
             // 
-            WSourceComboBox.BackColor = Color.FromArgb(33, 38, 42);
+            WSourceComboBox.BackColor = Color.FromArgb(24, 27, 32);
             WSourceComboBox.BorderColor = Color.FromArgb(74, 84, 93);
             WSourceComboBox.BorderRadius = 13;
             WSourceComboBox.CustomizableEdges = customizableEdges7;
             WSourceComboBox.DrawMode = DrawMode.OwnerDrawFixed;
             WSourceComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            WSourceComboBox.FillColor = Color.FromArgb(33, 38, 42);
+            WSourceComboBox.FillColor = Color.FromArgb(24, 27, 32);
             WSourceComboBox.FocusedColor = Color.FromArgb(170, 101, 254);
             WSourceComboBox.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
             WSourceComboBox.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -285,11 +286,11 @@
             // 
             // NumberOfWordsNumericUpDown
             // 
-            NumberOfWordsNumericUpDown.BackColor = Color.FromArgb(33, 38, 42);
+            NumberOfWordsNumericUpDown.BackColor = Color.FromArgb(24, 27, 32);
             NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(74, 84, 93);
             NumberOfWordsNumericUpDown.BorderRadius = 13;
             NumberOfWordsNumericUpDown.CustomizableEdges = customizableEdges9;
-            NumberOfWordsNumericUpDown.FillColor = Color.FromArgb(33, 38, 42);
+            NumberOfWordsNumericUpDown.FillColor = Color.FromArgb(24, 27, 32);
             NumberOfWordsNumericUpDown.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
             NumberOfWordsNumericUpDown.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
             NumberOfWordsNumericUpDown.ForeColor = Color.White;
@@ -300,7 +301,7 @@
             NumberOfWordsNumericUpDown.Size = new Size(307, 35);
             NumberOfWordsNumericUpDown.TabIndex = 4;
             NumberOfWordsNumericUpDown.TextOffset = new Point(7, 1);
-            NumberOfWordsNumericUpDown.UpDownButtonFillColor = Color.FromArgb(53, 60, 68);
+            NumberOfWordsNumericUpDown.UpDownButtonFillColor = Color.FromArgb(33, 38, 42);
             NumberOfWordsNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
             NumberOfWordsNumericUpDown.ValueChanged += WordCountNumericUpDown_ValueChanged;
             NumberOfWordsNumericUpDown.MouseEnter += NumberOfWordsNumericUpDown_MouseEnter;
@@ -311,16 +312,16 @@
             // DefaultSettingsButton
             // 
             DefaultSettingsButton.Animated = true;
-            DefaultSettingsButton.BorderColor = Color.FromArgb(33, 38, 42);
+            DefaultSettingsButton.BorderColor = Color.FromArgb(24, 27, 32);
             DefaultSettingsButton.BorderRadius = 15;
             DefaultSettingsButton.BorderThickness = 1;
             DefaultSettingsButton.CustomizableEdges = customizableEdges11;
-            DefaultSettingsButton.DisabledState.BorderColor = Color.FromArgb(33, 38, 42);
-            DefaultSettingsButton.DisabledState.CustomBorderColor = Color.FromArgb(33, 38, 42);
-            DefaultSettingsButton.DisabledState.FillColor = Color.FromArgb(33, 38, 42);
+            DefaultSettingsButton.DisabledState.BorderColor = Color.FromArgb(24, 27, 32);
+            DefaultSettingsButton.DisabledState.CustomBorderColor = Color.FromArgb(24, 27, 32);
+            DefaultSettingsButton.DisabledState.FillColor = Color.FromArgb(24, 27, 32);
             DefaultSettingsButton.DisabledState.ForeColor = Color.DimGray;
             DefaultSettingsButton.Enabled = false;
-            DefaultSettingsButton.FillColor = Color.FromArgb(33, 38, 42);
+            DefaultSettingsButton.FillColor = Color.FromArgb(24, 27, 32);
             DefaultSettingsButton.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
             DefaultSettingsButton.ForeColor = Color.White;
             DefaultSettingsButton.HoverState.BorderColor = Color.FromArgb(170, 101, 254);
@@ -390,7 +391,7 @@
             // 
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label4.AutoSize = true;
-            label4.BackColor = Color.FromArgb(33, 38, 42);
+            label4.BackColor = Color.FromArgb(24, 27, 32);
             label4.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.White;
             label4.Location = new Point(17, 20);
