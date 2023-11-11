@@ -1,12 +1,29 @@
-﻿using EWL.EF_SQLite;
-using EWL.NOT_Forms;
-using Guna.UI2.WinForms;
+﻿using Guna.UI2.WinForms;
+
 using System.Data;
-using static EWL.NOT_Forms.Txt_FileHandler;
+
+using EWL.EF_SQLite;
+using EWL.NOT_Forms;
 using DevExpress.XtraSplashScreen;
 using Eng_Flash_Cards_Learner.Forms.UserControls;
 using Eng_Flash_Cards_Learner.Forms.ChildForms;
-using DevExpress.XtraWizard;
+using Eng_Flash_Cards_Learner.NOT_Forms;
+using static EWL.NOT_Forms.Txt_FileHandler;
+
+using System.Net.Http;
+using System.Net.Http.Json;
+using Newtonsoft.Json;
+using DevExpress.XtraPrinting.Native;
+using System.Globalization;
+using System.Net.Http.Headers;
+
+using OpenAI.Managers;
+using OpenAI.ObjectModels;
+using OpenAI.ObjectModels.RequestModels;
+using OpenAI;
+using OpenAI.Interfaces;
+
+
 
 namespace EWL
 {
@@ -59,8 +76,94 @@ namespace EWL
             InitializeComponent();
             ShowPanel(MenuPanel);
 
+
+            //label22.Text = callOpenAI(20, "Розкажи коротко, хто такий Ілон Маск?", "text-ada-001", 0.7, 1, 0, 0, this);
+
+
             SetCategoriesList();
         }
+
+
+
+
+
+
+        static async Task API(MainForm form)
+        {
+            string apiKey = "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";
+            string endpoint = "https://api.openai.com/v1/chat/completions";
+
+            // Зразок тексту для передачі
+            string prompt = "Розкажи коротко, хто такий Ілон Маск?";
+
+            using (HttpClient client = new HttpClient())
+            {
+                // Додайте ваш ключ API до заголовків
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
+
+                // Створіть об'єкт, що містить текст, який ви хочете завершити
+                var requestData = new
+                {
+                    prompt,
+                    max_tokens = 20,  // Максимальна кількість токенів у відповіді
+                    temperature = 0.7
+                };
+
+                // Відправте POST-запит до OpenAI API
+                HttpResponseMessage response = await client.PostAsJsonAsync(endpoint, requestData);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    // Отримайте відповідь API у вигляді рядка JSON
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+
+                    // Розпакувати JSON в динамічний об'єкт
+                    dynamic result = JsonConvert.DeserializeObject(jsonResponse);
+
+                    // Вивести текст завершеного тексту
+                    form.label22.Text = result.choices[0].text;
+                }
+                else
+                {
+                    form.label22.Text = $"Помилка: {response.StatusCode}";
+                }
+            }
+        }
+
+
+        private static string callOpenAI(int tokens, string input, string engine,
+          double temperature, int topP, int frequencyPenalty, int presencePenalty, MainForm form)
+        {
+            var openAiKey = "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";
+            var apiCall = "https://api.openai.com/v1/engines/" + engine + "/completions";
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    using (var request = new HttpRequestMessage(new HttpMethod("POST"), apiCall))
+                    {
+                        request.Headers.TryAddWithoutValidation("Authorization", "Bearer " + openAiKey);
+                        request.Content = new StringContent("{\n  \"prompt\": \"" + input + "\",\n  \"temperature\": " +
+                                                            temperature.ToString(CultureInfo.InvariantCulture) + ",\n  \"max_tokens\": " + tokens + ",\n  \"top_p\": " + topP +
+                                                            ",\n  \"frequency_penalty\": " + frequencyPenalty + ",\n  \"presence_penalty\": " + presencePenalty + "\n}");
+                        request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+                        var response = httpClient.SendAsync(request).Result;
+                        var json = response.Content.ReadAsStringAsync().Result;
+                        dynamic dynObj = JsonConvert.DeserializeObject(json);
+                        if (dynObj != null)
+                        {
+                            return dynObj.choices[0].text.ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                form.label22.Text = ex.Message;
+            }
+            return null;
+        }
+
 
         //TODO CATEGORY - Імплементувати
         #region [ Category ]
@@ -258,8 +361,6 @@ namespace EWL
             AddWButton.Enabled = false;
             CancelAddingButton.Enabled = false;
         }
-
-        #region ( Властивості контролів AddingWPanel-s )
 
         #region AddingWPanel1
 
@@ -668,8 +769,6 @@ namespace EWL
 
         #endregion
 
-        #endregion
-
         #region [ Налаштування ]
 
         private void SettingButton_Click(object sender, EventArgs e)
@@ -853,6 +952,12 @@ namespace EWL
             borderRectangle.Inflate(-1, -1);
 
             ControlPaint.DrawBorder(e.Graphics, borderRectangle, Color.White, ButtonBorderStyle.Solid);
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            label22.Text = "";
+            Task.Run(() => GptAPI.PIPI(label22));
         }
         #endregion
 

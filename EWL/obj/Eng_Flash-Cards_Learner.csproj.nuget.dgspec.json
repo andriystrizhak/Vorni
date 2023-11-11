@@ -45,6 +45,10 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "dependencies": {
+            "Betalgo.OpenAI": {
+              "target": "Package",
+              "version": "[7.4.0, )"
+            },
             "CustomMessageBox.Avalonia": {
               "target": "Package",
               "version": "[11.0.0.2, )"
@@ -56,6 +60,10 @@
             "Guna.UI2.WinForms": {
               "target": "Package",
               "version": "[2.0.4.5, )"
+            },
+            "LLamaSharp": {
+              "target": "Package",
+              "version": "[0.7.0, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
@@ -69,11 +77,15 @@
             },
             "NUnit": {
               "target": "Package",
-              "version": "[3.13.3, )"
+              "version": "[3.14.0, )"
             },
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[4.5.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "SQLite": {
               "target": "Package",
