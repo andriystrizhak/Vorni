@@ -3048,6 +3048,33 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App"
         ]
+      },
+      "EWL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Betalgo.OpenAI": "7.4.0",
+          "CustomMessageBox.Avalonia": "11.0.0.2",
+          "DevExpress.Win.Dashboard.CustomItemExtension": "23.1.0.2",
+          "Guna.UI2.WinForms": "2.0.4.5",
+          "LLamaSharp": "0.7.0",
+          "Microsoft.EntityFrameworkCore.Sqlite": "7.0.13",
+          "NUnit": "3.14.0",
+          "NUnit3TestAdapter": "4.5.0",
+          "Newtonsoft.Json": "13.0.3",
+          "SQLite": "3.13.0",
+          "System.Data.SQLite": "1.0.118",
+          "Tulpep.NotificationWindow": "1.1.38"
+        },
+        "compile": {
+          "bin/placeholder/EWL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EWL.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
       }
     }
   },
@@ -7422,10 +7449,16 @@
       "type": "project",
       "path": "../EWL/Eng_Flash-Cards_Learner.csproj",
       "msbuildProject": "../EWL/Eng_Flash-Cards_Learner.csproj"
+    },
+    "EWL/1.0.0": {
+      "type": "project",
+      "path": "../EWL/EWL.csproj",
+      "msbuildProject": "../EWL/EWL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
+      "EWL >= 1.0.0",
       "Eng_Flash-Cards_Learner >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "NUnit >= 3.14.0",
@@ -7468,6 +7501,9 @@
           "projectReferences": {
             "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Eng_Flash-Cards_Learner.csproj": {
               "projectPath": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Eng_Flash-Cards_Learner.csproj"
+            },
+            "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\EWL.csproj": {
+              "projectPath": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\EWL.csproj"
             }
           }
         }

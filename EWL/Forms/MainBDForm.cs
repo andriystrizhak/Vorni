@@ -1,6 +1,4 @@
-﻿using Guna.UI2.WinForms;
-
-using System.Data;
+﻿using System.Data;
 
 using EWL.EF_SQLite;
 using EWL.NOT_Forms;
@@ -8,22 +6,8 @@ using DevExpress.XtraSplashScreen;
 using Eng_Flash_Cards_Learner.Forms.UserControls;
 using Eng_Flash_Cards_Learner.Forms.ChildForms;
 using Eng_Flash_Cards_Learner.NOT_Forms;
+using Eng_Flash_Cards_Learner.NOT_Forms.GPT;
 using static EWL.NOT_Forms.Txt_FileHandler;
-
-using System.Net.Http;
-using System.Net.Http.Json;
-using Newtonsoft.Json;
-using DevExpress.XtraPrinting.Native;
-using System.Globalization;
-using System.Net.Http.Headers;
-
-using OpenAI.Managers;
-using OpenAI.ObjectModels;
-using OpenAI.ObjectModels.RequestModels;
-using OpenAI;
-using OpenAI.Interfaces;
-
-
 
 namespace EWL
 {
@@ -33,6 +17,9 @@ namespace EWL
         //- "//CHANGE"
         //- "//TODO"
         //- "//CHECK"
+
+        //- "//TODO DIFFICULTY"
+        //- "//TODO CATEGORY"
 
         /// <summary>
         /// Розташування <see cref="TopPanel"/> (для переміщення вікна мишкою)
@@ -62,8 +49,8 @@ namespace EWL
         /// </summary>
         int[] wordRatings { get; set; } = { 0, 0, 0, 0, 0, 0 }; //CHANGE
 
-        List<Category> categories = null!; //TODO
-        int curentCategoryID;             //TODO
+        List<Category> categories = null!; //TODO CATEGORY
+        int curentCategoryID;             //TODO CATEGORY
 
         public MainForm()
         {
@@ -76,94 +63,8 @@ namespace EWL
             InitializeComponent();
             ShowPanel(MenuPanel);
 
-
-            //label22.Text = callOpenAI(20, "Розкажи коротко, хто такий Ілон Маск?", "text-ada-001", 0.7, 1, 0, 0, this);
-
-
             SetCategoriesList();
         }
-
-
-
-
-
-
-        static async Task API(MainForm form)
-        {
-            string apiKey = "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";
-            string endpoint = "https://api.openai.com/v1/chat/completions";
-
-            // Зразок тексту для передачі
-            string prompt = "Розкажи коротко, хто такий Ілон Маск?";
-
-            using (HttpClient client = new HttpClient())
-            {
-                // Додайте ваш ключ API до заголовків
-                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
-
-                // Створіть об'єкт, що містить текст, який ви хочете завершити
-                var requestData = new
-                {
-                    prompt,
-                    max_tokens = 20,  // Максимальна кількість токенів у відповіді
-                    temperature = 0.7
-                };
-
-                // Відправте POST-запит до OpenAI API
-                HttpResponseMessage response = await client.PostAsJsonAsync(endpoint, requestData);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    // Отримайте відповідь API у вигляді рядка JSON
-                    string jsonResponse = await response.Content.ReadAsStringAsync();
-
-                    // Розпакувати JSON в динамічний об'єкт
-                    dynamic result = JsonConvert.DeserializeObject(jsonResponse);
-
-                    // Вивести текст завершеного тексту
-                    form.label22.Text = result.choices[0].text;
-                }
-                else
-                {
-                    form.label22.Text = $"Помилка: {response.StatusCode}";
-                }
-            }
-        }
-
-
-        private static string callOpenAI(int tokens, string input, string engine,
-          double temperature, int topP, int frequencyPenalty, int presencePenalty, MainForm form)
-        {
-            var openAiKey = "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";
-            var apiCall = "https://api.openai.com/v1/engines/" + engine + "/completions";
-            try
-            {
-                using (var httpClient = new HttpClient())
-                {
-                    using (var request = new HttpRequestMessage(new HttpMethod("POST"), apiCall))
-                    {
-                        request.Headers.TryAddWithoutValidation("Authorization", "Bearer " + openAiKey);
-                        request.Content = new StringContent("{\n  \"prompt\": \"" + input + "\",\n  \"temperature\": " +
-                                                            temperature.ToString(CultureInfo.InvariantCulture) + ",\n  \"max_tokens\": " + tokens + ",\n  \"top_p\": " + topP +
-                                                            ",\n  \"frequency_penalty\": " + frequencyPenalty + ",\n  \"presence_penalty\": " + presencePenalty + "\n}");
-                        request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
-                        var response = httpClient.SendAsync(request).Result;
-                        var json = response.Content.ReadAsStringAsync().Result;
-                        dynamic dynObj = JsonConvert.DeserializeObject(json);
-                        if (dynObj != null)
-                        {
-                            return dynObj.choices[0].text.ToString();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                form.label22.Text = ex.Message;
-            }
-            return null;
-        }
-
 
         //TODO CATEGORY - Імплементувати
         #region [ Category ]
@@ -210,20 +111,99 @@ namespace EWL
 
         #region [ Вивчати слова ]
 
-        //TODO CATEGORY - Додати проміжну панель чи кнопку для перемикання категорії для вивчення
-        //TODO - Додати до проміжної панелі вибір СПОСОБУ вивченн (картки чи тести)
-
         private void LearnWButton_Click(object sender, EventArgs e)
         {
-            //TODO - тут буде визначатися який спосіб вивчення розпочати
+            FCMethodButton.Checked = false;
+            TestMethodButton.Checked = false;
+            StartLearningButton.Enabled = false;
+
+            //CategoriesComboBox.SelectedIndex = SQLs.Get_WordAddingMode();      //TODO CATEGORY
+            NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
+            NumberOfWordsNumericUpDown.UpDownButtonForeColor = Color.White;
 
             ShowPanel(LearningPanel);
-            words = SQLs
-                .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), SQLs.Get_NumberOfWordsToLearn())
-                .Select(w => w.Item1)
-                .ToList();
+
             //SeeEngWord();
         }
+
+
+        #region ( LearningPanel )
+
+        private void StartLearningButton_Click(object sender, EventArgs e)
+        {
+            SQLs.Set_NumberOfWordsToLearn((int)NumberOfWordsNumericUpDown.Value);
+            //SQLs.Set_CurrentCategory(CategoriesComboBox.SelectedIndex);         //TODO CATEGORY
+            //SQLs.Set_CurrentDifficulty(DifficultyNumericUpDown);                //TODO DIFFICULTY
+
+            //words = SQLs
+            //    .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), SQLs.Get_NumberOfWordsToLearn())
+            //    .Select(w => w.Item1)
+            //    .ToList();                                                      //TODO DIFFICULTY
+
+            if (FCMethodButton.Checked)
+            {
+                //TODO - implement FCLearningPanel set-up
+                ShowPanel(FCLearingPanel);
+            }    
+            else if (TestMethodButton.Checked)
+            {
+                //TODO - implement TestLearningPanel set-up
+                //ShowPanel(TestLearingPanel);
+            }
+        }
+
+        private void LearingMethod_CheckedChanged(object sender, EventArgs e)
+            => StartLearningButton.Enabled = true;
+
+        private void GPTToggleSwitch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (GPTToggleSwitch.Checked == false)
+            {
+                TestMethodButton.Enabled = false;
+                CheckGPTPanel.BorderColor = Color.FromArgb(74, 84, 93);
+            }
+            else
+            {
+                TestMethodButton.Enabled = true;
+                CheckGPTPanel.BorderColor = Color.FromArgb(21, 220, 173);
+            }
+        }
+
+        #region NumberOfWordsNumericUpDown
+
+        private void NumberOfWordsNumericUpDown_MouseHover(object sender, EventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void NumberOfWordsNumericUpDown_MouseMove(object sender, MouseEventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void NumberOfWordsNumericUpDown_MouseEnter(object sender, EventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void NumberOfWordsNumericUpDown_MouseLeave(object sender, EventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(74, 84, 93);
+
+        #endregion
+
+        #region DifficultyNumericUpDown
+
+        private void DifficultyNumericUpDown_MouseHover(object sender, EventArgs e)
+            => DifficultyNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void DifficultyNumericUpDown_MouseMove(object sender, MouseEventArgs e)
+            => DifficultyNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void DifficultyNumericUpDown_MouseEnter(object sender, EventArgs e)
+            => DifficultyNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void DifficultyNumericUpDown_MouseLeave(object sender, EventArgs e)
+            => DifficultyNumericUpDown.BorderColor = Color.FromArgb(74, 84, 93);
+
+        #endregion
+
+        #endregion
+
+        #region ( FCLearningPanel )
 
         /// <summary>
         /// Підготовлює й показує <see cref="LearningEngPanel"/>
@@ -238,6 +218,8 @@ namespace EWL
             ShowPanel(LearningEngPanel);
             SeeTransButton.Focus();
         }
+
+        #endregion
 
         #region ( Властивості контролів LearningWPanel )
 
@@ -939,26 +921,6 @@ namespace EWL
             }
             return _handle;
         }
-
-        private void This_Paint(object sender, PaintEventArgs e)
-        {
-            var pen = new Pen(Color.White, 20);
-            //var bound = this.Bounds;
-            //bound.X -= 10;
-            //bound.Y -= 10;
-            //e.Graphics.DrawRectangle(pen, 1, 1, 500, 500);
-
-            Rectangle borderRectangle = this.ClientRectangle;
-            borderRectangle.Inflate(-1, -1);
-
-            ControlPaint.DrawBorder(e.Graphics, borderRectangle, Color.White, ButtonBorderStyle.Solid);
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            label22.Text = "";
-            Task.Run(() => GptAPI.PIPI(label22));
-        }
         #endregion
 
         #region ₴( Сюди автоматично додаються нові методи )₴
@@ -966,6 +928,32 @@ namespace EWL
 
 
         #endregion
+
+
+
+
+
+
+
+
+
+
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            var handler = ShowProgressPanel(CurrentPanel);
+
+            label22.Text = "";
+            GptAPI.GPTResponseHandler += Label22_GPTResponseHandler;
+            Task.Run(() => GptAPI.GetResponse(new string[] { "table", "pillow" }, GptPurpose.Test, handler));
+        }
+
+        void Label22_GPTResponseHandler(string response, IOverlaySplashScreenHandle handler)
+        {
+            label22.Text = response;
+            handler.Close();
+        }
+
 
 
 

@@ -31,47 +31,55 @@ namespace EWL
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges45 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges46 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges47 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges48 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges53 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges54 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges49 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges50 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges51 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges52 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges71 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges72 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges69 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges70 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges59 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges60 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges55 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges56 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges57 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges58 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges65 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges66 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges61 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges62 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges63 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges64 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges67 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges68 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -79,6 +87,7 @@ namespace EWL
             TitleLabel = new Label();
             fullScreenImageList = new ImageList(components);
             MenuPanel = new Panel();
+            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             label22 = new Label();
             SettingButton = new Button();
             FullScreenButton = new Button();
@@ -171,11 +180,19 @@ namespace EWL
             SidebarPanel = new Guna.UI2.WinForms.Guna2Panel();
             LearningPanel = new Guna.UI2.WinForms.Guna2Panel();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            guna2vSeparator4 = new Guna.UI2.WinForms.Guna2VSeparator();
+            CheckGPTPanel = new Guna.UI2.WinForms.Guna2Panel();
+            pictureBox1 = new PictureBox();
+            GPTToggleSwitch = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            label26 = new Label();
+            label25 = new Label();
+            DifficultyNumericUpDown = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            label23 = new Label();
+            label24 = new Label();
             NumberOfWordsNumericUpDown = new Guna.UI2.WinForms.Guna2NumericUpDown();
             label20 = new Label();
             label21 = new Label();
-            WSourceComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            CategoriesComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             label18 = new Label();
             label19 = new Label();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -191,7 +208,8 @@ namespace EWL
             LearningMethodToolTip = new ToolTip(components);
             LearningMethodHtmllTip = new Guna.UI2.WinForms.Guna2HtmlToolTip();
             SpecialFormatLineHtmlTip = new Guna.UI2.WinForms.Guna2HtmlToolTip();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            GPTHtmlTip = new Guna.UI2.WinForms.Guna2HtmlToolTip();
+            FCLearingPanel = new Guna.UI2.WinForms.Guna2Panel();
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             MenuPanel.SuspendLayout();
@@ -213,8 +231,12 @@ namespace EWL
             LearningEngPanel.SuspendLayout();
             LearningPanel.SuspendLayout();
             guna2Panel2.SuspendLayout();
+            CheckGPTPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DifficultyNumericUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumberOfWordsNumericUpDown).BeginInit();
             guna2Panel1.SuspendLayout();
+            FCLearingPanel.SuspendLayout();
             SuspendLayout();
             // 
             // CloseButton
@@ -321,6 +343,23 @@ namespace EWL
             MenuPanel.Name = "MenuPanel";
             MenuPanel.Size = new Size(1040, 614);
             MenuPanel.TabIndex = 9;
+            // 
+            // guna2Button1
+            // 
+            guna2Button1.CustomizableEdges = customizableEdges1;
+            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2Button1.ForeColor = Color.White;
+            guna2Button1.Location = new Point(28, 372);
+            guna2Button1.Name = "guna2Button1";
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2Button1.Size = new Size(180, 45);
+            guna2Button1.TabIndex = 7;
+            guna2Button1.Text = "GENERATE";
+            guna2Button1.Click += guna2Button1_Click;
             // 
             // label22
             // 
@@ -844,7 +883,7 @@ namespace EWL
             CancelAddingButton.BorderColor = Color.FromArgb(24, 27, 32);
             CancelAddingButton.BorderRadius = 15;
             CancelAddingButton.BorderThickness = 1;
-            CancelAddingButton.CustomizableEdges = customizableEdges39;
+            CancelAddingButton.CustomizableEdges = customizableEdges3;
             CancelAddingButton.DisabledState.BorderColor = Color.FromArgb(33, 38, 42);
             CancelAddingButton.DisabledState.CustomBorderColor = Color.FromArgb(33, 38, 42);
             CancelAddingButton.DisabledState.FillColor = Color.FromArgb(33, 38, 42);
@@ -859,7 +898,7 @@ namespace EWL
             CancelAddingButton.Name = "CancelAddingButton";
             CancelAddingButton.ShadowDecoration.BorderRadius = 17;
             CancelAddingButton.ShadowDecoration.Color = Color.FromArgb(138, 44, 254);
-            CancelAddingButton.ShadowDecoration.CustomizableEdges = customizableEdges40;
+            CancelAddingButton.ShadowDecoration.CustomizableEdges = customizableEdges4;
             CancelAddingButton.ShadowDecoration.Enabled = true;
             CancelAddingButton.Size = new Size(400, 52);
             CancelAddingButton.TabIndex = 8;
@@ -875,7 +914,7 @@ namespace EWL
             AddWButton.BorderColor = Color.FromArgb(138, 44, 254);
             AddWButton.BorderRadius = 15;
             AddWButton.BorderThickness = 1;
-            AddWButton.CustomizableEdges = customizableEdges41;
+            AddWButton.CustomizableEdges = customizableEdges5;
             AddWButton.DisabledState.BorderColor = Color.FromArgb(73, 1, 116);
             AddWButton.DisabledState.CustomBorderColor = Color.FromArgb(73, 1, 116);
             AddWButton.DisabledState.FillColor = Color.FromArgb(73, 1, 116);
@@ -886,7 +925,7 @@ namespace EWL
             AddWButton.ForeColor = Color.White;
             AddWButton.Location = new Point(535, 499);
             AddWButton.Name = "AddWButton";
-            AddWButton.ShadowDecoration.CustomizableEdges = customizableEdges42;
+            AddWButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
             AddWButton.Size = new Size(400, 52);
             AddWButton.TabIndex = 7;
             AddWButton.Text = "Додати слово";
@@ -970,7 +1009,7 @@ namespace EWL
             AddUaTTextBox.AutoScroll = true;
             AddUaTTextBox.BorderColor = Color.FromArgb(74, 84, 93);
             AddUaTTextBox.BorderRadius = 14;
-            AddUaTTextBox.CustomizableEdges = customizableEdges43;
+            AddUaTTextBox.CustomizableEdges = customizableEdges7;
             AddUaTTextBox.DefaultText = "";
             AddUaTTextBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             AddUaTTextBox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -991,7 +1030,7 @@ namespace EWL
             AddUaTTextBox.PlaceholderForeColor = Color.FromArgb(147, 166, 181);
             AddUaTTextBox.PlaceholderText = "*кожен переклад в окремому рядку";
             AddUaTTextBox.SelectedText = "";
-            AddUaTTextBox.ShadowDecoration.CustomizableEdges = customizableEdges44;
+            AddUaTTextBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
             AddUaTTextBox.Size = new Size(833, 199);
             AddUaTTextBox.TabIndex = 2;
             AddUaTTextBox.TextAlign = HorizontalAlignment.Center;
@@ -1015,7 +1054,7 @@ namespace EWL
             AddEngWTextBox.AutoScroll = true;
             AddEngWTextBox.BorderColor = Color.FromArgb(74, 84, 93);
             AddEngWTextBox.BorderRadius = 14;
-            AddEngWTextBox.CustomizableEdges = customizableEdges45;
+            AddEngWTextBox.CustomizableEdges = customizableEdges9;
             AddEngWTextBox.DefaultText = "";
             AddEngWTextBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             AddEngWTextBox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -1035,7 +1074,7 @@ namespace EWL
             AddEngWTextBox.PlaceholderForeColor = Color.FromArgb(147, 166, 181);
             AddEngWTextBox.PlaceholderText = "";
             AddEngWTextBox.SelectedText = "";
-            AddEngWTextBox.ShadowDecoration.CustomizableEdges = customizableEdges46;
+            AddEngWTextBox.ShadowDecoration.CustomizableEdges = customizableEdges10;
             AddEngWTextBox.Size = new Size(833, 45);
             AddEngWTextBox.TabIndex = 1;
             AddEngWTextBox.TextAlign = HorizontalAlignment.Center;
@@ -1104,7 +1143,7 @@ namespace EWL
             EngUaStringTextBox.AutoScroll = true;
             EngUaStringTextBox.BorderColor = Color.FromArgb(74, 84, 93);
             EngUaStringTextBox.BorderRadius = 14;
-            EngUaStringTextBox.CustomizableEdges = customizableEdges47;
+            EngUaStringTextBox.CustomizableEdges = customizableEdges11;
             EngUaStringTextBox.DefaultText = "";
             EngUaStringTextBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             EngUaStringTextBox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -1125,7 +1164,7 @@ namespace EWL
             EngUaStringTextBox.PlaceholderForeColor = Color.FromArgb(147, 166, 181);
             EngUaStringTextBox.PlaceholderText = "idea - ідея / уявлення / думка / задум / поняття / концепція [1]";
             EngUaStringTextBox.SelectedText = "";
-            EngUaStringTextBox.ShadowDecoration.CustomizableEdges = customizableEdges48;
+            EngUaStringTextBox.ShadowDecoration.CustomizableEdges = customizableEdges12;
             EngUaStringTextBox.Size = new Size(833, 284);
             EngUaStringTextBox.TabIndex = 3;
             EngUaStringTextBox.TextAlign = HorizontalAlignment.Center;
@@ -1212,11 +1251,11 @@ namespace EWL
             DragAndDropPanel.Controls.Add(ChooseFileButton);
             DragAndDropPanel.Controls.Add(label13);
             DragAndDropPanel.Controls.Add(label12);
-            DragAndDropPanel.CustomizableEdges = customizableEdges53;
+            DragAndDropPanel.CustomizableEdges = customizableEdges17;
             DragAndDropPanel.FillColor = Color.FromArgb(33, 38, 42);
             DragAndDropPanel.Location = new Point(77, 102);
             DragAndDropPanel.Name = "DragAndDropPanel";
-            DragAndDropPanel.ShadowDecoration.CustomizableEdges = customizableEdges54;
+            DragAndDropPanel.ShadowDecoration.CustomizableEdges = customizableEdges18;
             DragAndDropPanel.Size = new Size(866, 274);
             DragAndDropPanel.TabIndex = 22;
             DragAndDropPanel.DragDrop += DragAndDropPanel_DragDrop;
@@ -1230,7 +1269,7 @@ namespace EWL
             TxtFilesPathsTextBox.BackColor = Color.FromArgb(33, 38, 42);
             TxtFilesPathsTextBox.BorderColor = Color.FromArgb(74, 84, 93);
             TxtFilesPathsTextBox.BorderRadius = 14;
-            TxtFilesPathsTextBox.CustomizableEdges = customizableEdges49;
+            TxtFilesPathsTextBox.CustomizableEdges = customizableEdges13;
             TxtFilesPathsTextBox.DefaultText = "";
             TxtFilesPathsTextBox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             TxtFilesPathsTextBox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -1249,7 +1288,7 @@ namespace EWL
             TxtFilesPathsTextBox.PlaceholderForeColor = Color.FromArgb(147, 166, 181);
             TxtFilesPathsTextBox.PlaceholderText = "";
             TxtFilesPathsTextBox.SelectedText = "";
-            TxtFilesPathsTextBox.ShadowDecoration.CustomizableEdges = customizableEdges50;
+            TxtFilesPathsTextBox.ShadowDecoration.CustomizableEdges = customizableEdges14;
             TxtFilesPathsTextBox.Size = new Size(776, 188);
             TxtFilesPathsTextBox.TabIndex = 5;
             TxtFilesPathsTextBox.TextAlign = HorizontalAlignment.Center;
@@ -1277,7 +1316,7 @@ namespace EWL
             ChooseFileButton.BorderColor = Color.FromArgb(138, 44, 254);
             ChooseFileButton.BorderRadius = 15;
             ChooseFileButton.BorderThickness = 1;
-            ChooseFileButton.CustomizableEdges = customizableEdges51;
+            ChooseFileButton.CustomizableEdges = customizableEdges15;
             ChooseFileButton.DisabledState.BorderColor = Color.FromArgb(73, 1, 116);
             ChooseFileButton.DisabledState.CustomBorderColor = Color.FromArgb(73, 1, 116);
             ChooseFileButton.DisabledState.FillColor = Color.FromArgb(73, 1, 116);
@@ -1287,7 +1326,7 @@ namespace EWL
             ChooseFileButton.ForeColor = Color.White;
             ChooseFileButton.Location = new Point(289, 80);
             ChooseFileButton.Name = "ChooseFileButton";
-            ChooseFileButton.ShadowDecoration.CustomizableEdges = customizableEdges52;
+            ChooseFileButton.ShadowDecoration.CustomizableEdges = customizableEdges16;
             ChooseFileButton.Size = new Size(318, 84);
             ChooseFileButton.TabIndex = 4;
             ChooseFileButton.Text = "Вибери .txt-файл";
@@ -1369,39 +1408,39 @@ namespace EWL
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle5.NullValue = "-";
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.NullValue = "-";
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.LightGray;
-            dataGridViewCellStyle6.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.NullValue = "-";
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.LightGray;
+            dataGridViewCellStyle2.Font = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.NullValue = "-";
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { WordID, EngWord, UaTranslation, Rating });
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle7.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle3.Font = new Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.GridColor = Color.Gray;
             dataGridView1.Location = new Point(472, 118);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.LightGray;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.LightGray;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(403, 270);
@@ -1867,9 +1906,9 @@ namespace EWL
             LearningEngPanel.Controls.Add(EngWLabel1);
             LearningEngPanel.Controls.Add(GoBackButton1);
             LearningEngPanel.ImeMode = ImeMode.Hangul;
-            LearningEngPanel.Location = new Point(59, 35);
+            LearningEngPanel.Location = new Point(79, 23);
             LearningEngPanel.Name = "LearningEngPanel";
-            LearningEngPanel.Size = new Size(1040, 614);
+            LearningEngPanel.Size = new Size(847, 562);
             LearningEngPanel.TabIndex = 11;
             // 
             // SeeTransButton
@@ -1899,7 +1938,7 @@ namespace EWL
             EngWLabel1.ForeColor = Color.White;
             EngWLabel1.Location = new Point(197, 176);
             EngWLabel1.Name = "EngWLabel1";
-            EngWLabel1.Size = new Size(641, 118);
+            EngWLabel1.Size = new Size(448, 66);
             EngWLabel1.TabIndex = 0;
             EngWLabel1.Text = "ХХХ";
             EngWLabel1.TextAlign = ContentAlignment.MiddleCenter;
@@ -1953,11 +1992,11 @@ namespace EWL
             SidebarPanel.BorderColor = Color.FromArgb(24, 27, 32);
             SidebarPanel.BorderRadius = 10;
             SidebarPanel.BorderThickness = 8;
-            SidebarPanel.CustomizableEdges = customizableEdges71;
+            SidebarPanel.CustomizableEdges = customizableEdges41;
             SidebarPanel.FillColor = Color.FromArgb(33, 38, 42);
             SidebarPanel.Location = new Point(0, 0);
             SidebarPanel.Name = "SidebarPanel";
-            SidebarPanel.ShadowDecoration.CustomizableEdges = customizableEdges72;
+            SidebarPanel.ShadowDecoration.CustomizableEdges = customizableEdges42;
             SidebarPanel.Size = new Size(60, 649);
             SidebarPanel.TabIndex = 1;
             // 
@@ -1967,10 +2006,10 @@ namespace EWL
             LearningPanel.Controls.Add(guna2Panel1);
             LearningPanel.Controls.Add(label16);
             LearningPanel.Controls.Add(StartLearningButton);
-            LearningPanel.CustomizableEdges = customizableEdges69;
+            LearningPanel.CustomizableEdges = customizableEdges39;
             LearningPanel.Location = new Point(59, 35);
             LearningPanel.Name = "LearningPanel";
-            LearningPanel.ShadowDecoration.CustomizableEdges = customizableEdges70;
+            LearningPanel.ShadowDecoration.CustomizableEdges = customizableEdges40;
             LearningPanel.Size = new Size(1040, 614);
             LearningPanel.TabIndex = 12;
             // 
@@ -1979,60 +2018,206 @@ namespace EWL
             guna2Panel2.BorderColor = Color.FromArgb(74, 84, 93);
             guna2Panel2.BorderRadius = 14;
             guna2Panel2.BorderThickness = 1;
-            guna2Panel2.Controls.Add(guna2Separator1);
+            guna2Panel2.Controls.Add(guna2vSeparator4);
+            guna2Panel2.Controls.Add(CheckGPTPanel);
+            guna2Panel2.Controls.Add(label25);
+            guna2Panel2.Controls.Add(DifficultyNumericUpDown);
+            guna2Panel2.Controls.Add(label23);
+            guna2Panel2.Controls.Add(label24);
             guna2Panel2.Controls.Add(NumberOfWordsNumericUpDown);
             guna2Panel2.Controls.Add(label20);
             guna2Panel2.Controls.Add(label21);
-            guna2Panel2.Controls.Add(WSourceComboBox);
+            guna2Panel2.Controls.Add(CategoriesComboBox);
             guna2Panel2.Controls.Add(label18);
             guna2Panel2.Controls.Add(label19);
-            guna2Panel2.CustomizableEdges = customizableEdges59;
+            guna2Panel2.CustomizableEdges = customizableEdges29;
             guna2Panel2.Location = new Point(494, 96);
             guna2Panel2.Name = "guna2Panel2";
-            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges60;
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges30;
             guna2Panel2.Size = new Size(441, 345);
             guna2Panel2.TabIndex = 26;
             // 
-            // guna2Separator1
+            // guna2vSeparator4
             // 
-            guna2Separator1.FillColor = Color.FromArgb(74, 84, 93);
-            guna2Separator1.Location = new Point(46, 172);
-            guna2Separator1.Name = "guna2Separator1";
-            guna2Separator1.Size = new Size(354, 10);
-            guna2Separator1.TabIndex = 30;
+            guna2vSeparator4.BackColor = Color.Transparent;
+            guna2vSeparator4.FillColor = Color.FromArgb(74, 84, 93);
+            guna2vSeparator4.Location = new Point(216, 210);
+            guna2vSeparator4.Name = "guna2vSeparator4";
+            guna2vSeparator4.Size = new Size(10, 98);
+            guna2vSeparator4.TabIndex = 36;
+            guna2vSeparator4.UseTransparentBackground = true;
+            // 
+            // CheckGPTPanel
+            // 
+            CheckGPTPanel.BorderColor = Color.FromArgb(21, 220, 173);
+            CheckGPTPanel.BorderRadius = 14;
+            CheckGPTPanel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            CheckGPTPanel.BorderThickness = 1;
+            CheckGPTPanel.Controls.Add(pictureBox1);
+            CheckGPTPanel.Controls.Add(GPTToggleSwitch);
+            CheckGPTPanel.Controls.Add(label26);
+            CheckGPTPanel.Cursor = Cursors.Help;
+            CheckGPTPanel.CustomizableEdges = customizableEdges21;
+            CheckGPTPanel.Location = new Point(248, 80);
+            CheckGPTPanel.Name = "CheckGPTPanel";
+            CheckGPTPanel.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            CheckGPTPanel.Size = new Size(157, 51);
+            CheckGPTPanel.TabIndex = 35;
+            GPTHtmlTip.SetToolTip(CheckGPTPanel, resources.GetString("CheckGPTPanel.ToolTip"));
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Eng_Flash_Cards_Learner.Resource1.icons8_чатgpt_144__1_;
+            pictureBox1.Location = new Point(13, 10);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(30, 30);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 38;
+            pictureBox1.TabStop = false;
+            LearningMethodHtmllTip.SetToolTip(pictureBox1, resources.GetString("pictureBox1.ToolTip"));
+            // 
+            // GPTToggleSwitch
+            // 
+            GPTToggleSwitch.Checked = true;
+            GPTToggleSwitch.CheckedState.BorderColor = Color.FromArgb(170, 101, 254);
+            GPTToggleSwitch.CheckedState.BorderRadius = 10;
+            GPTToggleSwitch.CheckedState.BorderThickness = 1;
+            GPTToggleSwitch.CheckedState.FillColor = Color.FromArgb(30, 1, 70);
+            GPTToggleSwitch.CheckedState.InnerBorderColor = Color.FromArgb(74, 84, 93);
+            GPTToggleSwitch.CheckedState.InnerBorderRadius = 7;
+            GPTToggleSwitch.CheckedState.InnerColor = Color.White;
+            GPTToggleSwitch.Cursor = Cursors.Hand;
+            GPTToggleSwitch.CustomizableEdges = customizableEdges19;
+            GPTToggleSwitch.Location = new Point(97, 14);
+            GPTToggleSwitch.Name = "GPTToggleSwitch";
+            GPTToggleSwitch.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            GPTToggleSwitch.Size = new Size(46, 23);
+            GPTToggleSwitch.TabIndex = 27;
+            GPTToggleSwitch.UncheckedState.BorderColor = Color.FromArgb(74, 84, 93);
+            GPTToggleSwitch.UncheckedState.BorderRadius = 10;
+            GPTToggleSwitch.UncheckedState.BorderThickness = 1;
+            GPTToggleSwitch.UncheckedState.FillColor = Color.FromArgb(24, 27, 32);
+            GPTToggleSwitch.UncheckedState.InnerBorderColor = Color.White;
+            GPTToggleSwitch.UncheckedState.InnerBorderRadius = 7;
+            GPTToggleSwitch.UncheckedState.InnerColor = Color.FromArgb(147, 166, 181);
+            GPTToggleSwitch.CheckedChanged += GPTToggleSwitch_CheckedChanged;
+            // 
+            // label26
+            // 
+            label26.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label26.AutoSize = true;
+            label26.BackColor = Color.FromArgb(24, 27, 32);
+            label26.Font = new Font("Calibri", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label26.ForeColor = Color.White;
+            label26.Location = new Point(47, 12);
+            label26.Name = "label26";
+            label26.Size = new Size(46, 26);
+            label26.TabIndex = 35;
+            label26.Text = "GPT";
+            label26.TextAlign = ContentAlignment.MiddleCenter;
+            GPTHtmlTip.SetToolTip(label26, resources.GetString("label26.ToolTip"));
+            // 
+            // label25
+            // 
+            label25.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label25.AutoSize = true;
+            label25.BackColor = Color.FromArgb(24, 27, 32);
+            label25.Font = new Font("Calibri", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label25.ForeColor = Color.White;
+            label25.Location = new Point(30, 26);
+            label25.Name = "label25";
+            label25.Size = new Size(186, 33);
+            label25.TabIndex = 34;
+            label25.Text = "Налаштування";
+            label25.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // DifficultyNumericUpDown
+            // 
+            DifficultyNumericUpDown.BackColor = Color.FromArgb(24, 27, 32);
+            DifficultyNumericUpDown.BorderColor = Color.FromArgb(74, 84, 93);
+            DifficultyNumericUpDown.BorderRadius = 13;
+            DifficultyNumericUpDown.CustomizableEdges = customizableEdges23;
+            DifficultyNumericUpDown.FillColor = Color.FromArgb(24, 27, 32);
+            DifficultyNumericUpDown.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
+            DifficultyNumericUpDown.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            DifficultyNumericUpDown.ForeColor = Color.White;
+            DifficultyNumericUpDown.Location = new Point(242, 278);
+            DifficultyNumericUpDown.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
+            DifficultyNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            DifficultyNumericUpDown.Name = "DifficultyNumericUpDown";
+            DifficultyNumericUpDown.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            DifficultyNumericUpDown.Size = new Size(163, 35);
+            DifficultyNumericUpDown.TabIndex = 33;
+            DifficultyNumericUpDown.TextOffset = new Point(7, 1);
+            DifficultyNumericUpDown.UpDownButtonFillColor = Color.FromArgb(33, 38, 42);
+            DifficultyNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            DifficultyNumericUpDown.MouseEnter += DifficultyNumericUpDown_MouseEnter;
+            DifficultyNumericUpDown.MouseLeave += DifficultyNumericUpDown_MouseLeave;
+            DifficultyNumericUpDown.MouseHover += DifficultyNumericUpDown_MouseHover;
+            DifficultyNumericUpDown.MouseMove += DifficultyNumericUpDown_MouseMove;
+            // 
+            // label23
+            // 
+            label23.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label23.AutoSize = true;
+            label23.BackColor = Color.FromArgb(24, 27, 32);
+            label23.Font = new Font("Calibri", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label23.ForeColor = Color.White;
+            label23.Location = new Point(237, 199);
+            label23.Name = "label23";
+            label23.Size = new Size(109, 26);
+            label23.TabIndex = 32;
+            label23.Text = "Складність";
+            label23.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label24.ForeColor = Color.FromArgb(147, 166, 181);
+            label24.Location = new Point(239, 227);
+            label24.Name = "label24";
+            label24.Size = new Size(157, 38);
+            label24.TabIndex = 31;
+            label24.Text = "Складність слів, які \r\nти зараз вивчатимеш";
+            label24.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // NumberOfWordsNumericUpDown
             // 
             NumberOfWordsNumericUpDown.BackColor = Color.FromArgb(24, 27, 32);
             NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(74, 84, 93);
             NumberOfWordsNumericUpDown.BorderRadius = 13;
-            NumberOfWordsNumericUpDown.CustomizableEdges = customizableEdges55;
+            NumberOfWordsNumericUpDown.CustomizableEdges = customizableEdges25;
             NumberOfWordsNumericUpDown.FillColor = Color.FromArgb(24, 27, 32);
             NumberOfWordsNumericUpDown.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
             NumberOfWordsNumericUpDown.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
             NumberOfWordsNumericUpDown.ForeColor = Color.White;
-            NumberOfWordsNumericUpDown.Location = new Point(43, 269);
+            NumberOfWordsNumericUpDown.Location = new Point(38, 278);
             NumberOfWordsNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             NumberOfWordsNumericUpDown.Name = "NumberOfWordsNumericUpDown";
-            NumberOfWordsNumericUpDown.ShadowDecoration.CustomizableEdges = customizableEdges56;
-            NumberOfWordsNumericUpDown.Size = new Size(362, 35);
+            NumberOfWordsNumericUpDown.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            NumberOfWordsNumericUpDown.Size = new Size(163, 35);
             NumberOfWordsNumericUpDown.TabIndex = 29;
             NumberOfWordsNumericUpDown.TextOffset = new Point(7, 1);
             NumberOfWordsNumericUpDown.UpDownButtonFillColor = Color.FromArgb(33, 38, 42);
             NumberOfWordsNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            NumberOfWordsNumericUpDown.MouseEnter += NumberOfWordsNumericUpDown_MouseEnter;
+            NumberOfWordsNumericUpDown.MouseLeave += NumberOfWordsNumericUpDown_MouseLeave;
+            NumberOfWordsNumericUpDown.MouseHover += NumberOfWordsNumericUpDown_MouseHover;
+            NumberOfWordsNumericUpDown.MouseMove += NumberOfWordsNumericUpDown_MouseMove;
             // 
             // label20
             // 
             label20.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label20.AutoSize = true;
             label20.BackColor = Color.FromArgb(24, 27, 32);
-            label20.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label20.Font = new Font("Calibri", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label20.ForeColor = Color.White;
-            label20.Location = new Point(39, 199);
+            label20.Location = new Point(34, 199);
             label20.Name = "label20";
-            label20.Size = new Size(153, 29);
+            label20.Size = new Size(92, 26);
             label20.TabIndex = 28;
-            label20.Text = "Кількість слів";
+            label20.Text = "Кількість";
             label20.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label21
@@ -2040,50 +2225,50 @@ namespace EWL
             label21.AutoSize = true;
             label21.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label21.ForeColor = Color.FromArgb(147, 166, 181);
-            label21.Location = new Point(40, 233);
+            label21.Location = new Point(35, 227);
             label21.Name = "label21";
-            label21.Size = new Size(297, 19);
+            label21.Size = new Size(151, 38);
             label21.TabIndex = 27;
-            label21.Text = "Вибери спосіб яким хочеш вивчати слова";
-            label21.TextAlign = ContentAlignment.MiddleCenter;
+            label21.Text = "Кількість слів, які ти \r\nзараз вивчатимеш";
+            label21.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // WSourceComboBox
             // 
-            WSourceComboBox.BackColor = Color.FromArgb(24, 27, 32);
-            WSourceComboBox.BorderColor = Color.FromArgb(74, 84, 93);
-            WSourceComboBox.BorderRadius = 13;
-            WSourceComboBox.CustomizableEdges = customizableEdges57;
-            WSourceComboBox.DrawMode = DrawMode.OwnerDrawFixed;
-            WSourceComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            WSourceComboBox.FillColor = Color.FromArgb(24, 27, 32);
-            WSourceComboBox.FocusedColor = Color.FromArgb(170, 101, 254);
-            WSourceComboBox.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
-            WSourceComboBox.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            WSourceComboBox.ForeColor = Color.White;
-            WSourceComboBox.HoverState.BorderColor = Color.FromArgb(170, 101, 254);
-            WSourceComboBox.ItemHeight = 29;
-            WSourceComboBox.Items.AddRange(new object[] { "слово - переклад", "рядок в спец. форматі", "текстовий файл зі словами" });
-            WSourceComboBox.ItemsAppearance.BackColor = Color.FromArgb(53, 60, 68);
-            WSourceComboBox.ItemsAppearance.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            WSourceComboBox.ItemsAppearance.SelectedBackColor = Color.FromArgb(64, 73, 83);
-            WSourceComboBox.ItemsAppearance.SelectedFont = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            WSourceComboBox.Location = new Point(43, 116);
-            WSourceComboBox.Name = "WSourceComboBox";
-            WSourceComboBox.ShadowDecoration.CustomizableEdges = customizableEdges58;
-            WSourceComboBox.Size = new Size(362, 35);
-            WSourceComboBox.TabIndex = 26;
-            WSourceComboBox.TextOffset = new Point(7, 1);
+            CategoriesComboBox.BackColor = Color.FromArgb(24, 27, 32);
+            CategoriesComboBox.BorderColor = Color.FromArgb(74, 84, 93);
+            CategoriesComboBox.BorderRadius = 13;
+            CategoriesComboBox.CustomizableEdges = customizableEdges27;
+            CategoriesComboBox.DrawMode = DrawMode.OwnerDrawFixed;
+            CategoriesComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            CategoriesComboBox.FillColor = Color.FromArgb(24, 27, 32);
+            CategoriesComboBox.FocusedColor = Color.FromArgb(170, 101, 254);
+            CategoriesComboBox.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
+            CategoriesComboBox.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            CategoriesComboBox.ForeColor = Color.White;
+            CategoriesComboBox.HoverState.BorderColor = Color.FromArgb(170, 101, 254);
+            CategoriesComboBox.ItemHeight = 29;
+            CategoriesComboBox.Items.AddRange(new object[] { "слово - переклад", "рядок в спец. форматі", "текстовий файл зі словами" });
+            CategoriesComboBox.ItemsAppearance.BackColor = Color.FromArgb(53, 60, 68);
+            CategoriesComboBox.ItemsAppearance.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            CategoriesComboBox.ItemsAppearance.SelectedBackColor = Color.FromArgb(64, 73, 83);
+            CategoriesComboBox.ItemsAppearance.SelectedFont = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            CategoriesComboBox.Location = new Point(38, 146);
+            CategoriesComboBox.Name = "WSourceComboBox";
+            CategoriesComboBox.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            CategoriesComboBox.Size = new Size(367, 35);
+            CategoriesComboBox.TabIndex = 26;
+            CategoriesComboBox.TextOffset = new Point(7, 1);
             // 
             // label18
             // 
             label18.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label18.AutoSize = true;
             label18.BackColor = Color.FromArgb(24, 27, 32);
-            label18.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label18.Font = new Font("Calibri", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label18.ForeColor = Color.White;
-            label18.Location = new Point(38, 31);
+            label18.Location = new Point(33, 68);
             label18.Name = "label18";
-            label18.Size = new Size(113, 29);
+            label18.Size = new Size(97, 26);
             label18.TabIndex = 25;
             label18.Text = "Категорія";
             label18.TextAlign = ContentAlignment.MiddleCenter;
@@ -2093,11 +2278,11 @@ namespace EWL
             label19.AutoSize = true;
             label19.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label19.ForeColor = Color.FromArgb(147, 166, 181);
-            label19.Location = new Point(39, 64);
+            label19.Location = new Point(34, 96);
             label19.Name = "label19";
-            label19.Size = new Size(225, 38);
+            label19.Size = new Size(182, 38);
             label19.TabIndex = 20;
-            label19.Text = "Вибери категорію, слова з якої \r\nхочеш вивчати";
+            label19.Text = "Вибери категорію, з якої \r\nхочеш вивчати слова";
             label19.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // guna2Panel1
@@ -2112,10 +2297,10 @@ namespace EWL
             guna2Panel1.Controls.Add(guna2vSeparator1);
             guna2Panel1.Controls.Add(label15);
             guna2Panel1.Controls.Add(FCMethodButton);
-            guna2Panel1.CustomizableEdges = customizableEdges65;
+            guna2Panel1.CustomizableEdges = customizableEdges35;
             guna2Panel1.Location = new Point(103, 95);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges66;
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges36;
             guna2Panel1.Size = new Size(365, 345);
             guna2Panel1.TabIndex = 25;
             // 
@@ -2134,11 +2319,11 @@ namespace EWL
             label17.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label17.AutoSize = true;
             label17.BackColor = Color.FromArgb(24, 27, 32);
-            label17.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label17.Font = new Font("Calibri", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             label17.ForeColor = Color.White;
-            label17.Location = new Point(32, 28);
+            label17.Location = new Point(32, 27);
             label17.Name = "label17";
-            label17.Size = new Size(185, 29);
+            label17.Size = new Size(207, 33);
             label17.TabIndex = 25;
             label17.Text = "Спосіб вивчення";
             label17.TextAlign = ContentAlignment.MiddleCenter;
@@ -2153,11 +2338,12 @@ namespace EWL
             TestMethodButton.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             TestMethodButton.CheckedState.BorderColor = Color.FromArgb(170, 101, 254);
             TestMethodButton.CheckedState.FillColor = Color.FromArgb(30, 1, 70);
-            TestMethodButton.CustomizableEdges = customizableEdges61;
-            TestMethodButton.DisabledState.BorderColor = Color.FromArgb(33, 38, 42);
-            TestMethodButton.DisabledState.CustomBorderColor = Color.FromArgb(33, 38, 42);
-            TestMethodButton.DisabledState.FillColor = Color.FromArgb(33, 38, 42);
+            TestMethodButton.CustomizableEdges = customizableEdges31;
+            TestMethodButton.DisabledState.BorderColor = Color.FromArgb(74, 84, 93);
+            TestMethodButton.DisabledState.CustomBorderColor = Color.FromArgb(24, 27, 32);
+            TestMethodButton.DisabledState.FillColor = Color.FromArgb(24, 27, 32);
             TestMethodButton.DisabledState.ForeColor = Color.DimGray;
+            TestMethodButton.DisabledState.Image = Eng_Flash_Cards_Learner.Resource1.icons8_тест_96__1_;
             TestMethodButton.FillColor = Color.FromArgb(24, 27, 32);
             TestMethodButton.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point);
             TestMethodButton.ForeColor = Color.White;
@@ -2167,16 +2353,18 @@ namespace EWL
             TestMethodButton.ImageAlign = HorizontalAlignment.Left;
             TestMethodButton.ImageOffset = new Point(20, 0);
             TestMethodButton.ImageSize = new Size(50, 50);
-            TestMethodButton.Location = new Point(37, 219);
+            TestMethodButton.Location = new Point(37, 218);
             TestMethodButton.Name = "TestMethodButton";
             TestMethodButton.ShadowDecoration.BorderRadius = 17;
             TestMethodButton.ShadowDecoration.Color = Color.FromArgb(24, 27, 32);
-            TestMethodButton.ShadowDecoration.CustomizableEdges = customizableEdges62;
+            TestMethodButton.ShadowDecoration.CustomizableEdges = customizableEdges32;
             TestMethodButton.ShadowDecoration.Enabled = true;
             TestMethodButton.Size = new Size(291, 94);
             TestMethodButton.TabIndex = 22;
             TestMethodButton.Text = "Тест";
             TestMethodButton.TextOffset = new Point(52, -1);
+            LearningMethodHtmllTip.SetToolTip(TestMethodButton, resources.GetString("TestMethodButton.ToolTip"));
+            TestMethodButton.CheckedChanged += LearingMethod_CheckedChanged;
             // 
             // guna2vSeparator2
             // 
@@ -2203,7 +2391,7 @@ namespace EWL
             label15.AutoSize = true;
             label15.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label15.ForeColor = Color.FromArgb(147, 166, 181);
-            label15.Location = new Point(33, 62);
+            label15.Location = new Point(33, 65);
             label15.Name = "label15";
             label15.Size = new Size(297, 19);
             label15.TabIndex = 20;
@@ -2220,11 +2408,12 @@ namespace EWL
             FCMethodButton.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             FCMethodButton.CheckedState.BorderColor = Color.FromArgb(170, 101, 254);
             FCMethodButton.CheckedState.FillColor = Color.FromArgb(30, 1, 70);
-            FCMethodButton.CustomizableEdges = customizableEdges63;
-            FCMethodButton.DisabledState.BorderColor = Color.FromArgb(33, 38, 42);
-            FCMethodButton.DisabledState.CustomBorderColor = Color.FromArgb(33, 38, 42);
-            FCMethodButton.DisabledState.FillColor = Color.FromArgb(33, 38, 42);
+            FCMethodButton.CustomizableEdges = customizableEdges33;
+            FCMethodButton.DisabledState.BorderColor = Color.FromArgb(74, 84, 93);
+            FCMethodButton.DisabledState.CustomBorderColor = Color.FromArgb(24, 27, 32);
+            FCMethodButton.DisabledState.FillColor = Color.FromArgb(24, 27, 32);
             FCMethodButton.DisabledState.ForeColor = Color.DimGray;
+            FCMethodButton.DisabledState.Image = Eng_Flash_Cards_Learner.Resource1.icons8_флэш_карточки_96_1_;
             FCMethodButton.FillColor = Color.FromArgb(24, 27, 32);
             FCMethodButton.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point);
             FCMethodButton.ForeColor = Color.White;
@@ -2238,13 +2427,14 @@ namespace EWL
             FCMethodButton.Name = "FCMethodButton";
             FCMethodButton.ShadowDecoration.BorderRadius = 17;
             FCMethodButton.ShadowDecoration.Color = Color.FromArgb(24, 27, 32);
-            FCMethodButton.ShadowDecoration.CustomizableEdges = customizableEdges64;
+            FCMethodButton.ShadowDecoration.CustomizableEdges = customizableEdges34;
             FCMethodButton.ShadowDecoration.Enabled = true;
             FCMethodButton.Size = new Size(291, 94);
             FCMethodButton.TabIndex = 10;
             FCMethodButton.Text = "Флеш-картки";
             FCMethodButton.TextOffset = new Point(55, -1);
             LearningMethodHtmllTip.SetToolTip(FCMethodButton, resources.GetString("FCMethodButton.ToolTip"));
+            FCMethodButton.CheckedChanged += LearingMethod_CheckedChanged;
             // 
             // label16
             // 
@@ -2266,21 +2456,23 @@ namespace EWL
             StartLearningButton.BorderColor = Color.FromArgb(138, 44, 254);
             StartLearningButton.BorderRadius = 15;
             StartLearningButton.BorderThickness = 1;
-            StartLearningButton.CustomizableEdges = customizableEdges67;
+            StartLearningButton.CustomizableEdges = customizableEdges37;
             StartLearningButton.DisabledState.BorderColor = Color.FromArgb(73, 1, 116);
             StartLearningButton.DisabledState.CustomBorderColor = Color.FromArgb(73, 1, 116);
             StartLearningButton.DisabledState.FillColor = Color.FromArgb(73, 1, 116);
             StartLearningButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            StartLearningButton.Enabled = false;
             StartLearningButton.FillColor = Color.FromArgb(138, 44, 254);
             StartLearningButton.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Point);
             StartLearningButton.ForeColor = Color.White;
             StartLearningButton.Location = new Point(322, 481);
             StartLearningButton.Name = "StartLearningButton";
-            StartLearningButton.ShadowDecoration.CustomizableEdges = customizableEdges68;
+            StartLearningButton.ShadowDecoration.CustomizableEdges = customizableEdges38;
             StartLearningButton.Size = new Size(400, 82);
             StartLearningButton.TabIndex = 9;
             StartLearningButton.Text = "Почати!";
             StartLearningButton.TextOffset = new Point(0, -1);
+            StartLearningButton.Click += StartLearningButton_Click;
             // 
             // LearningMethodToolTip
             // 
@@ -2297,14 +2489,15 @@ namespace EWL
             // LearningMethodHtmllTip
             // 
             LearningMethodHtmllTip.AllowLinksHandling = true;
+            LearningMethodHtmllTip.AutomaticDelay = 200;
             LearningMethodHtmllTip.AutoPopDelay = 20000;
             LearningMethodHtmllTip.BackColor = Color.FromArgb(33, 38, 42);
             LearningMethodHtmllTip.BorderColor = Color.FromArgb(74, 84, 93);
             LearningMethodHtmllTip.Font = new Font("Calibri", 10F, FontStyle.Regular, GraphicsUnit.Point);
             LearningMethodHtmllTip.ForeColor = Color.Gainsboro;
-            LearningMethodHtmllTip.InitialDelay = 500;
+            LearningMethodHtmllTip.InitialDelay = 200;
             LearningMethodHtmllTip.MaximumSize = new Size(0, 0);
-            LearningMethodHtmllTip.ReshowDelay = 100;
+            LearningMethodHtmllTip.ReshowDelay = 40;
             LearningMethodHtmllTip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             LearningMethodHtmllTip.TitleFont = new Font("Calibri", 14F, FontStyle.Bold, GraphicsUnit.Point);
             LearningMethodHtmllTip.TitleForeColor = Color.FromArgb(180, 111, 254);
@@ -2314,36 +2507,48 @@ namespace EWL
             // SpecialFormatLineHtmlTip
             // 
             SpecialFormatLineHtmlTip.AllowLinksHandling = true;
+            SpecialFormatLineHtmlTip.AutomaticDelay = 200;
             SpecialFormatLineHtmlTip.AutoPopDelay = 20000;
             SpecialFormatLineHtmlTip.BackColor = Color.FromArgb(33, 38, 42);
             SpecialFormatLineHtmlTip.BorderColor = Color.FromArgb(74, 84, 93);
             SpecialFormatLineHtmlTip.Font = new Font("Calibri", 10F, FontStyle.Regular, GraphicsUnit.Point);
             SpecialFormatLineHtmlTip.ForeColor = Color.Gainsboro;
-            SpecialFormatLineHtmlTip.InitialDelay = 500;
+            SpecialFormatLineHtmlTip.InitialDelay = 200;
             SpecialFormatLineHtmlTip.MaximumSize = new Size(0, 0);
-            SpecialFormatLineHtmlTip.ReshowDelay = 100;
+            SpecialFormatLineHtmlTip.ReshowDelay = 40;
             SpecialFormatLineHtmlTip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             SpecialFormatLineHtmlTip.TitleFont = new Font("Calibri", 14F, FontStyle.Bold, GraphicsUnit.Point);
             SpecialFormatLineHtmlTip.TitleForeColor = Color.FromArgb(180, 111, 254);
             SpecialFormatLineHtmlTip.ToolTipIcon = ToolTipIcon.Info;
             SpecialFormatLineHtmlTip.ToolTipTitle = "Спеціальний формат";
             // 
-            // guna2Button1
+            // GPTHtmlTip
             // 
-            guna2Button1.CustomizableEdges = customizableEdges37;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(28, 372);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges38;
-            guna2Button1.Size = new Size(180, 45);
-            guna2Button1.TabIndex = 7;
-            guna2Button1.Text = "GENERATE";
-            guna2Button1.Click += guna2Button1_Click;
+            GPTHtmlTip.AllowLinksHandling = true;
+            GPTHtmlTip.AutomaticDelay = 200;
+            GPTHtmlTip.AutoPopDelay = 20000;
+            GPTHtmlTip.BackColor = Color.FromArgb(33, 38, 42);
+            GPTHtmlTip.BorderColor = Color.FromArgb(74, 84, 93);
+            GPTHtmlTip.Font = new Font("Calibri", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            GPTHtmlTip.ForeColor = Color.Gainsboro;
+            GPTHtmlTip.InitialDelay = 200;
+            GPTHtmlTip.MaximumSize = new Size(0, 0);
+            GPTHtmlTip.ReshowDelay = 40;
+            GPTHtmlTip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            GPTHtmlTip.TitleFont = new Font("Calibri", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            GPTHtmlTip.TitleForeColor = Color.FromArgb(180, 111, 254);
+            GPTHtmlTip.ToolTipIcon = ToolTipIcon.Info;
+            GPTHtmlTip.ToolTipTitle = "GPT-3.5";
+            // 
+            // FCLearingPanel
+            // 
+            FCLearingPanel.Controls.Add(LearningEngPanel);
+            FCLearingPanel.CustomizableEdges = customizableEdges43;
+            FCLearingPanel.Location = new Point(59, 35);
+            FCLearingPanel.Name = "FCLearingPanel";
+            FCLearingPanel.ShadowDecoration.CustomizableEdges = customizableEdges44;
+            FCLearingPanel.Size = new Size(1040, 614);
+            FCLearingPanel.TabIndex = 13;
             // 
             // MainForm
             // 
@@ -2352,17 +2557,17 @@ namespace EWL
             BackColor = Color.FromArgb(24, 27, 32);
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1100, 650);
-            Controls.Add(MenuPanel);
             Controls.Add(LearningPanel);
             Controls.Add(SidebarPanel);
             Controls.Add(TopPanel);
-            Controls.Add(LearningEngPanel);
             Controls.Add(panel1);
             Controls.Add(StatPanel);
             Controls.Add(LearningUaPanel);
             Controls.Add(WelcomePanel);
             Controls.Add(LearningStatPanel);
             Controls.Add(AddingWPanel);
+            Controls.Add(MenuPanel);
+            Controls.Add(FCLearingPanel);
             ForeColor = SystemColors.ControlLightLight;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -2370,7 +2575,6 @@ namespace EWL
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "English Words Learner (flash-cards)";
-            Paint += This_Paint;
             TopPanel.ResumeLayout(false);
             TopPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).EndInit();
@@ -2402,9 +2606,14 @@ namespace EWL
             LearningPanel.PerformLayout();
             guna2Panel2.ResumeLayout(false);
             guna2Panel2.PerformLayout();
+            CheckGPTPanel.ResumeLayout(false);
+            CheckGPTPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DifficultyNumericUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumberOfWordsNumericUpDown).EndInit();
             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();
+            FCLearingPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -2524,12 +2733,22 @@ namespace EWL
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Label label18;
         private Label label19;
-        private Guna.UI2.WinForms.Guna2ComboBox WSourceComboBox;
+        private Guna.UI2.WinForms.Guna2ComboBox CategoriesComboBox;
         private Label label20;
         private Label label21;
         private Guna.UI2.WinForms.Guna2NumericUpDown NumberOfWordsNumericUpDown;
-        private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private Label label22;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2ToggleSwitch GPTToggleSwitch;
+        private Guna.UI2.WinForms.Guna2NumericUpDown DifficultyNumericUpDown;
+        private Label label23;
+        private Label label24;
+        private Label label25;
+        private Guna.UI2.WinForms.Guna2VSeparator guna2vSeparator4;
+        private Label label26;
+        private PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2Panel CheckGPTPanel;
+        private Guna.UI2.WinForms.Guna2HtmlToolTip GPTHtmlTip;
+        private Guna.UI2.WinForms.Guna2Panel FCLearingPanel;
     }
 }
