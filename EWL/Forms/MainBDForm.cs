@@ -72,7 +72,7 @@ namespace EWL
         void SetCategoriesList()
         {
             categories = SQLs.Get_Categories();
-            //TODO CATEGORY
+            CategoriesComboBox.DataSource = categories.Select(c => c.Name).ToList();
         }
 
         #endregion
@@ -119,8 +119,9 @@ namespace EWL
 
             GPTToggleSwitch.Checked = true;
 
-            //CategoriesComboBox.SelectedIndex = SQLs.Get_WordAddingMode();      //TODO CATEGORY
+            CategoriesComboBox.SelectedIndex = SQLs.Get_CurrentCategory() - 1;
             NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
+            DifficultyComboBox.SelectedIndex = SQLs.Get_CurrentDifficulty();
             NumberOfWordsNumericUpDown.UpDownButtonForeColor = Color.White;
 
             ShowPanel(LearningPanel);
@@ -128,41 +129,49 @@ namespace EWL
 
         #region ( LearningPanel )
 
-        int Difficulty { get; set; }
-
-
         private void StartLearningButton_Click(object sender, EventArgs e)
         {
             SQLs.Set_NumberOfWordsToLearn((int)NumberOfWordsNumericUpDown.Value);
-            //SQLs.Set_CurrentCategory(CategoriesComboBox.SelectedIndex);         //TODO CATEGORY
-            //SQLs.Set_CurrentDifficulty(DifficultyNumericUpDown);                //TODO DIFFICULTY
+            SQLs.Set_CurrentCategory(CategoriesComboBox.SelectedIndex + 1);
+            SQLs.Set_CurrentDifficulty(DifficultyComboBox.SelectedIndex);
 
-            //words = SQLs
-            //    .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), SQLs.Get_NumberOfWordsToLearn())
-            //    .Select(w => w.Item1)
-            //    .ToList();                                                      //TODO DIFFICULTY
+            words = SQLs
+                .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), SQLs.Get_NumberOfWordsToLearn(), SQLs.Get_CurrentDifficulty())
+                .Select(w => w.Item1)
+                .ToList();
 
+
+            var purpose = GptPurpose.FlashCards; //TEMP
+            if (FCMethodButton.Checked)
+                purpose = GptPurpose.FlashCards;
+            else if (TestMethodButton.Checked)
+                purpose = GptPurpose.Test;
+
+            if (GPTToggleSwitch.Checked)
+                AskGPT(purpose);
+            else
+                PrepareLearnigPanels();
+        }
+
+        private void PrepareLearnigPanels()
+        {
             if (FCMethodButton.Checked)
             {
-                if (GPTToggleSwitch.Checked)
-                {
+                //TODO - implement FCLearningPanel
+                PrepareFCLPanel();                         //НАЛАШТУВАННЯ панелі
 
-                }
-                else
-                {
-
-                }
-                //TODO - implement FCLearningPanel set-up
-                //SeeEngWord();
-
-                ShowPanel(FCLearingPanel);
-            }    
+                ShowPanel(FCLearingPanel1);
+            }
             else if (TestMethodButton.Checked)
             {
-                //TODO - implement TestLearningPanel set-up
+                //TODO - implement TestLearningPanel
+
+                //PrepareTLPanel();                         //НАЛАШТУВАННЯ панелі
                 //ShowPanel(TestLearingPanel);
             }
         }
+
+        #region LearningPanel events
 
         private void LearingMethod_CheckedChanged(object sender, EventArgs e)
             => StartLearningButton.Enabled = true;
@@ -197,37 +206,25 @@ namespace EWL
 
         #endregion
 
-        #region DifficultyNumericUpDown
-
-        private void DifficultyNumericUpDown_MouseHover(object sender, EventArgs e)
-            => DifficultyNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
-
-        private void DifficultyNumericUpDown_MouseMove(object sender, MouseEventArgs e)
-            => DifficultyNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
-
-        private void DifficultyNumericUpDown_MouseEnter(object sender, EventArgs e)
-            => DifficultyNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
-
-        private void DifficultyNumericUpDown_MouseLeave(object sender, EventArgs e)
-            => DifficultyNumericUpDown.BorderColor = Color.FromArgb(74, 84, 93);
-
         #endregion
 
         #endregion
 
         #region ( FCLearningPanel )
 
+        List<(Word, string)> WordSentencePair { get; set; } //TODO - USE
+
         /// <summary>
         /// Підготовлює й показує <see cref="LearningEngPanel"/>
         /// </summary>
-        private void SeeEngWord()
+        private void PrepareFCLPanel()
         {
             words = words.OrderBy(w => w.Rating).ToList();
 
             EngWLabel1.Text = words[wordIndex].EngWord;
             EngWLabel2.Text = words[wordIndex].EngWord;
 
-            ShowPanel(LearningEngPanel);
+            ShowPanel(FCLearingPanel1);
             SeeTransButton.Focus();
         }
 
@@ -262,7 +259,7 @@ namespace EWL
             wordRatings[rating]++;
 
             if (++wordIndex != words.Count)
-                SeeEngWord();
+                PrepareFCLPanel();
             else
             {
                 wordIndex = 0;
@@ -305,9 +302,48 @@ namespace EWL
         }
 
         private void RetryButton_Click(object sender, EventArgs e)
-            => SeeEngWord();
+            => PrepareFCLPanel();
 
         #endregion
+
+        #endregion
+
+        #region { GPT Response }
+
+        string GPTResponse { get; set; }
+
+        private void AskGPT(GptPurpose purpose)
+        {
+            var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
+            var handler = ShowProgressPanel(CurrentPanel, windowOptions);
+
+            var words = this.words.Select(w => w.EngWord).ToArray();
+
+            GptAPI.GPTResponseHandler += GPTResponse_GPTResponseHandler;
+            GptAPI.GPTErrorHandler += GPTError_GPTErrorHandler;
+
+            Task.Run(() => GptAPI.GetResponse(words, purpose, handler));
+        }
+
+        void GPTResponse_GPTResponseHandler(string response, IOverlaySplashScreenHandle handler)
+        {
+            GPTResponse = response;
+            //TODO - викликати метод який:
+            // - передасть GPTResponse в метод-обробник,
+            // - з'єднає роділені речення зі словами в списку
+            // - перемішає ці пари
+            // - виведе речення на екран панелі
+
+            PrepareLearnigPanels();
+
+            handler.Close();
+        }
+
+        void GPTError_GPTErrorHandler(string response, IOverlaySplashScreenHandle handler)
+        {
+            label22.Text = response;
+            handler.Close();
+        }
 
         #endregion
 
@@ -957,7 +993,8 @@ namespace EWL
 
             label22.Text = "";
             GptAPI.GPTResponseHandler += Label22_GPTResponseHandler;
-            Task.Run(() => GptAPI.GetResponse(new string[] { "table", "pillow" }, GptPurpose.Test, handler));
+            GptAPI.GPTErrorHandler += Label22_GPTErrorHandler;
+            Task.Run(() => GptAPI.GetResponse(new string[] { "table", "pillow" }, GptPurpose.FlashCards, handler));
         }
 
         void Label22_GPTResponseHandler(string response, IOverlaySplashScreenHandle handler)
@@ -965,6 +1002,13 @@ namespace EWL
             label22.Text = response;
             handler.Close();
         }
+
+        void Label22_GPTErrorHandler(string response, IOverlaySplashScreenHandle handler)
+        {
+            label22.Text = response;
+            handler.Close();
+        }
+
 
 
 

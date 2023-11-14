@@ -9,6 +9,8 @@ public partial class Setting
 
     public int WordCountToLearn { get; set; }
 
+    public int CurrentDifficulty { get; set; }
+
     public bool WasLaunched { get; set; }
 
     public int WordAddingMode { get; set; }
