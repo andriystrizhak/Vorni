@@ -24,7 +24,7 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
 
         static Label CurrentLabel { get; set; }
 
-        const string MyApiKey = "API KEY"; //PROTECT
+        const string MyApiKey = "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"; //PROTECT
 
         const string PromptForTests = "Create forur options: first of them is a special word or phrase " +
             "and other three options may be slightly similar in meaning to the special word or phrase, " +

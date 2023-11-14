@@ -117,17 +117,19 @@ namespace EWL
             TestMethodButton.Checked = false;
             StartLearningButton.Enabled = false;
 
+            GPTToggleSwitch.Checked = true;
+
             //CategoriesComboBox.SelectedIndex = SQLs.Get_WordAddingMode();      //TODO CATEGORY
             NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
             NumberOfWordsNumericUpDown.UpDownButtonForeColor = Color.White;
 
             ShowPanel(LearningPanel);
-
-            //SeeEngWord();
         }
 
-
         #region ( LearningPanel )
+
+        int Difficulty { get; set; }
+
 
         private void StartLearningButton_Click(object sender, EventArgs e)
         {
@@ -142,7 +144,17 @@ namespace EWL
 
             if (FCMethodButton.Checked)
             {
+                if (GPTToggleSwitch.Checked)
+                {
+
+                }
+                else
+                {
+
+                }
                 //TODO - implement FCLearningPanel set-up
+                //SeeEngWord();
+
                 ShowPanel(FCLearingPanel);
             }    
             else if (TestMethodButton.Checked)
@@ -219,8 +231,6 @@ namespace EWL
             SeeTransButton.Focus();
         }
 
-        #endregion
-
         #region ( Властивості контролів LearningWPanel )
 
         private void SeeTransButton_Click(object sender, EventArgs e)
@@ -296,6 +306,8 @@ namespace EWL
 
         private void RetryButton_Click(object sender, EventArgs e)
             => SeeEngWord();
+
+        #endregion
 
         #endregion
 
