@@ -283,6 +283,7 @@
             WSourceComboBox.Size = new Size(307, 35);
             WSourceComboBox.TabIndex = 5;
             WSourceComboBox.TextOffset = new Point(7, 1);
+            WSourceComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             WSourceComboBox.SelectedValueChanged += WSourceComboBox_SelectedIndexChanged;
             // 
             // NumberOfWordsNumericUpDown
@@ -329,7 +330,7 @@
             DefaultSettingsButton.ForeColor = Color.White;
             DefaultSettingsButton.HoverState.BorderColor = Color.FromArgb(170, 101, 254);
             DefaultSettingsButton.HoverState.FillColor = Color.FromArgb(33, 38, 42);
-            DefaultSettingsButton.Location = new Point(30, 395);
+            DefaultSettingsButton.Location = new Point(30, 390);
             DefaultSettingsButton.Name = "DefaultSettingsButton";
             DefaultSettingsButton.ShadowDecoration.CustomizableEdges = customizableEdges12;
             DefaultSettingsButton.Size = new Size(110, 40);
@@ -355,7 +356,7 @@
             SaveSettingsButton.FillColor = Color.FromArgb(138, 44, 254);
             SaveSettingsButton.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
             SaveSettingsButton.ForeColor = Color.White;
-            SaveSettingsButton.Location = new Point(227, 395);
+            SaveSettingsButton.Location = new Point(227, 390);
             SaveSettingsButton.Name = "SaveSettingsButton";
             SaveSettingsButton.ShadowDecoration.CustomizableEdges = customizableEdges14;
             SaveSettingsButton.Size = new Size(110, 40);

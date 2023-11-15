@@ -174,13 +174,18 @@ namespace EWL
         #region LearningPanel events
 
         private void LearingMethod_CheckedChanged(object sender, EventArgs e)
-            => StartLearningButton.Enabled = true;
+        {
+            if (FCMethodButton.Checked || TestMethodButton.Checked)
+                StartLearningButton.Enabled = true;
+            else StartLearningButton.Enabled = false;
+        }
 
         private void GPTToggleSwitch_CheckedChanged(object sender, EventArgs e)
         {
             if (GPTToggleSwitch.Checked == false)
             {
                 TestMethodButton.Enabled = false;
+                TestMethodButton.Checked = false;
                 CheckGPTPanel.BorderColor = Color.FromArgb(74, 84, 93);
             }
             else
@@ -938,12 +943,16 @@ namespace EWL
         private void ShowPanel(Panel panelToShow)
         {
             foreach (Control panel in this.Controls)
-                if (panel is Panel && panel != TopPanel
+                if (panel is Panel
+                    && panel != BackgroundPanel
+                    && panel != TopPanel
                     && panel != SidebarPanel)
                 {
                     panel.Enabled = false;
                     panel.Visible = false;
                 }
+
+            BackgroundPanel.SendToBack();
 
             CurrentPanel = panelToShow;
             panelToShow.Enabled = true;
@@ -1008,6 +1017,13 @@ namespace EWL
             label22.Text = response;
             handler.Close();
         }
+
+        private void MainForm_Activated(object sender, EventArgs e)
+            => BackgroundPanel.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void MainForm_Deactivate(object sender, EventArgs e)
+            => BackgroundPanel.BorderColor = Color.FromArgb(74, 84, 93);
+
 
 
 

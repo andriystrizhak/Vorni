@@ -120,27 +120,29 @@
   <metadata name="fullScreenImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>5, 119</value>
   </metadata>
-  <metadata name="SpecialFormatLineTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>8, 148</value>
+  <metadata name="SpecialFormatLineHtmlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>366, 125</value>
   </metadata>
   <data name="SpecialFormatInfoBox1.ToolTip" xml:space="preserve">
-    <value>Приклад спеціального формату рядка:
-                    1 - 2 / 2 / ... [3]
-   де:
-1 - англійське слово/фраза;
-2 - його переклад(-и) через "/";
-3 - складність, від "1"(дуже легко) до "5"(дуже складно).</value>
+    <value>Приклад спеціального формату рядка: &lt;br&gt;
+                    1 - 2 / 2 / ... [3] &lt;br&gt;
+   де: &lt;br&gt;
+1 - англійське слово/фраза; &lt;br&gt;
+2 - його переклад(-и) через "/"; &lt;br&gt;
+3 - складність, від "1"(дуже легко) до "5"(дуже складно).
+</value>
   </data>
   <data name="SpecialFormatInfoBox2.ToolTip" xml:space="preserve">
-    <value>Приклад спеціального формату рядка:
-                    1 - 2 / 2 / ... [3]
-   де:
-1 - англійське слово/фраза;
-2 - його переклад(-и) через "/";
-3 - складність, від "1"(дуже легко) до "5"(дуже складно).
+    <value>Приклад спеціального формату рядка: &lt;br&gt;
+                    1 - 2 / 2 / ... [3] &lt;br&gt;
+   де: &lt;br&gt;
+1 - англійське слово/фраза; &lt;br&gt;
+2 - його переклад(-и) через "/"; &lt;br&gt;
+3 - складність, від "1"(дуже легко) до "5"(дуже складно). &lt;br&gt; &lt;br&gt;
 
-Додаваний .txt-файл має містити рядки такого формату. 
-Можна додавати кілька файлів водночас.</value>
+Додаваний .txt-файл має містити рядки такого формату.  &lt;br&gt;
+Можна додавати кілька файлів водночас.
+</value>
   </data>
   <metadata name="WordID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -153,6 +155,9 @@
   </metadata>
   <metadata name="Rating.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="SpecialFormatLineTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>8, 148</value>
   </metadata>
   <metadata name="WrongFileFormatPopup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>19, 75</value>
@@ -196,19 +201,15 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>177</value>
   </metadata>
-  <metadata name="LearningMethodHtmllTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>366, 151</value>
+  <metadata name="GPTHtmlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>541, 149</value>
   </metadata>
   <data name="pictureBox1.ToolTip" xml:space="preserve">
     <value>Нейронна мережа від OpenAI, яка генеруватиме цікаві &lt;br&gt;
 речення для режиму флеш-карток та унікальні завдання &lt;br&gt;
 для режиму тестів, покращуючи ефективність навчання. &lt;br&gt;&lt;br&gt;
-(Потребує інтернет-з'єднання)
-</value>
+(Потребує інтернет-з'єднання)</value>
   </data>
-  <metadata name="GPTHtmlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>541, 149</value>
-  </metadata>
   <data name="label26.ToolTip" xml:space="preserve">
     <value>Нейронна мережа від OpenAI, яка генеруватиме цікаві &lt;br&gt;
 речення для режиму флеш-карток та унікальні завдання &lt;br&gt;
@@ -222,6 +223,9 @@
 для режиму тестів, покращуючи ефективність навчання. &lt;br&gt;&lt;br&gt;
 (Потребує інтернет-з'єднання)</value>
   </data>
+  <metadata name="LearningMethodHtmllTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>366, 151</value>
+  </metadata>
   <data name="TestMethodButton.ToolTip" xml:space="preserve">
     <value>Буде показаний переклад слова, а тобі потрібно знайти &lt;br&gt;
 його англійський переклад серед варіантів нижче. &lt;br&gt;
@@ -366,8 +370,5 @@
   </metadata>
   <metadata name="LearningMethodToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>163, 150</value>
-  </metadata>
-  <metadata name="SpecialFormatLineHtmlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>366, 125</value>
   </metadata>
 </root>
