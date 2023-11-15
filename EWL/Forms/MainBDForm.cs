@@ -8,6 +8,7 @@ using Eng_Flash_Cards_Learner.Forms.ChildForms;
 using Eng_Flash_Cards_Learner.NOT_Forms;
 using Eng_Flash_Cards_Learner.NOT_Forms.GPT;
 using static EWL.NOT_Forms.Txt_FileHandler;
+using Eng_Flash_Cards_Learner.NOT_Forms.LearningItems;
 
 namespace EWL
 {
@@ -77,6 +78,8 @@ namespace EWL
 
         #endregion
 
+        #region [[ Other Panels ]]
+
         #region [ TopPanel ]
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -104,6 +107,24 @@ namespace EWL
                 this.Top += e.Y - lastPoint.Y;
             }
         }
+
+        #endregion
+
+        #region [ SidebarPanel ]
+
+        //TODO - SIDEBAR
+
+        #endregion
+
+        #region [ BackgroundPanel ]
+
+        private void MainForm_Activated(object sender, EventArgs e)
+            => BackgroundPanel.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void MainForm_Deactivate(object sender, EventArgs e)
+            => BackgroundPanel.BorderColor = Color.FromArgb(74, 84, 93);
+
+        #endregion
 
         #endregion
 
@@ -157,10 +178,17 @@ namespace EWL
         {
             if (FCMethodButton.Checked)
             {
-                //TODO - implement FCLearningPanel
+                //TODO - викликати метод який:
+                // - передасть GPTResponse в метод-обробник,
+                // - з'єднає роділені речення зі словами в списку
+                // - перемішає ці пари
+                // - виведе речення на екран панелі
+
+                var sentenses = GPTResponseHandler.Handle_FCGPTResponse(GPTResponse);
+                FCItems = FCItem.CreateFCItems(words, sentenses);
                 PrepareFCLPanel();                         //НАЛАШТУВАННЯ панелі
 
-                ShowPanel(FCLearingPanel1);
+                //ShowPanel(FCLearingPanel1);
             }
             else if (TestMethodButton.Checked)
             {
@@ -217,20 +245,21 @@ namespace EWL
 
         #region ( FCLearningPanel )
 
-        List<(Word, string)> WordSentencePair { get; set; } //TODO - USE
+        List<FCItem> FCItems { get; set; }
+        //List<(Word, string)> WordSentencePair { get; set; } //TODO - USE
 
         /// <summary>
-        /// Підготовлює й показує <see cref="LearningEngPanel"/>
+        /// Підготовлює й показує <see cref="FCLearingPanel1"/>
         /// </summary>
         private void PrepareFCLPanel()
         {
-            words = words.OrderBy(w => w.Rating).ToList();
+            //words = words.OrderBy(w => w.Rating).ToList();
 
-            EngWLabel1.Text = words[wordIndex].EngWord;
-            EngWLabel2.Text = words[wordIndex].EngWord;
+            FCSentenceLabel.Text = FCItems[wordIndex].Sentence;
+            FCUaTransLabel.Text = FCItems[wordIndex].UaT;
 
             ShowPanel(FCLearingPanel1);
-            SeeTransButton.Focus();
+            FCEngWTextBox.Focus();
         }
 
         #region ( Властивості контролів LearningWPanel )
@@ -315,7 +344,7 @@ namespace EWL
 
         #region { GPT Response }
 
-        string GPTResponse { get; set; }
+        string GPTResponse { get; set; } = null;
 
         private void AskGPT(GptPurpose purpose)
         {
@@ -333,14 +362,9 @@ namespace EWL
         void GPTResponse_GPTResponseHandler(string response, IOverlaySplashScreenHandle handler)
         {
             GPTResponse = response;
-            //TODO - викликати метод який:
-            // - передасть GPTResponse в метод-обробник,
-            // - з'єднає роділені речення зі словами в списку
-            // - перемішає ці пари
-            // - виведе речення на екран панелі
 
-            PrepareLearnigPanels();
-
+            FCLearingPanel1.Invoke(PrepareLearnigPanels);
+            //PrepareLearnigPanels();
             handler.Close();
         }
 
@@ -942,21 +966,20 @@ namespace EWL
         /// <param name="panelToShow">Панель, яка повинна бути показана</param>
         private void ShowPanel(Panel panelToShow)
         {
-            foreach (Control panel in this.Controls)
+            CurrentPanel = panelToShow;
+            panelToShow.Enabled = true;
+            panelToShow.Visible = true;
+
+            foreach (Control panel in BackgroundPanel.Controls)
                 if (panel is Panel
-                    && panel != BackgroundPanel
-                    && panel != TopPanel
-                    && panel != SidebarPanel)
+                    && panel != panelToShow)
+                //&& panel != BackgroundPanel
+                //&& panel != TopPanel
+                //&& panel != SidebarPanel)
                 {
                     panel.Enabled = false;
                     panel.Visible = false;
                 }
-
-            BackgroundPanel.SendToBack();
-
-            CurrentPanel = panelToShow;
-            panelToShow.Enabled = true;
-            panelToShow.Visible = true;
         }
 
         /// <summary>
@@ -1018,11 +1041,6 @@ namespace EWL
             handler.Close();
         }
 
-        private void MainForm_Activated(object sender, EventArgs e)
-            => BackgroundPanel.BorderColor = Color.FromArgb(170, 101, 254);
-
-        private void MainForm_Deactivate(object sender, EventArgs e)
-            => BackgroundPanel.BorderColor = Color.FromArgb(74, 84, 93);
 
 
 
