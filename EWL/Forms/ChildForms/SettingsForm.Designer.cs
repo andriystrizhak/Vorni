@@ -427,8 +427,11 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             SizeGripStyle = SizeGripStyle.Hide;
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.Manual;
             Text = "SettingsForm";
+            Activated += SettingForm_Activated;
+            Deactivate += SettingForm_Deactivate;
+            Load += SettingForm_Load;
             Shown += SettingForm_Shown;
             SettingPanel.ResumeLayout(false);
             SettingPanel.PerformLayout();

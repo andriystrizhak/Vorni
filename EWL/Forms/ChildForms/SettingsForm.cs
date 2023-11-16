@@ -24,7 +24,6 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
             this.handler = handler;
 
             KeyDown += Escape_KeyDown!;
-
             InitializeComponent();
 
             NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
@@ -47,27 +46,20 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
             SaveSettingsButton.Enabled = false;
         }
 
-        //TODO - Додати перемикач категорії для вивчення
-        int DefaultNumberOfWordsToLearn = 10;
-        int DefaultAddingWModeIndex = 0;
+        private void SettingForm_Load(object sender, EventArgs e)
+            => this.Location = owner.Location + (owner.Size / 2) - (this.Size / 2);
 
-        private void WordCountNumericUpDown_ValueChanged(object sender, EventArgs e)
-            => SetDefaultAndSaveSButtonAvailability();
-        private void WSourceComboBox_SelectedIndexChanged(object sender, EventArgs e)
-            => SetDefaultAndSaveSButtonAvailability();
+        #region [ SettingPanel ]
 
-        void SetDefaultAndSaveSButtonAvailability()
-        {
-            SetDefaultSButtonAvailability();
-            SaveSettingsButton.Enabled = true;
-        }
+        private void SettingForm_Activated(object sender, EventArgs e)
+            => SettingPanel.BorderColor = Color.FromArgb(170, 101, 254);
 
-        void SetDefaultSButtonAvailability()
-            => DefaultSettingsButton.Enabled = !(NumberOfWordsNumericUpDown.Value == DefaultNumberOfWordsToLearn
-                && WSourceComboBox.SelectedIndex == DefaultAddingWModeIndex);
+        private void SettingForm_Deactivate(object sender, EventArgs e)
+            => SettingPanel.BorderColor = Color.FromArgb(74, 84, 93);
 
+        #endregion
 
-        #region Buttons click events
+        #region Buttons
 
         private void CloseSettingsButton_Click(object sender, EventArgs e)
         {
@@ -95,8 +87,6 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
             NumberOfWordsNumericUpDown.Value = DefaultNumberOfWordsToLearn;
             WSourceComboBox.SelectedIndex = DefaultAddingWModeIndex;
         }
-
-        #endregion
 
         #region Buttons focus events
 
@@ -132,6 +122,29 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
 
         #endregion
 
+        #endregion
+
+        #region NumberOfWordsNumericUpDown
+
+        //TODO - Додати перемикач категорії для вивчення
+        int DefaultNumberOfWordsToLearn = 10;
+        int DefaultAddingWModeIndex = 0;
+
+        private void WordCountNumericUpDown_ValueChanged(object sender, EventArgs e)
+            => SetDefaultAndSaveSButtonAvailability();
+        private void WSourceComboBox_SelectedIndexChanged(object sender, EventArgs e)
+            => SetDefaultAndSaveSButtonAvailability();
+
+        void SetDefaultAndSaveSButtonAvailability()
+        {
+            SetDefaultSButtonAvailability();
+            SaveSettingsButton.Enabled = true;
+        }
+
+        void SetDefaultSButtonAvailability()
+            => DefaultSettingsButton.Enabled = !(NumberOfWordsNumericUpDown.Value == DefaultNumberOfWordsToLearn
+                && WSourceComboBox.SelectedIndex == DefaultAddingWModeIndex);
+
         #region NumberOfWordsNumericUpDown focus events
 
         private void NumberOfWordsNumericUpDown_MouseHover(object sender, EventArgs e)
@@ -153,6 +166,9 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
         }
 
         #endregion
+
+        #endregion
+
 
         private void Escape_KeyDown(object sender, KeyEventArgs e)
         {

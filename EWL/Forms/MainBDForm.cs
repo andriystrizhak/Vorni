@@ -9,6 +9,7 @@ using Eng_Flash_Cards_Learner.NOT_Forms;
 using Eng_Flash_Cards_Learner.NOT_Forms.GPT;
 using static EWL.NOT_Forms.Txt_FileHandler;
 using Eng_Flash_Cards_Learner.NOT_Forms.LearningItems;
+using DevExpress.XtraReports;
 
 namespace EWL
 {
@@ -40,9 +41,9 @@ namespace EWL
         /// <summary>
         /// Список слів для вивчення
         /// </summary>
-        List<Word> words { get; set; } = new();
+        List<Word> Words { get; set; } = new();
         /// <summary>
-        /// Індекс поточного слова для вивчення зі списку <see cref="words"/>
+        /// Індекс поточного слова для вивчення зі списку <see cref="Words"/>
         /// </summary>
         int wordIndex { get; set; } = 0;
         /// <summary>
@@ -150,13 +151,15 @@ namespace EWL
 
         #region ( LearningPanel )
 
+        bool IsGPTChecked { get; set; } = true;
+
         private void StartLearningButton_Click(object sender, EventArgs e)
         {
             SQLs.Set_NumberOfWordsToLearn((int)NumberOfWordsNumericUpDown.Value);
             SQLs.Set_CurrentCategory(CategoriesComboBox.SelectedIndex + 1);
             SQLs.Set_CurrentDifficulty(DifficultyComboBox.SelectedIndex);
 
-            words = SQLs
+            Words = SQLs
                 .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), SQLs.Get_NumberOfWordsToLearn(), SQLs.Get_CurrentDifficulty())
                 .Select(w => w.Item1)
                 .ToList();
@@ -168,7 +171,7 @@ namespace EWL
             else if (TestMethodButton.Checked)
                 purpose = GptPurpose.Test;
 
-            if (GPTToggleSwitch.Checked)
+            if (IsGPTChecked)
                 AskGPT(purpose);
             else
                 PrepareLearnigPanels();
@@ -178,17 +181,18 @@ namespace EWL
         {
             if (FCMethodButton.Checked)
             {
-                //TODO - викликати метод який:
-                // - передасть GPTResponse в метод-обробник,
-                // - з'єднає роділені речення зі словами в списку
-                // - перемішає ці пари
-                // - виведе речення на екран панелі
+                List<string> sentenses = new List<string>();
+                if (IsGPTChecked)
+                    sentenses = GPTResponseHandler.Handle_FCGPTResponse(GPTResponse); //TODO - врахувати всі виключення
+                else
+                    for (int i = 0; i < Words.Count; i++)
+                        sentenses.Add("");
 
-                var sentenses = GPTResponseHandler.Handle_FCGPTResponse(GPTResponse);
-                FCItems = FCItem.CreateFCItems(words, sentenses);
-                PrepareFCLPanel();                         //НАЛАШТУВАННЯ панелі
+                //TODO - якщо відповіді немеє то замість 'sentenses' надсилати такої ж довжини Список з ""
+                FCItems = FCItem.CreateFCItems(Words, sentenses); //TODO - додати перемішування
 
-                //ShowPanel(FCLearingPanel1);
+                PrepareFCLPanel();
+                ShowPanel(FCLearingPanel1);
             }
             else if (TestMethodButton.Checked)
             {
@@ -212,12 +216,14 @@ namespace EWL
         {
             if (GPTToggleSwitch.Checked == false)
             {
+                IsGPTChecked = false;
                 TestMethodButton.Enabled = false;
                 TestMethodButton.Checked = false;
                 CheckGPTPanel.BorderColor = Color.FromArgb(74, 84, 93);
             }
             else
             {
+                IsGPTChecked = true;
                 TestMethodButton.Enabled = true;
                 CheckGPTPanel.BorderColor = Color.FromArgb(21, 220, 173);
             }
@@ -245,31 +251,66 @@ namespace EWL
 
         #region ( FCLearningPanel )
 
-        List<FCItem> FCItems { get; set; }
-        //List<(Word, string)> WordSentencePair { get; set; } //TODO - USE
+        List<FCItem> FCItems { get; set; } = null;
 
         /// <summary>
         /// Підготовлює й показує <see cref="FCLearingPanel1"/>
         /// </summary>
         private void PrepareFCLPanel()
         {
-            //words = words.OrderBy(w => w.Rating).ToList();
-
+            WCounterLabel.Text = $"{wordIndex + 1} / {FCItems.Count}";
             FCSentenceLabel.Text = FCItems[wordIndex].Sentence;
             FCUaTransLabel.Text = FCItems[wordIndex].UaT;
 
-            ShowPanel(FCLearingPanel1);
-            FCEngWTextBox.Focus();
+            FCAnswerTextBox.Focus();
+        }
+
+        private void FCCheckAnswerButton_Click(object sender, EventArgs e)
+        {
+            if (CheckFCAnswer())
+            {
+                //TODO - міняти колір, але ЯК???
+                Thread.Sleep(200);
+                FCAnswerTextBox.BorderColor = Color.FromArgb(245, 67, 67);
+                Thread.Sleep(500);
+                FCAnswerTextBox.BorderColor = Color.FromArgb(74, 84, 93);
+
+                if (++wordIndex != Words.Count)
+                    PrepareFCLPanel();
+                else
+                {
+                    wordIndex = 0;
+                    OutputLearningStatistic();
+                    ShowPanel(LearningStatPanel);
+                    RetryButton.Focus();
+                }
+                FCAnswerTextBox.Text = "";
+            }
+            else
+            {
+                FCAnswerTextBox.Text = "";
+                FCAnswerTextBox.PlaceholderText = FCItems[wordIndex].EngW;
+                FCAnswerTextBox.BorderColor = Color.FromArgb(245, 67, 67);
+            }
+        }
+
+        bool CheckFCAnswer()
+            => FCAnswerTextBox.Text == FCItems[wordIndex].EngW;
+
+        private void FCAnswerTextBox_TextChanged(object sender, EventArgs e)
+        {
+            FCAnswerTextBox.PlaceholderText = "";
+            FCAnswerTextBox.BorderColor = Color.FromArgb(74, 84, 93);
         }
 
         #region ( Властивості контролів LearningWPanel )
 
         private void SeeTransButton_Click(object sender, EventArgs e)
         {
-            TranslationLabel.Text = words[wordIndex].UaTranslation;
+            TranslationLabel.Text = Words[wordIndex].UaTranslation;
             ShowPanel(LearningUaPanel);
 
-            SQLs.Increment_WordRepetition(words[wordIndex].WordId);
+            SQLs.Increment_WordRepetition(Words[wordIndex].WordId);
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -289,10 +330,10 @@ namespace EWL
         /// <param name="rating">Оцінка</param>
         void RateWord(int rating)
         {
-            SQLs.Rate_Word(words[wordIndex].WordId, rating);
+            SQLs.Rate_Word(Words[wordIndex].WordId, rating);
             wordRatings[rating]++;
 
-            if (++wordIndex != words.Count)
+            if (++wordIndex != Words.Count)
                 PrepareFCLPanel();
             else
             {
@@ -309,18 +350,18 @@ namespace EWL
         void OutputLearningStatistic()
         {
             LearningStatLabel.Text =
-                $"Було вивчено слів: {words.Count} " +
+                $"Було вивчено слів: {Words.Count} " +
                 $"\n\nОцінки " +
-                $"\n5 - {wordRatings[5]} слів ({((float)wordRatings[5] / words.Count):P1})" +
-                $"\n4 - {wordRatings[4]} слів ({((float)wordRatings[4] / words.Count):P1})" +
-                $"\n3 - {wordRatings[3]} слів ({((float)wordRatings[3] / words.Count):P1})" +
-                $"\n2 - {wordRatings[2]} слів ({((float)wordRatings[2] / words.Count):P1})" +
-                $"\n1 - {wordRatings[1]} слів ({((float)wordRatings[1] / words.Count):P1})\n\n";
+                $"\n5 - {wordRatings[5]} слів ({((float)wordRatings[5] / Words.Count):P1})" +
+                $"\n4 - {wordRatings[4]} слів ({((float)wordRatings[4] / Words.Count):P1})" +
+                $"\n3 - {wordRatings[3]} слів ({((float)wordRatings[3] / Words.Count):P1})" +
+                $"\n2 - {wordRatings[2]} слів ({((float)wordRatings[2] / Words.Count):P1})" +
+                $"\n1 - {wordRatings[1]} слів ({((float)wordRatings[1] / Words.Count):P1})\n\n";
 
             double learningRating = ((double)(wordRatings[5] * 5
                 + wordRatings[4] * 4 + wordRatings[3] * 3
                 + wordRatings[2] * 2 + wordRatings[1] * 1)
-                / (words.Count * 5)) * 100;
+                / (Words.Count * 5)) * 100;
 
             LearningRatingLabel.Text = $"Твоя успішність: {learningRating:f0}/100";
             if (learningRating > 85)
@@ -351,7 +392,7 @@ namespace EWL
             var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
             var handler = ShowProgressPanel(CurrentPanel, windowOptions);
 
-            var words = this.words.Select(w => w.EngWord).ToArray();
+            var words = this.Words.Select(w => w.EngWord).ToArray();
 
             GptAPI.GPTResponseHandler += GPTResponse_GPTResponseHandler;
             GptAPI.GPTErrorHandler += GPTError_GPTErrorHandler;
@@ -364,13 +405,13 @@ namespace EWL
             GPTResponse = response;
 
             FCLearingPanel1.Invoke(PrepareLearnigPanels);
-            //PrepareLearnigPanels();
             handler.Close();
         }
 
         void GPTError_GPTErrorHandler(string response, IOverlaySplashScreenHandle handler)
         {
-            label22.Text = response;
+            //TODO - Обробка помилок
+            MessageBox.Show(response, "Error!", MessageBoxButtons.OK);            
             handler.Close();
         }
 
@@ -832,7 +873,7 @@ namespace EWL
 
         private void SettingButton_Click(object sender, EventArgs e)
         {
-            var handler = ShowProgressPanel(CurrentPanel);
+            var handler = ShowProgressPanel(this);
             new SettingsForm(this, handler).ShowDialog();
         }
 
@@ -966,6 +1007,19 @@ namespace EWL
         /// <param name="panelToShow">Панель, яка повинна бути показана</param>
         private void ShowPanel(Panel panelToShow)
         {
+            /*
+            if (CurrentPanel != null)
+            {
+                CurrentPanel.Enabled = false;
+                CurrentPanel.Visible = false;
+            }
+
+            CurrentPanel = panelToShow;
+
+            panelToShow.Enabled = true;
+            panelToShow.Visible = true;
+            */
+
             CurrentPanel = panelToShow;
             panelToShow.Enabled = true;
             panelToShow.Visible = true;
