@@ -103,15 +103,13 @@ namespace EWL
             SeeStatButton = new Button();
             EWLPictureBox = new PictureBox();
             BackgroundPanel = new Guna.UI2.WinForms.Guna2Panel();
-            FCLearingPanel1 = new Guna.UI2.WinForms.Guna2Panel();
-            guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            FCLearingPanel = new Guna.UI2.WinForms.Guna2Panel();
+            FCGoBackButton = new Guna.UI2.WinForms.Guna2CircleButton();
             FCUaTransLabel = new Label();
             FCAnswerTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             FCCheckAnswerButton = new Guna.UI2.WinForms.Guna2Button();
             FCSentenceLabel = new Label();
             WCounterLabel = new Label();
-            SeeTransButton = new Button();
-            GoBackButton1 = new Button();
             AddingWPanel = new Panel();
             CancelAddingButton = new Guna.UI2.WinForms.Guna2Button();
             AddWButton = new Guna.UI2.WinForms.Guna2Button();
@@ -164,16 +162,6 @@ namespace EWL
             StatLabel1 = new Label();
             GoMenuButton = new Button();
             LearningStatLabel = new Label();
-            LearningUaPanel = new Panel();
-            GoBackButton2 = new Button();
-            TranslationLabel = new Label();
-            RateTableLayoutPanel = new TableLayoutPanel();
-            Button5 = new Button();
-            Button4 = new Button();
-            Button3 = new Button();
-            Button2 = new Button();
-            Button1 = new Button();
-            EngWLabel2 = new Label();
             WelcomePanel = new Panel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             LearningPanel = new Guna.UI2.WinForms.Guna2Panel();
@@ -228,7 +216,7 @@ namespace EWL
             MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)EWLPictureBox).BeginInit();
             BackgroundPanel.SuspendLayout();
-            FCLearingPanel1.SuspendLayout();
+            FCLearingPanel.SuspendLayout();
             AddingWPanel.SuspendLayout();
             AddWTabControl.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -241,8 +229,6 @@ namespace EWL
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             StatPanel.SuspendLayout();
             LearningStatPanel.SuspendLayout();
-            LearningUaPanel.SuspendLayout();
-            RateTableLayoutPanel.SuspendLayout();
             WelcomePanel.SuspendLayout();
             LearningPanel.SuspendLayout();
             LearningSettingsPanel.SuspendLayout();
@@ -512,13 +498,12 @@ namespace EWL
             BackgroundPanel.BorderColor = Color.FromArgb(170, 101, 254);
             BackgroundPanel.BorderRadius = 12;
             BackgroundPanel.BorderThickness = 1;
-            BackgroundPanel.Controls.Add(FCLearingPanel1);
+            BackgroundPanel.Controls.Add(FCLearingPanel);
             BackgroundPanel.Controls.Add(AddingWPanel);
             BackgroundPanel.Controls.Add(panel1);
             BackgroundPanel.Controls.Add(MenuPanel);
             BackgroundPanel.Controls.Add(StatPanel);
             BackgroundPanel.Controls.Add(LearningStatPanel);
-            BackgroundPanel.Controls.Add(LearningUaPanel);
             BackgroundPanel.Controls.Add(WelcomePanel);
             BackgroundPanel.Controls.Add(LearningPanel);
             BackgroundPanel.CustomizableEdges = customizableEdges48;
@@ -528,47 +513,47 @@ namespace EWL
             BackgroundPanel.Size = new Size(1099, 649);
             BackgroundPanel.TabIndex = 14;
             // 
-            // FCLearingPanel1
+            // FCLearingPanel
             // 
-            FCLearingPanel1.Controls.Add(guna2CircleButton1);
-            FCLearingPanel1.Controls.Add(FCUaTransLabel);
-            FCLearingPanel1.Controls.Add(FCAnswerTextBox);
-            FCLearingPanel1.Controls.Add(FCCheckAnswerButton);
-            FCLearingPanel1.Controls.Add(FCSentenceLabel);
-            FCLearingPanel1.Controls.Add(WCounterLabel);
-            FCLearingPanel1.Controls.Add(SeeTransButton);
-            FCLearingPanel1.Controls.Add(GoBackButton1);
-            FCLearingPanel1.CustomizableEdges = customizableEdges8;
-            FCLearingPanel1.Location = new Point(59, 35);
-            FCLearingPanel1.Name = "FCLearingPanel1";
-            FCLearingPanel1.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            FCLearingPanel1.Size = new Size(1030, 604);
-            FCLearingPanel1.TabIndex = 13;
+            FCLearingPanel.Controls.Add(FCGoBackButton);
+            FCLearingPanel.Controls.Add(FCUaTransLabel);
+            FCLearingPanel.Controls.Add(FCAnswerTextBox);
+            FCLearingPanel.Controls.Add(FCCheckAnswerButton);
+            FCLearingPanel.Controls.Add(FCSentenceLabel);
+            FCLearingPanel.Controls.Add(WCounterLabel);
+            FCLearingPanel.CustomizableEdges = customizableEdges8;
+            FCLearingPanel.Location = new Point(59, 35);
+            FCLearingPanel.Name = "FCLearingPanel";
+            FCLearingPanel.ShadowDecoration.CustomizableEdges = customizableEdges9;
+            FCLearingPanel.Size = new Size(1030, 604);
+            FCLearingPanel.TabIndex = 13;
+            FCLearingPanel.KeyDown += FCCheckAnswerButton_KeyDown;
             // 
-            // guna2CircleButton1
+            // FCGoBackButton
             // 
-            guna2CircleButton1.CheckedState.BorderColor = Color.FromArgb(53, 60, 68);
-            guna2CircleButton1.CheckedState.FillColor = Color.FromArgb(53, 60, 68);
-            guna2CircleButton1.DisabledState.BorderColor = Color.DarkGray;
-            guna2CircleButton1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2CircleButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2CircleButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2CircleButton1.FillColor = Color.FromArgb(24, 27, 32);
-            guna2CircleButton1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2CircleButton1.ForeColor = Color.White;
-            guna2CircleButton1.HoverState.BorderColor = Color.FromArgb(24, 27, 32);
-            guna2CircleButton1.HoverState.FillColor = Color.FromArgb(24, 27, 32);
-            guna2CircleButton1.HoverState.Image = Eng_Flash_Cards_Learner.Resource1.icons8_назад_96__1_;
-            guna2CircleButton1.Image = Eng_Flash_Cards_Learner.Resource1.icons8_назад_96;
-            guna2CircleButton1.ImageOffset = new Point(1, 1);
-            guna2CircleButton1.ImageSize = new Size(65, 65);
-            guna2CircleButton1.Location = new Point(12, 7);
-            guna2CircleButton1.Name = "guna2CircleButton1";
-            guna2CircleButton1.PressedColor = Color.FromArgb(57, 64, 72);
-            guna2CircleButton1.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CircleButton1.Size = new Size(70, 70);
-            guna2CircleButton1.TabIndex = 31;
+            FCGoBackButton.CheckedState.BorderColor = Color.FromArgb(53, 60, 68);
+            FCGoBackButton.CheckedState.FillColor = Color.FromArgb(53, 60, 68);
+            FCGoBackButton.DisabledState.BorderColor = Color.DarkGray;
+            FCGoBackButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            FCGoBackButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            FCGoBackButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            FCGoBackButton.FillColor = Color.FromArgb(24, 27, 32);
+            FCGoBackButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            FCGoBackButton.ForeColor = Color.White;
+            FCGoBackButton.HoverState.BorderColor = Color.FromArgb(24, 27, 32);
+            FCGoBackButton.HoverState.FillColor = Color.FromArgb(24, 27, 32);
+            FCGoBackButton.HoverState.Image = Eng_Flash_Cards_Learner.Resource1.icons8_назад_96__1_;
+            FCGoBackButton.Image = Eng_Flash_Cards_Learner.Resource1.icons8_назад_96;
+            FCGoBackButton.ImageOffset = new Point(1, 1);
+            FCGoBackButton.ImageSize = new Size(65, 65);
+            FCGoBackButton.Location = new Point(12, 7);
+            FCGoBackButton.Name = "FCGoBackButton";
+            FCGoBackButton.PressedColor = Color.FromArgb(57, 64, 72);
+            FCGoBackButton.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            FCGoBackButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            FCGoBackButton.Size = new Size(70, 70);
+            FCGoBackButton.TabIndex = 31;
+            FCGoBackButton.Click += FCGoBackButton_Click;
             // 
             // FCUaTransLabel
             // 
@@ -576,7 +561,7 @@ namespace EWL
             FCUaTransLabel.BackColor = Color.FromArgb(24, 27, 32);
             FCUaTransLabel.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point);
             FCUaTransLabel.ForeColor = Color.FromArgb(170, 131, 255);
-            FCUaTransLabel.Location = new Point(98, 290);
+            FCUaTransLabel.Location = new Point(98, 298);
             FCUaTransLabel.Name = "FCUaTransLabel";
             FCUaTransLabel.Size = new Size(835, 38);
             FCUaTransLabel.TabIndex = 30;
@@ -613,6 +598,7 @@ namespace EWL
             FCAnswerTextBox.TabIndex = 29;
             FCAnswerTextBox.TextAlign = HorizontalAlignment.Center;
             FCAnswerTextBox.TextChanged += FCAnswerTextBox_TextChanged;
+            FCAnswerTextBox.KeyDown += FCCheckAnswerButton_KeyDown;
             // 
             // FCCheckAnswerButton
             // 
@@ -628,7 +614,7 @@ namespace EWL
             FCCheckAnswerButton.FillColor = Color.FromArgb(138, 44, 254);
             FCCheckAnswerButton.Font = new Font("Calibri", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             FCCheckAnswerButton.ForeColor = Color.White;
-            FCCheckAnswerButton.Location = new Point(368, 470);
+            FCCheckAnswerButton.Location = new Point(368, 451);
             FCCheckAnswerButton.Name = "FCCheckAnswerButton";
             FCCheckAnswerButton.ShadowDecoration.CustomizableEdges = customizableEdges7;
             FCCheckAnswerButton.Size = new Size(290, 82);
@@ -640,15 +626,20 @@ namespace EWL
             // FCSentenceLabel
             // 
             FCSentenceLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            FCSentenceLabel.AutoEllipsis = true;
+            FCSentenceLabel.AutoSize = true;
             FCSentenceLabel.BackColor = Color.FromArgb(24, 27, 32);
             FCSentenceLabel.Font = new Font("Calibri", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             FCSentenceLabel.ForeColor = Color.White;
-            FCSentenceLabel.Location = new Point(66, 175);
+            FCSentenceLabel.Location = new Point(66, 180);
+            FCSentenceLabel.MaximumSize = new Size(904, 75);
+            FCSentenceLabel.MinimumSize = new Size(904, 38);
             FCSentenceLabel.Name = "FCSentenceLabel";
             FCSentenceLabel.Size = new Size(904, 38);
             FCSentenceLabel.TabIndex = 28;
             FCSentenceLabel.Text = "Приклад речення про те як один програміст замахався";
             FCSentenceLabel.TextAlign = ContentAlignment.MiddleCenter;
+            FCSentenceLabel.Resize += FCSentenceLabel_Resize;
             // 
             // WCounterLabel
             // 
@@ -660,45 +651,6 @@ namespace EWL
             WCounterLabel.TabIndex = 27;
             WCounterLabel.Text = "- / -";
             WCounterLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // SeeTransButton
-            // 
-            SeeTransButton.BackColor = SystemColors.WindowFrame;
-            SeeTransButton.Cursor = Cursors.Hand;
-            SeeTransButton.FlatAppearance.BorderColor = Color.FromArgb(130, 130, 130);
-            SeeTransButton.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
-            SeeTransButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(110, 110, 110);
-            SeeTransButton.FlatStyle = FlatStyle.Flat;
-            SeeTransButton.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            SeeTransButton.ForeColor = Color.White;
-            SeeTransButton.Location = new Point(28, 413);
-            SeeTransButton.Name = "SeeTransButton";
-            SeeTransButton.Size = new Size(323, 65);
-            SeeTransButton.TabIndex = 13;
-            SeeTransButton.Text = "Побачити переклад";
-            SeeTransButton.UseVisualStyleBackColor = false;
-            SeeTransButton.Visible = false;
-            // 
-            // GoBackButton1
-            // 
-            GoBackButton1.BackColor = Color.FromArgb(24, 27, 32);
-            GoBackButton1.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_налево_96;
-            GoBackButton1.BackgroundImageLayout = ImageLayout.Zoom;
-            GoBackButton1.Cursor = Cursors.Hand;
-            GoBackButton1.FlatAppearance.BorderColor = Color.Gray;
-            GoBackButton1.FlatAppearance.BorderSize = 0;
-            GoBackButton1.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton1.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
-            GoBackButton1.FlatStyle = FlatStyle.Flat;
-            GoBackButton1.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            GoBackButton1.ForeColor = Color.White;
-            GoBackButton1.Location = new Point(28, 130);
-            GoBackButton1.Name = "GoBackButton1";
-            GoBackButton1.Size = new Size(60, 60);
-            GoBackButton1.TabIndex = 14;
-            GoBackButton1.TabStop = false;
-            GoBackButton1.UseVisualStyleBackColor = false;
-            GoBackButton1.Visible = false;
             // 
             // AddingWPanel
             // 
@@ -1607,209 +1559,6 @@ namespace EWL
             LearningStatLabel.Text = "ХХХ";
             LearningStatLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // LearningUaPanel
-            // 
-            LearningUaPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            LearningUaPanel.BackColor = Color.FromArgb(24, 27, 32);
-            LearningUaPanel.Controls.Add(GoBackButton2);
-            LearningUaPanel.Controls.Add(TranslationLabel);
-            LearningUaPanel.Controls.Add(RateTableLayoutPanel);
-            LearningUaPanel.Controls.Add(EngWLabel2);
-            LearningUaPanel.ImeMode = ImeMode.Hangul;
-            LearningUaPanel.Location = new Point(59, 35);
-            LearningUaPanel.Name = "LearningUaPanel";
-            LearningUaPanel.Size = new Size(1030, 604);
-            LearningUaPanel.TabIndex = 1;
-            // 
-            // GoBackButton2
-            // 
-            GoBackButton2.BackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton2.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_налево_96;
-            GoBackButton2.BackgroundImageLayout = ImageLayout.Zoom;
-            GoBackButton2.Cursor = Cursors.Hand;
-            GoBackButton2.FlatAppearance.BorderColor = Color.Gray;
-            GoBackButton2.FlatAppearance.BorderSize = 0;
-            GoBackButton2.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 50, 50);
-            GoBackButton2.FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
-            GoBackButton2.FlatStyle = FlatStyle.Flat;
-            GoBackButton2.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            GoBackButton2.ForeColor = Color.White;
-            GoBackButton2.Location = new Point(3, 3);
-            GoBackButton2.Name = "GoBackButton2";
-            GoBackButton2.Size = new Size(60, 60);
-            GoBackButton2.TabIndex = 0;
-            GoBackButton2.TabStop = false;
-            GoBackButton2.UseVisualStyleBackColor = false;
-            GoBackButton2.Click += GoBackButton_Click;
-            // 
-            // TranslationLabel
-            // 
-            TranslationLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            TranslationLabel.BackColor = Color.FromArgb(60, 60, 60);
-            TranslationLabel.BorderStyle = BorderStyle.FixedSingle;
-            TranslationLabel.Font = new Font("Roboto Condensed", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            TranslationLabel.ForeColor = Color.White;
-            TranslationLabel.Location = new Point(259, 182);
-            TranslationLabel.Name = "TranslationLabel";
-            TranslationLabel.Size = new Size(590, 149);
-            TranslationLabel.TabIndex = 1;
-            TranslationLabel.Text = "ХХХ";
-            TranslationLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // RateTableLayoutPanel
-            // 
-            RateTableLayoutPanel.ColumnCount = 5;
-            RateTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            RateTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            RateTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            RateTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            RateTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            RateTableLayoutPanel.Controls.Add(Button5, 4, 0);
-            RateTableLayoutPanel.Controls.Add(Button4, 3, 0);
-            RateTableLayoutPanel.Controls.Add(Button3, 2, 0);
-            RateTableLayoutPanel.Controls.Add(Button2, 1, 0);
-            RateTableLayoutPanel.Controls.Add(Button1, 0, 0);
-            RateTableLayoutPanel.Location = new Point(291, 367);
-            RateTableLayoutPanel.Name = "RateTableLayoutPanel";
-            RateTableLayoutPanel.RowCount = 1;
-            RateTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            RateTableLayoutPanel.Size = new Size(542, 101);
-            RateTableLayoutPanel.TabIndex = 2;
-            // 
-            // Button5
-            // 
-            Button5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Button5.BackColor = Color.FromArgb(50, 50, 50);
-            Button5.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_5_в_кружке_100;
-            Button5.BackgroundImageLayout = ImageLayout.Zoom;
-            Button5.CausesValidation = false;
-            Button5.Cursor = Cursors.Hand;
-            Button5.FlatAppearance.BorderColor = Color.Gray;
-            Button5.FlatAppearance.BorderSize = 0;
-            Button5.FlatAppearance.MouseDownBackColor = Color.FromArgb(70, 70, 70);
-            Button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 50, 50);
-            Button5.FlatStyle = FlatStyle.Flat;
-            Button5.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Button5.ForeColor = Color.White;
-            Button5.Location = new Point(436, 4);
-            Button5.Margin = new Padding(4);
-            Button5.Name = "Button5";
-            Button5.Size = new Size(102, 93);
-            Button5.TabIndex = 0;
-            Button5.TabStop = false;
-            Button5.UseVisualStyleBackColor = false;
-            Button5.Click += Button5_Click;
-            // 
-            // Button4
-            // 
-            Button4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Button4.BackColor = Color.FromArgb(50, 50, 50);
-            Button4.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_4_в_кружке_100;
-            Button4.BackgroundImageLayout = ImageLayout.Zoom;
-            Button4.CausesValidation = false;
-            Button4.Cursor = Cursors.Hand;
-            Button4.FlatAppearance.BorderColor = Color.Gray;
-            Button4.FlatAppearance.BorderSize = 0;
-            Button4.FlatAppearance.MouseDownBackColor = Color.FromArgb(70, 70, 70);
-            Button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 50, 50);
-            Button4.FlatStyle = FlatStyle.Flat;
-            Button4.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Button4.ForeColor = Color.White;
-            Button4.Location = new Point(328, 4);
-            Button4.Margin = new Padding(4);
-            Button4.Name = "Button4";
-            Button4.Size = new Size(100, 93);
-            Button4.TabIndex = 1;
-            Button4.TabStop = false;
-            Button4.UseVisualStyleBackColor = false;
-            Button4.Click += Button4_Click;
-            // 
-            // Button3
-            // 
-            Button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Button3.BackColor = Color.FromArgb(50, 50, 50);
-            Button3.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_3_в_кружке_100;
-            Button3.BackgroundImageLayout = ImageLayout.Zoom;
-            Button3.CausesValidation = false;
-            Button3.Cursor = Cursors.Hand;
-            Button3.FlatAppearance.BorderColor = Color.Gray;
-            Button3.FlatAppearance.BorderSize = 0;
-            Button3.FlatAppearance.MouseDownBackColor = Color.FromArgb(70, 70, 70);
-            Button3.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 50, 50);
-            Button3.FlatStyle = FlatStyle.Flat;
-            Button3.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Button3.ForeColor = Color.White;
-            Button3.Location = new Point(220, 4);
-            Button3.Margin = new Padding(4);
-            Button3.Name = "Button3";
-            Button3.Size = new Size(100, 93);
-            Button3.TabIndex = 2;
-            Button3.TabStop = false;
-            Button3.UseVisualStyleBackColor = false;
-            Button3.Click += Button3_Click;
-            // 
-            // Button2
-            // 
-            Button2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Button2.BackColor = Color.FromArgb(50, 50, 50);
-            Button2.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_2_в_кружке_100__1_;
-            Button2.BackgroundImageLayout = ImageLayout.Zoom;
-            Button2.CausesValidation = false;
-            Button2.Cursor = Cursors.Hand;
-            Button2.FlatAppearance.BorderColor = Color.Gray;
-            Button2.FlatAppearance.BorderSize = 0;
-            Button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(70, 70, 70);
-            Button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 50, 50);
-            Button2.FlatStyle = FlatStyle.Flat;
-            Button2.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Button2.ForeColor = Color.White;
-            Button2.Location = new Point(112, 4);
-            Button2.Margin = new Padding(4);
-            Button2.Name = "Button2";
-            Button2.Size = new Size(100, 93);
-            Button2.TabIndex = 3;
-            Button2.TabStop = false;
-            Button2.UseVisualStyleBackColor = false;
-            Button2.Click += Button2_Click;
-            // 
-            // Button1
-            // 
-            Button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Button1.BackColor = Color.FromArgb(50, 50, 50);
-            Button1.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.icons8_1_в_кружке_100__1_;
-            Button1.BackgroundImageLayout = ImageLayout.Zoom;
-            Button1.CausesValidation = false;
-            Button1.Cursor = Cursors.Hand;
-            Button1.FlatAppearance.BorderColor = Color.Gray;
-            Button1.FlatAppearance.BorderSize = 0;
-            Button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(70, 70, 70);
-            Button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(50, 50, 50);
-            Button1.FlatStyle = FlatStyle.Flat;
-            Button1.Font = new Font("Roboto Condensed", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Button1.ForeColor = Color.White;
-            Button1.Location = new Point(4, 4);
-            Button1.Margin = new Padding(4);
-            Button1.Name = "Button1";
-            Button1.Size = new Size(100, 93);
-            Button1.TabIndex = 4;
-            Button1.TabStop = false;
-            Button1.UseVisualStyleBackColor = false;
-            Button1.Click += Button1_Click;
-            // 
-            // EngWLabel2
-            // 
-            EngWLabel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            EngWLabel2.BackColor = Color.FromArgb(75, 75, 75);
-            EngWLabel2.BorderStyle = BorderStyle.FixedSingle;
-            EngWLabel2.Font = new Font("Impact", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
-            EngWLabel2.ForeColor = Color.White;
-            EngWLabel2.Location = new Point(261, 76);
-            EngWLabel2.Name = "EngWLabel2";
-            EngWLabel2.Size = new Size(590, 73);
-            EngWLabel2.TabIndex = 3;
-            EngWLabel2.Text = "ХХХ";
-            EngWLabel2.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // WelcomePanel
             // 
             WelcomePanel.BackColor = Color.FromArgb(24, 27, 32);
@@ -1822,8 +1571,9 @@ namespace EWL
             // 
             // guna2HtmlLabel1
             // 
-            guna2HtmlLabel1.BackColor = Color.Transparent;
+            guna2HtmlLabel1.BackColor = Color.FromArgb(24, 27, 32);
             guna2HtmlLabel1.Font = new Font("Segoe UI Semibold", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
+            guna2HtmlLabel1.ForeColor = SystemColors.ButtonHighlight;
             guna2HtmlLabel1.Location = new Point(368, 76);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             guna2HtmlLabel1.Size = new Size(256, 49);
@@ -2721,8 +2471,8 @@ namespace EWL
             MenuPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)EWLPictureBox).EndInit();
             BackgroundPanel.ResumeLayout(false);
-            FCLearingPanel1.ResumeLayout(false);
-            FCLearingPanel1.PerformLayout();
+            FCLearingPanel.ResumeLayout(false);
+            FCLearingPanel.PerformLayout();
             AddingWPanel.ResumeLayout(false);
             AddWTabControl.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
@@ -2742,8 +2492,6 @@ namespace EWL
             StatPanel.PerformLayout();
             LearningStatPanel.ResumeLayout(false);
             LearningStatPanel.PerformLayout();
-            LearningUaPanel.ResumeLayout(false);
-            RateTableLayoutPanel.ResumeLayout(false);
             WelcomePanel.ResumeLayout(false);
             WelcomePanel.PerformLayout();
             LearningPanel.ResumeLayout(false);
@@ -2773,18 +2521,8 @@ namespace EWL
         private Button SeeAddingWPanelButton;
         private Button SeeStatButton;
         private PictureBox EWLPictureBox;
-        private Panel LearningUaPanel;
-        private Label EngWLabel2;
         private Button SettingButton;
-        private Button Button1;
-        private TableLayoutPanel RateTableLayoutPanel;
-        private Button Button5;
-        private Button Button4;
-        private Button Button3;
-        private Button Button2;
         private Button GoBackButton;
-        private Label TranslationLabel;
-        private Button GoBackButton2;
         private Panel LearningStatPanel;
         private Button GoMenuButton;
         private Label LearningStatLabel;
@@ -2886,10 +2624,8 @@ namespace EWL
         private PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Panel CheckGPTPanel;
         private Guna.UI2.WinForms.Guna2HtmlToolTip GPTHtmlTip;
-        private Guna.UI2.WinForms.Guna2Panel FCLearingPanel1;
+        private Guna.UI2.WinForms.Guna2Panel FCLearingPanel;
         private Guna.UI2.WinForms.Guna2ComboBox DifficultyComboBox;
-        private Button SeeTransButton;
-        private Button GoBackButton1;
         private Guna.UI2.WinForms.Guna2Panel BackgroundPanel;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2Button FCCheckAnswerButton;
@@ -2897,6 +2633,6 @@ namespace EWL
         private Label WCounterLabel;
         private Guna.UI2.WinForms.Guna2TextBox FCAnswerTextBox;
         private Label FCUaTransLabel;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        private Guna.UI2.WinForms.Guna2CircleButton FCGoBackButton;
     }
 }

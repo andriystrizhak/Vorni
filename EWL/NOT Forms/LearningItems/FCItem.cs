@@ -9,15 +9,19 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms.LearningItems
 {
     public class FCItem
     {
-        public FCItem(string engW, string uaT, string sentence)
+        public FCItem(Word word, string sentence)
         {
-            EngW = engW;
-            UaT = uaT;
+            WordId = word.WordId;
+            EngW = word.EngWord;
+            UaT = word.UaTranslation.Replace("\n", ", ");
+            Rating = word.Rating;
             Sentence = sentence;
         }
 
+        public int WordId {  get; set; }
         public string EngW { get; set; }
         public string UaT { get; set; }
+        public int Rating { get; set; }
         public string Sentence { get; set; }
 
         public static List<FCItem> CreateFCItems(List<Word> words, List<string> sentenses)
@@ -28,8 +32,17 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms.LearningItems
             var fcItems = new List<FCItem>();
 
             for (int i = 0; i < words.Count; i++)
+                fcItems.Add(new FCItem(words[i], sentenses[i]));
+
+            Random rng = new Random();
+            int n = fcItems.Count;
+            while (n > 1)
             {
-                fcItems.Add(new FCItem(words[i].EngWord, words[i].UaTranslation, sentenses[i])); //(sentenses[i].First() == Convert.ToChar(i+1)) ? sentenses[i] : ""));
+                n--;
+                int k = rng.Next(n + 1);
+                var value = fcItems[k];
+                fcItems[k] = fcItems[n];
+                fcItems[n] = value;
             }
 
             return fcItems;

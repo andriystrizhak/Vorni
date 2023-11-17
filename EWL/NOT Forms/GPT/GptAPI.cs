@@ -24,7 +24,7 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
 
         static Label CurrentLabel { get; set; }
 
-        const string MyApiKey = "КЛЮЧ"; //PROTECT
+        const string MyApiKey = "gdfggggggggggggdfgsdfgsdfgd"; //PROTECT
 
         const string PromptForTests = "Create forur options: first of them is a special word or phrase " +
             "and other three options may be slightly similar in meaning to the special word or phrase, " +
@@ -32,8 +32,9 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
             "You have to do it with each of them and numerate answers. There's example with 'one' and 'apple' words:\r\n" +
             "1.\r\na) one\r\nb) seven\r\nc) zero\r\nd) one million\r\n\r\n2.\r\na) apple\r\nb) pear\r\nc) banana\r\nd) pumpkin";
 
-        const string PromptForFC = "Create a short sentences for every special word where special word is missing. There's examble for 'one' and 'apple' words\r\n"
-            + "1. I have only _____ apple left.\r\n2. I have a red _____ in my hand.";
+        const string PromptForFC = "Create a short sentences for every special word or phrase where " +
+            "special word or phrase is missing. There's examble for 'one' and 'apple' words\r\n" +
+            "1. I have only ___ apple left.\r\n2. I have a red _____ in my hand.";
 
 
         public static async void GetResponseAsStream(Label label, string[] words, GptPurpose purpose)
@@ -99,15 +100,15 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
             catch { }
 
             if (completionResult == null)
-                GPTErrorHandler?.Invoke("ВКЛЮЧИ ІНЕТ", overlayPHandrer); //TEMP
+                GPTErrorHandler?.Invoke("No connection", overlayPHandrer); //TEMP
             else if (completionResult.Successful)
                 GPTResponseHandler?.Invoke(completionResult.Choices.First().Message.Content, overlayPHandrer);
             else
             {
                 if (completionResult.Error == null)
-                    GPTErrorHandler?.Invoke("Unknown Error", overlayPHandrer);
+                    GPTErrorHandler?.Invoke("Якась незрозуміла помилка Х(", overlayPHandrer);
 
-                GPTErrorHandler?.Invoke($"{completionResult.Error.Code}: {completionResult.Error.Message}", overlayPHandrer);
+                GPTErrorHandler?.Invoke($"{completionResult.Error.Code}:\n {completionResult.Error.Message}", overlayPHandrer);
             }   
         }
 

@@ -19,6 +19,7 @@ namespace EWL
         //- "//CHANGE"
         //- "//TODO"
         //- "//CHECK"
+        //- "//ADD"
 
         //- "//TODO DIFFICULTY"
         //- "//TODO CATEGORY"
@@ -45,7 +46,7 @@ namespace EWL
         /// <summary>
         /// Індекс поточного слова для вивчення зі списку <see cref="Words"/>
         /// </summary>
-        int wordIndex { get; set; } = 0;
+        int CurrentWIndex { get; set; } = 0;
         /// <summary>
         /// Оцінки поточних слів
         /// </summary>
@@ -58,7 +59,7 @@ namespace EWL
         {
             KeyDown += Enter_KeyDown!;
             KeyDown += Escape_KeyDown!;
-            KeyDown += RateW_KeyDown!;
+            //KeyDown += RateW_KeyDown!;
             KeyDown += CtrlS_KeyDown!;
             KeyDown += CtrlZ_KeyDown!;
 
@@ -160,12 +161,12 @@ namespace EWL
             SQLs.Set_CurrentDifficulty(DifficultyComboBox.SelectedIndex);
 
             Words = SQLs
-                .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), SQLs.Get_NumberOfWordsToLearn(), SQLs.Get_CurrentDifficulty())
+                .Get_Words_FromCategory(SQLs.Get_CurrentCategory(),
+                SQLs.Get_NumberOfWordsToLearn(), SQLs.Get_CurrentDifficulty())
                 .Select(w => w.Item1)
                 .ToList();
 
-
-            var purpose = GptPurpose.FlashCards; //TEMP
+            var purpose = GptPurpose.FlashCards;
             if (FCMethodButton.Checked)
                 purpose = GptPurpose.FlashCards;
             else if (TestMethodButton.Checked)
@@ -183,22 +184,27 @@ namespace EWL
             {
                 List<string> sentenses = new List<string>();
                 if (IsGPTChecked)
-                    sentenses = GPTResponseHandler.Handle_FCGPTResponse(GPTResponse); //TODO - врахувати всі виключення
+                    //TODO - врахувати всі виключення
+                    sentenses = GPTResponseHandler.Handle_FCGPTResponse(GPTResponse);
                 else
                     for (int i = 0; i < Words.Count; i++)
                         sentenses.Add("");
 
-                //TODO - якщо відповіді немеє то замість 'sentenses' надсилати такої ж довжини Список з ""
-                FCItems = FCItem.CreateFCItems(Words, sentenses); //TODO - додати перемішування
+                FCItems = FCItem.CreateFCItems(Words, sentenses);
 
                 PrepareFCLPanel();
-                ShowPanel(FCLearingPanel1);
+                ShowPanel(FCLearingPanel);
             }
             else if (TestMethodButton.Checked)
             {
                 //TODO - implement TestLearningPanel
+                MessageBox.Show(
+                    "Цей режим покищо не реалізований, зачекай",
+                    "Розробник і так мало спить!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
 
-                //PrepareTLPanel();                         //НАЛАШТУВАННЯ панелі
+                //PrepareTLPanel();                      //НАЛАШТУВАННЯ панелі
                 //ShowPanel(TestLearingPanel);
             }
         }
@@ -249,103 +255,210 @@ namespace EWL
 
         #endregion
 
+        #region { GPT Response }
+
+        string GPTResponse { get; set; } = null;
+
+        private void AskGPT(GptPurpose purpose)
+        {
+            var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
+            var handler = ShowProgressPanel(CurrentPanel, windowOptions);
+
+            var words = this.Words.Select(w => w.EngWord).ToArray();
+
+            GptAPI.GPTResponseHandler += GPTResponse_GPTResponseHandler;
+            GptAPI.GPTErrorHandler += GPTError_GPTErrorHandler;
+
+            Task.Run(() => GptAPI.GetResponse(words, purpose, handler));
+        }
+
+        #region FC GPT events
+
+        void GPTResponse_GPTResponseHandler(string response, IOverlaySplashScreenHandle handler)
+        {
+            GPTResponse = response;
+            FCLearingPanel.Invoke(PrepareLearnigPanels);
+            handler.Close();
+
+            Clear_FCGPTEventsHandlers();
+        }
+
+        void GPTError_GPTErrorHandler(string response, IOverlaySplashScreenHandle handler)
+        {
+            handler.Close();
+            var errorText = HandleGPTErrorResponse(response.Split('\n')[0]);
+            MessageBox.Show(
+                errorText,
+                "Щось пішло шкереберть!",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Hand);
+
+            Clear_FCGPTEventsHandlers();
+        }
+
+        string HandleGPTErrorResponse(string errorResponse)
+            => errorResponse switch
+            {
+                "No connection" => "Схоже, в тебе проблеми зі з'єднанням :(",
+                "invalid_api_key:" => "Вказаний API-ключ невірний",
+                //ADD
+                _ => "Не вдається отримати відповіді від GPT Х(\n" +
+                "Спробуй навчатися з GPT пізніше"
+            };
+
+        void Clear_FCGPTEventsHandlers()
+        {
+            GptAPI.GPTResponseHandler -= GPTResponse_GPTResponseHandler;
+            GptAPI.GPTErrorHandler -= GPTError_GPTErrorHandler;
+        }
+
+        #endregion
+
+        #endregion
+
         #region ( FCLearningPanel )
 
         List<FCItem> FCItems { get; set; } = null;
+        bool CurrentWFailed { get; set; } = false;
 
         /// <summary>
-        /// Підготовлює й показує <see cref="FCLearingPanel1"/>
+        /// Підготовлює й показує <see cref="FCLearingPanel"/>
         /// </summary>
         private void PrepareFCLPanel()
         {
-            WCounterLabel.Text = $"{wordIndex + 1} / {FCItems.Count}";
-            FCSentenceLabel.Text = FCItems[wordIndex].Sentence;
-            FCUaTransLabel.Text = FCItems[wordIndex].UaT;
+            WCounterLabel.Text = $"{CurrentWIndex + 1} / {FCItems.Count}";
+            FCSentenceLabel.Text = FCItems[CurrentWIndex].Sentence;
+            FCUaTransLabel.Text = FCItems[CurrentWIndex].UaT;
 
             FCAnswerTextBox.Focus();
         }
 
-        private void FCCheckAnswerButton_Click(object sender, EventArgs e)
-        {
-            if (CheckFCAnswer())
-            {
-                //TODO - міняти колір, але ЯК???
-                Thread.Sleep(200);
-                FCAnswerTextBox.BorderColor = Color.FromArgb(245, 67, 67);
-                Thread.Sleep(500);
-                FCAnswerTextBox.BorderColor = Color.FromArgb(74, 84, 93);
+        #region FCLearningPanel controls events
 
-                if (++wordIndex != Words.Count)
-                    PrepareFCLPanel();
-                else
-                {
-                    wordIndex = 0;
-                    OutputLearningStatistic();
-                    ShowPanel(LearningStatPanel);
-                    RetryButton.Focus();
-                }
-                FCAnswerTextBox.Text = "";
-            }
-            else
+        private void FCGoBackButton_Click(object sender, EventArgs e)
+        {
+            var handler = ShowProgressPanel(this);
+
+            var dialogResult = MessageBox.Show(
+                "Ти точно хочеш перервати вивчення?\r\nРезультати всеодно збережуться",
+                "Е, ти куди?..",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
             {
-                FCAnswerTextBox.Text = "";
-                FCAnswerTextBox.PlaceholderText = FCItems[wordIndex].EngW;
-                FCAnswerTextBox.BorderColor = Color.FromArgb(245, 67, 67);
+                Null_FCLPanel();
+                LearnWButton_Click(sender, e);
             }
+
+            handler.Close();
         }
 
-        bool CheckFCAnswer()
-            => FCAnswerTextBox.Text == FCItems[wordIndex].EngW;
+        private void FCSentenceLabel_Resize(object sender, EventArgs e)
+        {
+            FCAnswerTextBox.Location = new Point(FCAnswerTextBox.Left, FCSentenceLabel.Bottom + 23);
+            FCUaTransLabel.Location = new Point(FCUaTransLabel.Left, FCAnswerTextBox.Bottom + 23);
+        }
 
         private void FCAnswerTextBox_TextChanged(object sender, EventArgs e)
         {
             FCAnswerTextBox.PlaceholderText = "";
             FCAnswerTextBox.BorderColor = Color.FromArgb(74, 84, 93);
+            FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
         }
 
-        #region ( Властивості контролів LearningWPanel )
-
-        private void SeeTransButton_Click(object sender, EventArgs e)
+        private void FCCheckAnswerButton_KeyDown(object sender, KeyEventArgs e)
         {
-            TranslationLabel.Text = Words[wordIndex].UaTranslation;
-            ShowPanel(LearningUaPanel);
-
-            SQLs.Increment_WordRepetition(Words[wordIndex].WordId);
+            if (e.KeyCode == Keys.Enter)
+                FCCheckAnswerButton.PerformClick();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-            => RateWord(1);
-        private void Button2_Click(object sender, EventArgs e)
-            => RateWord(2);
-        private void Button3_Click(object sender, EventArgs e)
-            => RateWord(3);
-        private void Button4_Click(object sender, EventArgs e)
-            => RateWord(4);
-        private void Button5_Click(object sender, EventArgs e)
-            => RateWord(5);
+        #region FCCheckAnswer button event
 
-        /// <summary>
-        /// Змінює значення оцінки слова в БД
-        /// </summary>
-        /// <param name="rating">Оцінка</param>
-        void RateWord(int rating)
+        private void FCCheckAnswerButton_Click(object sender, EventArgs e)
         {
-            SQLs.Rate_Word(Words[wordIndex].WordId, rating);
-            wordRatings[rating]++;
+            if (CheckFCAnswer())
+                Set_FCPanelCorrectAnswer();
+            else
+                Set_FCPanelWrongAnswer();
+        }
 
-            if (++wordIndex != Words.Count)
+        bool CheckFCAnswer()
+            => FCAnswerTextBox.Text == FCItems[CurrentWIndex].EngW;
+
+        void Set_FCPanelCorrectAnswer()
+        {
+            if (!CurrentWFailed)
+                Set_FCWord_RatingAndRepetition(true);
+            CurrentWFailed = false;
+
+            if (++CurrentWIndex != Words.Count)
                 PrepareFCLPanel();
             else
             {
-                wordIndex = 0;
+                CurrentWIndex = 0;
                 OutputLearningStatistic();
                 ShowPanel(LearningStatPanel);
                 RetryButton.Focus();
             }
+
+            FCAnswerTextBox.Text = "";
+            FCAnswerTextBox.BorderColor = Color.FromArgb(20, 190, 75);
+            FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(30, 214, 95);
+            Task.Run(() =>
+            {
+                Thread.Sleep(700);
+                FCAnswerTextBox.BorderColor = Color.FromArgb(74, 84, 93);
+                FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
+            });
         }
+
+        void Set_FCPanelWrongAnswer()
+        {
+            if (!CurrentWFailed)
+                Set_FCWord_RatingAndRepetition(false);
+            CurrentWFailed = true;
+
+            FCAnswerTextBox.Text = "";
+            FCAnswerTextBox.PlaceholderText = FCItems[CurrentWIndex].EngW;
+            FCAnswerTextBox.BorderColor = Color.FromArgb(210, 47, 47);
+            FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(245, 67, 67);
+        }
+
+        /// <summary>
+        /// Increments (dectements) rating and repetition of current <see cref="FCItem"/>
+        /// </summary>
+        /// <param name="increment">Чи інкрементувати, чи декрементувати <paramref name="rating"/></param>
+        void Set_FCWord_RatingAndRepetition(bool increment)
+        {
+            int rating = FCItems[CurrentWIndex].Rating;
+            SQLs.Rate_Word(FCItems[CurrentWIndex].WordId, increment
+                ? ((rating < 5) ? ++rating : rating)
+                : ((rating > 1) ? --rating : rating));
+            wordRatings[rating]++;
+            SQLs.Increment_WordRepetition(FCItems[CurrentWIndex].WordId);
+        }
+
+        void Null_FCLPanel()
+        {
+            CurrentWIndex = 0;
+            Words = null;
+            FCItems = null;
+            CurrentWFailed = false;
+        }
+
         #endregion
 
-        #region ( Властивості контролів LearningStatPanel )
+        #endregion
+
+        #endregion
+
+        #region ( TLearningPanel )
+
+
+        #endregion
+
+        #region ( LearningStatPanel )
 
         void OutputLearningStatistic()
         {
@@ -383,46 +496,9 @@ namespace EWL
 
         #endregion
 
-        #region { GPT Response }
-
-        string GPTResponse { get; set; } = null;
-
-        private void AskGPT(GptPurpose purpose)
-        {
-            var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
-            var handler = ShowProgressPanel(CurrentPanel, windowOptions);
-
-            var words = this.Words.Select(w => w.EngWord).ToArray();
-
-            GptAPI.GPTResponseHandler += GPTResponse_GPTResponseHandler;
-            GptAPI.GPTErrorHandler += GPTError_GPTErrorHandler;
-
-            Task.Run(() => GptAPI.GetResponse(words, purpose, handler));
-        }
-
-        void GPTResponse_GPTResponseHandler(string response, IOverlaySplashScreenHandle handler)
-        {
-            GPTResponse = response;
-
-            FCLearingPanel1.Invoke(PrepareLearnigPanels);
-            handler.Close();
-        }
-
-        void GPTError_GPTErrorHandler(string response, IOverlaySplashScreenHandle handler)
-        {
-            //TODO - Обробка помилок
-            MessageBox.Show(response, "Error!", MessageBoxButtons.OK);            
-            handler.Close();
-        }
-
-        #endregion
-
-        #endregion
-
         #region [ Додати слова ]
 
         //TODO CATEGORY - Додати перемикач категорії для додавання слів
-
         private void SeeAddingWPanelButton_Click(object sender, EventArgs e)
         {
             addedWordsCount = 0;
@@ -620,15 +696,15 @@ namespace EWL
         #region Drag Drop
 
         /// <summary>
-        /// Вказує на те чи курсор з файлом знаходиться над <see cref="DragAndDropPanel1"/>
+        /// Вказує на те чи курсор з файлом знаходиться над <see cref="DragAndDropPanel"/>
         /// </summary>
         bool isMouseOverDDP { get; set; } = false;
         /// <summary>
-        /// Вказує на те чи якісь файли вже поміщені в <see cref="DragAndDropPanel1"/>
+        /// Вказує на те чи якісь файли вже поміщені в <see cref="DragAndDropPanel"/>
         /// </summary>
         bool fileIsAdded { get => TxtFilesPathsTextBox.Text != ""; } //AddWButton3.Enabled; }
         /// <summary>
-        /// Список доданих в <see cref="DragAndDropPanel1"/> файлів
+        /// Список доданих в <see cref="DragAndDropPanel"/> файлів
         /// </summary>
         List<string> files = new();
 
@@ -652,7 +728,7 @@ namespace EWL
             => Null_AddingWPanel3();
 
         /// <summary>
-        /// Скидає <see cref="AddingWPanel3"/> до початкового стану
+        /// Скидає <see cref="AddingWPanel"/> до початкового стану
         /// </summary>
         private void Null_AddingWPanel3()
         {
@@ -746,7 +822,6 @@ namespace EWL
             }
         }
 
-        //ADD TO - універсальної кнопки
         private async void AddWButton3_DoClick()
         {
             CloseButton.Enabled = false;
@@ -942,8 +1017,18 @@ namespace EWL
 
         private void Escape_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape && CurrentPanel != MenuPanel)
-                GoBackButton_Click(sender, e);
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (CurrentPanel != MenuPanel)
+                {
+                    if (CurrentPanel == FCLearingPanel)
+                        FCGoBackButton.PerformClick();
+                    else
+                        GoBackButton_Click(sender, e);
+                }
+                else
+                    CloseButton.PerformClick();
+            }
         }
 
         private void Enter_KeyDown(object sender, KeyEventArgs e)
@@ -970,6 +1055,7 @@ namespace EWL
             }
         }
 
+        /* RATING WHITH 1-2-3-4-5
         private void RateW_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -991,6 +1077,7 @@ namespace EWL
                     break;
             }
         }
+        */
 
         #endregion
 
@@ -1023,6 +1110,7 @@ namespace EWL
             CurrentPanel = panelToShow;
             panelToShow.Enabled = true;
             panelToShow.Visible = true;
+            panelToShow.BringToFront();
 
             foreach (Control panel in BackgroundPanel.Controls)
                 if (panel is Panel
@@ -1066,12 +1154,7 @@ namespace EWL
 
 
 
-
-
-
-
-
-
+        #region <{ GPT REF }>
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
@@ -1094,6 +1177,8 @@ namespace EWL
             label22.Text = response;
             handler.Close();
         }
+
+        #endregion
 
 
 
