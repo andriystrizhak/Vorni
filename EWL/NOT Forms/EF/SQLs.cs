@@ -344,7 +344,7 @@ namespace EWL.EF_SQLite
         #endregion
 
         //TEST
-        #region Отримати / Змінити складність слів для вивчення (за раз)
+        #region Отримати / Змінити складність слів для вивчення
 
         public static int Get_CurrentDifficulty()
         {
@@ -359,6 +359,23 @@ namespace EWL.EF_SQLite
 
             using VocabularyContext db = new(CS);
             db.Settings.First().CurrentDifficulty = difficulty;
+            db.SaveChanges();
+        }
+        #endregion
+
+        //TEST
+        #region Отримати / Змінити GPT API-ключ
+
+        public static string Get_GPTApiKey()
+        {
+            using VocabularyContext db = new(CS);
+            return db.Settings.First().GPTApiKey;
+        }
+
+        public static void Set_GPTApiKey(string gptApiKey)
+        {
+            using VocabularyContext db = new(CS);
+            db.Settings.First().GPTApiKey = gptApiKey;
             db.SaveChanges();
         }
         #endregion

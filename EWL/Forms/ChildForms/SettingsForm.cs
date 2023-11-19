@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraSplashScreen;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
 using EWL;
 using EWL.EF_SQLite;
 using Microsoft.VisualBasic.Devices;
@@ -67,6 +68,9 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
             Close();
         }
 
+        private void AddGPTApiKeyButton_Click(object sender, EventArgs e)
+            => new ApiKeyForm(this).ShowDialog();
+
         private void SaveSettingsButton_Click(object sender, EventArgs e)
         {
             SaveSettingsButton.Enabled = false;
@@ -108,16 +112,6 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
         private void SaveSettingsButton_Leave(object sender, EventArgs e)
         {
             SaveSettingsButton.BorderColor = Color.FromArgb(138, 44, 254);
-        }
-
-        private void CloseSettingsButton_Enter(object sender, EventArgs e)
-        {
-            CloseSettingsButton.BorderColor = Color.FromArgb(170, 101, 254);
-        }
-
-        private void CloseSettingsButton_Leave(object sender, EventArgs e)
-        {
-            CloseSettingsButton.BorderColor = Color.FromArgb(24, 27, 32);
         }
 
         #endregion

@@ -63,6 +63,10 @@ namespace EWL.Migrations
                     b.Property<int>("CurrentDifficulty")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("GPTApiKey")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("WasLaunched")
                         .HasColumnType("INTEGER");
 

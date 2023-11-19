@@ -17,5 +17,7 @@ public partial class Setting
 
     public int CurrentCategoryId { get; set; }
 
+    public string GPTApiKey { get; set; } = null!;
+
     public virtual Category CurrentCategory { get; set; } = null!;
 }

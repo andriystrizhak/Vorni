@@ -59,7 +59,6 @@ namespace EWL
         {
             KeyDown += Enter_KeyDown!;
             KeyDown += Escape_KeyDown!;
-            //KeyDown += RateW_KeyDown!;
             KeyDown += CtrlS_KeyDown!;
             KeyDown += CtrlZ_KeyDown!;
 
@@ -192,6 +191,7 @@ namespace EWL
 
                 FCItems = FCItem.CreateFCItems(Words, sentenses);
 
+                FCProgressBar.Maximum = FCItems.Count;
                 PrepareFCLPanel();
                 ShowPanel(FCLearingPanel);
             }
@@ -330,6 +330,7 @@ namespace EWL
             FCSentenceLabel.Text = FCItems[CurrentWIndex].Sentence;
             FCUaTransLabel.Text = FCItems[CurrentWIndex].UaT;
 
+            FCProgressBar.Value = CurrentWIndex;
             FCAnswerTextBox.Focus();
         }
 
@@ -337,7 +338,7 @@ namespace EWL
 
         private void FCGoBackButton_Click(object sender, EventArgs e)
         {
-            var handler = ShowProgressPanel(this);
+            var handler = ShowProgressPanel(CurrentPanel);
 
             var dialogResult = MessageBox.Show(
                 "Ти точно хочеш перервати вивчення?\r\nРезультати всеодно збережуться",

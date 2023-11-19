@@ -14,6 +14,7 @@ using OpenAI;
 using Eng_Flash_Cards_Learner.NOT_Forms.GPT;
 using OpenAI.ObjectModels.ResponseModels;
 using DevExpress.XtraSplashScreen;
+using EWL.EF_SQLite;
 
 namespace Eng_Flash_Cards_Learner.NOT_Forms
 {
@@ -24,7 +25,11 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
 
         static Label CurrentLabel { get; set; }
 
-        const string MyApiKey = "gdfggggggggggggdfgsdfgsdfgd"; //PROTECT
+        static string MyApiKey 
+        { 
+            get { return SQLs.Get_GPTApiKey(); }
+            set { SQLs.Set_GPTApiKey(value); }
+        }
 
         const string PromptForTests = "Create forur options: first of them is a special word or phrase " +
             "and other three options may be slightly similar in meaning to the special word or phrase, " +
