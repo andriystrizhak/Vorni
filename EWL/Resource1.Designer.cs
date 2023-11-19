@@ -183,6 +183,26 @@ namespace Eng_Flash_Cards_Learner {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_азбука_96__1__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-азбука-96 (1)(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_азбука_96_1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-азбука-96(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_вопрос_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-вопрос-48", resourceCulture);
@@ -196,6 +216,56 @@ namespace Eng_Flash_Cards_Learner {
         internal static System.Drawing.Bitmap icons8_вопрос_481 {
             get {
                 object obj = ResourceManager.GetObject("icons8-вопрос-481", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_график_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-график-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_график_96__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-график-96 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_добавить_96__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-добавить-96 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_добавить_96_2_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-добавить-96(2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_дублировать_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-дублировать-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -226,6 +296,66 @@ namespace Eng_Flash_Cards_Learner {
         internal static System.Drawing.Bitmap icons8_налево_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-налево-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_настройки_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-настройки-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_настройки_96__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-настройки-96 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_плюс_2_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-плюс-2-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_привод_96_1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-привод-96(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_статистика_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-статистика-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_студенческий_центр_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-студенческий-центр-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

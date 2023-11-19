@@ -139,7 +139,7 @@ namespace EWL
             TestMethodButton.Checked = false;
             StartLearningButton.Enabled = false;
 
-            GPTToggleSwitch.Checked = true;
+            //GPTToggleSwitch.Checked = true;
 
             CategoriesComboBox.SelectedIndex = SQLs.Get_CurrentCategory() - 1;
             NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
