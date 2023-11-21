@@ -120,8 +120,62 @@
   <metadata name="fullScreenImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>5, 119</value>
   </metadata>
+  <metadata name="GPTHtmlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>352, 146</value>
+  </metadata>
+  <data name="pictureBox1.ToolTip" xml:space="preserve">
+    <value>Нейронна мережа від OpenAI, яка генеруватиме цікаві &lt;br&gt;
+речення для режиму флеш-карток та унікальні завдання &lt;br&gt;
+для режиму тестів, покращуючи ефективність навчання. &lt;br&gt;&lt;br&gt;
+(Потребує інтернет-з'єднання)</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value>Нейронна мережа від OpenAI, яка генеруватиме цікаві &lt;br&gt;
+речення для режиму флеш-карток та унікальні завдання &lt;br&gt;
+для режиму тестів, покращуючи ефективність навчання. &lt;br&gt;&lt;br&gt;
+(Потребує інтернет-з'єднання)
+</value>
+  </data>
+  <data name="CheckGPTPanel.ToolTip" xml:space="preserve">
+    <value>Нейронна мережа від OpenAI, яка генеруватиме цікаві &lt;br&gt;
+речення для режиму флеш-карток та унікальні завдання &lt;br&gt;
+для режиму тестів, покращуючи ефективність навчання. &lt;br&gt;&lt;br&gt;
+(Потребує інтернет-з'єднання)</value>
+  </data>
+  <metadata name="LearningMethodHtmllTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>177, 148</value>
+  </metadata>
+  <data name="TestMethodButton.ToolTip" xml:space="preserve">
+    <value>Буде показаний переклад слова, а тобі потрібно знайти &lt;br&gt;
+його англійський переклад серед варіантів нижче. &lt;br&gt;
+Система оцінюватиме твоє знання слова від 1 до 5. &lt;br&gt;
+&lt;br&gt;
+Згодом це слово показуватиметься тобі з частотою, &lt;br&gt;
+яка залежатиме від оцінки.
+</value>
+  </data>
+  <data name="FCMethodButton.ToolTip" xml:space="preserve">
+    <value>Буде показане англійське речення з пропуском (якщо вибраний&lt;br&gt;
+пункт GPT) і український переклад пропущеного англ. слова. &lt;br&gt;
+Тобі потрібно ввести це англ. слово й натиснути "перевірити". &lt;br&gt;
+&lt;br&gt;
+Згодом слова показуватимуться тобі з частотою, яка &lt;br&gt;
+залежатиме від твоїх успіхів у вивченні кожного з них.</value>
+  </data>
+  <metadata name="WordID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="EngWord.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="UaTranslation.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Rating.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="SpecialFormatLineHtmlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>366, 125</value>
+    <value>177, 122</value>
   </metadata>
   <data name="SpecialFormatInfoBox1.ToolTip" xml:space="preserve">
     <value>Приклад спеціального формату рядка: &lt;br&gt;
@@ -144,68 +198,11 @@
 Можна додавати кілька файлів водночас.
 </value>
   </data>
-  <metadata name="GPTHtmlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>541, 149</value>
-  </metadata>
-  <data name="pictureBox1.ToolTip" xml:space="preserve">
-    <value>Нейронна мережа від OpenAI, яка генеруватиме цікаві &lt;br&gt;
-речення для режиму флеш-карток та унікальні завдання &lt;br&gt;
-для режиму тестів, покращуючи ефективність навчання. &lt;br&gt;&lt;br&gt;
-(Потребує інтернет-з'єднання)</value>
-  </data>
-  <data name="label26.ToolTip" xml:space="preserve">
-    <value>Нейронна мережа від OpenAI, яка генеруватиме цікаві &lt;br&gt;
-речення для режиму флеш-карток та унікальні завдання &lt;br&gt;
-для режиму тестів, покращуючи ефективність навчання. &lt;br&gt;&lt;br&gt;
-(Потребує інтернет-з'єднання)
-</value>
-  </data>
-  <data name="CheckGPTPanel.ToolTip" xml:space="preserve">
-    <value>Нейронна мережа від OpenAI, яка генеруватиме цікаві &lt;br&gt;
-речення для режиму флеш-карток та унікальні завдання &lt;br&gt;
-для режиму тестів, покращуючи ефективність навчання. &lt;br&gt;&lt;br&gt;
-(Потребує інтернет-з'єднання)</value>
-  </data>
-  <metadata name="LearningMethodHtmllTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>366, 151</value>
-  </metadata>
-  <data name="TestMethodButton.ToolTip" xml:space="preserve">
-    <value>Буде показаний переклад слова, а тобі потрібно знайти &lt;br&gt;
-його англійський переклад серед варіантів нижче. &lt;br&gt;
-Система оцінюватиме твоє знання слова від 1 до 5. &lt;br&gt;
-&lt;br&gt;
-Згодом це слово показуватиметься тобі з частотою, &lt;br&gt;
-яка залежатиме від оцінки.
-</value>
-  </data>
-  <data name="FCMethodButton.ToolTip" xml:space="preserve">
-    <value>Буде показане слово, а тобі потрібно його перекласти.&lt;br&gt;
-Потім ти дивишся його значення і оцінюєш наскільки &lt;br&gt;
-добре ти його знав(-ла) від 1 до 5. &lt;br&gt;
-&lt;br&gt;
-Згодом це слово показуватиметься тобі з частотою, яка &lt;br&gt;
-залежатиме від наданої тобою раніше оцінки.</value>
-  </data>
-  <metadata name="WordID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="EngWord.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="UaTranslation.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Rating.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="SpecialFormatLineTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>8, 148</value>
-  </metadata>
   <metadata name="WrongFileFormatPopup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>19, 75</value>
   </metadata>
   <metadata name="OpenTxtFilesDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>154, 124</value>
+    <value>8, 148</value>
   </metadata>
   <metadata name="InvalidLinesAndRepeatedWordsopup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>20, 12</value>
@@ -238,7 +235,7 @@
     <value>609, 15</value>
   </metadata>
   <metadata name="MainFGuna2Elipse.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>755, 153</value>
+    <value>506, 149</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>177</value>
@@ -365,10 +362,7 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <metadata name="progressPanel1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>951, 155</value>
-  </metadata>
-  <metadata name="LearningMethodToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>163, 150</value>
+  <metadata name="SidebarTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>657, 149</value>
   </metadata>
 </root>

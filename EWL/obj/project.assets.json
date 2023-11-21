@@ -6887,9 +6887,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\EWL.csproj",
-      "projectName": "EWL",
-      "projectPath": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\EWL.csproj",
+      "projectUniqueName": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Eng_Flash-Cards_Learner.csproj",
+      "projectName": "Eng_Flash-Cards_Learner",
+      "projectPath": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Eng_Flash-Cards_Learner.csproj",
       "packagesPath": "C:\\Users\\Windows-10H-20\\.nuget\\packages\\",
       "outputPath": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\obj\\",
       "projectStyle": "PackageReference",

@@ -63,7 +63,7 @@ namespace EWL
             KeyDown += CtrlZ_KeyDown!;
 
             InitializeComponent();
-            ShowPanel(MenuPanel);
+            ShowPanel(WelcomePanel);
 
             SetCategoriesList();
         }
@@ -114,6 +114,31 @@ namespace EWL
         #region [ SidebarPanel ]
 
         //TODO - SIDEBAR
+        bool SidebarExpanded { get; set; } = false;
+
+
+        private void SidebarTimer_Tick(object sender, EventArgs e)
+        {
+            int delta = SidebarExpanded ? -10 : 10;
+            SidebarPanel.Width += delta;
+            if (SidebarPanel.Width == SidebarPanel.MinimumSize.Width
+                || SidebarPanel.Width == SidebarPanel.MaximumSize.Width)
+            {
+                SidebarExpanded = !SidebarExpanded;
+                SidebarTimer.Stop();
+            }
+        }
+
+        private void SidebarExtensionButton_Click(object sender, EventArgs e)
+        {
+            SidebarTimer.Start();
+        }
+
+        private void SidebarPanel_MouseLeave(object sender, EventArgs e)
+        {
+            if (SidebarExpanded)
+                SidebarTimer.Start();
+        }
 
         #endregion
 
@@ -500,7 +525,7 @@ namespace EWL
         #region [ Додати слова ]
 
         //TODO CATEGORY - Додати перемикач категорії для додавання слів
-        private void SeeAddingWPanelButton_Click(object sender, EventArgs e)
+        private void AddWPanelButton_Click(object sender, EventArgs e)
         {
             addedWordsCount = 0;
             int wAddingMode = SQLs.Get_WordAddingMode();
@@ -960,7 +985,7 @@ namespace EWL
         //TODO - Додати перемикач категорії для статистики
         //TODO - Додати можливість перегляду графіків
 
-        private void SeeStatButton_Click(object sender, EventArgs e)
+        private void StatButton_Click(object sender, EventArgs e)
         {
             var stat = SQLs.Get_Statistic();
             int count = stat.AllWordCount;
