@@ -113,14 +113,16 @@ namespace EWL
 
         #region [ SidebarPanel ]
 
-        //TODO - SIDEBAR
         bool SidebarExpanded { get; set; } = false;
-
 
         private void SidebarTimer_Tick(object sender, EventArgs e)
         {
-            int delta = SidebarExpanded ? -10 : 10;
-            SidebarPanel.Width += delta;
+            int sidebarPDelta = SidebarExpanded ? -10 : 10;
+            int currentPDelta = SidebarExpanded ? -5 : 5;
+
+            SidebarPanel.Width += sidebarPDelta;
+            CurrentPanel.Location = new Point(CurrentPanel.Location.X
+                + currentPDelta, CurrentPanel.Location.Y);
             if (SidebarPanel.Width == SidebarPanel.MinimumSize.Width
                 || SidebarPanel.Width == SidebarPanel.MaximumSize.Width)
             {
@@ -145,10 +147,18 @@ namespace EWL
         #region [ BackgroundPanel ]
 
         private void MainForm_Activated(object sender, EventArgs e)
-            => BackgroundPanel.BorderColor = Color.FromArgb(170, 101, 254);
+        {
+            var color = Color.FromArgb(170, 101, 254);
+            BackgroundPanel.BorderColor = color;
+            RightBorderPanel.BorderColor = color;
+        }
 
         private void MainForm_Deactivate(object sender, EventArgs e)
-            => BackgroundPanel.BorderColor = Color.FromArgb(74, 84, 93);
+        {
+            var color = Color.FromArgb(74, 84, 93);
+            BackgroundPanel.BorderColor = color;
+            RightBorderPanel.BorderColor = color;
+        }
 
         #endregion
 
@@ -363,21 +373,7 @@ namespace EWL
 
         private void FCGoBackButton_Click(object sender, EventArgs e)
         {
-            var handler = ShowProgressPanel(CurrentPanel);
-
-            var dialogResult = MessageBox.Show(
-                "Ти точно хочеш перервати вивчення?\r\nРезультати всеодно збережуться",
-                "Е, ти куди?..",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2);
-            if (dialogResult == DialogResult.Yes)
-            {
-                Null_FCLPanel();
-                LearnWButton_Click(sender, e);
-            }
-
-            handler.Close();
+            ShowPanel(LearningPanel);
         }
 
         private void FCSentenceLabel_Resize(object sender, EventArgs e)
@@ -1045,13 +1041,8 @@ namespace EWL
         {
             if (e.KeyCode == Keys.Escape)
             {
-                if (CurrentPanel != MenuPanel)
-                {
-                    if (CurrentPanel == FCLearingPanel)
-                        FCGoBackButton.PerformClick();
-                    else
-                        GoBackButton_Click(sender, e);
-                }
+                if (CurrentPanel == FCLearingPanel)
+                    FCGoBackButton.PerformClick();
                 else
                     CloseButton.PerformClick();
             }
@@ -1133,7 +1124,21 @@ namespace EWL
             panelToShow.Visible = true;
             */
 
+            if (CurrentPanel == FCLearingPanel)
+            {
+                if (!DoSwitchFCLPanel())
+                {
+                    LearnButton.Checked = true;
+                    return;
+                }
+                else Null_FCLPanel();
+            }
+
             CurrentPanel = panelToShow;
+            //Для правильного розташування 'CurrentPanel'
+            //коли 'SidebarPanel' згорнута чи розгорнута
+            CurrentPanel.Location = new Point(59 + (SidebarExpanded ? 94 : 0), 35);
+
             panelToShow.Enabled = true;
             panelToShow.Visible = true;
             panelToShow.BringToFront();
@@ -1141,13 +1146,26 @@ namespace EWL
             foreach (Control panel in BackgroundPanel.Controls)
                 if (panel is Panel
                     && panel != panelToShow)
-                //&& panel != BackgroundPanel
-                //&& panel != TopPanel
-                //&& panel != SidebarPanel)
                 {
                     panel.Enabled = false;
                     panel.Visible = false;
                 }
+        }
+
+        private bool DoSwitchFCLPanel()
+        {
+            var handler = ShowProgressPanel(this);
+
+            var dialogResult = MessageBox.Show(
+                "Ти точно хочеш перервати вивчення?\r\nРезультати всеодно збережуться",
+                "Е, ти куди?..",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+
+            handler.Close();
+
+            return dialogResult == DialogResult.Yes;
         }
 
         /// <summary>
@@ -1171,11 +1189,6 @@ namespace EWL
         }
         #endregion
 
-        #region ₴( Сюди автоматично додаються нові методи )₴
-
-
-
-        #endregion
 
 
 
@@ -1206,7 +1219,11 @@ namespace EWL
 
         #endregion
 
+        #region ₴( Сюди автоматично додаються нові методи )₴
 
+
+
+        #endregion
 
 
 

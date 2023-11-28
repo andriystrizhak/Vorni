@@ -120,6 +120,30 @@
   <metadata name="fullScreenImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>5, 119</value>
   </metadata>
+  <metadata name="SpecialFormatLineHtmlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>177, 122</value>
+  </metadata>
+  <data name="SpecialFormatInfoBox1.ToolTip" xml:space="preserve">
+    <value>Приклад спеціального формату рядка: &lt;br&gt;
+                    1 - 2 / 2 / ... [3] &lt;br&gt;
+   де: &lt;br&gt;
+1 - англійське слово/фраза; &lt;br&gt;
+2 - його переклад(-и) через "/"; &lt;br&gt;
+3 - складність, від "1"(дуже легко) до "5"(дуже складно).
+</value>
+  </data>
+  <data name="SpecialFormatInfoBox2.ToolTip" xml:space="preserve">
+    <value>Приклад спеціального формату рядка: &lt;br&gt;
+                    1 - 2 / 2 / ... [3] &lt;br&gt;
+   де: &lt;br&gt;
+1 - англійське слово/фраза; &lt;br&gt;
+2 - його переклад(-и) через "/"; &lt;br&gt;
+3 - складність, від "1"(дуже легко) до "5"(дуже складно). &lt;br&gt; &lt;br&gt;
+
+Додаваний .txt-файл має містити рядки такого формату.  &lt;br&gt;
+Можна додавати кілька файлів водночас.
+</value>
+  </data>
   <metadata name="GPTHtmlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>352, 146</value>
   </metadata>
@@ -174,30 +198,6 @@
   <metadata name="Rating.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="SpecialFormatLineHtmlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>177, 122</value>
-  </metadata>
-  <data name="SpecialFormatInfoBox1.ToolTip" xml:space="preserve">
-    <value>Приклад спеціального формату рядка: &lt;br&gt;
-                    1 - 2 / 2 / ... [3] &lt;br&gt;
-   де: &lt;br&gt;
-1 - англійське слово/фраза; &lt;br&gt;
-2 - його переклад(-и) через "/"; &lt;br&gt;
-3 - складність, від "1"(дуже легко) до "5"(дуже складно).
-</value>
-  </data>
-  <data name="SpecialFormatInfoBox2.ToolTip" xml:space="preserve">
-    <value>Приклад спеціального формату рядка: &lt;br&gt;
-                    1 - 2 / 2 / ... [3] &lt;br&gt;
-   де: &lt;br&gt;
-1 - англійське слово/фраза; &lt;br&gt;
-2 - його переклад(-и) через "/"; &lt;br&gt;
-3 - складність, від "1"(дуже легко) до "5"(дуже складно). &lt;br&gt; &lt;br&gt;
-
-Додаваний .txt-файл має містити рядки такого формату.  &lt;br&gt;
-Можна додавати кілька файлів водночас.
-</value>
-  </data>
   <metadata name="WrongFileFormatPopup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>19, 75</value>
   </metadata>
@@ -364,5 +364,8 @@
   </data>
   <metadata name="SidebarTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>657, 149</value>
+  </metadata>
+  <metadata name="transitionManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>850, 90</value>
   </metadata>
 </root>
