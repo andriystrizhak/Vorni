@@ -25,23 +25,30 @@ namespace EWL.EF_SQLite
         /// <param name="categoryID">ID категорії</param>
         /// <param name="wordCount">Кількість слів для виводу</param>
         /// <returns>Список слів (DB_Word)</returns>
-        public static List<Tuple<Word, DateTime>> Get_Words_FromCategory(int categoryID, int wordCount = -1, int dificulty = 0)
+        public static List<Tuple<Word, DateTime>> Get_Words_FromCategory(int categoryID, int wordCount = -1, int difficulty = 0)
         {
             if (wordCount < -1) throw new ArgumentException("wordcount argument can't be less than '1'");
             if (categoryID < 1) throw new ArgumentException("categoryID argument can't be less than '1'");
-            if (dificulty < 0 || dificulty > 5) throw new ArgumentException("difficulty argument can't be less than '0' or greater than '5'");
-            if (dificulty == 0) dificulty = 6; //якщо значення складності не задане, то задати більше максимального
+            if (difficulty < 0 || difficulty > 5) throw new ArgumentException("difficulty argument can't be less than '0' or greater than '5'");
+            if (difficulty == 0) difficulty = 6; //якщо значення складності не задане, то задати більше максимального
 
             List<Tuple<Word, DateTime>> wordsInfo = new();
 
             using VocabularyContext db = new(CS);
+            (int dif, int rate) wcTuple;
 
-            wordsInfo = db.WordCategories
+            var tempWordsInfo = db.WordCategories
                 .Where(wc => wc.CategoryId == categoryID)     // Фільтр по категорії
-                .Where(wc => wc.Word.Difficulty <= dificulty)
-                .OrderByDescending(wc => (dificulty != 6) 
-                ? wc.Word.Difficulty : wc.Word.WordId)        // Якщо значення складності задане то сортувати за ним, інакше ні
-                .ThenBy(wc => wc.Word.Rating)                 // Сортування за рейтингом у спадаючому порядку
+                .Where(wc => wc.Word.Difficulty <= difficulty);
+                //.OrderByDescending(wc => (dificulty != 6)
+                //? ((int dif, int rate) => (wc.Word.Difficulty, wc.Word.Rating))
+                //: wc.Word.Rating)                           // Сортування за рейтингом у спадаючому порядку
+            wordsInfo = ((difficulty != 6)
+                ? tempWordsInfo
+                .OrderByDescending(wc => wc.Word.Difficulty)  // Якщо значення складності задане то сортувати за ним, інакше ні
+                .ThenBy(wc => wc.Word.Rating)
+                : tempWordsInfo
+                .OrderBy(wc => wc.Word.Rating))     // Сортування за рейтингом у спадаючому порядку
                 .ThenBy(wc => wc.AddedAt)                     // Сортування за датою додавання
                 .Select(wc => Tuple.Create(new Word
                 {

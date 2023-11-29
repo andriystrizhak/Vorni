@@ -318,15 +318,14 @@ namespace EWL
             Clear_FCGPTEventsHandlers();
         }
 
+        string ErrorText;
+
         void GPTError_GPTErrorHandler(string response, IOverlaySplashScreenHandle handler)
         {
             handler.Close();
-            var errorText = HandleGPTErrorResponse(response.Split('\n')[0]);
-            MessageBox.Show(
-                errorText,
-                "Щось пішло шкереберть!",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Hand);
+
+            ErrorText = HandleGPTErrorResponse(response.Split('\n')[0]);
+            this.Invoke(ShowErrorMessageBox);
 
             Clear_FCGPTEventsHandlers();
         }
@@ -340,6 +339,19 @@ namespace EWL
                 _ => "Не вдається отримати відповіді від GPT Х(\n" +
                 "Спробуй навчатися з GPT пізніше"
             };
+
+        void ShowErrorMessageBox()
+        {
+            var handler2 = ShowProgressPanel(this);
+
+            MessageBox.Show(
+                ErrorText,
+                "Щось пішло шкереберть!",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Hand);
+
+            handler2.Close();
+        }
 
         void Clear_FCGPTEventsHandlers()
         {
@@ -362,7 +374,7 @@ namespace EWL
         private void PrepareFCLPanel()
         {
             WCounterLabel.Text = $"{CurrentWIndex + 1} / {FCItems.Count}";
-            FCSentenceLabel.Text = FCItems[CurrentWIndex].Sentence;
+            FCSentenceTxtBox.Text = FCItems[CurrentWIndex].Sentence;
             FCUaTransLabel.Text = FCItems[CurrentWIndex].UaT;
 
             FCProgressBar.Value = CurrentWIndex;
@@ -378,8 +390,15 @@ namespace EWL
 
         private void FCSentenceLabel_Resize(object sender, EventArgs e)
         {
-            FCAnswerTextBox.Location = new Point(FCAnswerTextBox.Left, FCSentenceLabel.Bottom + 23);
+            FCAnswerTextBox.Location = new Point(FCAnswerTextBox.Left, FCSentenceTxtBox.Bottom + 23);
             FCUaTransLabel.Location = new Point(FCUaTransLabel.Left, FCAnswerTextBox.Bottom + 23);
+        }
+
+        private void FCSentenceTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            FCSentenceTxtBox.Size =
+                (TextRenderer.MeasureText(FCSentenceTxtBox.Text, FCSentenceTxtBox.Font).Width > 898)
+                ? FCSentenceTxtBox.MaximumSize : FCSentenceTxtBox.MinimumSize;
         }
 
         private void FCAnswerTextBox_TextChanged(object sender, EventArgs e)
@@ -406,7 +425,9 @@ namespace EWL
         }
 
         bool CheckFCAnswer()
-            => FCAnswerTextBox.Text == FCItems[CurrentWIndex].EngW;
+            => String.Equals(FCAnswerTextBox.Text, 
+                FCItems[CurrentWIndex].EngW, 
+                StringComparison.OrdinalIgnoreCase);
 
         void Set_FCPanelCorrectAnswer()
         {
@@ -1005,17 +1026,9 @@ namespace EWL
 
         //*******
 
-        #region [ Назад, до Меню ]
-
-        private void GoBackButton_Click(object sender, EventArgs e)
-        {
-            ShowPanel(MenuPanel);
-            LearnWButton.Focus();
-        }
-
-        #endregion
-
         #region  Х( Поки не реалізовано )Х
+
+        /*
         private void FullScreenButton_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal) // Якщо вікно не в повноекранному режимі
@@ -1031,6 +1044,7 @@ namespace EWL
                 FullScreenButton.ImageIndex = 1;
             }
         }
+        */
         #endregion
 
         #endregion
@@ -1098,6 +1112,7 @@ namespace EWL
 
         #endregion
 
+        //BUG
         #region { OTHER }
 
         /// <summary>
@@ -1124,14 +1139,17 @@ namespace EWL
             panelToShow.Visible = true;
             */
 
-            if (CurrentPanel == FCLearingPanel)
+            //BUG
+            if (CurrentPanel == FCLearingPanel 
+                && panelToShow != LearningStatPanel)
             {
-                if (!DoSwitchFCLPanel())
+                if (DoSwitchFCLPanel())
+                    Null_FCLPanel();
+                else
                 {
                     LearnButton.Checked = true;
                     return;
                 }
-                else Null_FCLPanel();
             }
 
             CurrentPanel = panelToShow;
@@ -1220,6 +1238,10 @@ namespace EWL
         #endregion
 
         #region ₴( Сюди автоматично додаються нові методи )₴
+
+        //DELETE
+        void KAKA()
+        { }
 
 
 

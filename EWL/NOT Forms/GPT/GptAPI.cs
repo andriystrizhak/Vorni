@@ -37,9 +37,11 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
             "You have to do it with each of them and numerate answers. There's example with 'one' and 'apple' words:\r\n" +
             "1.\r\na) one\r\nb) seven\r\nc) zero\r\nd) one million\r\n\r\n2.\r\na) apple\r\nb) pear\r\nc) banana\r\nd) pumpkin";
 
-        const string PromptForFC = "Create a short sentences for every special word or phrase where " +
-            "special word or phrase is missing. There's examble for 'one' and 'apple' words\r\n" +
-            "1. I have only ___ apple left.\r\n2. I have a red _____ in my hand.";
+        const string PromptForFC = "Create a one short, clear and independent sentence for every special word " +
+            "or phrase where special word or phrase is missing. The missing in the sentence is marked with the underline \"_____\" " +
+            "And add ukrainian translation with missing word. Number each line. There's examble for 'one' and 'to be' words-phrases:\r\n" +
+            "1. I have only ___ orange left. / У мене залишилося тільки один апельсин.\r\n" +
+            "2. _____ honest, I'm not an astronaut. / Чесно кажучи, я не астронавт.";
 
 
         public static async void GetResponseAsStream(Label label, string[] words, GptPurpose purpose)
@@ -84,12 +86,14 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
 
         public static async void GetResponse(string[] words, GptPurpose purpose, IOverlaySplashScreenHandle overlayPHandrer)
         {
-            var api = GetOpenAIService();
+            var api = GetOpenAIService(overlayPHandrer);
+
+            if (api == null) return;
 
             string prompt = GetPrompt(purpose);
             ChatCompletionCreateResponse completionResult = null;
 
-            int maxTokens = words.Length * 20;
+            int maxTokens = words.Length * 50;
 
             try
             {
@@ -97,7 +101,8 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
                 {
                     Messages = new List<ChatMessage>
                     {
-                        ChatMessage.FromUser(prompt + $"\r\nThere's the words:\r\n{string.Join("\r\n", words)}")
+                        ChatMessage.FromSystem(prompt),
+                        ChatMessage.FromUser($"\r\nThere's the words:\r\n{string.Join("\r\n", words)}")
                     },
                     MaxTokens = maxTokens
                 });
@@ -117,14 +122,22 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
             }   
         }
 
-        static OpenAIService GetOpenAIService()
+        static OpenAIService GetOpenAIService(IOverlaySplashScreenHandle overlayPHandrer = null)
         {
-            var api = new OpenAIService(new OpenAiOptions()
+            if (MyApiKey == "" || MyApiKey == null) //Якщо значення ключа
             {
-                ApiKey = MyApiKey,
-            });
-            api.SetDefaultModelId(Models.Gpt_3_5_Turbo_1106);
-            return api;
+                GPTErrorHandler?.Invoke("invalid_api_key:\n Бла-бла-бла, все погано", overlayPHandrer);
+                return null;
+            }
+            else
+            {
+                var api = new OpenAIService(new OpenAiOptions()
+                {
+                    ApiKey = MyApiKey,
+                });
+                api.SetDefaultModelId(Models.Gpt_3_5_Turbo_1106);
+                return api;
+            }
         }
 
         static string GetPrompt(GptPurpose purpose)
