@@ -8,9 +8,21 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms.GPT
 {
     public static class GPTResponseHandler
     {
-        public static List<string> Handle_FCGPTResponse(string response)
+        public static List<(string, string)> Handle_FCGPTResponse(string response)
         {
-            List<string> result = response.Split('\n', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).Select(s => s.Substring(3)).ToList();
+            List<(string, string)> result = null;
+            try
+            {
+                 result = response
+                    .Split('\n', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+                    .Select(s => s.Substring(3).Split(" / ", StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
+                    .Select(s => (s[0], s[1]))
+                    .ToList();
+            }
+            catch
+            {
+                throw new ArgumentException("Wrong format of GPT-response");
+            }
             return result;
         }
     }

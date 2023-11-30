@@ -9,22 +9,25 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms.LearningItems
 {
     public class FCItem
     {
-        public FCItem(Word word, string sentence)
+        public FCItem(Word word, (string, string) sentences)
         {
             WordId = word.WordId;
-            EngW = word.EngWord;
-            UaT = word.UaTranslation.Replace("\n", ", ");
+            EngWrd = word.EngWord;
+            UaWrd = word.UaTranslation.Replace("\n", ", ");
             Rating = word.Rating;
-            Sentence = sentence;
+            EngSntns = sentences.Item1;
+            UaSntns = sentences.Item2;
         }
 
         public int WordId {  get; set; }
-        public string EngW { get; set; }
-        public string UaT { get; set; }
+        public string EngWrd { get; set; }
+        public string UaWrd { get; set; }
         public int Rating { get; set; }
-        public string Sentence { get; set; }
+        public string EngSntns { get; set; }
+        public string UaSntns { get; set; }
 
-        public static List<FCItem> CreateFCItems(List<Word> words, List<string> sentenses)
+
+        public static List<FCItem> CreateFCItems(List<Word> words, List<(string, string)> sentenses)
         {
             if (words.Count != sentenses.Count)
                 throw new ArgumentException("words.Count != sentenses.Count");

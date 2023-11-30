@@ -47,10 +47,12 @@ namespace EWL
         /// Індекс поточного слова для вивчення зі списку <see cref="Words"/>
         /// </summary>
         int CurrentWIndex { get; set; } = 0;
+
+        //int[] WordRatings { get; set; } = { 0, 0, 0, 0, 0, 0 }; //CHANGE
         /// <summary>
-        /// Оцінки поточних слів
+        /// Кількість правильних відповідей за раунд навчання
         /// </summary>
-        int[] wordRatings { get; set; } = { 0, 0, 0, 0, 0, 0 }; //CHANGE
+        int LearningStat { get; set; } = 0;
 
         List<Category> categories = null!; //TODO CATEGORY
         int curentCategoryID;             //TODO CATEGORY
@@ -215,33 +217,9 @@ namespace EWL
         private void PrepareLearnigPanels()
         {
             if (FCMethodButton.Checked)
-            {
-                List<string> sentenses = new List<string>();
-                if (IsGPTChecked)
-                    //TODO - врахувати всі виключення
-                    sentenses = GPTResponseHandler.Handle_FCGPTResponse(GPTResponse);
-                else
-                    for (int i = 0; i < Words.Count; i++)
-                        sentenses.Add("");
-
-                FCItems = FCItem.CreateFCItems(Words, sentenses);
-
-                FCProgressBar.Maximum = FCItems.Count;
-                PrepareFCLPanel();
-                ShowPanel(FCLearingPanel);
-            }
+                PrepareFCPanelForFirstTime();
             else if (TestMethodButton.Checked)
-            {
-                //TODO - implement TestLearningPanel
-                MessageBox.Show(
-                    "Цей режим покищо не реалізований, зачекай",
-                    "Розробник і так мало спить!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
-
-                //PrepareTLPanel();                      //НАЛАШТУВАННЯ панелі
-                //ShowPanel(TestLearingPanel);
-            }
+                PrepareTPanelForFirstTime();
         }
 
         #region LearningPanel events
@@ -297,7 +275,7 @@ namespace EWL
         private void AskGPT(GptPurpose purpose)
         {
             var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
-            var handler = ShowProgressPanel(CurrentPanel, windowOptions);
+            var handler = ShowProgressPanel(this, windowOptions);
 
             var words = this.Words.Select(w => w.EngWord).ToArray();
 
@@ -365,17 +343,59 @@ namespace EWL
 
         #region ( FCLearningPanel )
 
+        /// <summary>
+        /// Список слів з реченнями-прикладами для вивчення в <see cref="FCLearingPanel"/>
+        /// </summary>
         List<FCItem> FCItems { get; set; } = null;
+        /// <summary>
+        /// Відмічає чи відповідь на поточне завдання хибна
+        /// </summary>
         bool CurrentWFailed { get; set; } = false;
 
         /// <summary>
-        /// Підготовлює й показує <see cref="FCLearingPanel"/>
+        /// Здійснює першопочаткове приготування <see cref="FCLearingPanel"/>
+        /// </summary>
+        void PrepareFCPanelForFirstTime()
+        {
+            var sentenses = new List<(string, string)>();
+            if (IsGPTChecked)
+            {
+                try
+                {
+                    //TODO - врахувати всі виключення
+                    sentenses = GPTResponseHandler.Handle_FCGPTResponse(GPTResponse);
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show(
+                        "Не вдалося обробити незрозумілу тарабарщину GPT.\r\n" +
+                        "Спробуй ще разок/",
+                        "GPT здурів!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation);
+                    Null_FCLPanel();
+                    return;
+                }
+            }
+            else
+                for (int i = 0; i < Words.Count; i++)
+                    sentenses.Add(("", ""));
+
+            FCItems = FCItem.CreateFCItems(Words, sentenses);
+
+            FCProgressBar.Maximum = FCItems.Count;
+            PrepareFCLPanel();
+            ShowPanel(FCLearingPanel);
+        }
+
+        /// <summary>
+        /// Здійснює приготування <see cref="FCLearingPanel"/> до вивчення наступного слова
         /// </summary>
         private void PrepareFCLPanel()
         {
             WCounterLabel.Text = $"{CurrentWIndex + 1} / {FCItems.Count}";
-            FCSentenceTxtBox.Text = FCItems[CurrentWIndex].Sentence;
-            FCUaTransLabel.Text = FCItems[CurrentWIndex].UaT;
+            FCSentenceTxtBox.Text = FCItems[CurrentWIndex].EngSntns;
+            FCUaTransLabel.Text = FCItems[CurrentWIndex].UaWrd;
 
             FCProgressBar.Value = CurrentWIndex;
             FCAnswerTextBox.Focus();
@@ -391,7 +411,7 @@ namespace EWL
         private void FCSentenceLabel_Resize(object sender, EventArgs e)
         {
             FCAnswerTextBox.Location = new Point(FCAnswerTextBox.Left, FCSentenceTxtBox.Bottom + 23);
-            FCUaTransLabel.Location = new Point(FCUaTransLabel.Left, FCAnswerTextBox.Bottom + 23);
+            FCUaTransLabel.Location = new Point(FCUaTransLabel.Left, FCAnswerTextBox.Bottom + 28);
         }
 
         private void FCSentenceTxtBox_TextChanged(object sender, EventArgs e)
@@ -418,19 +438,43 @@ namespace EWL
 
         private void FCCheckAnswerButton_Click(object sender, EventArgs e)
         {
-            if (CheckFCAnswer())
+            if (AnswerIsCorrect())
                 Set_FCPanelCorrectAnswer();
             else
                 Set_FCPanelWrongAnswer();
         }
 
-        bool CheckFCAnswer()
-            => String.Equals(FCAnswerTextBox.Text, 
-                FCItems[CurrentWIndex].EngW, 
+        bool AnswerIsCorrect()
+            => String.Equals(FCAnswerTextBox.Text,
+                FCItems[CurrentWIndex].EngWrd,
                 StringComparison.OrdinalIgnoreCase);
 
         void Set_FCPanelCorrectAnswer()
         {
+            if (FCCheckAnswerButton.Text == "Перевірити")
+                Set_FCPanelCorrectAnswer_Check();
+            else
+                Set_FCPanelCorrectAnswer_NextW();
+        }
+
+        void Set_FCPanelCorrectAnswer_Check()
+        {
+            FCCheckAnswerButton.Text =
+                (CurrentWIndex + 1 != FCItems.Count) ? "Наступне" : "🏁Результати🏁";
+            FCUaTransLabel.Text = FCItems[CurrentWIndex].UaSntns;
+
+            FCAnswerTextBox.BorderColor = Color.FromArgb(20, 190, 75);
+            FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(30, 214, 95);
+        }
+
+        void Set_FCPanelCorrectAnswer_NextW()
+        {
+            FCCheckAnswerButton.Text = "Перевірити";
+
+            FCAnswerTextBox.Text = "";
+            FCAnswerTextBox.BorderColor = Color.FromArgb(74, 84, 93);
+            FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
+
             if (!CurrentWFailed)
                 Set_FCWord_RatingAndRepetition(true);
             CurrentWFailed = false;
@@ -444,16 +488,6 @@ namespace EWL
                 ShowPanel(LearningStatPanel);
                 RetryButton.Focus();
             }
-
-            FCAnswerTextBox.Text = "";
-            FCAnswerTextBox.BorderColor = Color.FromArgb(20, 190, 75);
-            FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(30, 214, 95);
-            Task.Run(() =>
-            {
-                Thread.Sleep(700);
-                FCAnswerTextBox.BorderColor = Color.FromArgb(74, 84, 93);
-                FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
-            });
         }
 
         void Set_FCPanelWrongAnswer()
@@ -463,9 +497,10 @@ namespace EWL
             CurrentWFailed = true;
 
             FCAnswerTextBox.Text = "";
-            FCAnswerTextBox.PlaceholderText = FCItems[CurrentWIndex].EngW;
+            FCAnswerTextBox.PlaceholderText = FCItems[CurrentWIndex].EngWrd;
             FCAnswerTextBox.BorderColor = Color.FromArgb(210, 47, 47);
             FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(245, 67, 67);
+            FCAnswerTextBox.Focus();
         }
 
         /// <summary>
@@ -478,7 +513,9 @@ namespace EWL
             SQLs.Rate_Word(FCItems[CurrentWIndex].WordId, increment
                 ? ((rating < 5) ? ++rating : rating)
                 : ((rating > 1) ? --rating : rating));
-            wordRatings[rating]++;
+
+            if (increment)
+                LearningStat++;
             SQLs.Increment_WordRepetition(FCItems[CurrentWIndex].WordId);
         }
 
@@ -488,6 +525,7 @@ namespace EWL
             Words = null;
             FCItems = null;
             CurrentWFailed = false;
+            LearningStat = 0;
         }
 
         #endregion
@@ -498,6 +536,21 @@ namespace EWL
 
         #region ( TLearningPanel )
 
+        /// <summary>
+        /// Здійснює першопочаткове приготування <see cref="TLearingPanel"/>
+        /// </summary>
+        void PrepareTPanelForFirstTime()
+        {
+            //TODO - implement TestLearningPanel
+            MessageBox.Show(
+                "Цей режим покищо не реалізований, зачекай",
+                "Розробник і так мало спить!",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation);
+
+            //PrepareTLPanel();                      //НАЛАШТУВАННЯ панелі
+            //ShowPanel(TestLearingPanel);
+        }
 
         #endregion
 
@@ -505,35 +558,48 @@ namespace EWL
 
         void OutputLearningStatistic()
         {
+            /*
             LearningStatLabel.Text =
                 $"Було вивчено слів: {Words.Count} " +
                 $"\n\nОцінки " +
-                $"\n5 - {wordRatings[5]} слів ({((float)wordRatings[5] / Words.Count):P1})" +
-                $"\n4 - {wordRatings[4]} слів ({((float)wordRatings[4] / Words.Count):P1})" +
-                $"\n3 - {wordRatings[3]} слів ({((float)wordRatings[3] / Words.Count):P1})" +
-                $"\n2 - {wordRatings[2]} слів ({((float)wordRatings[2] / Words.Count):P1})" +
-                $"\n1 - {wordRatings[1]} слів ({((float)wordRatings[1] / Words.Count):P1})\n\n";
-
-            double learningRating = ((double)(wordRatings[5] * 5
-                + wordRatings[4] * 4 + wordRatings[3] * 3
-                + wordRatings[2] * 2 + wordRatings[1] * 1)
+                $"\n5 - {WordRatings[5]} слів ({((float)WordRatings[5] / Words.Count):P1})" +
+                $"\n4 - {WordRatings[4]} слів ({((float)WordRatings[4] / Words.Count):P1})" +
+                $"\n3 - {WordRatings[3]} слів ({((float)WordRatings[3] / Words.Count):P1})" +
+                $"\n2 - {WordRatings[2]} слів ({((float)WordRatings[2] / Words.Count):P1})" +
+                $"\n1 - {WordRatings[1]} слів ({((float)WordRatings[1] / Words.Count):P1})\n\n";
+            
+            double learningRating = ((double)(WordRatings[5] * 5
+                + WordRatings[4] * 4 + WordRatings[3] * 3
+                + WordRatings[2] * 2 + WordRatings[1] * 1)
                 / (Words.Count * 5)) * 100;
+            */
 
-            LearningRatingLabel.Text = $"Твоя успішність: {learningRating:f0}/100";
-            if (learningRating > 85)
-                LearningRatingLabel.ForeColor = Color.FromArgb(117, 222, 42);
-            else if (learningRating > 70)
-                LearningRatingLabel.ForeColor = Color.FromArgb(222, 204, 42);
-            else if (learningRating > 50)
-                LearningRatingLabel.ForeColor = Color.FromArgb(222, 150, 42);
+            float learningScore = (float)LearningStat / FCItems.Count;
+
+            LearningStatLabel.Text =
+                $"Правильних відповідей:\r\n" +
+                $"{LearningStat} / {FCItems.Count} " +
+                $"({learningScore:P1})";
+
+            LearningStatScoreLabel.Text = $"Твій бал: {learningScore * 10} / 10";
+            if (learningScore >= 0.9)
+                LearningStatScoreLabel.ForeColor = Color.FromArgb(30, 215, 96);
+            else if (learningScore >= 0.6)
+                LearningStatScoreLabel.ForeColor = Color.FromArgb(219, 224, 27);
+            else if (learningScore >= 0.4)
+                LearningStatScoreLabel.ForeColor = Color.FromArgb(222, 179, 29);
             else
-                LearningRatingLabel.ForeColor = Color.FromArgb(222, 69, 42);
+                LearningStatScoreLabel.ForeColor = Color.FromArgb(223, 67, 28);
 
-            wordRatings = new int[] { 0, 0, 0, 0, 0, 0 };
+            Null_FCLPanel();
         }
 
         private void RetryButton_Click(object sender, EventArgs e)
-            => PrepareFCLPanel();
+            => StartLearningButton_Click(sender, e);
+            //PrepareFCPanelForFirstTime();
+
+        private void EndLearningButton_Click(object sender, EventArgs e)
+            => ShowPanel(LearningPanel);
 
         #endregion
 
@@ -1112,7 +1178,6 @@ namespace EWL
 
         #endregion
 
-        //BUG
         #region { OTHER }
 
         /// <summary>
@@ -1139,8 +1204,7 @@ namespace EWL
             panelToShow.Visible = true;
             */
 
-            //BUG
-            if (CurrentPanel == FCLearingPanel 
+            if (CurrentPanel == FCLearingPanel
                 && panelToShow != LearningStatPanel)
             {
                 if (DoSwitchFCLPanel())
@@ -1205,6 +1269,7 @@ namespace EWL
             }
             return _handle;
         }
+
         #endregion
 
 
@@ -1215,7 +1280,7 @@ namespace EWL
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            var handler = ShowProgressPanel(CurrentPanel);
+            var handler = ShowProgressPanel(this);
 
             label22.Text = "";
             GptAPI.GPTResponseHandler += Label22_GPTResponseHandler;
@@ -1242,6 +1307,7 @@ namespace EWL
         //DELETE
         void KAKA()
         { }
+
 
 
 
