@@ -63,6 +63,26 @@ namespace Eng_Flash_Cards_Learner {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1icons8_финишный_флажок_96 {
+            get {
+                object obj = ResourceManager.GetObject("1icons8-финишный-флажок-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2icons8_финишный_флажок_96 {
+            get {
+                object obj = ResourceManager.GetObject("2icons8-финишный-флажок-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap closeoutline_2 {
             get {
                 object obj = ResourceManager.GetObject("closeoutline_2", resourceCulture);
@@ -183,6 +203,16 @@ namespace Eng_Flash_Cards_Learner {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_v_live_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-v-live-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_азбука_96__1__1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-азбука-96 (1)(1)", resourceCulture);
@@ -196,6 +226,26 @@ namespace Eng_Flash_Cards_Learner {
         internal static System.Drawing.Bitmap icons8_азбука_96_1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-азбука-96(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_вверх_влево_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-вверх-влево-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_влево_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-влево-96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -466,6 +516,26 @@ namespace Eng_Flash_Cards_Learner {
         internal static System.Drawing.Bitmap icons8_удалить_60 {
             get {
                 object obj = ResourceManager.GetObject("icons8-удалить-60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_финишный_флажок_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-финишный-флажок-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_финишный_флажок_96__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-финишный-флажок-96 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

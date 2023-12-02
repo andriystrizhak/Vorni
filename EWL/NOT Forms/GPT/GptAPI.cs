@@ -41,7 +41,7 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
             "or phrase where special word or phrase is missing. The missing in the sentence is marked with the underline \"_____\" " +
             "And add ukrainian translation with missing word. Number each line. There's examble for 'one' and 'to be' words-phrases:\r\n" +
             "1. I have only ___ orange left. / У мене залишилося тільки один апельсин.\r\n" +
-            "2. _____ honest, I'm not an astronaut. / Чесно кажучи, я не астронавт.";
+            "2. __ __ honest, I'm not an astronaut. / Чесно кажучи, я не астронавт.";
 
 
         public static async void GetResponseAsStream(Label label, string[] words, GptPurpose purpose)

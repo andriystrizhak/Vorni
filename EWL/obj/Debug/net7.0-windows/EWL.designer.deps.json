@@ -524,7 +524,7 @@
         "runtime": {
           "lib/net6.0-windows/DevExpress.Utils.v23.1.dll": {
             "assemblyVersion": "23.1.6.0",
-            "fileVersion": "23.1.6.0"
+            "fileVersion": "0.0.0.0"
           }
         }
       },

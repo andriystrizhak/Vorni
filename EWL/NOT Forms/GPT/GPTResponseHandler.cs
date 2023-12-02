@@ -16,7 +16,12 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms.GPT
                  result = response
                     .Split('\n', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
                     .Select(s => s.Substring(3).Split(" / ", StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
-                    .Select(s => (s[0], s[1]))
+                    .Select(wp => 
+                    {
+                        if (!wp[0].Contains("_"))
+                            throw new Exception("There's no missings in English sentense");
+                        return (wp[0], wp[1]); 
+                    })
                     .ToList();
             }
             catch

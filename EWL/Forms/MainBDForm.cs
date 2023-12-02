@@ -63,11 +63,13 @@ namespace EWL
             KeyDown += Escape_KeyDown!;
             KeyDown += CtrlS_KeyDown!;
             KeyDown += CtrlZ_KeyDown!;
+            KeyDown += SwitchChapter_KeyDown;
 
             InitializeComponent();
             ShowPanel(WelcomePanel);
 
             SetCategoriesList();
+            MainFGuna2Elipse.TargetControl = this;
         }
 
         //TODO CATEGORY - Імплементувати
@@ -122,9 +124,11 @@ namespace EWL
             int sidebarPDelta = SidebarExpanded ? -10 : 10;
             int currentPDelta = SidebarExpanded ? -5 : 5;
 
-            SidebarPanel.Width += sidebarPDelta;
+            SidebarPanel.Width += sidebarPDelta;                                       //Розширення бокової панелі
+            SidePanelRightBorderPanel.Location = new Point(SidebarPanel.Width - 1,    
+                SidePanelRightBorderPanel.Location.Y);                                 //Зміщення SidePanelRightBorderPanel
             CurrentPanel.Location = new Point(CurrentPanel.Location.X
-                + currentPDelta, CurrentPanel.Location.Y);
+                + currentPDelta, CurrentPanel.Location.Y);                             //Зміщенн CurrentPanel
             if (SidebarPanel.Width == SidebarPanel.MinimumSize.Width
                 || SidebarPanel.Width == SidebarPanel.MaximumSize.Width)
             {
@@ -296,7 +300,7 @@ namespace EWL
             Clear_FCGPTEventsHandlers();
         }
 
-        string ErrorText;
+        string ErrorText { get; set; }
 
         void GPTError_GPTErrorHandler(string response, IOverlaySplashScreenHandle handler)
         {
@@ -312,10 +316,12 @@ namespace EWL
             => errorResponse switch
             {
                 "No connection" => "Схоже, в тебе проблеми зі з'єднанням :(",
-                "invalid_api_key:" => "Вказаний API-ключ невірний",
+                "invalid_api_key:" => "Вказаний API-ключ невірний\n" +
+                    "Додай коректний ключ в:\n" +
+                "'Налаштування' => 'API-Ключ' => '+ Додати'",
                 //ADD
                 _ => "Не вдається отримати відповіді від GPT Х(\n" +
-                "Спробуй навчатися з GPT пізніше"
+                    "Спробуй навчатися з GPT пізніше"
             };
 
         void ShowErrorMessageBox()
@@ -558,26 +564,10 @@ namespace EWL
 
         void OutputLearningStatistic()
         {
-            /*
-            LearningStatLabel.Text =
-                $"Було вивчено слів: {Words.Count} " +
-                $"\n\nОцінки " +
-                $"\n5 - {WordRatings[5]} слів ({((float)WordRatings[5] / Words.Count):P1})" +
-                $"\n4 - {WordRatings[4]} слів ({((float)WordRatings[4] / Words.Count):P1})" +
-                $"\n3 - {WordRatings[3]} слів ({((float)WordRatings[3] / Words.Count):P1})" +
-                $"\n2 - {WordRatings[2]} слів ({((float)WordRatings[2] / Words.Count):P1})" +
-                $"\n1 - {WordRatings[1]} слів ({((float)WordRatings[1] / Words.Count):P1})\n\n";
-            
-            double learningRating = ((double)(WordRatings[5] * 5
-                + WordRatings[4] * 4 + WordRatings[3] * 3
-                + WordRatings[2] * 2 + WordRatings[1] * 1)
-                / (Words.Count * 5)) * 100;
-            */
-
             float learningScore = (float)LearningStat / FCItems.Count;
 
             LearningStatLabel.Text =
-                $"Правильних відповідей:\r\n" +
+                $"Правильних відповідей:<br>" +
                 $"{LearningStat} / {FCItems.Count} " +
                 $"({learningScore:P1})";
 
@@ -596,7 +586,6 @@ namespace EWL
 
         private void RetryButton_Click(object sender, EventArgs e)
             => StartLearningButton_Click(sender, e);
-            //PrepareFCPanelForFirstTime();
 
         private void EndLearningButton_Click(object sender, EventArgs e)
             => ShowPanel(LearningPanel);
@@ -1075,7 +1064,7 @@ namespace EWL
             var ratings = stat.AllRatings;
             StatLabel.Text =
                 $"Всього слів в БД — {stat.AllWordCount} " +
-                $"\n\nОцінки: " +
+                $"\n\nКількість слів за їх рейтингом (від 1 до 5): " +
                 $"\n5 — {ratings[5]} слів ({((float)ratings[5] / count):P1})" +
                 $"\n4 — {ratings[4]} слів ({((float)ratings[4] / count):P1})" +
                 $"\n3 — {ratings[3]} слів ({((float)ratings[3] / count):P1})" +
@@ -1123,6 +1112,8 @@ namespace EWL
             {
                 if (CurrentPanel == FCLearingPanel)
                     FCGoBackButton.PerformClick();
+                else if (CurrentPanel == LearningStatPanel)
+                    ShowPanel(LearningPanel);
                 else
                     CloseButton.PerformClick();
             }
@@ -1149,6 +1140,31 @@ namespace EWL
                 CancelAddingButton.PerformClick();
 
                 button6.PerformClick(); //CATEGORY
+            }
+        }
+
+        private void SwitchChapter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.D0:
+                        SidebarExtensionButton.PerformClick();
+                        break;
+                    case Keys.D1:
+                        LearningPanelButton.PerformClick();
+                        break;
+                    case Keys.D2:
+                        AddWPanelButton.PerformClick();
+                        break;
+                    case Keys.D3:
+                        SettingsPanelButton.PerformClick();
+                        break;
+                    case Keys.D4:
+                        StatPanelButton.PerformClick();
+                        break;
+                }
             }
         }
 
@@ -1211,7 +1227,7 @@ namespace EWL
                     Null_FCLPanel();
                 else
                 {
-                    LearnButton.Checked = true;
+                    LearningPanelButton.Checked = true;
                     return;
                 }
             }
@@ -1307,6 +1323,14 @@ namespace EWL
         //DELETE
         void KAKA()
         { }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            //BackgroundPanel.Visible = true;
+            Thread.Sleep(200);
+
+            SplashScreenManager.CloseForm();
+        }
 
 
 
