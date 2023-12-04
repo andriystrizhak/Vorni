@@ -95,7 +95,11 @@ namespace EWL
                 "Ти точно хочеш вийти?", "Па-па?",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (closeForm == DialogResult.Yes) Close();
+            if (closeForm == DialogResult.Yes)
+            {
+                //this.Enabled = false;
+                FadeOutTimer.Start();
+            }
             handler.Close();
         }
 
@@ -125,7 +129,7 @@ namespace EWL
             int currentPDelta = SidebarExpanded ? -5 : 5;
 
             SidebarPanel.Width += sidebarPDelta;                                       //Розширення бокової панелі
-            SidePanelRightBorderPanel.Location = new Point(SidebarPanel.Width - 1,    
+            SidePanelRightBorderPanel.Location = new Point(SidebarPanel.Width - 1,
                 SidePanelRightBorderPanel.Location.Y);                                 //Зміщення SidePanelRightBorderPanel
             CurrentPanel.Location = new Point(CurrentPanel.Location.X
                 + currentPDelta, CurrentPanel.Location.Y);                             //Зміщенн CurrentPanel
@@ -164,6 +168,39 @@ namespace EWL
             var color = Color.FromArgb(74, 84, 93);
             BackgroundPanel.BorderColor = color;
             RightBorderPanel.BorderColor = color;
+        }
+
+        #endregion
+
+        #region [ this form ]
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            Thread.Sleep(200);
+            SplashScreenManager.CloseForm();
+
+            FadeInTimer.Start();
+        }
+
+        double FadeInOutDelta { get; set; } = 0.01;
+
+        private void FadeInTimer_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity < 1)
+                this.Opacity += FadeInOutDelta;
+            else
+                FadeInTimer.Stop();
+        }
+
+        private void FadeOutTimer_AndClose_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity > 0)
+                this.Opacity -= 1.5 * FadeInOutDelta;
+            else
+            {
+                FadeInTimer.Stop();
+                Close();
+            }
         }
 
         #endregion
@@ -1323,15 +1360,6 @@ namespace EWL
         //DELETE
         void KAKA()
         { }
-
-        private void MainForm_Shown(object sender, EventArgs e)
-        {
-            //BackgroundPanel.Visible = true;
-            Thread.Sleep(200);
-
-            SplashScreenManager.CloseForm();
-        }
-
 
 
 

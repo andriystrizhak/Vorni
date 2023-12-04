@@ -18,26 +18,31 @@ namespace EWL
             ApplicationConfiguration.Initialize();
             SQLs.CS = "Data Source=.\\Vocabulary.db;";
 
-            SplashScreenManager.ShowFluentSplashScreen(
-                "English Words Learner", 
-                "Learn words you want!", 
-                null, 
-                "Starting...", 
-                85, 
-                Color.FromArgb(21, 24, 28), 
-                FluentLoadingIndicatorType.Dots, 
-                null, 
-                null, 
-                null, 
-                true, 
-                true, 
-                true, 
-                SplashFormStartPosition.CenterScreen);
+            CreateAndShowSplashScreen();
 
             if (!SQLs.WasLaunched())
                 Application.Run(new SetUpForm());
             if (SQLs.WasLaunched())
                 Application.Run(new MainForm());
+        }
+
+        static void CreateAndShowSplashScreen()
+        {
+            SplashScreenManager.ShowFluentSplashScreen(
+                "English Words Learner",
+                "Learn words you want!",
+                "@andriy_strizhak",
+                "Starting...",
+                85,
+                Color.FromArgb(21, 24, 28),
+                FluentLoadingIndicatorType.Dots,
+                null,
+                null,
+                null,
+                true,
+                true,
+                true,
+                SplashFormStartPosition.CenterScreen);
         }
     }
 } 

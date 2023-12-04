@@ -33,6 +33,7 @@ namespace EWL
             components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges64 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges65 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -116,7 +117,6 @@ namespace EWL
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges77 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges78 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges79 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             CloseButton = new Button();
             TopPanel = new Panel();
             MinimizeButton = new Button();
@@ -125,6 +125,13 @@ namespace EWL
             fullScreenImageList = new ImageList(components);
             BackgroundPanel = new Guna.UI2.WinForms.Guna2Panel();
             WelcomePanel = new Panel();
+            label27 = new Label();
+            pictureBox7 = new PictureBox();
+            pictureBox6 = new PictureBox();
+            pictureBox5 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            pictureBox2 = new PictureBox();
             WelcomeContentLabel = new Label();
             WelcomeTitleLabel = new Label();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
@@ -252,17 +259,18 @@ namespace EWL
             transitionManager1 = new DevExpress.Utils.Animation.TransitionManager(components);
             ShortcutHtmlTip = new Guna.UI2.WinForms.Guna2HtmlToolTip();
             MainFSplashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager();
-            pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            pictureBox5 = new PictureBox();
-            pictureBox6 = new PictureBox();
-            pictureBox7 = new PictureBox();
-            label27 = new Label();
+            FadeInTimer = new System.Windows.Forms.Timer(components);
+            FadeOutTimer = new System.Windows.Forms.Timer(components);
             TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             BackgroundPanel.SuspendLayout();
             WelcomePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)EWLPictureBox).BeginInit();
             LearningPanel.SuspendLayout();
             LearningSettingsPanel.SuspendLayout();
@@ -288,12 +296,6 @@ namespace EWL
             StatPanel.SuspendLayout();
             guna2Panel1.SuspendLayout();
             SidebarPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
             // 
             // CloseButton
@@ -422,6 +424,89 @@ namespace EWL
             WelcomePanel.Name = "WelcomePanel";
             WelcomePanel.Size = new Size(1030, 604);
             WelcomePanel.TabIndex = 10;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label27.ForeColor = Color.FromArgb(147, 166, 181);
+            label27.Location = new Point(144, 420);
+            label27.Name = "label27";
+            label27.Size = new Size(755, 115);
+            label27.TabIndex = 53;
+            label27.Text = resources.GetString("label27.Text");
+            label27.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox7.Image = Eng_Flash_Cards_Learner.Resource1.icons8_v_live_96;
+            pictureBox7.Location = new Point(734, 169);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(100, 104);
+            pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox7.TabIndex = 52;
+            pictureBox7.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox6.Image = Eng_Flash_Cards_Learner.Resource1.icons8_влево_96;
+            pictureBox6.Location = new Point(20, 299);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(80, 74);
+            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox6.TabIndex = 51;
+            pictureBox6.TabStop = false;
+            pictureBox6.Visible = false;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox5.Image = Eng_Flash_Cards_Learner.Resource1.icons8_влево_96;
+            pictureBox5.Location = new Point(19, 238);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(80, 74);
+            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox5.TabIndex = 50;
+            pictureBox5.TabStop = false;
+            pictureBox5.Visible = false;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox4.Image = Eng_Flash_Cards_Learner.Resource1.icons8_влево_96;
+            pictureBox4.Location = new Point(17, 176);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(80, 74);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.TabIndex = 49;
+            pictureBox4.TabStop = false;
+            pictureBox4.Visible = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox3.Image = Eng_Flash_Cards_Learner.Resource1.icons8_влево_96;
+            pictureBox3.Location = new Point(17, 118);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(80, 74);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 48;
+            pictureBox3.TabStop = false;
+            pictureBox3.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox2.Image = Eng_Flash_Cards_Learner.Resource1.icons8_вверх_влево_96;
+            pictureBox2.Location = new Point(14, 23);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(80, 74);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 47;
+            pictureBox2.TabStop = false;
+            pictureBox2.Visible = false;
             // 
             // WelcomeContentLabel
             // 
@@ -2723,88 +2808,15 @@ namespace EWL
             ShortcutHtmlTip.TitleForeColor = Color.FromArgb(33, 38, 42);
             ShortcutHtmlTip.ToolTipIcon = ToolTipIcon.Info;
             // 
-            // pictureBox2
+            // FadeInTimer
             // 
-            pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox2.Image = Eng_Flash_Cards_Learner.Resource1.icons8_вверх_влево_96;
-            pictureBox2.Location = new Point(14, 23);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(80, 74);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 47;
-            pictureBox2.TabStop = false;
-            pictureBox2.Visible = false;
+            FadeInTimer.Interval = 10;
+            FadeInTimer.Tick += FadeInTimer_Tick;
             // 
-            // pictureBox3
+            // FadeOutTimer
             // 
-            pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox3.Image = Eng_Flash_Cards_Learner.Resource1.icons8_влево_96;
-            pictureBox3.Location = new Point(17, 118);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(80, 74);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 48;
-            pictureBox3.TabStop = false;
-            pictureBox3.Visible = false;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox4.Image = Eng_Flash_Cards_Learner.Resource1.icons8_влево_96;
-            pictureBox4.Location = new Point(17, 176);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(80, 74);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 49;
-            pictureBox4.TabStop = false;
-            pictureBox4.Visible = false;
-            // 
-            // pictureBox5
-            // 
-            pictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox5.Image = Eng_Flash_Cards_Learner.Resource1.icons8_влево_96;
-            pictureBox5.Location = new Point(19, 238);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(80, 74);
-            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox5.TabIndex = 50;
-            pictureBox5.TabStop = false;
-            pictureBox5.Visible = false;
-            // 
-            // pictureBox6
-            // 
-            pictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox6.Image = Eng_Flash_Cards_Learner.Resource1.icons8_влево_96;
-            pictureBox6.Location = new Point(20, 299);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(80, 74);
-            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox6.TabIndex = 51;
-            pictureBox6.TabStop = false;
-            pictureBox6.Visible = false;
-            // 
-            // pictureBox7
-            // 
-            pictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox7.Image = Eng_Flash_Cards_Learner.Resource1.icons8_v_live_96;
-            pictureBox7.Location = new Point(734, 169);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(100, 104);
-            pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox7.TabIndex = 52;
-            pictureBox7.TabStop = false;
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label27.ForeColor = Color.FromArgb(147, 166, 181);
-            label27.Location = new Point(144, 420);
-            label27.Name = "label27";
-            label27.Size = new Size(755, 115);
-            label27.TabIndex = 53;
-            label27.Text = resources.GetString("label27.Text");
-            label27.TextAlign = ContentAlignment.MiddleLeft;
+            FadeOutTimer.Interval = 10;
+            FadeOutTimer.Tick += FadeOutTimer_AndClose_Tick;
             // 
             // MainForm
             // 
@@ -2823,17 +2835,24 @@ namespace EWL
             Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
             Name = "MainForm";
+            Opacity = 0D;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "English Words Learner (flash-cards)";
             Activated += MainForm_Activated;
             Deactivate += MainForm_Deactivate;
-            Load += MainForm_Shown;
+            Shown += MainForm_Shown;
             TopPanel.ResumeLayout(false);
             TopPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).EndInit();
             BackgroundPanel.ResumeLayout(false);
             WelcomePanel.ResumeLayout(false);
             WelcomePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)EWLPictureBox).EndInit();
             LearningPanel.ResumeLayout(false);
             LearningPanel.PerformLayout();
@@ -2872,12 +2891,6 @@ namespace EWL
             guna2Panel1.ResumeLayout(false);
             SidebarPanel.ResumeLayout(false);
             SidebarPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);
         }
 
@@ -3029,5 +3042,7 @@ namespace EWL
         private PictureBox pictureBox4;
         private PictureBox pictureBox3;
         private Label label27;
+        private System.Windows.Forms.Timer FadeInTimer;
+        private System.Windows.Forms.Timer FadeOutTimer;
     }
 }
