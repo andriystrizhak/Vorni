@@ -10,6 +10,8 @@ using Eng_Flash_Cards_Learner.NOT_Forms.GPT;
 using static EWL.NOT_Forms.Txt_FileHandler;
 using Eng_Flash_Cards_Learner.NOT_Forms.LearningItems;
 using DevExpress.XtraReports;
+using System.Drawing.Text;
+using System.Reflection;
 
 namespace EWL
 {
@@ -176,6 +178,18 @@ namespace EWL
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
+            //Assembly assembly = Assembly.GetExecutingAssembly();
+            //
+            //PrivateFontCollection fonts = new PrivateFontCollection();
+            //
+            //fonts.AddFontFile(this.GetType().Assembly.GetManifestResourceStream(
+            //    "MyNamespace.Fonts.CustomFont.ttf"));
+            //
+            //FontFamily fontFamily = fonts.Families[0];
+            //
+            //this.Font = new Font(fontFamily, 16);
+
+
             Thread.Sleep(200);
             SplashScreenManager.CloseForm();
 
