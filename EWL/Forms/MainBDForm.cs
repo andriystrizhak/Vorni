@@ -1,7 +1,17 @@
-﻿using EWL.EF_SQLite;
+﻿using System.Data;
+
+using EWL.EF_SQLite;
 using EWL.NOT_Forms;
-using System.Data;
+using DevExpress.XtraSplashScreen;
+using Eng_Flash_Cards_Learner.Forms.UserControls;
+using Eng_Flash_Cards_Learner.Forms.ChildForms;
+using Eng_Flash_Cards_Learner.NOT_Forms;
+using Eng_Flash_Cards_Learner.NOT_Forms.GPT;
 using static EWL.NOT_Forms.Txt_FileHandler;
+using Eng_Flash_Cards_Learner.NOT_Forms.LearningItems;
+using DevExpress.XtraReports;
+using System.Drawing.Text;
+using System.Reflection;
 
 namespace EWL
 {
@@ -11,11 +21,20 @@ namespace EWL
         //- "//CHANGE"
         //- "//TODO"
         //- "//CHECK"
+        //- "//ADD"
+
+        //- "//TODO DIFFICULTY"
+        //- "//TODO CATEGORY"
 
         /// <summary>
         /// Розташування <see cref="TopPanel"/> (для переміщення вікна мишкою)
         /// </summary>
         Point lastPoint;
+        /// <summary>
+        /// Розташування <see cref="EngUaStringTextBox"/> (для розширення EngUaStringTextBox мишкою)
+        /// </summary>
+        Point lastResizeBoxPoint;
+
 
         /// <summary>
         /// Кількість слів доданих за один раз в розділі "Додати слова"
@@ -25,33 +44,34 @@ namespace EWL
         /// <summary>
         /// Список слів для вивчення
         /// </summary>
-        List<Word> words { get; set; } = new();
+        List<Word> Words { get; set; } = new();
         /// <summary>
-        /// Індекс поточного слова для вивчення зі списку <see cref="words"/>
+        /// Індекс поточного слова для вивчення зі списку <see cref="Words"/>
         /// </summary>
-        int wordIndex { get; set; } = 0;
-        /// <summary>
-        /// Оцінки поточних слів
-        /// </summary>
-        int[] wordRatings { get; set; } = { 0, 0, 0, 0, 0, 0 }; //CHANGE
+        int CurrentWIndex { get; set; } = 0;
 
-        List<Category> categories = null!; //TODO
-        int curentCategoryID;             //TODO
+        //int[] WordRatings { get; set; } = { 0, 0, 0, 0, 0, 0 }; //CHANGE
+        /// <summary>
+        /// Кількість правильних відповідей за раунд навчання
+        /// </summary>
+        int LearningStat { get; set; } = 0;
+
+        List<Category> categories = null!; //TODO CATEGORY
+        int curentCategoryID;             //TODO CATEGORY
 
         public MainForm()
         {
             KeyDown += Enter_KeyDown!;
             KeyDown += Escape_KeyDown!;
-            KeyDown += RateW_KeyDown!;
             KeyDown += CtrlS_KeyDown!;
             KeyDown += CtrlZ_KeyDown!;
+            KeyDown += SwitchChapter_KeyDown;
 
             InitializeComponent();
-            ShowPanel(MenuPanel);
+            ShowPanel(WelcomePanel);
 
-            //Джерело слів (???)
-            WSourceComboBox.Text = WSourceComboBox.Items[0].ToString();
             SetCategoriesList();
+            MainFGuna2Elipse.TargetControl = this;
         }
 
         //TODO CATEGORY - Імплементувати
@@ -60,20 +80,29 @@ namespace EWL
         void SetCategoriesList()
         {
             categories = SQLs.Get_Categories();
-            //TODO CATEGORY
+            CategoriesComboBox.DataSource = categories.Select(c => c.Name).ToList();
         }
 
         #endregion
+
+        #region [[ Other Panels ]]
 
         #region [ TopPanel ]
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
+            var handler = ShowProgressPanel(this);
+
             DialogResult closeForm = MessageBox.Show(
                 "Ти точно хочеш вийти?", "Па-па?",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (closeForm == DialogResult.Yes) Close();
+            if (closeForm == DialogResult.Yes)
+            {
+                //this.Enabled = false;
+                FadeOutTimer.Start();
+            }
+            handler.Close();
         }
 
         private void MinimizeButton_Click(object sender, EventArgs e)
@@ -92,112 +121,525 @@ namespace EWL
 
         #endregion
 
+        #region [ SidebarPanel ]
+
+        bool SidebarExpanded { get; set; } = false;
+
+        private void SidebarTimer_Tick(object sender, EventArgs e)
+        {
+            int sidebarPDelta = SidebarExpanded ? -10 : 10;
+            int currentPDelta = SidebarExpanded ? -5 : 5;
+
+            SidebarPanel.Width += sidebarPDelta;                                       //Розширення бокової панелі
+            SidePanelRightBorderPanel.Location = new Point(SidebarPanel.Width - 1,
+                SidePanelRightBorderPanel.Location.Y);                                 //Зміщення SidePanelRightBorderPanel
+            CurrentPanel.Location = new Point(CurrentPanel.Location.X
+                + currentPDelta, CurrentPanel.Location.Y);                             //Зміщенн CurrentPanel
+            if (SidebarPanel.Width == SidebarPanel.MinimumSize.Width
+                || SidebarPanel.Width == SidebarPanel.MaximumSize.Width)
+            {
+                SidebarExpanded = !SidebarExpanded;
+                SidebarTimer.Stop();
+            }
+        }
+
+        private void SidebarExtensionButton_Click(object sender, EventArgs e)
+        {
+            SidebarTimer.Start();
+        }
+
+        private void SidebarPanel_MouseLeave(object sender, EventArgs e)
+        {
+            if (SidebarExpanded)
+                SidebarTimer.Start();
+        }
+
+        #endregion
+
+        #region [ BackgroundPanel ]
+
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            var color = Color.FromArgb(170, 101, 254);
+            BackgroundPanel.BorderColor = color;
+            RightBorderPanel.BorderColor = color;
+        }
+
+        private void MainForm_Deactivate(object sender, EventArgs e)
+        {
+            var color = Color.FromArgb(74, 84, 93);
+            BackgroundPanel.BorderColor = color;
+            RightBorderPanel.BorderColor = color;
+        }
+
+        #endregion
+
+        #region [ this form ]
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            //Assembly assembly = Assembly.GetExecutingAssembly();
+            //
+            //PrivateFontCollection fonts = new PrivateFontCollection();
+            //
+            //fonts.AddFontFile(this.GetType().Assembly.GetManifestResourceStream(
+            //    "MyNamespace.Fonts.CustomFont.ttf"));
+            //
+            //FontFamily fontFamily = fonts.Families[0];
+            //
+            //this.Font = new Font(fontFamily, 16);
+
+
+            Thread.Sleep(200);
+            SplashScreenManager.CloseForm();
+
+            FadeInTimer.Start();
+        }
+
+        double FadeInOutDelta { get; set; } = 0.01;
+
+        private void FadeInTimer_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity < 1)
+                this.Opacity += FadeInOutDelta;
+            else
+                FadeInTimer.Stop();
+        }
+
+        private void FadeOutTimer_AndClose_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity > 0)
+                this.Opacity -= 1.5 * FadeInOutDelta;
+            else
+            {
+                FadeInTimer.Stop();
+                Close();
+            }
+        }
+
+        #endregion
+
+        #endregion
+
         #region [[ Головне меню ]]
 
         #region [ Вивчати слова ]
 
-        //TODO CATEGORY - Додати проміжну панель чи кнопку для перемикання категорії для вивчення
-        //TODO - Додати до проміжної панелі вибір СПОСОБУ вивченн (картки чи тести)
-
         private void LearnWButton_Click(object sender, EventArgs e)
         {
-            //NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
-            words = SQLs
-                .Get_Words_FromCategory(SQLs.Get_CurrentCategory(), (int)NumberOfWordsNumericUpDown.Value)
+            FCMethodButton.Checked = false;
+            TestMethodButton.Checked = false;
+            StartLearningButton.Enabled = false;
+
+            //GPTToggleSwitch.Checked = true;
+
+            CategoriesComboBox.SelectedIndex = SQLs.Get_CurrentCategory() - 1;
+            NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
+            DifficultyComboBox.SelectedIndex = SQLs.Get_CurrentDifficulty();
+            NumberOfWordsNumericUpDown.UpDownButtonForeColor = Color.White;
+
+            ShowPanel(LearningPanel);
+        }
+
+        #region ( LearningPanel )
+
+        bool IsGPTChecked { get; set; } = true;
+
+        private void StartLearningButton_Click(object sender, EventArgs e)
+        {
+            SQLs.Set_NumberOfWordsToLearn((int)NumberOfWordsNumericUpDown.Value);
+            SQLs.Set_CurrentCategory(CategoriesComboBox.SelectedIndex + 1);
+            SQLs.Set_CurrentDifficulty(DifficultyComboBox.SelectedIndex);
+
+            Words = SQLs
+                .Get_Words_FromCategory(SQLs.Get_CurrentCategory(),
+                SQLs.Get_NumberOfWordsToLearn(), SQLs.Get_CurrentDifficulty())
                 .Select(w => w.Item1)
                 .ToList();
-            SeeEngWord();
+
+            var purpose = GptPurpose.FlashCards;
+            if (FCMethodButton.Checked)
+                purpose = GptPurpose.FlashCards;
+            else if (TestMethodButton.Checked)
+                purpose = GptPurpose.Test;
+
+            if (IsGPTChecked)
+                AskGPT(purpose);
+            else
+                PrepareLearnigPanels();
         }
 
-        /// <summary>
-        /// Підготовлює й показує <see cref="LearningEngPanel"/>
-        /// </summary>
-        private void SeeEngWord()
+        private void PrepareLearnigPanels()
         {
-            words = words.OrderBy(w => w.Rating).ToList();
-
-            EngWLabel1.Text = words[wordIndex].EngWord;
-            EngWLabel2.Text = words[wordIndex].EngWord;
-
-            ShowPanel(LearningEngPanel);
-            SeeTransButton.Focus();
+            if (FCMethodButton.Checked)
+                PrepareFCPanelForFirstTime();
+            else if (TestMethodButton.Checked)
+                PrepareTPanelForFirstTime();
         }
 
-        #region ( Властивості контролів LearningWPanel )
+        #region LearningPanel events
 
-        private void SeeTransButton_Click(object sender, EventArgs e)
+        private void LearingMethod_CheckedChanged(object sender, EventArgs e)
         {
-            TranslationLabel.Text = words[wordIndex].UaTranslation;
-            ShowPanel(LearningUaPanel);
-
-            SQLs.Increment_WordRepetition(words[wordIndex].WordId);
+            if (FCMethodButton.Checked || TestMethodButton.Checked)
+                StartLearningButton.Enabled = true;
+            else StartLearningButton.Enabled = false;
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-            => RateWord(1);
-        private void Button2_Click(object sender, EventArgs e)
-            => RateWord(2);
-        private void Button3_Click(object sender, EventArgs e)
-            => RateWord(3);
-        private void Button4_Click(object sender, EventArgs e)
-            => RateWord(4);
-        private void Button5_Click(object sender, EventArgs e)
-            => RateWord(5);
-
-        /// <summary>
-        /// Змінює значення оцінки слова в БД
-        /// </summary>
-        /// <param name="rating">Оцінка</param>
-        void RateWord(int rating)
+        private void GPTToggleSwitch_CheckedChanged(object sender, EventArgs e)
         {
-            SQLs.Rate_Word(words[wordIndex].WordId, rating);
-            wordRatings[rating]++;
-
-            if (++wordIndex != words.Count)
-                SeeEngWord();
+            if (GPTToggleSwitch.Checked == false)
+            {
+                IsGPTChecked = false;
+                TestMethodButton.Enabled = false;
+                TestMethodButton.Checked = false;
+                CheckGPTPanel.BorderColor = Color.FromArgb(74, 84, 93);
+            }
             else
             {
-                wordIndex = 0;
+                IsGPTChecked = true;
+                TestMethodButton.Enabled = true;
+                CheckGPTPanel.BorderColor = Color.FromArgb(21, 220, 173);
+            }
+        }
+
+        #region NumberOfWordsNumericUpDown
+
+        private void NumberOfWordsNumericUpDown_MouseHover(object sender, EventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void NumberOfWordsNumericUpDown_MouseMove(object sender, MouseEventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void NumberOfWordsNumericUpDown_MouseEnter(object sender, EventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void NumberOfWordsNumericUpDown_MouseLeave(object sender, EventArgs e)
+            => NumberOfWordsNumericUpDown.BorderColor = Color.FromArgb(74, 84, 93);
+
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        #region { GPT Response }
+
+        string GPTResponse { get; set; } = null;
+
+        private void AskGPT(GptPurpose purpose)
+        {
+            var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
+            var handler = ShowProgressPanel(this, windowOptions);
+
+            var words = this.Words.Select(w => w.EngWord).ToArray();
+
+            GptAPI.GPTResponseHandler += GPTResponse_GPTResponseHandler;
+            GptAPI.GPTErrorHandler += GPTError_GPTErrorHandler;
+
+            Task.Run(() => GptAPI.GetResponse(words, purpose, handler));
+        }
+
+        #region FC GPT events
+
+        void GPTResponse_GPTResponseHandler(string response, IOverlaySplashScreenHandle handler)
+        {
+            GPTResponse = response;
+            FCLearingPanel.Invoke(PrepareLearnigPanels);
+            handler.Close();
+
+            Clear_FCGPTEventsHandlers();
+        }
+
+        string ErrorText { get; set; }
+
+        void GPTError_GPTErrorHandler(string response, IOverlaySplashScreenHandle handler)
+        {
+            handler.Close();
+
+            ErrorText = HandleGPTErrorResponse(response.Split('\n')[0]);
+            this.Invoke(ShowErrorMessageBox);
+
+            Clear_FCGPTEventsHandlers();
+        }
+
+        string HandleGPTErrorResponse(string errorResponse)
+            => errorResponse switch
+            {
+                "No connection" => "Схоже, в тебе проблеми зі з'єднанням :(",
+                "invalid_api_key:" => "Вказаний API-ключ невірний\n" +
+                    "Додай коректний ключ в:\n" +
+                "'Налаштування' => 'API-Ключ' => '+ Додати'",
+                //ADD
+                _ => "Не вдається отримати відповіді від GPT Х(\n" +
+                    "Спробуй навчатися з GPT пізніше"
+            };
+
+        void ShowErrorMessageBox()
+        {
+            var handler2 = ShowProgressPanel(this);
+
+            MessageBox.Show(
+                ErrorText,
+                "Щось пішло шкереберть!",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Hand);
+
+            handler2.Close();
+        }
+
+        void Clear_FCGPTEventsHandlers()
+        {
+            GptAPI.GPTResponseHandler -= GPTResponse_GPTResponseHandler;
+            GptAPI.GPTErrorHandler -= GPTError_GPTErrorHandler;
+        }
+
+        #endregion
+
+        #endregion
+
+        #region ( FCLearningPanel )
+
+        /// <summary>
+        /// Список слів з реченнями-прикладами для вивчення в <see cref="FCLearingPanel"/>
+        /// </summary>
+        List<FCItem> FCItems { get; set; } = null;
+        /// <summary>
+        /// Відмічає чи відповідь на поточне завдання хибна
+        /// </summary>
+        bool CurrentWFailed { get; set; } = false;
+
+        /// <summary>
+        /// Здійснює першопочаткове приготування <see cref="FCLearingPanel"/>
+        /// </summary>
+        void PrepareFCPanelForFirstTime()
+        {
+            var sentenses = new List<(string, string)>();
+            if (IsGPTChecked)
+            {
+                try
+                {
+                    //TODO - врахувати всі виключення
+                    sentenses = GPTResponseHandler.Handle_FCGPTResponse(GPTResponse);
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show(
+                        "Не вдалося обробити незрозумілу тарабарщину GPT.\r\n" +
+                        "Спробуй ще разок/",
+                        "GPT здурів!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation);
+                    Null_FCLPanel();
+                    return;
+                }
+            }
+            else
+                for (int i = 0; i < Words.Count; i++)
+                    sentenses.Add(("", ""));
+
+            FCItems = FCItem.CreateFCItems(Words, sentenses);
+
+            FCProgressBar.Maximum = FCItems.Count;
+            PrepareFCLPanel();
+            ShowPanel(FCLearingPanel);
+        }
+
+        /// <summary>
+        /// Здійснює приготування <see cref="FCLearingPanel"/> до вивчення наступного слова
+        /// </summary>
+        private void PrepareFCLPanel()
+        {
+            WCounterLabel.Text = $"{CurrentWIndex + 1} / {FCItems.Count}";
+            FCSentenceTxtBox.Text = FCItems[CurrentWIndex].EngSntns;
+            FCUaTransLabel.Text = FCItems[CurrentWIndex].UaWrd;
+
+            FCProgressBar.Value = CurrentWIndex;
+            FCAnswerTextBox.Focus();
+        }
+
+        #region FCLearningPanel controls events
+
+        private void FCGoBackButton_Click(object sender, EventArgs e)
+        {
+            ShowPanel(LearningPanel);
+        }
+
+        private void FCSentenceLabel_Resize(object sender, EventArgs e)
+        {
+            FCAnswerTextBox.Location = new Point(FCAnswerTextBox.Left, FCSentenceTxtBox.Bottom + 23);
+            FCUaTransLabel.Location = new Point(FCUaTransLabel.Left, FCAnswerTextBox.Bottom + 28);
+        }
+
+        private void FCSentenceTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            FCSentenceTxtBox.Size =
+                (TextRenderer.MeasureText(FCSentenceTxtBox.Text, FCSentenceTxtBox.Font).Width > 898)
+                ? FCSentenceTxtBox.MaximumSize : FCSentenceTxtBox.MinimumSize;
+        }
+
+        private void FCAnswerTextBox_TextChanged(object sender, EventArgs e)
+        {
+            FCAnswerTextBox.PlaceholderText = "";
+            FCAnswerTextBox.BorderColor = Color.FromArgb(74, 84, 93);
+            FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
+        }
+
+        private void FCCheckAnswerButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                FCCheckAnswerButton.PerformClick();
+        }
+
+        #region FCCheckAnswer button event
+
+        private void FCCheckAnswerButton_Click(object sender, EventArgs e)
+        {
+            if (AnswerIsCorrect())
+                Set_FCPanelCorrectAnswer();
+            else
+                Set_FCPanelWrongAnswer();
+        }
+
+        bool AnswerIsCorrect()
+            => String.Equals(FCAnswerTextBox.Text,
+                FCItems[CurrentWIndex].EngWrd,
+                StringComparison.OrdinalIgnoreCase);
+
+        void Set_FCPanelCorrectAnswer()
+        {
+            if (FCCheckAnswerButton.Text == "Перевірити")
+                Set_FCPanelCorrectAnswer_Check();
+            else
+                Set_FCPanelCorrectAnswer_NextW();
+        }
+
+        void Set_FCPanelCorrectAnswer_Check()
+        {
+            FCCheckAnswerButton.Text =
+                (CurrentWIndex + 1 != FCItems.Count) ? "Наступне" : "🏁Результати🏁";
+            FCUaTransLabel.Text = FCItems[CurrentWIndex].UaSntns;
+
+            FCAnswerTextBox.BorderColor = Color.FromArgb(20, 190, 75);
+            FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(30, 214, 95);
+        }
+
+        void Set_FCPanelCorrectAnswer_NextW()
+        {
+            FCCheckAnswerButton.Text = "Перевірити";
+
+            FCAnswerTextBox.Text = "";
+            FCAnswerTextBox.BorderColor = Color.FromArgb(74, 84, 93);
+            FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(170, 101, 254);
+
+            if (!CurrentWFailed)
+                Set_FCWord_RatingAndRepetition(true);
+            CurrentWFailed = false;
+
+            if (++CurrentWIndex != Words.Count)
+                PrepareFCLPanel();
+            else
+            {
+                CurrentWIndex = 0;
                 OutputLearningStatistic();
                 ShowPanel(LearningStatPanel);
                 RetryButton.Focus();
             }
         }
+
+        void Set_FCPanelWrongAnswer()
+        {
+            if (!CurrentWFailed)
+                Set_FCWord_RatingAndRepetition(false);
+            CurrentWFailed = true;
+
+            FCAnswerTextBox.Text = "";
+            FCAnswerTextBox.PlaceholderText = FCItems[CurrentWIndex].EngWrd;
+            FCAnswerTextBox.BorderColor = Color.FromArgb(210, 47, 47);
+            FCAnswerTextBox.FocusedState.BorderColor = Color.FromArgb(245, 67, 67);
+            FCAnswerTextBox.Focus();
+        }
+
+        /// <summary>
+        /// Increments (dectements) rating and repetition of current <see cref="FCItem"/>
+        /// </summary>
+        /// <param name="increment">Чи інкрементувати, чи декрементувати <paramref name="rating"/></param>
+        void Set_FCWord_RatingAndRepetition(bool increment)
+        {
+            int rating = FCItems[CurrentWIndex].Rating;
+            SQLs.Rate_Word(FCItems[CurrentWIndex].WordId, increment
+                ? ((rating < 5) ? ++rating : rating)
+                : ((rating > 1) ? --rating : rating));
+
+            if (increment)
+                LearningStat++;
+            SQLs.Increment_WordRepetition(FCItems[CurrentWIndex].WordId);
+        }
+
+        void Null_FCLPanel()
+        {
+            CurrentWIndex = 0;
+            Words = null;
+            FCItems = null;
+            CurrentWFailed = false;
+            LearningStat = 0;
+        }
+
         #endregion
 
-        #region ( Властивості контролів LearningStatPanel )
+        #endregion
+
+        #endregion
+
+        #region ( TLearningPanel )
+
+        /// <summary>
+        /// Здійснює першопочаткове приготування <see cref="TLearingPanel"/>
+        /// </summary>
+        void PrepareTPanelForFirstTime()
+        {
+            //TODO - implement TestLearningPanel
+            MessageBox.Show(
+                "Цей режим покищо не реалізований, зачекай",
+                "Розробник і так мало спить!",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation);
+
+            //PrepareTLPanel();                      //НАЛАШТУВАННЯ панелі
+            //ShowPanel(TestLearingPanel);
+        }
+
+        #endregion
+
+        #region ( LearningStatPanel )
 
         void OutputLearningStatistic()
         {
+            float learningScore = (float)LearningStat / FCItems.Count;
+
             LearningStatLabel.Text =
-                $"Було вивчено слів: {words.Count} " +
-                $"\n\nОцінки " +
-                $"\n5 - {wordRatings[5]} слів ({((float)wordRatings[5] / words.Count):P1})" +
-                $"\n4 - {wordRatings[4]} слів ({((float)wordRatings[4] / words.Count):P1})" +
-                $"\n3 - {wordRatings[3]} слів ({((float)wordRatings[3] / words.Count):P1})" +
-                $"\n2 - {wordRatings[2]} слів ({((float)wordRatings[2] / words.Count):P1})" +
-                $"\n1 - {wordRatings[1]} слів ({((float)wordRatings[1] / words.Count):P1})\n\n";
+                $"Правильних відповідей:<br>" +
+                $"{LearningStat} / {FCItems.Count} " +
+                $"({learningScore:P1})";
 
-            double learningRating = ((double)(wordRatings[5] * 5
-                + wordRatings[4] * 4 + wordRatings[3] * 3
-                + wordRatings[2] * 2 + wordRatings[1] * 1)
-                / (words.Count * 5)) * 100;
-
-            LearningRatingLabel.Text = $"Твоя успішність: {learningRating:f0}/100";
-            if (learningRating > 85)
-                LearningRatingLabel.ForeColor = Color.FromArgb(117, 222, 42);
-            else if (learningRating > 70)
-                LearningRatingLabel.ForeColor = Color.FromArgb(222, 204, 42);
-            else if (learningRating > 50)
-                LearningRatingLabel.ForeColor = Color.FromArgb(222, 150, 42);
+            LearningStatScoreLabel.Text = $"Твій бал: {learningScore * 10} / 10";
+            if (learningScore >= 0.9)
+                LearningStatScoreLabel.ForeColor = Color.FromArgb(30, 215, 96);
+            else if (learningScore >= 0.6)
+                LearningStatScoreLabel.ForeColor = Color.FromArgb(219, 224, 27);
+            else if (learningScore >= 0.4)
+                LearningStatScoreLabel.ForeColor = Color.FromArgb(222, 179, 29);
             else
-                LearningRatingLabel.ForeColor = Color.FromArgb(222, 69, 42);
+                LearningStatScoreLabel.ForeColor = Color.FromArgb(223, 67, 28);
 
-            wordRatings = new int[] { 0, 0, 0, 0, 0, 0 };
+            Null_FCLPanel();
         }
 
         private void RetryButton_Click(object sender, EventArgs e)
-            => SeeEngWord();
+            => StartLearningButton_Click(sender, e);
+
+        private void EndLearningButton_Click(object sender, EventArgs e)
+            => ShowPanel(LearningPanel);
 
         #endregion
 
@@ -206,36 +648,31 @@ namespace EWL
         #region [ Додати слова ]
 
         //TODO CATEGORY - Додати перемикач категорії для додавання слів
-        //TODO - Додати перемикач способу додавання слів
-
-        private void SeeAddingWPanelButton_Click(object sender, EventArgs e)
+        private void AddWPanelButton_Click(object sender, EventArgs e)
         {
             addedWordsCount = 0;
             int wAddingMode = SQLs.Get_WordAddingMode();
 
             Null_EngUaTextBoxes();
-            CancelPrevButton1.Enabled = false;
-            CancelAddingButton2.Enabled = false;
+            AddWTabControl.SelectedIndex = wAddingMode;
+            ShowPanel(AddingWPanel);
 
-            if (wAddingMode == 0)
+            switch (wAddingMode)
             {
-                ShowPanel(AddingWPanel1);
-                AddEngWTextBox.Focus();
-            }
-            if (wAddingMode == 1)
-            {
-                ShowPanel(AddingWPanel2);
-                EngUaStringTextBox.Focus();
-            }
-            if (wAddingMode == 2)
-            {
-                ShowPanel(AddingWPanel3);
-                ChooseFileButton.Focus();
+                case 0:
+                    AddEngWTextBox.Focus();
+                    break;
+                case 1:
+                    EngUaStringTextBox.Focus();
+                    break;
+                case 2:
+                    ChooseFileButton.Focus();
+                    break;
             }
         }
 
         /// <summary>
-        /// Скидає всі <see cref="'AddingWPanel'"/> до початкового стану
+        /// Скидає <see cref="AddingWPanel"/> до початкового стану
         /// </summary>
         void Null_EngUaTextBoxes()
         {
@@ -246,14 +683,13 @@ namespace EWL
             TxtFilesPathsTextBox.Text = "";
             Null_AddingWPanel3();
 
-            AddWButton1.Enabled = false;
+            AddWButton.Enabled = false;
+            CancelAddingButton.Enabled = false;
         }
-
-        #region ( Властивості контролів AddingWPanel-s )
 
         #region AddingWPanel1
 
-        private void AddWButton1_Click(object sender, EventArgs e)
+        private void AddWButton1_DoClick()
         {
             string engWord = AddEngWTextBox.Text;
             string uaTrans = AddUaTTextBox.Text;
@@ -265,20 +701,17 @@ namespace EWL
                 WAddingReportPopup1.Popup();
                 addedWordsCount++;
                 Null_EngUaTextBoxes();
-                CancelPrevButton1.Enabled = true;
+                CancelAddingButton.Enabled = true;
             }
         }
 
-        private void CancelPrevButton_Click(object sender, EventArgs e)
+        private void CancelAddingButton1_DoClick()
         {
             SQLs.Remove_LastWords_Permanently(1);
             CancelWAddingPopup1.Popup();
             addedWordsCount--;
             if (addedWordsCount == 0)
-            {
-                CancelPrevButton1.Enabled = false;
-                CancelAddingButton2.Enabled = false;
-            }
+                CancelAddingButton.Enabled = false;
         }
 
         #region ( Властивості текстових полів AddingWPanel1 )
@@ -286,7 +719,9 @@ namespace EWL
         private void EngUaTextBox_TextChanged(object sender, EventArgs e)
         {
             if (AddEngWTextBox.Text != "" && AddUaTTextBox.Text != "")
-                AddWButton1.Enabled = true;
+                AddWButton.Enabled = true;
+            else
+                AddWButton.Enabled = false;
         }
 
         private void EngTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -316,35 +751,6 @@ namespace EWL
 
         #region AddingWPanel2
 
-        private void EngUaStringTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (EngUaStringTextBox.Text != "")
-                AddWButton2.Enabled = true;
-            else
-                AddWButton2.Enabled = false;
-        }
-
-        private void AddWButton2_Click(object sender, EventArgs e)
-        {
-            var lines = EngUaStringTextBox.Lines;
-            addedWordsCount = 0;
-
-            bool isAnyInvalidLineThere = false;
-            bool isAnyRepeatedWordThere = false;
-
-            foreach (var line in lines)
-            {
-                var word = GetWordFromLine(line);
-                if (word == null)
-                    isAnyInvalidLineThere = true;
-                else if (!SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty))
-                    isAnyRepeatedWordThere = true;
-                else
-                    addedWordsCount++;
-            }
-            ShowAddingWPanel2_Popup(isAnyInvalidLineThere, isAnyRepeatedWordThere);
-        }
-
         /// <summary>
         /// Виводить підходящий Popup
         /// </summary>
@@ -365,12 +771,41 @@ namespace EWL
             {
                 WAddingReportPopup2.ContentText = $"Було успішно додано слів: {addedWordsCount}";
                 WAddingReportPopup2.Popup();
-                CancelAddingButton2.Enabled = true;
+                CancelAddingButton.Enabled = true;
                 EngUaStringTextBox.Text = "";
             }
         }
 
-        //див. CancelAddingButton_Click() - для обох панелей (3 і 2)
+        #region Focus events
+
+        private void EngUaStringTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (EngUaStringTextBox.Text != "")
+                AddWButton.Enabled = true;
+            else
+                AddWButton.Enabled = false;
+        }
+
+        private void AddWButton2_DoClick()
+        {
+            var lines = EngUaStringTextBox.Lines;
+            addedWordsCount = 0;
+
+            bool isAnyInvalidLineThere = false;
+            bool isAnyRepeatedWordThere = false;
+
+            foreach (var line in lines)
+            {
+                var word = GetWordFromLine(line);
+                if (word == null)
+                    isAnyInvalidLineThere = true;
+                else if (!SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty))
+                    isAnyRepeatedWordThere = true;
+                else
+                    addedWordsCount++;
+            }
+            ShowAddingWPanel2_Popup(isAnyInvalidLineThere, isAnyRepeatedWordThere);
+        }
 
         private void EngUaStringTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -385,6 +820,21 @@ namespace EWL
                 && charCode != '[' && charCode != ']')
                 e.Handled = true;
         }
+
+        private void EngUaStringTextBox_SizeChanged(object sender, EventArgs e)
+        {
+            EngUaStringTextBox.Width = 833;
+            if (EngUaStringTextBox.Height < 35)
+                EngUaStringTextBox.Height = 35;
+            else if (EngUaStringTextBox.Height > 336)
+                EngUaStringTextBox.Height = 336;
+
+            var point = new Point((EngUaStringTextBox.Location.X + EngUaStringTextBox.Width) - 25, (EngUaStringTextBox.Location.Y + EngUaStringTextBox.Height) - 25);
+            TextBox2ResizeBox.Location = point;
+            EngUaStringTextBox.TextOffset = new Point(0, 0);
+        }
+
+        #endregion
 
         #endregion
 
@@ -401,25 +851,11 @@ namespace EWL
         /// <summary>
         /// Вказує на те чи якісь файли вже поміщені в <see cref="DragAndDropPanel"/>
         /// </summary>
-        bool fileIsAdded { get => AddWButton3.Enabled; }
+        bool fileIsAdded { get => TxtFilesPathsTextBox.Text != ""; } //AddWButton3.Enabled; }
         /// <summary>
         /// Список доданих в <see cref="DragAndDropPanel"/> файлів
         /// </summary>
         List<string> files = new();
-
-        /// <summary>
-        /// Малює пунктирну лінію біля краю <see cref="DragAndDropPanel"/>
-        /// </summary>
-        private void DragAndDropPanel_Paint(object sender, PaintEventArgs e)
-        {
-            int width = 4;
-            Pen pen = new Pen(Color.AliceBlue, width);
-            if (!isMouseOverDDP)
-                pen.DashPattern = new float[] { 5, 6 };
-            Rectangle rectangle = new Rectangle(
-                12, 12, DragAndDropPanel.Width - (20 + width), DragAndDropPanel.Height - (20 + width));
-            e.Graphics.DrawRectangle(pen, rectangle);
-        }
 
         private void DragAndDropPanel_DragEnter(object sender, DragEventArgs e)
         {
@@ -432,14 +868,16 @@ namespace EWL
             label12.Visible = false;
             label6.Visible = true;
             isMouseOverDDP = true;
-            DragAndDropPanel.Invalidate();
+
+            DragAndDropPanel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            DragAndDropPanel.BorderColor = Color.White;
         }
 
         private void DragAndDropPanel_DragLeave(object sender, EventArgs e)
             => Null_AddingWPanel3();
 
         /// <summary>
-        /// Скидає <see cref="AddingWPanel3"/> до початкового стану
+        /// Скидає <see cref="AddingWPanel"/> до початкового стану
         /// </summary>
         private void Null_AddingWPanel3()
         {
@@ -457,7 +895,9 @@ namespace EWL
             label12.Visible = true;
             label6.Visible = false;
             isMouseOverDDP = false;
-            DragAndDropPanel.Invalidate();
+
+            DragAndDropPanel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            DragAndDropPanel.BorderColor = Color.FromArgb(74, 84, 93);
         }
 
         private void DragAndDropPanel_DragDrop(object sender, DragEventArgs e)
@@ -486,7 +926,9 @@ namespace EWL
                 TxtFilesPathsTextBox.Visible = true;
                 label6.Visible = false;
                 isMouseOverDDP = false;
-                DragAndDropPanel.Invalidate();
+
+                DragAndDropPanel.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                DragAndDropPanel.BorderColor = Color.FromArgb(74, 84, 93);
             }
             else
                 DragAndDropPanel_DragLeave(sender, e);
@@ -516,7 +958,7 @@ namespace EWL
         {
             if (TxtFilesPathsTextBox.Text != "")
             {
-                AddWButton3.Enabled = true;
+                AddWButton.Enabled = true;
                 files = TxtFilesPathsTextBox.Text
                     .Split("\r\n", StringSplitOptions.RemoveEmptyEntries)
                     .ToList();
@@ -524,21 +966,22 @@ namespace EWL
             else
             {
                 files.Clear();
-                AddWButton3.Enabled = false;
+                AddWButton.Enabled = false;
                 Null_AddingWPanel3();
             }
         }
 
-        private async void AddWButton3_Click(object sender, EventArgs e)
+        private async void AddWButton3_DoClick()
         {
-            TxtFilesPathsTextBox.Visible = false;
-            label13.Visible = false;
-            LoadingWheelGif.Visible = true;
+            CloseButton.Enabled = false;
+            var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
+            var handle = ShowProgressPanel(DragAndDropPanel, windowOptions);
 
             (int, int, int) report = (0, 0, 0);
             await Task.Run(() => report = Txt_FileHandler.AddWordsFromTxtFiles(files));
 
-            LoadingWheelGif.Visible = false;
+            handle.Close();
+            CloseButton.Enabled = true;
 
             WAddingReportPopup3.ContentText =
                 $"Всього оброблених файлів: {report.Item3}\n" +
@@ -546,35 +989,103 @@ namespace EWL
                 $"З них було додано: {report.Item2}";
             WAddingReportPopup3.Popup();
 
+            label13.Visible = false;
             TxtFilesPathsTextBox.Text = "";
+
             addedWordsCount = report.Item2;
             if (addedWordsCount > 0)
-                CancelAddingButton3.Enabled = true;
+                CancelAddingButton.Enabled = true;
         }
 
-        private async void CancelAddingButton_Click(object sender, EventArgs e)
+        private async void CancelAddingButton23_DoClick()
         {
-            if (CurrentPanel == AddingWPanel3)
+            IOverlaySplashScreenHandle handle = null;
+            if (AddWTabControl.SelectedIndex == 2)
             {
-                label12.Visible = false;
-                ChooseFileButton.Visible = false;
-                LoadingWheelGif.Visible = true;
+                CloseButton.Enabled = false;
+                var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
+                handle = ShowProgressPanel(DragAndDropPanel, windowOptions);
             }
 
             await Task.Run(() => SQLs.Remove_LastWords_Permanently(addedWordsCount));
             CancelWAddingPopup2.Popup();
 
-            if (CurrentPanel == AddingWPanel3)
-            {
-                LoadingWheelGif.Visible = false;
-                label12.Visible = true;
-                ChooseFileButton.Visible = true;
-            }
+            handle?.Close();
+            CloseButton.Enabled = true;
 
             addedWordsCount = 0;
-            CancelAddingButton2.Enabled = false;
-            CancelAddingButton3.Enabled = false;
+            CancelAddingButton.Enabled = false;
         }
+
+        #endregion
+
+        #region Add/Cancel buttons
+
+        private void AddWButton_Click(object sender, EventArgs e)
+        {
+            switch (AddWTabControl.SelectedIndex)
+            {
+                case 0:
+                    AddWButton1_DoClick();
+                    break;
+                case 1:
+                    AddWButton2_DoClick();
+                    break;
+                case 2:
+                    AddWButton3_DoClick();
+                    break;
+            }
+        }
+
+        private void CancelAddingButton_Click(object sender, EventArgs e)
+        {
+            switch (AddWTabControl.SelectedIndex)
+            {
+                case 0:
+                    CancelAddingButton1_DoClick();
+                    break;
+                case 1:
+                case 2:
+                    CancelAddingButton23_DoClick();
+                    break;
+            }
+        }
+
+        private void AddWTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            addedWordsCount = 0;
+            CancelAddingButton.Enabled = false;
+
+            switch (AddWTabControl.SelectedIndex)
+            {
+                case 0:
+                    EngUaTextBox_TextChanged(sender, e);
+                    AddWButton.Text = "Додати слово";
+                    break;
+                case 1:
+                    EngUaStringTextBox_TextChanged(sender, e);
+                    AddWButton.Text = "Додати слова";
+                    break;
+                case 2:
+                    TxtFilePathTextBox_TextChanged(sender, e);
+                    AddWButton.Text = "Додати слова";
+                    break;
+            }
+        }
+
+        #region Focus
+
+        private void CancelAddingButton_Enter(object sender, EventArgs e)
+            => CancelAddingButton.BorderColor = Color.FromArgb(170, 101, 254);
+
+        private void CancelAddingButton_Leave(object sender, EventArgs e)
+            => CancelAddingButton.BorderColor = Color.FromArgb(33, 38, 42);
+
+        private void AddWButton_Enter(object sender, EventArgs e)
+            => AddWButton.BorderColor = Color.FromArgb(190, 131, 254);
+
+        private void AddWButton_Leave(object sender, EventArgs e)
+            => AddWButton.BorderColor = Color.FromArgb(138, 44, 254);
 
         #endregion
 
@@ -586,42 +1097,9 @@ namespace EWL
 
         private void SettingButton_Click(object sender, EventArgs e)
         {
-            NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
-            WSourceComboBox.SelectedIndex = SQLs.Get_WordAddingMode();
-            SaveSettingsButton.Enabled = false;
-            DefaultSettingsButton.Enabled = true;
-            ShowPanel(SettingPanel);
-            NumberOfWordsNumericUpDown.Focus();
+            var handler = ShowProgressPanel(this);
+            new SettingsForm(this, handler).ShowDialog();
         }
-
-        #region Властивості контролів SettingPanel
-
-        //TODO - Додати перемикач категорії для вивчення
-
-        private void WordCountNumericUpDown_ValueChanged(object sender, EventArgs e)
-            => SaveSettingsButton.Enabled = true;
-        private void WSourceComboBox_SelectedIndexChanged(object sender, EventArgs e)
-            => SaveSettingsButton.Enabled = true;
-
-        private void SaveSettingsButton_Click(object sender, EventArgs e)
-        {
-            SaveSettingsButton.Enabled = false;
-            DefaultSettingsButton.Enabled = true;
-
-            SQLs.Set_NumberOfWordsToLearn((int)NumberOfWordsNumericUpDown.Value);
-            SQLs.Set_WordAddingMode(WSourceComboBox.SelectedIndex);
-        }
-
-        private void DefaultSettingsButton_Click(object sender, EventArgs e)
-        {
-            DefaultSettingsButton.Enabled = false;
-            SQLs.Set_NumberOfWordsToLearn(10);
-            SQLs.Set_WordAddingMode(0);
-
-            NumberOfWordsNumericUpDown.Value = 10;
-            WSourceComboBox.SelectedIndex = 0;
-        }
-        #endregion
 
         #endregion
 
@@ -630,14 +1108,14 @@ namespace EWL
         //TODO - Додати перемикач категорії для статистики
         //TODO - Додати можливість перегляду графіків
 
-        private void SeeStatButton_Click(object sender, EventArgs e)
+        private void StatButton_Click(object sender, EventArgs e)
         {
             var stat = SQLs.Get_Statistic();
             int count = stat.AllWordCount;
             var ratings = stat.AllRatings;
             StatLabel.Text =
                 $"Всього слів в БД — {stat.AllWordCount} " +
-                $"\n\nОцінки: " +
+                $"\n\nКількість слів за їх рейтингом (від 1 до 5): " +
                 $"\n5 — {ratings[5]} слів ({((float)ratings[5] / count):P1})" +
                 $"\n4 — {ratings[4]} слів ({((float)ratings[4] / count):P1})" +
                 $"\n3 — {ratings[3]} слів ({((float)ratings[3] / count):P1})" +
@@ -654,17 +1132,9 @@ namespace EWL
 
         //*******
 
-        #region [ Назад, до Меню ]
-
-        private void GoBackButton_Click(object sender, EventArgs e)
-        {
-            ShowPanel(MenuPanel);
-            LearnWButton.Focus();
-        }
-
-        #endregion
-
         #region  Х( Поки не реалізовано )Х
+
+        /*
         private void FullScreenButton_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal) // Якщо вікно не в повноекранному режимі
@@ -680,6 +1150,7 @@ namespace EWL
                 FullScreenButton.ImageIndex = 1;
             }
         }
+        */
         #endregion
 
         #endregion
@@ -688,8 +1159,15 @@ namespace EWL
 
         private void Escape_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape && CurrentPanel != MenuPanel)
-                GoBackButton_Click(sender, e);
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (CurrentPanel == FCLearingPanel)
+                    FCGoBackButton.PerformClick();
+                else if (CurrentPanel == LearningStatPanel)
+                    ShowPanel(LearningPanel);
+                else
+                    CloseButton.PerformClick();
+            }
         }
 
         private void Enter_KeyDown(object sender, KeyEventArgs e)
@@ -703,29 +1181,45 @@ namespace EWL
         private void CtrlS_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.S)
-            {
-                SaveSettingsButton.PerformClick();
-
-                AddWButton1.PerformClick();
-                AddWButton2.PerformClick();
-                AddWButton3.PerformClick();
-            }
+                AddWButton.PerformClick();
         }
 
         private void CtrlZ_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.Z)
             {
-                DefaultSettingsButton.PerformClick();
-
-                CancelPrevButton1.PerformClick();
-                CancelAddingButton2.PerformClick();
-                CancelAddingButton3.PerformClick();
+                CancelAddingButton.PerformClick();
 
                 button6.PerformClick(); //CATEGORY
             }
         }
 
+        private void SwitchChapter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.D0:
+                        SidebarExtensionButton.PerformClick();
+                        break;
+                    case Keys.D1:
+                        LearningPanelButton.PerformClick();
+                        break;
+                    case Keys.D2:
+                        AddWPanelButton.PerformClick();
+                        break;
+                    case Keys.D3:
+                        SettingsPanelButton.PerformClick();
+                        break;
+                    case Keys.D4:
+                        StatPanelButton.PerformClick();
+                        break;
+                }
+            }
+        }
+
+        /* RATING WHITH 1-2-3-4-5
         private void RateW_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -747,6 +1241,7 @@ namespace EWL
                     break;
             }
         }
+        */
 
         #endregion
 
@@ -763,47 +1258,122 @@ namespace EWL
         /// <param name="panelToShow">Панель, яка повинна бути показана</param>
         private void ShowPanel(Panel panelToShow)
         {
-            foreach (Control panel in this.Controls)
-                if (panel is Panel && panel != TopPanel
-                    && panel != SIdebarPanel)
+            /*
+            if (CurrentPanel != null)
+            {
+                CurrentPanel.Enabled = false;
+                CurrentPanel.Visible = false;
+            }
+
+            CurrentPanel = panelToShow;
+
+            panelToShow.Enabled = true;
+            panelToShow.Visible = true;
+            */
+
+            if (CurrentPanel == FCLearingPanel
+                && panelToShow != LearningStatPanel)
+            {
+                if (DoSwitchFCLPanel())
+                    Null_FCLPanel();
+                else
+                {
+                    LearningPanelButton.Checked = true;
+                    return;
+                }
+            }
+
+            CurrentPanel = panelToShow;
+            //Для правильного розташування 'CurrentPanel'
+            //коли 'SidebarPanel' згорнута чи розгорнута
+            CurrentPanel.Location = new Point(59 + (SidebarExpanded ? 94 : 0), 35);
+
+            panelToShow.Enabled = true;
+            panelToShow.Visible = true;
+            panelToShow.BringToFront();
+
+            foreach (Control panel in BackgroundPanel.Controls)
+                if (panel is Panel
+                    && panel != panelToShow)
                 {
                     panel.Enabled = false;
                     panel.Visible = false;
                 }
+        }
 
-            CurrentPanel = panelToShow;
-            panelToShow.Enabled = true;
-            panelToShow.Visible = true;
+        private bool DoSwitchFCLPanel()
+        {
+            var handler = ShowProgressPanel(this);
 
+            var dialogResult = MessageBox.Show(
+                "Ти точно хочеш перервати вивчення?\r\nРезультати всеодно збережуться",
+                "Е, ти куди?..",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
 
-            //if (panelToShow != MenuPanel)
-            //    this.Focus();
+            handler.Close();
 
-            /*
-            if (panelToShow == MenuPanel)
+            return dialogResult == DialogResult.Yes;
+        }
+
+        /// <summary>
+        /// Накладає напівпрозору панель на <paramref name="owner"/>, обмежуючи до неї доступ
+        /// </summary>
+        /// <param name="owner"><see cref="Control"/> на який буде накладена ProgressPanel</param>
+        /// <param name="windowOptions">Опції вигляду ProgressPanel</param>
+        /// <returns>Повертає <see cref="IOverlaySplashScreenHandle"/> з допомогою якого можна керувати ProgressPanel</returns>
+        IOverlaySplashScreenHandle ShowProgressPanel(Control owner, OverlayWindowOptions windowOptions = null)
+        {
+            if (windowOptions == null) windowOptions = new OverlayWindowOptions(backColor: Color.Black, customPainter: new MyCustomOverlayPainter(), disableInput: true);
+            IOverlaySplashScreenHandle _handle = null;
+            try
             {
-                LearnWButton.TabStop = true;
-                SeeAddingWPanelButton.TabStop = true;
-                SettingButton.TabStop = true;
-                SeeStatButton.TabStop = true;
+                _handle = SplashScreenManager.ShowOverlayForm(owner, windowOptions);
             }
-            // Встановити функцію для кнопки на panel1
-            else
+            catch
             {
-                LearnWButton.TabStop = false;
-                SeeAddingWPanelButton.TabStop = false;
-                SettingButton.TabStop = false;
-                SeeStatButton.TabStop = false;
             }
-            // Встановити іншу функцію для кнопки на panel2
-            */
+            return _handle;
         }
 
         #endregion
 
 
 
+
+
+        #region <{ GPT REF }>
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            var handler = ShowProgressPanel(this);
+
+            label22.Text = "";
+            GptAPI.GPTResponseHandler += Label22_GPTResponseHandler;
+            GptAPI.GPTErrorHandler += Label22_GPTErrorHandler;
+            Task.Run(() => GptAPI.GetResponse(new string[] { "table", "pillow" }, GptPurpose.FlashCards, handler));
+        }
+
+        void Label22_GPTResponseHandler(string response, IOverlaySplashScreenHandle handler)
+        {
+            label22.Text = response;
+            handler.Close();
+        }
+
+        void Label22_GPTErrorHandler(string response, IOverlaySplashScreenHandle handler)
+        {
+            label22.Text = response;
+            handler.Close();
+        }
+
+        #endregion
+
         #region ₴( Сюди автоматично додаються нові методи )₴
+
+        //DELETE
+        void KAKA()
+        { }
 
 
 
@@ -811,10 +1381,10 @@ namespace EWL
 
 
 
+
+
         //TODOTODO 
-        // - додати в правий верхній куток (всіх панелей додавання слів в БД) кнопку для перемикання режимів додавання слів до БД
         // - додати кнопку зі справкою щодо:
-        //      - правил введення спеціального рядка зі словом
         //      - суть "Вивчення" слів у відповідному розділі
         // - додати вкладку "Мої словники"
         //      - можливість створювати власні словники, керувати ними та їх вмістом

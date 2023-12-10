@@ -15,9 +15,9 @@ namespace EWL.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
 
-            modelBuilder.Entity("Eng_Flash_Cards_Learner.Category", b =>
+            modelBuilder.Entity("EWL.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -49,7 +49,7 @@ namespace EWL.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Eng_Flash_Cards_Learner.Setting", b =>
+            modelBuilder.Entity("EWL.Setting", b =>
                 {
                     b.Property<int>("SettingsId")
                         .ValueGeneratedOnAdd()
@@ -59,6 +59,13 @@ namespace EWL.Migrations
                     b.Property<int>("CurrentCategoryId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("CurrentCategoryID");
+
+                    b.Property<int>("CurrentDifficulty")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("GPTApiKey")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("WasLaunched")
                         .HasColumnType("INTEGER");
@@ -76,7 +83,7 @@ namespace EWL.Migrations
                     b.ToTable("Settings");
                 });
 
-            modelBuilder.Entity("Eng_Flash_Cards_Learner.Word", b =>
+            modelBuilder.Entity("EWL.Word", b =>
                 {
                     b.Property<int>("WordId")
                         .ValueGeneratedOnAdd()
@@ -102,10 +109,10 @@ namespace EWL.Migrations
 
                     b.HasKey("WordId");
 
-                    b.ToTable("Words");
+                    b.ToTable("AllWords");
                 });
 
-            modelBuilder.Entity("Eng_Flash_Cards_Learner.WordCategory", b =>
+            modelBuilder.Entity("EWL.WordCategory", b =>
                 {
                     b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER")
@@ -127,9 +134,9 @@ namespace EWL.Migrations
                     b.ToTable("WordCategories");
                 });
 
-            modelBuilder.Entity("Eng_Flash_Cards_Learner.Setting", b =>
+            modelBuilder.Entity("EWL.Setting", b =>
                 {
-                    b.HasOne("Eng_Flash_Cards_Learner.Category", "CurrentCategory")
+                    b.HasOne("EWL.Category", "CurrentCategory")
                         .WithMany("Settings")
                         .HasForeignKey("CurrentCategoryId")
                         .IsRequired();
@@ -137,14 +144,14 @@ namespace EWL.Migrations
                     b.Navigation("CurrentCategory");
                 });
 
-            modelBuilder.Entity("Eng_Flash_Cards_Learner.WordCategory", b =>
+            modelBuilder.Entity("EWL.WordCategory", b =>
                 {
-                    b.HasOne("Eng_Flash_Cards_Learner.Category", "Category")
+                    b.HasOne("EWL.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .IsRequired();
 
-                    b.HasOne("Eng_Flash_Cards_Learner.Word", "Word")
+                    b.HasOne("EWL.Word", "Word")
                         .WithMany()
                         .HasForeignKey("WordId")
                         .IsRequired();
@@ -154,7 +161,7 @@ namespace EWL.Migrations
                     b.Navigation("Word");
                 });
 
-            modelBuilder.Entity("Eng_Flash_Cards_Learner.Category", b =>
+            modelBuilder.Entity("EWL.Category", b =>
                 {
                     b.Navigation("Settings");
                 });
