@@ -196,7 +196,7 @@ namespace EWL
             FadeInTimer.Start();
         }
 
-        double FadeInOutDelta { get; set; } = 0.01;
+        double FadeInOutDelta { get; } = 0.05;
 
         private void FadeInTimer_Tick(object sender, EventArgs e)
         {
@@ -209,12 +209,12 @@ namespace EWL
         private void FadeOutTimer_AndClose_Tick(object sender, EventArgs e)
         {
             if (this.Opacity > 0)
-                this.Opacity -= 1.5 * FadeInOutDelta;
+                this.Opacity -= 2 * FadeInOutDelta;
             else
-            {
-                FadeInTimer.Stop();
+            //{
+            //    FadeOutTimer.Stop();
                 Close();
-            }
+            //}
         }
 
         #endregion

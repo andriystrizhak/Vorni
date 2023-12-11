@@ -43,6 +43,8 @@
             SaveApiKeyButton = new Guna.UI2.WinForms.Guna2Button();
             ApiKeyFormElipse = new Guna.UI2.WinForms.Guna2Elipse(components);
             ApiKeyAddingReportPopup = new Tulpep.NotificationWindow.PopupNotifier();
+            FadeInTimer = new System.Windows.Forms.Timer(components);
+            FadeOutTimer = new System.Windows.Forms.Timer(components);
             ApiKeyPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -174,6 +176,16 @@
             ApiKeyAddingReportPopup.TitleFont = new Font("Roboto Condensed", 12F, FontStyle.Bold, GraphicsUnit.Point);
             ApiKeyAddingReportPopup.TitleText = "";
             // 
+            // FadeInTimer
+            // 
+            FadeInTimer.Interval = 10;
+            FadeInTimer.Tick += FadeInTimer_Tick;
+            // 
+            // FadeOutTimer
+            // 
+            FadeOutTimer.Interval = 10;
+            FadeOutTimer.Tick += FadeOutTimer_AndClose_Tick;
+            // 
             // ApiKeyForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -184,6 +196,7 @@
             FormBorderStyle = FormBorderStyle.None;
             KeyPreview = true;
             Name = "ApiKeyForm";
+            Opacity = 0D;
             Text = "ApiKeyForm";
             Activated += SettingForm_Activated;
             Deactivate += SettingForm_Deactivate;
@@ -201,5 +214,7 @@
         private Guna.UI2.WinForms.Guna2Button SaveApiKeyButton;
         private Guna.UI2.WinForms.Guna2Elipse ApiKeyFormElipse;
         private Tulpep.NotificationWindow.PopupNotifier ApiKeyAddingReportPopup;
+        private System.Windows.Forms.Timer FadeInTimer;
+        private System.Windows.Forms.Timer FadeOutTimer;
     }
 }

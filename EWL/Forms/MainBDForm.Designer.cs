@@ -126,17 +126,17 @@ namespace EWL
             BackgroundPanel = new Guna.UI2.WinForms.Guna2Panel();
             WelcomePanel = new Panel();
             label27 = new Label();
-            pictureBox7 = new PictureBox();
+            pictureBox8 = new PictureBox();
             pictureBox6 = new PictureBox();
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
+            label22 = new Label();
+            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             WelcomeContentLabel = new Label();
             WelcomeTitleLabel = new Label();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            label22 = new Label();
-            EWLPictureBox = new PictureBox();
+            pictureBox7 = new PictureBox();
             LearningPanel = new Guna.UI2.WinForms.Guna2Panel();
             LearningSettingsPanel = new Guna.UI2.WinForms.Guna2Panel();
             DifficultyComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -265,13 +265,13 @@ namespace EWL
             ((System.ComponentModel.ISupportInitialize)TitleIcoPictureBox).BeginInit();
             BackgroundPanel.SuspendLayout();
             WelcomePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)EWLPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             LearningPanel.SuspendLayout();
             LearningSettingsPanel.SuspendLayout();
             CheckGPTPanel.SuspendLayout();
@@ -371,11 +371,11 @@ namespace EWL
             // TitleLabel
             // 
             TitleLabel.AutoSize = true;
-            TitleLabel.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            TitleLabel.Font = new Font("Montserrat SemiBold", 8.249999F, FontStyle.Bold, GraphicsUnit.Point);
             TitleLabel.ForeColor = Color.White;
-            TitleLabel.Location = new Point(473, 11);
+            TitleLabel.Location = new Point(458, 11);
             TitleLabel.Name = "TitleLabel";
-            TitleLabel.Size = new Size(196, 15);
+            TitleLabel.Size = new Size(215, 15);
             TitleLabel.TabIndex = 3;
             TitleLabel.Text = "English Words Learner (flash-cards)";
             // 
@@ -408,17 +408,18 @@ namespace EWL
             // 
             WelcomePanel.BackColor = Color.FromArgb(24, 27, 32);
             WelcomePanel.Controls.Add(label27);
-            WelcomePanel.Controls.Add(pictureBox7);
+            WelcomePanel.Controls.Add(pictureBox8);
             WelcomePanel.Controls.Add(pictureBox6);
             WelcomePanel.Controls.Add(pictureBox5);
             WelcomePanel.Controls.Add(pictureBox4);
             WelcomePanel.Controls.Add(pictureBox3);
             WelcomePanel.Controls.Add(pictureBox2);
+            WelcomePanel.Controls.Add(label22);
+            WelcomePanel.Controls.Add(guna2Button1);
             WelcomePanel.Controls.Add(WelcomeContentLabel);
             WelcomePanel.Controls.Add(WelcomeTitleLabel);
-            WelcomePanel.Controls.Add(guna2Button1);
-            WelcomePanel.Controls.Add(label22);
-            WelcomePanel.Controls.Add(EWLPictureBox);
+            WelcomePanel.Controls.Add(pictureBox7);
+            WelcomePanel.Font = new Font("Montserrat Light", 6.75F, FontStyle.Regular, GraphicsUnit.Point);
             WelcomePanel.ImeMode = ImeMode.Hangul;
             WelcomePanel.Location = new Point(59, 35);
             WelcomePanel.Name = "WelcomePanel";
@@ -427,26 +428,26 @@ namespace EWL
             // 
             // label27
             // 
-            label27.AutoSize = true;
-            label27.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label27.Font = new Font("Montserrat", 8.999999F, FontStyle.Regular, GraphicsUnit.Point);
             label27.ForeColor = Color.FromArgb(147, 166, 181);
-            label27.Location = new Point(144, 420);
+            label27.Location = new Point(151, 424);
             label27.Name = "label27";
-            label27.Size = new Size(755, 115);
+            label27.Size = new Size(360, 144);
             label27.TabIndex = 53;
             label27.Text = resources.GetString("label27.Text");
             label27.TextAlign = ContentAlignment.MiddleLeft;
+            label27.Visible = false;
             // 
-            // pictureBox7
+            // pictureBox8
             // 
-            pictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox7.Image = Eng_Flash_Cards_Learner.Resource1.icons8_v_live_96;
-            pictureBox7.Location = new Point(734, 169);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(100, 104);
-            pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox7.TabIndex = 52;
-            pictureBox7.TabStop = false;
+            pictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox8.Image = Eng_Flash_Cards_Learner.Resource1.voron4;
+            pictureBox8.Location = new Point(552, 8);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(364, 573);
+            pictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox8.TabIndex = 54;
+            pictureBox8.TabStop = false;
             // 
             // pictureBox6
             // 
@@ -506,33 +507,17 @@ namespace EWL
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 47;
             pictureBox2.TabStop = false;
-            pictureBox2.Visible = false;
             // 
-            // WelcomeContentLabel
+            // label22
             // 
-            WelcomeContentLabel.AutoSize = true;
-            WelcomeContentLabel.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            WelcomeContentLabel.ForeColor = Color.White;
-            WelcomeContentLabel.Location = new Point(173, 138);
-            WelcomeContentLabel.Name = "WelcomeContentLabel";
-            WelcomeContentLabel.Size = new Size(383, 184);
-            WelcomeContentLabel.TabIndex = 45;
-            WelcomeContentLabel.Text = resources.GetString("WelcomeContentLabel.Text");
-            WelcomeContentLabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // WelcomeTitleLabel
-            // 
-            WelcomeTitleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WelcomeTitleLabel.AutoSize = true;
-            WelcomeTitleLabel.BackColor = Color.FromArgb(24, 27, 32);
-            WelcomeTitleLabel.Font = new Font("Calibri", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            WelcomeTitleLabel.ForeColor = Color.White;
-            WelcomeTitleLabel.Location = new Point(167, 60);
-            WelcomeTitleLabel.Name = "WelcomeTitleLabel";
-            WelcomeTitleLabel.Size = new Size(224, 45);
-            WelcomeTitleLabel.TabIndex = 46;
-            WelcomeTitleLabel.Text = "Вітаю в EWL!";
-            WelcomeTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
+            label22.AutoEllipsis = true;
+            label22.BackColor = Color.FromArgb(64, 64, 64);
+            label22.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label22.Location = new Point(63, 483);
+            label22.Name = "label22";
+            label22.Size = new Size(852, 80);
+            label22.TabIndex = 8;
+            label22.Visible = false;
             // 
             // guna2Button1
             // 
@@ -543,7 +528,7 @@ namespace EWL
             guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(436, 420);
+            guna2Button1.Location = new Point(398, 420);
             guna2Button1.Name = "guna2Button1";
             guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2Button1.Size = new Size(180, 45);
@@ -553,29 +538,43 @@ namespace EWL
             guna2Button1.Visible = false;
             guna2Button1.Click += guna2Button1_Click;
             // 
-            // label22
+            // WelcomeContentLabel
             // 
-            label22.AutoEllipsis = true;
-            label22.BackColor = Color.FromArgb(64, 64, 64);
-            label22.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label22.Location = new Point(101, 483);
-            label22.Name = "label22";
-            label22.Size = new Size(852, 80);
-            label22.TabIndex = 8;
-            label22.Visible = false;
+            WelcomeContentLabel.AutoSize = true;
+            WelcomeContentLabel.BackColor = Color.FromArgb(30, 1, 70);
+            WelcomeContentLabel.Font = new Font("Montserrat", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            WelcomeContentLabel.ForeColor = Color.Transparent;
+            WelcomeContentLabel.Location = new Point(167, 101);
+            WelcomeContentLabel.Name = "WelcomeContentLabel";
+            WelcomeContentLabel.Size = new Size(357, 198);
+            WelcomeContentLabel.TabIndex = 45;
+            WelcomeContentLabel.Text = resources.GetString("WelcomeContentLabel.Text");
+            WelcomeContentLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // EWLPictureBox
+            // WelcomeTitleLabel
             // 
-            EWLPictureBox.BackgroundImage = Eng_Flash_Cards_Learner.Resource1.Logo11;
-            EWLPictureBox.BackgroundImageLayout = ImageLayout.Zoom;
-            EWLPictureBox.Location = new Point(224, 250);
-            EWLPictureBox.MinimumSize = new Size(550, 100);
-            EWLPictureBox.Name = "EWLPictureBox";
-            EWLPictureBox.Size = new Size(586, 150);
-            EWLPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            EWLPictureBox.TabIndex = 6;
-            EWLPictureBox.TabStop = false;
-            EWLPictureBox.Visible = false;
+            WelcomeTitleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            WelcomeTitleLabel.AutoSize = true;
+            WelcomeTitleLabel.BackColor = Color.FromArgb(30, 1, 70);
+            WelcomeTitleLabel.Font = new Font("Montserrat", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            WelcomeTitleLabel.ForeColor = Color.Transparent;
+            WelcomeTitleLabel.Location = new Point(223, 43);
+            WelcomeTitleLabel.Name = "WelcomeTitleLabel";
+            WelcomeTitleLabel.Size = new Size(242, 44);
+            WelcomeTitleLabel.TabIndex = 46;
+            WelcomeTitleLabel.Text = "Вітаю в EWL!";
+            WelcomeTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox7.Image = Eng_Flash_Cards_Learner.Resource1.icons8_говорить_4__100;
+            pictureBox7.Location = new Point(62, 1);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(568, 411);
+            pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox7.TabIndex = 55;
+            pictureBox7.TabStop = false;
             // 
             // LearningPanel
             // 
@@ -2576,11 +2575,11 @@ namespace EWL
             MenuLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             MenuLabel.AutoSize = true;
             MenuLabel.BackColor = Color.FromArgb(33, 38, 42);
-            MenuLabel.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            MenuLabel.Font = new Font("Montserrat", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             MenuLabel.ForeColor = Color.White;
-            MenuLabel.Location = new Point(85, 28);
+            MenuLabel.Location = new Point(84, 25);
             MenuLabel.Name = "MenuLabel";
-            MenuLabel.Size = new Size(77, 29);
+            MenuLabel.Size = new Size(81, 29);
             MenuLabel.TabIndex = 25;
             MenuLabel.Text = "Меню";
             MenuLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -2601,7 +2600,7 @@ namespace EWL
             StatPanelButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             StatPanelButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             StatPanelButton.FillColor = Color.FromArgb(33, 38, 42);
-            StatPanelButton.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            StatPanelButton.Font = new Font("Montserrat", 12F, FontStyle.Bold, GraphicsUnit.Point);
             StatPanelButton.ForeColor = Color.FromArgb(170, 185, 200);
             StatPanelButton.HoverState.FillColor = Color.FromArgb(38, 43, 47);
             StatPanelButton.Image = Eng_Flash_Cards_Learner.Resource1.icons8_график_96;
@@ -2636,7 +2635,7 @@ namespace EWL
             SettingsPanelButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             SettingsPanelButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             SettingsPanelButton.FillColor = Color.FromArgb(33, 38, 42);
-            SettingsPanelButton.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            SettingsPanelButton.Font = new Font("Montserrat", 12F, FontStyle.Bold, GraphicsUnit.Point);
             SettingsPanelButton.ForeColor = Color.FromArgb(170, 185, 200);
             SettingsPanelButton.HoverState.FillColor = Color.FromArgb(38, 43, 47);
             SettingsPanelButton.Image = Eng_Flash_Cards_Learner.Resource1.icons8_привод_96_1_;
@@ -2672,7 +2671,7 @@ namespace EWL
             AddWPanelButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             AddWPanelButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             AddWPanelButton.FillColor = Color.FromArgb(33, 38, 42);
-            AddWPanelButton.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            AddWPanelButton.Font = new Font("Montserrat", 12F, FontStyle.Bold, GraphicsUnit.Point);
             AddWPanelButton.ForeColor = Color.FromArgb(170, 185, 200);
             AddWPanelButton.HoverState.FillColor = Color.FromArgb(38, 43, 47);
             AddWPanelButton.Image = Eng_Flash_Cards_Learner.Resource1.icons8_добавить_96_2_;
@@ -2708,7 +2707,7 @@ namespace EWL
             LearningPanelButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             LearningPanelButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             LearningPanelButton.FillColor = Color.FromArgb(33, 38, 42);
-            LearningPanelButton.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LearningPanelButton.Font = new Font("Montserrat", 12F, FontStyle.Bold, GraphicsUnit.Point);
             LearningPanelButton.ForeColor = Color.FromArgb(170, 185, 200);
             LearningPanelButton.HoverState.FillColor = Color.FromArgb(38, 43, 47);
             LearningPanelButton.Image = Eng_Flash_Cards_Learner.Resource1.icons8_азбука_96_1_;
@@ -2847,13 +2846,13 @@ namespace EWL
             BackgroundPanel.ResumeLayout(false);
             WelcomePanel.ResumeLayout(false);
             WelcomePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)EWLPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             LearningPanel.ResumeLayout(false);
             LearningPanel.PerformLayout();
             LearningSettingsPanel.ResumeLayout(false);
@@ -3036,7 +3035,6 @@ namespace EWL
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Label WelcomeContentLabel;
         private Label WelcomeTitleLabel;
-        private PictureBox pictureBox7;
         private PictureBox pictureBox6;
         private PictureBox pictureBox5;
         private PictureBox pictureBox4;
@@ -3044,5 +3042,7 @@ namespace EWL
         private Label label27;
         private System.Windows.Forms.Timer FadeInTimer;
         private System.Windows.Forms.Timer FadeOutTimer;
+        private PictureBox pictureBox8;
+        private PictureBox pictureBox7;
     }
 }

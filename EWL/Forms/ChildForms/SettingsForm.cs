@@ -45,10 +45,36 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
         {
             SettingPanel.Visible = true;
             SaveSettingsButton.Enabled = false;
+            FadeInTimer.Start();
         }
 
         private void SettingForm_Load(object sender, EventArgs e)
             => this.Location = owner.Location + (owner.Size / 2) - (this.Size / 2);
+
+        #region Fade in/out
+
+        double FadeInOutDelta { get; } = 0.1;
+
+        private void FadeInTimer_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity < 1)
+                this.Opacity += FadeInOutDelta;
+            else
+                FadeInTimer.Stop();
+        }
+
+        private void FadeOutTimer_AndClose_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity > 0)
+                this.Opacity -= 2 * FadeInOutDelta;
+            else
+            {
+                FadeInTimer.Stop();
+                Close();
+            }
+        }
+
+        #endregion
 
         #region [ SettingPanel ]
 
@@ -65,7 +91,8 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
         private void CloseSettingsButton_Click(object sender, EventArgs e)
         {
             handler.Close();
-            Close();
+            FadeOutTimer.Start();
+            //Close();
         }
 
         private void AddGPTApiKeyButton_Click(object sender, EventArgs e)

@@ -273,6 +273,86 @@ namespace Eng_Flash_Cards_Learner {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_говорить_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-говорить-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_говорить_100__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-говорить-100 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_говорить_1001 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-говорить-1001", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_говорить_1002 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-говорить-1002", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_говорить_1003 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-говорить-1003", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_говорить_2__100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-говорить(2)-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_говорить_3__100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-говорить(3)-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_говорить_4__100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-говорить(4)-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_график_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-график-96", resourceCulture);
@@ -656,6 +736,36 @@ namespace Eng_Flash_Cards_Learner {
         internal static System.Drawing.Bitmap Untitled_3_2 {
             get {
                 object obj = ResourceManager.GetObject("Untitled 3.2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap voron2 {
+            get {
+                object obj = ResourceManager.GetObject("voron2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap voron3 {
+            get {
+                object obj = ResourceManager.GetObject("voron3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap voron4 {
+            get {
+                object obj = ResourceManager.GetObject("voron4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
