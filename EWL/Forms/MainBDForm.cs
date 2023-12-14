@@ -178,18 +178,6 @@ namespace EWL
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            //Assembly assembly = Assembly.GetExecutingAssembly();
-            //
-            //PrivateFontCollection fonts = new PrivateFontCollection();
-            //
-            //fonts.AddFontFile(this.GetType().Assembly.GetManifestResourceStream(
-            //    "MyNamespace.Fonts.CustomFont.ttf"));
-            //
-            //FontFamily fontFamily = fonts.Families[0];
-            //
-            //this.Font = new Font(fontFamily, 16);
-
-
             Thread.Sleep(200);
             SplashScreenManager.CloseForm();
 
@@ -211,10 +199,7 @@ namespace EWL
             if (this.Opacity > 0)
                 this.Opacity -= 2 * FadeInOutDelta;
             else
-            //{
-            //    FadeOutTimer.Stop();
                 Close();
-            //}
         }
 
         #endregion
@@ -227,6 +212,9 @@ namespace EWL
 
         private void LearnWButton_Click(object sender, EventArgs e)
         {
+            Task.Run(() => ShowTransitionPanel(LearningPanel));
+            Thread.Sleep(400);
+
             FCMethodButton.Checked = false;
             TestMethodButton.Checked = false;
             StartLearningButton.Enabled = false;
@@ -650,6 +638,9 @@ namespace EWL
         //TODO CATEGORY - Додати перемикач категорії для додавання слів
         private void AddWPanelButton_Click(object sender, EventArgs e)
         {
+            Task.Run(() => ShowTransitionPanel(AddingWPanel));
+            Thread.Sleep(400);
+
             addedWordsCount = 0;
             int wAddingMode = SQLs.Get_WordAddingMode();
 
@@ -669,6 +660,13 @@ namespace EWL
                     ChooseFileButton.Focus();
                     break;
             }
+        }
+
+        void ShowTransitionPanel(Panel panel)
+        {
+            var handler = ShowProgressPanel(panel, isOpaque: true);
+            Thread.Sleep(800);
+            handler.Close();
         }
 
         /// <summary>
@@ -974,8 +972,8 @@ namespace EWL
         private async void AddWButton3_DoClick()
         {
             CloseButton.Enabled = false;
-            var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
-            var handle = ShowProgressPanel(DragAndDropPanel, windowOptions);
+            //var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true); //REMOVE
+            var handle = ShowProgressPanel(DragAndDropPanel); //, windowOptions);
 
             (int, int, int) report = (0, 0, 0);
             await Task.Run(() => report = Txt_FileHandler.AddWordsFromTxtFiles(files));
@@ -1003,8 +1001,8 @@ namespace EWL
             if (AddWTabControl.SelectedIndex == 2)
             {
                 CloseButton.Enabled = false;
-                var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true);
-                handle = ShowProgressPanel(DragAndDropPanel, windowOptions);
+                //var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true); //REMOVE
+                handle = ShowProgressPanel(DragAndDropPanel); //, windowOptions);
             }
 
             await Task.Run(() => SQLs.Remove_LastWords_Permanently(addedWordsCount));
@@ -1258,19 +1256,6 @@ namespace EWL
         /// <param name="panelToShow">Панель, яка повинна бути показана</param>
         private void ShowPanel(Panel panelToShow)
         {
-            /*
-            if (CurrentPanel != null)
-            {
-                CurrentPanel.Enabled = false;
-                CurrentPanel.Visible = false;
-            }
-
-            CurrentPanel = panelToShow;
-
-            panelToShow.Enabled = true;
-            panelToShow.Visible = true;
-            */
-
             if (CurrentPanel == FCLearingPanel
                 && panelToShow != LearningStatPanel)
             {
@@ -1301,6 +1286,10 @@ namespace EWL
                 }
         }
 
+        /// <summary>
+        /// Обробляє випадок коли користувач намагається перервати сесію навчання
+        /// </summary>
+        /// <returns>Відповідь користувача на запитання "Перервати навчання?"</returns>
         private bool DoSwitchFCLPanel()
         {
             var handler = ShowProgressPanel(this);
@@ -1323,9 +1312,13 @@ namespace EWL
         /// <param name="owner"><see cref="Control"/> на який буде накладена ProgressPanel</param>
         /// <param name="windowOptions">Опції вигляду ProgressPanel</param>
         /// <returns>Повертає <see cref="IOverlaySplashScreenHandle"/> з допомогою якого можна керувати ProgressPanel</returns>
-        IOverlaySplashScreenHandle ShowProgressPanel(Control owner, OverlayWindowOptions windowOptions = null)
+        IOverlaySplashScreenHandle ShowProgressPanel(Control owner, OverlayWindowOptions windowOptions = null, bool isOpaque = false)
         {
-            if (windowOptions == null) windowOptions = new OverlayWindowOptions(backColor: Color.Black, customPainter: new MyCustomOverlayPainter(), disableInput: true);
+            if (windowOptions == null) windowOptions = new OverlayWindowOptions(
+                backColor: Color.FromArgb(24, 27, 32), //blackColour ? Color.Black : Color.FromArgb(24, 27, 32), 
+                opacity: isOpaque ? 1 : 0.75,
+                customPainter: new MyCustomOverlayPainter(), 
+                disableInput: true);
             IOverlaySplashScreenHandle _handle = null;
             try
             {

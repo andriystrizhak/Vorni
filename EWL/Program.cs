@@ -2,6 +2,7 @@ using DevExpress.XtraSplashScreen;
 using EWL.EF_SQLite;
 using EWL .NOT_Forms;
 using SQLitePCL;
+using System.Drawing.Drawing2D;
 
 namespace EWL
 {
@@ -18,7 +19,7 @@ namespace EWL
             ApplicationConfiguration.Initialize();
             SQLs.CS = "Data Source=.\\Vocabulary.db;";
 
-            CreateAndShowSplashScreen();
+            ShowFluentSplashScreen();
 
             if (!SQLs.WasLaunched())
                 Application.Run(new SetUpForm());
@@ -26,8 +27,21 @@ namespace EWL
                 Application.Run(new MainForm());
         }
 
-        static void CreateAndShowSplashScreen()
+        static void ShowFluentSplashScreen()
         {
+            var ssOptions = new FluentSplashScreenOptions();
+            //ssOptions.LogoImageOptions.Image = null;
+            ssOptions.Title = "English Words Learner";
+            ssOptions.Subtitle = "Learn words you want!";
+            ssOptions.RightFooter = "Starting...";
+            ssOptions.LeftFooter = "@andriy_strizhak";
+            ssOptions.LoadingIndicatorType = FluentLoadingIndicatorType.Dots;
+            ssOptions.Opacity = 100;
+
+            SplashScreenManager.ShowFluentSplashScreen
+                (ssOptions, customDrawEventHandler: FluentSplashScreenDraw, useFadeIn: true, useFadeOut: true);
+
+            /*
             SplashScreenManager.ShowFluentSplashScreen(
                 "English Words Learner",
                 "Learn words you want!",
@@ -43,6 +57,17 @@ namespace EWL
                 true,
                 true,
                 SplashFormStartPosition.CenterScreen);
+            */
+        }
+
+        static void FluentSplashScreenDraw(object sender, FluentSplashScreenCustomDrawEventArgs e)
+        {
+            var linGrBrush = new LinearGradientBrush(
+                new Point(0, 0),
+                new Point(e.Bounds.Height + 1200, e.Bounds.Width),
+                Color.FromArgb(100, 24, 27, 32),
+                Color.FromArgb(100, 170, 101, 254));
+            e.Cache.FillRectangle(linGrBrush, e.Bounds);
         }
     }
 } 
