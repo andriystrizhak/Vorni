@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wy7XqeGsuqo64Mcjdknn8Dy6PGL/T5yaoU8tIZn4D3pd3MBFuNtfk+e/w3Kfpvm4pC4s4LVw8TKofqHUWXDQeA==",
+  "dgSpecHash": "FF81DRas9YxF3AwQL5/lxDwfUw7AGW01umL1BR+8+yUXhDxsvao28isQNhy95rlCHCNJ09T6hI0iXiXcuMU8ng==",
   "success": true,
-  "projectFilePath": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Eng_Flash-Cards_Learner.csproj",
+  "projectFilePath": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\EWL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Windows-10H-20\\.nuget\\packages\\avalonia\\11.0.0\\avalonia.11.0.0.nupkg.sha512",
     "C:\\Users\\Windows-10H-20\\.nuget\\packages\\avalonia.buildservices\\0.0.28\\avalonia.buildservices.0.0.28.nupkg.sha512",

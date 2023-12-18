@@ -407,6 +407,7 @@ namespace EWL
             // WelcomePanel
             // 
             WelcomePanel.BackColor = Color.FromArgb(24, 27, 32);
+            WelcomePanel.Controls.Add(WelcomeTitleLabel);
             WelcomePanel.Controls.Add(label27);
             WelcomePanel.Controls.Add(pictureBox8);
             WelcomePanel.Controls.Add(pictureBox6);
@@ -417,7 +418,6 @@ namespace EWL
             WelcomePanel.Controls.Add(label22);
             WelcomePanel.Controls.Add(guna2Button1);
             WelcomePanel.Controls.Add(WelcomeContentLabel);
-            WelcomePanel.Controls.Add(WelcomeTitleLabel);
             WelcomePanel.Controls.Add(pictureBox7);
             WelcomePanel.Font = new Font("Montserrat Light", 6.75F, FontStyle.Regular, GraphicsUnit.Point);
             WelcomePanel.ImeMode = ImeMode.Hangul;
@@ -441,10 +441,10 @@ namespace EWL
             // pictureBox8
             // 
             pictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox8.Image = Eng_Flash_Cards_Learner.Resource1.voron4;
-            pictureBox8.Location = new Point(552, 8);
+            pictureBox8.Image = Eng_Flash_Cards_Learner.Resource1.VORNI__start__2_0;
+            pictureBox8.Location = new Point(392, 6);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(364, 573);
+            pictureBox8.Size = new Size(542, 572);
             pictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox8.TabIndex = 54;
             pictureBox8.TabStop = false;
@@ -544,12 +544,13 @@ namespace EWL
             WelcomeContentLabel.BackColor = Color.FromArgb(30, 1, 70);
             WelcomeContentLabel.Font = new Font("Montserrat", 12F, FontStyle.Regular, GraphicsUnit.Point);
             WelcomeContentLabel.ForeColor = Color.Transparent;
-            WelcomeContentLabel.Location = new Point(167, 101);
+            WelcomeContentLabel.Location = new Point(165, 101);
             WelcomeContentLabel.Name = "WelcomeContentLabel";
             WelcomeContentLabel.Size = new Size(357, 198);
             WelcomeContentLabel.TabIndex = 45;
             WelcomeContentLabel.Text = resources.GetString("WelcomeContentLabel.Text");
             WelcomeContentLabel.TextAlign = ContentAlignment.MiddleLeft;
+            WelcomeContentLabel.Visible = false;
             // 
             // WelcomeTitleLabel
             // 
@@ -575,6 +576,7 @@ namespace EWL
             pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox7.TabIndex = 55;
             pictureBox7.TabStop = false;
+            pictureBox7.Visible = false;
             // 
             // LearningPanel
             // 
