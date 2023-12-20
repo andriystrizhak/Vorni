@@ -124,11 +124,12 @@ namespace EWL
         #region [ SidebarPanel ]
 
         bool SidebarExpanded { get; set; } = false;
+        int SidebarExtensionDelta { get; set; } = 10;
 
         private void SidebarTimer_Tick(object sender, EventArgs e)
         {
-            int sidebarPDelta = SidebarExpanded ? -10 : 10;
-            int currentPDelta = SidebarExpanded ? -5 : 5;
+            int sidebarPDelta = SidebarExpanded ? -1 * SidebarExtensionDelta : SidebarExtensionDelta;
+            int currentPDelta = sidebarPDelta / 2;
 
             SidebarPanel.Width += sidebarPDelta;                                       //Розширення бокової панелі
             SidePanelRightBorderPanel.Location = new Point(SidebarPanel.Width - 1,
@@ -138,13 +139,28 @@ namespace EWL
             if (SidebarPanel.Width == SidebarPanel.MinimumSize.Width
                 || SidebarPanel.Width == SidebarPanel.MaximumSize.Width)
             {
-                SidebarExpanded = !SidebarExpanded;
                 SidebarTimer.Stop();
+                SidebarExpanded = !SidebarExpanded;
+
+                if (!SidebarExpanded)
+                {
+                    CurrentPanel.Location = new Point(64, 35);                             //поправити фінальне розміщення 'CurrentPanel'
+                }
             }
         }
 
         private void SidebarExtensionButton_Click(object sender, EventArgs e)
         {
+            StartSidebarExtension();
+        }
+
+        /// <summary>
+        /// Запускає анімацію розширення / зменшення бокової панелі
+        /// </summary>
+        /// <param name="extensionDelta">Швидкість розширення / звуження бокової панелі</param>
+        private void StartSidebarExtension(int extensionDelta = 10)
+        {
+            SidebarExtensionDelta = extensionDelta;
             SidebarTimer.Start();
         }
 
@@ -178,6 +194,23 @@ namespace EWL
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
+            /* спроба прибрати блимання при першому показі панелі
+            foreach (Control panel in BackgroundPanel.Controls)
+                if (panel is Panel)
+                {
+                    panel.Enabled = true;
+                    panel.Visible = true;
+                    panel.BringToFront();
+                }
+            foreach (Control panel in BackgroundPanel.Controls)
+                if (panel is Panel)
+                {
+                    panel.Enabled = false;
+                    panel.Visible = false;
+                }
+            ShowPanel(WelcomePanel);
+            */
+
             Thread.Sleep(200);
             SplashScreenManager.CloseForm();
 
@@ -212,8 +245,13 @@ namespace EWL
 
         private void LearnWButton_Click(object sender, EventArgs e)
         {
+            //TODO - додати в окремий метод і вирішити щось з боковою панелюю
+            //if (SidebarExpanded)
+            //    StartSidebarExtension(20);
+            //Thread.Sleep(200);
+
             Task.Run(() => ShowTransitionPanel(LearningPanel));
-            Thread.Sleep(400);
+            Thread.Sleep(250);
 
             FCMethodButton.Checked = false;
             TestMethodButton.Checked = false;
@@ -638,8 +676,12 @@ namespace EWL
         //TODO CATEGORY - Додати перемикач категорії для додавання слів
         private void AddWPanelButton_Click(object sender, EventArgs e)
         {
+            //if (SidebarExpanded)
+            //    StartSidebarExtension(20);
+            //Thread.Sleep(200);
+
             Task.Run(() => ShowTransitionPanel(AddingWPanel));
-            Thread.Sleep(400);
+            Thread.Sleep(250);
 
             addedWordsCount = 0;
             int wAddingMode = SQLs.Get_WordAddingMode();
@@ -660,13 +702,6 @@ namespace EWL
                     ChooseFileButton.Focus();
                     break;
             }
-        }
-
-        void ShowTransitionPanel(Panel panel)
-        {
-            var handler = ShowProgressPanel(panel, isOpaque: true);
-            Thread.Sleep(800);
-            handler.Close();
         }
 
         /// <summary>
@@ -972,8 +1007,7 @@ namespace EWL
         private async void AddWButton3_DoClick()
         {
             CloseButton.Enabled = false;
-            //var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true); //REMOVE
-            var handle = ShowProgressPanel(DragAndDropPanel); //, windowOptions);
+            var handle = ShowProgressPanel(DragAndDropPanel, showAnimation: true);
 
             (int, int, int) report = (0, 0, 0);
             await Task.Run(() => report = Txt_FileHandler.AddWordsFromTxtFiles(files));
@@ -1001,8 +1035,7 @@ namespace EWL
             if (AddWTabControl.SelectedIndex == 2)
             {
                 CloseButton.Enabled = false;
-                //var windowOptions = new OverlayWindowOptions(backColor: Color.Black, disableInput: true); //REMOVE
-                handle = ShowProgressPanel(DragAndDropPanel); //, windowOptions);
+                handle = ShowProgressPanel(DragAndDropPanel, showAnimation: true);
             }
 
             await Task.Run(() => SQLs.Remove_LastWords_Permanently(addedWordsCount));
@@ -1269,8 +1302,7 @@ namespace EWL
             }
 
             CurrentPanel = panelToShow;
-            //Для правильного розташування 'CurrentPanel'
-            //коли 'SidebarPanel' згорнута чи розгорнута
+            //Для правильного розташування 'CurrentPanel' коли 'SidebarPanel' згорнута чи розгорнута
             CurrentPanel.Location = new Point(59 + (SidebarExpanded ? 94 : 0), 35);
 
             panelToShow.Enabled = true;
@@ -1312,13 +1344,14 @@ namespace EWL
         /// <param name="owner"><see cref="Control"/> на який буде накладена ProgressPanel</param>
         /// <param name="windowOptions">Опції вигляду ProgressPanel</param>
         /// <returns>Повертає <see cref="IOverlaySplashScreenHandle"/> з допомогою якого можна керувати ProgressPanel</returns>
-        IOverlaySplashScreenHandle ShowProgressPanel(Control owner, OverlayWindowOptions windowOptions = null, bool isOpaque = false)
+        IOverlaySplashScreenHandle ShowProgressPanel(Control owner, OverlayWindowOptions windowOptions = null, bool isOpaque = false, bool showAnimation = false)
         {
-            if (windowOptions == null) windowOptions = new OverlayWindowOptions(
-                backColor: Color.FromArgb(24, 27, 32), //blackColour ? Color.Black : Color.FromArgb(24, 27, 32), 
-                opacity: isOpaque ? 1 : 0.75,
-                customPainter: new MyCustomOverlayPainter(), 
-                disableInput: true);
+            if (windowOptions == null) 
+                windowOptions = new OverlayWindowOptions(
+                    backColor: Color.FromArgb(24, 27, 32), //blackColour ? Color.Black : Color.FromArgb(24, 27, 32), 
+                    opacity: isOpaque ? 1 : 0.75,
+                    customPainter: showAnimation ? null : new MyCustomOverlayPainter(), 
+                    disableInput: true);
             IOverlaySplashScreenHandle _handle = null;
             try
             {
@@ -1328,6 +1361,25 @@ namespace EWL
             {
             }
             return _handle;
+        }
+
+        //TODO - придумай щось щодо цього!
+        void NoFantasyInMiddleOfTheNight(Control panel)
+        {
+            if (SidebarExpanded)
+                StartSidebarExtension(20);
+            Thread.Sleep(200);
+        }
+
+        void ShowTransitionPanel(Control panel)
+        {
+            if (SidebarExpanded)
+                StartSidebarExtension(20);
+            Thread.Sleep(200);
+
+            var handler = ShowProgressPanel(panel, isOpaque: false, showAnimation: true);
+            Thread.Sleep(500);
+            handler.Close();
         }
 
         #endregion

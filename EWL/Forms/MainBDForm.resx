@@ -120,20 +120,6 @@
   <metadata name="fullScreenImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>5, 119</value>
   </metadata>
-  <data name="label27.Text" xml:space="preserve">
-    <value>тут буде купа балаканити з інструкціями для користування додатком і його нахвалюваннями тут буде купа балаканити з інструкціями для користування додатком і його нахвалюваннями тут буде купа балаканити з інструкціями для користування додатком і його нахвалюваннями тут буде купа балаканити з інструкціями для користування додатком і його нахвалюваннями тут буде купа балаканити з інструкціями для користування додатком і його нахвалюваннями </value>
-  </data>
-  <data name="WelcomeContentLabel.Text" xml:space="preserve">
-    <value>EWL - це спеціалізований додаток для 
-вивчення англійських слів з допомогою 
-різних методів (флеш-картки, тести 
-(скоро)).
-
-Тут можливо детально налаштовувати 
-процес навчання, додавати свої слова,
-генерувати унікальні завдання з допомо-
-гою ШІ (GPT-3.5 від OpenAI).</value>
-  </data>
   <metadata name="GPTHtmlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>352, 149</value>
   </metadata>
@@ -212,6 +198,20 @@
   <metadata name="Rating.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="label27.Text" xml:space="preserve">
+    <value>тут буде купа балаканити з інструкціями для користування додатком і його нахвалюваннями тут буде купа балаканити з інструкціями для користування додатком і його нахвалюваннями тут буде купа балаканити з інструкціями для користування додатком і його нахвалюваннями тут буде купа балаканити з інструкціями для користування додатком і його нахвалюваннями тут буде купа балаканити з інструкціями для користування додатком і його нахвалюваннями </value>
+  </data>
+  <data name="WelcomeContentLabel.Text" xml:space="preserve">
+    <value>EWL - це спеціалізований додаток для 
+вивчення англійських слів з допомогою 
+різних методів (флеш-картки, тести 
+(скоро)).
+
+Тут можливо детально налаштовувати 
+процес навчання, додавати свої слова,
+генерувати унікальні завдання з допомо-
+гою ШІ (GPT-3.5 від OpenAI).</value>
+  </data>
   <metadata name="WrongFileFormatPopup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>19, 75</value>
   </metadata>
