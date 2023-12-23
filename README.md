@@ -9,16 +9,17 @@ Vorni - це десктопний додаток, розроблений для 
   ![im1](https://github.com/andriystrizhak/EWL-FC/assets/115723613/851aa55c-35c0-44b6-aeea-de0a3ca8a551)
   (Для цього потрібно додати свій API key від OpenAI в
   "Налаштування"=>"API-Ключ"=>"+Додати")
-  ![im3](https://github.com/andriystrizhak/EWL-FC/assets/115723613/ed99ccd0-adf2-4417-a064-b3adfbac69f5)
+   ![im3](https://github.com/andriystrizhak/EWL-FC/assets/115723613/ed99ccd0-adf2-4417-a064-b3adfbac69f5)
 - **Детальна статистика** - відстеження прогресу навчання в розрізі слів, словників, днів тощо
 - **Персоналізація** - можливість додавати власні слова, налаштування складності і темпу навчання
-  ![image](https://github.com/andriystrizhak/EWL-FC/assets/115723613/6ab68204-c9ba-48e3-b93c-9e42e933a86f)
+     ![image](https://github.com/andriystrizhak/EWL-FC/assets/115723613/427a262d-49af-40cd-a865-dfbc7c3ad399)
+                        ![image](https://github.com/andriystrizhak/EWL-FC/assets/115723613/6ab68204-c9ba-48e3-b93c-9e42e933a86f)
 
 ## Інтерфейс та платформи
 
-- **Зручний інтерфейс** - продумані елементи керування та навігації. В додатку зможе розібратися будь-хто!
+- **Зручний інтерфейс** - продумані елементи керування та навігації. Додатком буде легко користуватися будь-кому!
 - **Віртуальний помічник** - ворон-поліглот Vorni робить процес навчання цікавішим та захоплюючим
-  ![VORNI (start) 2 0 – (small)](https://github.com/andriystrizhak/EWL-FC/assets/115723613/c54bab56-794c-4f5d-988b-94a5e7ebe68c)
+                        ![VORNI (start) 2 0 – (small)](https://github.com/andriystrizhak/EWL-FC/assets/115723613/c54bab56-794c-4f5d-988b-94a5e7ebe68c)
 - **Автономна робота** - Vorni здатен працювати без підключення до інтернету 
   (але такі функції як генерація завдань з допомогою GPT-3.5 стануть недоступними)
 - **Платформи** - підтримка Windows 10, 11
