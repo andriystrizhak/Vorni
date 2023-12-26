@@ -124,7 +124,7 @@ namespace EWL
         #region [ SidebarPanel ]
 
         bool SidebarExpanded { get; set; } = false;
-        int SidebarExtensionDelta { get; set; } = 10;
+        int SidebarExtensionDelta { get; set; } = 20;
 
         private void SidebarTimer_Tick(object sender, EventArgs e)
         {
@@ -151,9 +151,11 @@ namespace EWL
 
         private void SidebarExtensionButton_Click(object sender, EventArgs e)
         {
-            StartSidebarExtension();
+            SidebarTimer.Start();
+            //StartSidebarExtension();
         }
 
+        
         /// <summary>
         /// Запускає анімацію розширення / зменшення бокової панелі
         /// </summary>
@@ -246,12 +248,12 @@ namespace EWL
         private void LearnWButton_Click(object sender, EventArgs e)
         {
             //TODO - додати в окремий метод і вирішити щось з боковою панелюю
-            //if (SidebarExpanded)
-            //    StartSidebarExtension(20);
+            if (SidebarExpanded)
+                StartSidebarExtension(40);
             //Thread.Sleep(200);
 
             Task.Run(() => ShowTransitionPanel(LearningPanel));
-            Thread.Sleep(250);
+            Thread.Sleep(SidebarExpanded ? 700 : 400);
 
             FCMethodButton.Checked = false;
             TestMethodButton.Checked = false;
@@ -676,12 +678,12 @@ namespace EWL
         //TODO CATEGORY - Додати перемикач категорії для додавання слів
         private void AddWPanelButton_Click(object sender, EventArgs e)
         {
-            //if (SidebarExpanded)
-            //    StartSidebarExtension(20);
+            if (SidebarExpanded)
+                StartSidebarExtension(40);
             //Thread.Sleep(200);
 
             Task.Run(() => ShowTransitionPanel(AddingWPanel));
-            Thread.Sleep(250);
+            Thread.Sleep(SidebarExpanded ? 700 : 400);
 
             addedWordsCount = 0;
             int wAddingMode = SQLs.Get_WordAddingMode();
@@ -1366,18 +1368,22 @@ namespace EWL
         //TODO - придумай щось щодо цього!
         void NoFantasyInMiddleOfTheNight(Control panel)
         {
-            if (SidebarExpanded)
-                StartSidebarExtension(20);
-            Thread.Sleep(200);
+            //if (SidebarExpanded)
+            //    StartSidebarExtension(20);
+            //Thread.Sleep(400);
         }
 
         void ShowTransitionPanel(Control panel)
         {
             if (SidebarExpanded)
-                StartSidebarExtension(20);
-            Thread.Sleep(200);
+            {
+                //Task.Run(() => StartSidebarExtension(20));
+                //StartSidebarExtension(20);
+                //SidebarTimer.Start();
+                Thread.Sleep(600);
+            }   
 
-            var handler = ShowProgressPanel(panel, isOpaque: false, showAnimation: true);
+            var handler = ShowProgressPanel(panel, isOpaque: true, showAnimation: true);
             Thread.Sleep(500);
             handler.Close();
         }
