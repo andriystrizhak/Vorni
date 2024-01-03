@@ -90,20 +90,7 @@ namespace EWL
         #region [ TopPanel ]
 
         private void CloseButton_Click(object sender, EventArgs e)
-        {
-            var handler = ShowProgressPanel(this);
-
-            DialogResult closeForm = MessageBox.Show(
-                "Ти точно хочеш вийти?", "Па-па?",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (closeForm == DialogResult.Yes)
-            {
-                //this.Enabled = false;
-                FadeOutTimer.Start();
-            }
-            handler.Close();
-        }
+            => this.Close();
 
         private void MinimizeButton_Click(object sender, EventArgs e)
             => this.WindowState = FormWindowState.Minimized;
@@ -155,7 +142,7 @@ namespace EWL
             //StartSidebarExtension();
         }
 
-        
+
         /// <summary>
         /// Запускає анімацію розширення / зменшення бокової панелі
         /// </summary>
@@ -234,7 +221,25 @@ namespace EWL
             if (this.Opacity > 0)
                 this.Opacity -= 2 * FadeInOutDelta;
             else
-                Close();
+                this.Close();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            var handler = ShowProgressPanel(this);
+
+            DialogResult closeForm = MessageBox.Show(
+                "Ти точно хочеш вийти?", "Па-па?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (closeForm == DialogResult.Yes)
+            {
+                this.FormClosing -= MainForm_FormClosing;
+                FadeOutTimer.Start();
+            }
+            handler.Close();
+            e.Cancel = true;
         }
 
         #endregion
@@ -1348,11 +1353,11 @@ namespace EWL
         /// <returns>Повертає <see cref="IOverlaySplashScreenHandle"/> з допомогою якого можна керувати ProgressPanel</returns>
         IOverlaySplashScreenHandle ShowProgressPanel(Control owner, OverlayWindowOptions windowOptions = null, bool isOpaque = false, bool showAnimation = false)
         {
-            if (windowOptions == null) 
+            if (windowOptions == null)
                 windowOptions = new OverlayWindowOptions(
                     backColor: Color.FromArgb(24, 27, 32), //blackColour ? Color.Black : Color.FromArgb(24, 27, 32), 
                     opacity: isOpaque ? 1 : 0.75,
-                    customPainter: showAnimation ? null : new MyCustomOverlayPainter(), 
+                    customPainter: showAnimation ? null : new MyCustomOverlayPainter(),
                     disableInput: true);
             IOverlaySplashScreenHandle _handle = null;
             try
@@ -1381,7 +1386,7 @@ namespace EWL
                 //StartSidebarExtension(20);
                 //SidebarTimer.Start();
                 Thread.Sleep(600);
-            }   
+            }
 
             var handler = ShowProgressPanel(panel, isOpaque: true, showAnimation: true);
             Thread.Sleep(500);

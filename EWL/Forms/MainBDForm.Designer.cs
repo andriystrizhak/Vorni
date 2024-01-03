@@ -2848,6 +2848,7 @@ namespace EWL
             Text = "English Words Learner (flash-cards)";
             Activated += MainForm_Activated;
             Deactivate += MainForm_Deactivate;
+            FormClosing += MainForm_FormClosing;
             Shown += MainForm_Shown;
             TopPanel.ResumeLayout(false);
             TopPanel.PerformLayout();
