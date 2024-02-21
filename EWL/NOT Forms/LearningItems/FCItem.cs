@@ -30,7 +30,7 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms.LearningItems
         public static List<FCItem> CreateFCItems(List<Word> words, List<(string, string)> sentenses)
         {
             if (words.Count != sentenses.Count)
-                throw new ArgumentException("words.Count != sentenses.Count");
+                throw new ArgumentException("words.Count != sentences.Count");
 
             var fcItems = new List<FCItem>();
 

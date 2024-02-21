@@ -15,6 +15,7 @@ namespace EWL.EF_SQLite
         /// </summary>
         public static string CS { get; set; } = "Data Source=.\\Vocabulary.db;";
 
+        //TEST
         #region [ Слова ]
 
         #region Отримати певну кількість слів (або всіх) певної категорії / З основної категорії

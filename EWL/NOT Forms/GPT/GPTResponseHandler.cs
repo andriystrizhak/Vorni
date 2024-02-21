@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Eng_Flash_Cards_Learner.NOT_Forms.GPT
 {
-    public static class GPTResponseHandler
+    public static class GptResponseHandler
     {
         public static List<(string, string)> Handle_FCGPTResponse(string response)
         {
-            List<(string, string)> result = null;
+            List<(string, string)>? result = null;
             try
             {
                  result = response
@@ -19,7 +19,7 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms.GPT
                     .Select(wp => 
                     {
                         if (!wp[0].Contains("_"))
-                            throw new Exception("There's no missings in English sentense");
+                            throw new Exception("There's no missing (underscores) in English sentence");
                         return (wp[0], wp[1]); 
                     })
                     .ToList();

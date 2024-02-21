@@ -1,8 +1,11 @@
 using DevExpress.XtraSplashScreen;
+using Eng_Flash_Cards_Learner.NOT_Forms.GPT;
+using Eng_Flash_Cards_Learner.NOT_Forms;
 using EWL.EF_SQLite;
 using EWL .NOT_Forms;
 using SQLitePCL;
 using System.Drawing.Drawing2D;
+using Eng_Flash_Cards_Learner.NOT_Forms.LearningItems;
 
 namespace EWL
 {
@@ -70,4 +73,4 @@ namespace EWL
             e.Cache.FillRectangle(linGrBrush, e.Bounds);
         }
     }
-} 
+}

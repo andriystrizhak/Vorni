@@ -44,7 +44,7 @@ namespace EWL
         /// <summary>
         /// Список слів для вивчення
         /// </summary>
-        List<Word> Words { get; set; } = new();
+        List<Word>? Words { get; set; } = new();
         /// <summary>
         /// Індекс поточного слова для вивчення зі списку <see cref="Words"/>
         /// </summary>
@@ -299,10 +299,10 @@ namespace EWL
             if (IsGPTChecked)
                 AskGPT(purpose);
             else
-                PrepareLearnigPanels();
+                PrepareLearningPanels();
         }
 
-        private void PrepareLearnigPanels()
+        private void PrepareLearningPanels()
         {
             if (FCMethodButton.Checked)
                 PrepareFCPanelForFirstTime();
@@ -312,7 +312,7 @@ namespace EWL
 
         #region LearningPanel events
 
-        private void LearingMethod_CheckedChanged(object sender, EventArgs e)
+        private void LearningMethod_CheckedChanged(object sender, EventArgs e)
         {
             if (FCMethodButton.Checked || TestMethodButton.Checked)
                 StartLearningButton.Enabled = true;
@@ -321,7 +321,7 @@ namespace EWL
 
         private void GPTToggleSwitch_CheckedChanged(object sender, EventArgs e)
         {
-            if (GPTToggleSwitch.Checked == false)
+            if (!GPTToggleSwitch.Checked)
             {
                 IsGPTChecked = false;
                 TestMethodButton.Enabled = false;
@@ -358,7 +358,7 @@ namespace EWL
 
         #region { GPT Response }
 
-        string GPTResponse { get; set; } = null;
+        string? GPTResponse { get; set; } = null;
 
         private void AskGPT(GptPurpose purpose)
         {
@@ -367,10 +367,10 @@ namespace EWL
 
             var words = this.Words.Select(w => w.EngWord).ToArray();
 
-            GptAPI.GPTResponseHandler += GPTResponse_GPTResponseHandler;
-            GptAPI.GPTErrorHandler += GPTError_GPTErrorHandler;
+            GptApi.GPTResponseHandler += GPTResponse_GPTResponseHandler;
+            GptApi.GPTErrorHandler += GPTError_GPTErrorHandler;
 
-            Task.Run(() => GptAPI.GetResponse(words, purpose, handler));
+            Task.Run(() => GptApi.GetResponse(words, purpose, handler));
         }
 
         #region FC GPT events
@@ -378,7 +378,7 @@ namespace EWL
         void GPTResponse_GPTResponseHandler(string response, IOverlaySplashScreenHandle handler)
         {
             GPTResponse = response;
-            FCLearingPanel.Invoke(PrepareLearnigPanels);
+            FCLearingPanel.Invoke(PrepareLearningPanels);
             handler.Close();
 
             Clear_FCGPTEventsHandlers();
@@ -423,8 +423,8 @@ namespace EWL
 
         void Clear_FCGPTEventsHandlers()
         {
-            GptAPI.GPTResponseHandler -= GPTResponse_GPTResponseHandler;
-            GptAPI.GPTErrorHandler -= GPTError_GPTErrorHandler;
+            GptApi.GPTResponseHandler -= GPTResponse_GPTResponseHandler;
+            GptApi.GPTErrorHandler -= GPTError_GPTErrorHandler;
         }
 
         #endregion
@@ -436,7 +436,7 @@ namespace EWL
         /// <summary>
         /// Список слів з реченнями-прикладами для вивчення в <see cref="FCLearingPanel"/>
         /// </summary>
-        List<FCItem> FCItems { get; set; } = null;
+        List<FCItem>? FCItems { get; set; } = null;
         /// <summary>
         /// Відмічає чи відповідь на поточне завдання хибна
         /// </summary>
@@ -447,13 +447,13 @@ namespace EWL
         /// </summary>
         void PrepareFCPanelForFirstTime()
         {
-            var sentenses = new List<(string, string)>();
+            var sentences = new List<(string, string)>();
             if (IsGPTChecked)
             {
                 try
                 {
                     //TODO - врахувати всі виключення
-                    sentenses = GPTResponseHandler.Handle_FCGPTResponse(GPTResponse);
+                    sentences = GptResponseHandler.Handle_FCGPTResponse(GPTResponse);
                 }
                 catch (ArgumentException)
                 {
@@ -469,9 +469,9 @@ namespace EWL
             }
             else
                 for (int i = 0; i < Words.Count; i++)
-                    sentenses.Add(("", ""));
+                    sentences.Add(("", ""));
 
-            FCItems = FCItem.CreateFCItems(Words, sentenses);
+            FCItems = FCItem.CreateFCItems(Words, sentences);
 
             FCProgressBar.Maximum = FCItems.Count;
             PrepareFCLPanel();
@@ -594,7 +594,7 @@ namespace EWL
         }
 
         /// <summary>
-        /// Increments (dectements) rating and repetition of current <see cref="FCItem"/>
+        /// Increments (decrements) rating and repetition of current <see cref="FCItem"/>
         /// </summary>
         /// <param name="increment">Чи інкрементувати, чи декрементувати <paramref name="rating"/></param>
         void Set_FCWord_RatingAndRepetition(bool increment)
@@ -1406,9 +1406,9 @@ namespace EWL
             var handler = ShowProgressPanel(this);
 
             label22.Text = "";
-            GptAPI.GPTResponseHandler += Label22_GPTResponseHandler;
-            GptAPI.GPTErrorHandler += Label22_GPTErrorHandler;
-            Task.Run(() => GptAPI.GetResponse(new string[] { "table", "pillow" }, GptPurpose.FlashCards, handler));
+            GptApi.GPTResponseHandler += Label22_GPTResponseHandler;
+            GptApi.GPTErrorHandler += Label22_GPTErrorHandler;
+            Task.Run(() => GptApi.GetResponse(new string[] { "table", "pillow" }, GptPurpose.FlashCards, handler));
         }
 
         void Label22_GPTResponseHandler(string response, IOverlaySplashScreenHandle handler)

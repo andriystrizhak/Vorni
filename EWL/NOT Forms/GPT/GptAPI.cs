@@ -18,20 +18,19 @@ using EWL.EF_SQLite;
 
 namespace Eng_Flash_Cards_Learner.NOT_Forms
 {
-    public class GptAPI
+    public static class GptApi
     {
-        public static event Action<string, IOverlaySplashScreenHandle> GPTResponseHandler;
-        public static event Action<string, IOverlaySplashScreenHandle> GPTErrorHandler;
+        public static event Action<string, IOverlaySplashScreenHandle?>? GPTResponseHandler;
+        public static event Action<string, IOverlaySplashScreenHandle?>? GPTErrorHandler;
 
-        static Label CurrentLabel { get; set; }
+        static Label CurrentLabel { get; set; } = null!;
 
         static string MyApiKey 
         { 
             get { return SQLs.Get_GPTApiKey(); }
-            set { SQLs.Set_GPTApiKey(value); }
         }
 
-        const string PromptForTests = "Create forur options: first of them is a special word or phrase " +
+        const string PromptForTests = "Create four options: first of them is a special word or phrase " +
             "and other three options may be slightly similar in meaning to the special word or phrase, " +
             "but not the same. Do not change special word or phrase. I'll send you several special words or phrases. " +
             "You have to do it with each of them and numerate answers. There's example with 'one' and 'apple' words:\r\n" +
@@ -39,12 +38,12 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
 
         const string PromptForFC = "Create a one short, clear and independent sentence for every special word " +
             "or phrase where special word or phrase is missing. The missing in the sentence is marked with the underline \"_____\" " +
-            "And add ukrainian translation with missing word. Number each line. There's examble for 'one' and 'to be' words-phrases:\r\n" +
+            "And add Ukrainian translation with missing word. Number each line. There's example for 'one' and 'to be' words-phrases:\r\n" +
             "1. I have only ___ orange left. / У мене залишилося тільки один апельсин.\r\n" +
             "2. __ __ honest, I'm not an astronaut. / Чесно кажучи, я не астронавт.";
 
 
-        public static async void GetResponseAsStream(Label label, string[] words, GptPurpose purpose)
+        public static async Task GetResponseAsStream(Label label, string[] words, GptPurpose purpose)
         {
             CurrentLabel = label;
 
@@ -52,11 +51,10 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
             string prompt = GetPrompt(purpose);
             int maxTokens = words.Length * 20;
 
-            IAsyncEnumerable<ChatCompletionCreateResponse> completionResult = null;
+            IAsyncEnumerable<ChatCompletionCreateResponse>? completionResult = null;
 
             try
             {
-
                 completionResult = api.ChatCompletion.CreateCompletionAsStream(new ChatCompletionCreateRequest
                 {
                     Messages = new List<ChatMessage>
@@ -72,7 +70,7 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
             {
                 if (completion.Successful)
                 {
-                    UpdateLabelText(completion.Choices.First().Message.Content);
+                    UpdateLabelText(completion.Choices[0].Message.Content);
                 }
                 else
                 {
@@ -84,14 +82,14 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
             }
         }
 
-        public static async void GetResponse(string[] words, GptPurpose purpose, IOverlaySplashScreenHandle overlayPHandrer)
+        public static async Task GetResponse(string[] words, GptPurpose purpose, IOverlaySplashScreenHandle overlayPHandler)
         {
-            var api = GetOpenAIService(overlayPHandrer);
+            var api = GetOpenAIService(overlayPHandler);
 
             if (api == null) return;
 
             string prompt = GetPrompt(purpose);
-            ChatCompletionCreateResponse completionResult = null;
+            ChatCompletionCreateResponse? completionResult = null;
 
             int maxTokens = words.Length * 50;
 
@@ -110,23 +108,23 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
             catch { }
 
             if (completionResult == null)
-                GPTErrorHandler?.Invoke("No connection", overlayPHandrer); //TEMP
+                GPTErrorHandler?.Invoke("No connection", overlayPHandler); //TEMP
             else if (completionResult.Successful)
-                GPTResponseHandler?.Invoke(completionResult.Choices.First().Message.Content, overlayPHandrer);
+                GPTResponseHandler?.Invoke(completionResult.Choices[0].Message.Content, overlayPHandler);
             else
             {
                 if (completionResult.Error == null)
-                    GPTErrorHandler?.Invoke("Якась незрозуміла помилка Х(", overlayPHandrer);
+                    GPTErrorHandler?.Invoke("Якась незрозуміла помилка Х(", overlayPHandler);
 
-                GPTErrorHandler?.Invoke($"{completionResult.Error.Code}:\n {completionResult.Error.Message}", overlayPHandrer);
+                GPTErrorHandler?.Invoke($"{completionResult.Error?.Code}:\n {completionResult.Error?.Message}", overlayPHandler);
             }   
         }
 
-        static OpenAIService GetOpenAIService(IOverlaySplashScreenHandle overlayPHandrer = null)
+        static OpenAIService? GetOpenAIService(IOverlaySplashScreenHandle? overlayPHandler = null)
         {
-            if (MyApiKey == "" || MyApiKey == null) //Якщо значення ключа
+            if (MyApiKey == "" || MyApiKey == null) //Якщо значення ключа не вдалося отримати
             {
-                GPTErrorHandler?.Invoke("invalid_api_key:\n Бла-бла-бла, все погано", overlayPHandrer);
+                GPTErrorHandler?.Invoke("invalid_api_key:\n Бла-бла-бла, все погано", overlayPHandler);
                 return null;
             }
             else
