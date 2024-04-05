@@ -334,4 +334,16 @@
   <data name="VORNI (start) 2.0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\VORNI (start) 2.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Frame_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Splash Screen\Frame 10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Frame_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Splash Screen\Frame 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Frame" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Frame.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Frame_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Frame 4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

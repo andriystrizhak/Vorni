@@ -27,7 +27,7 @@ namespace Eng_Flash_Cards_Learner.NOT_Forms
 
         static string MyApiKey 
         { 
-            get { return SQLs.Get_GPTApiKey(); }
+            get { return SQLService.Get_GPTApiKey(); }
         }
 
         const string PromptForTests = "Create four options: first of them is a special word or phrase " +

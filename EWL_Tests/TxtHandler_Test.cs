@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EWL.NOT_Forms;
+using NUnit.Framework.Legacy;
 
 namespace EWL_Tests
 {
@@ -27,7 +28,7 @@ namespace EWL_Tests
         public void InvalidLineFormat(string line)
         {
             var word = Txt_FileHandler.GetWordFromLine(line);
-            Assert.AreEqual(null, word);
+            ClassicAssert.AreEqual(null, word);
         }
 
         /// <summary>
@@ -41,9 +42,9 @@ namespace EWL_Tests
         public void ValidLineFormat(string line, string expEng, string expUa)
         {
             var word = Txt_FileHandler.GetWordFromLine(line);
-            Assert.AreNotEqual(null, word);
-            Assert.AreEqual(expEng, word?.Eng);
-            Assert.AreEqual(expUa, word?.Ua);
+            ClassicAssert.AreNotEqual(null, word);
+            ClassicAssert.AreEqual(expEng, word?.Eng);
+            ClassicAssert.AreEqual(expUa, word?.Ua);
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace EWL_Tests
         public void InvalidLineBracketsFormat(string line)
         {
             var word = Txt_FileHandler.GetWordFromLine(line);
-            Assert.AreEqual(null, word);
+            ClassicAssert.AreEqual(null, word);
         }
 
         /// <summary>
@@ -71,8 +72,8 @@ namespace EWL_Tests
         public void ValidLineBracketsFormat(string line, int expDifficulty)
         {
             var word = Txt_FileHandler.GetWordFromLine(line);
-            Assert.AreNotEqual(null, word);
-            Assert.AreEqual(expDifficulty, word?.Difficulty);
+            ClassicAssert.AreNotEqual(null, word);
+            ClassicAssert.AreEqual(expDifficulty, word?.Difficulty);
         }
     }
 }

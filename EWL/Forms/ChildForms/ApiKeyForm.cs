@@ -80,7 +80,7 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
 
         private void SaveApiKeyButton_Click(object sender, EventArgs e)
         {
-            SQLs.Set_GPTApiKey(ApiKeyTextBox.Text);
+            SQLService.Set_GPTApiKey(ApiKeyTextBox.Text);
             ApiKeyAddingReportPopup.Popup();
             Close();
         }

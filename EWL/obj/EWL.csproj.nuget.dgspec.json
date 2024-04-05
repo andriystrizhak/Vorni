@@ -39,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -47,7 +52,7 @@
           "dependencies": {
             "Betalgo.OpenAI": {
               "target": "Package",
-              "version": "[7.4.0, )"
+              "version": "[7.4.6, )"
             },
             "CustomMessageBox.Avalonia": {
               "target": "Package",
@@ -59,7 +64,7 @@
             },
             "Guna.UI2.WinForms": {
               "target": "Package",
-              "version": "[2.0.4.5, )"
+              "version": "[2.0.4.6, )"
             },
             "LLamaSharp": {
               "target": "Package",
@@ -74,10 +79,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.13, )"
-            },
-            "NUnit": {
-              "target": "Package",
-              "version": "[3.14.0, )"
             },
             "NUnit3TestAdapter": {
               "target": "Package",
@@ -119,7 +120,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

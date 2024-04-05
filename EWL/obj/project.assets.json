@@ -98,7 +98,7 @@
           }
         }
       },
-      "Betalgo.OpenAI/7.4.0": {
+      "Betalgo.OpenAI/7.4.6": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http": "7.0.0",
@@ -1202,7 +1202,7 @@
           "buildTransitive/netcoreapp3.0/EntityFramework.targets": {}
         }
       },
-      "Guna.UI2.WinForms/2.0.4.5": {
+      "Guna.UI2.WinForms/2.0.4.6": {
         "type": "package",
         "dependencies": {
           "System.Management": "7.0.0"
@@ -1834,25 +1834,6 @@
           "lib/net6.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
-        }
-      },
-      "NUnit/3.14.0": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/nunit.framework.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/nunit.framework.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "build/NUnit.props": {}
         }
       },
       "NUnit3TestAdapter/4.5.0": {
@@ -2999,16 +2980,16 @@
         "lib/netstandard2.0/Avalonia.Remote.Protocol.xml"
       ]
     },
-    "Betalgo.OpenAI/7.4.0": {
-      "sha512": "7qbS9ZI44J8tzHmGDprGEj8jIPvvknX9Igb7VSu8IX0e6pPIZ3zODn5nkipPvExmZ5k5bUwvSfT0kH5n/fTDEw==",
+    "Betalgo.OpenAI/7.4.6": {
+      "sha512": "sC9/fEv9RAa8oH9Qss1qVBJ57wkolxoxgctpqmETk3ULujWzGMGRNeeU/azmgV5G5FS7NOOguH8Tc4b+MDtBdw==",
       "type": "package",
-      "path": "betalgo.openai/7.4.0",
+      "path": "betalgo.openai/7.4.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "OpenAI-Betalgo.png",
         "Readme.md",
-        "betalgo.openai.7.4.0.nupkg.sha512",
+        "betalgo.openai.7.4.6.nupkg.sha512",
         "betalgo.openai.nuspec",
         "lib/net6.0/OpenAI.dll",
         "lib/net6.0/OpenAI.xml",
@@ -3820,16 +3801,16 @@
         "tools/netcoreapp3.0/any/ef6.runtimeconfig.json"
       ]
     },
-    "Guna.UI2.WinForms/2.0.4.5": {
-      "sha512": "lR50db4NzBC0QLAr27q9nrpYsIfWKjOgGnROrPi8AxbwLFE3nTup6ZOpVE/vbrr86eLV//8ys9sIW7j0ix2h+Q==",
+    "Guna.UI2.WinForms/2.0.4.6": {
+      "sha512": "NYzSJp7e47Cz3NgGCHvzadash8ycmxxUnpLg4Rr/MSYG9WDw0HOoTI4SkbDW+HbACrf6tsWYCuzWkgvjuM/O6w==",
       "type": "package",
-      "path": "guna.ui2.winforms/2.0.4.5",
+      "path": "guna.ui2.winforms/2.0.4.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.txt",
         "README.md",
-        "guna.ui2.winforms.2.0.4.5.nupkg.sha512",
+        "guna.ui2.winforms.2.0.4.6.nupkg.sha512",
         "guna.ui2.winforms.nuspec",
         "icon.png",
         "lib/net40/Guna.UI2.dll",
@@ -4868,31 +4849,6 @@
         "newtonsoft.json.13.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
-      ]
-    },
-    "NUnit/3.14.0": {
-      "sha512": "R7iPwD7kbOaP3o2zldWJbWeMQAvDKD0uld27QvA3PAALl1unl7x0v2J7eGiJOYjimV/BuGT4VJmr45RjS7z4LA==",
-      "type": "package",
-      "path": "nunit/3.14.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "CHANGES.md",
-        "LICENSE.txt",
-        "NOTICES.txt",
-        "README.md",
-        "build/NUnit.props",
-        "icon.png",
-        "lib/net35/nunit.framework.dll",
-        "lib/net35/nunit.framework.xml",
-        "lib/net40/nunit.framework.dll",
-        "lib/net40/nunit.framework.xml",
-        "lib/net45/nunit.framework.dll",
-        "lib/net45/nunit.framework.xml",
-        "lib/netstandard2.0/nunit.framework.dll",
-        "lib/netstandard2.0/nunit.framework.xml",
-        "nunit.3.14.0.nupkg.sha512",
-        "nunit.nuspec"
       ]
     },
     "NUnit3TestAdapter/4.5.0": {
@@ -6865,14 +6821,13 @@
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
-      "Betalgo.OpenAI >= 7.4.0",
+      "Betalgo.OpenAI >= 7.4.6",
       "CustomMessageBox.Avalonia >= 11.0.0.2",
       "DevExpress.Win.Dashboard.CustomItemExtension >= 23.1.0.2",
-      "Guna.UI2.WinForms >= 2.0.4.5",
+      "Guna.UI2.WinForms >= 2.0.4.6",
       "LLamaSharp >= 0.7.0",
       "Microsoft.EntityFrameworkCore.Sqlite >= 7.0.13",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.13",
-      "NUnit >= 3.14.0",
       "NUnit3TestAdapter >= 4.5.0",
       "Newtonsoft.Json >= 13.0.3",
       "SQLite >= 3.13.0",
@@ -6919,6 +6874,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -6927,7 +6887,7 @@
         "dependencies": {
           "Betalgo.OpenAI": {
             "target": "Package",
-            "version": "[7.4.0, )"
+            "version": "[7.4.6, )"
           },
           "CustomMessageBox.Avalonia": {
             "target": "Package",
@@ -6939,7 +6899,7 @@
           },
           "Guna.UI2.WinForms": {
             "target": "Package",
-            "version": "[2.0.4.5, )"
+            "version": "[2.0.4.6, )"
           },
           "LLamaSharp": {
             "target": "Package",
@@ -6954,10 +6914,6 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[7.0.13, )"
-          },
-          "NUnit": {
-            "target": "Package",
-            "version": "[3.14.0, )"
           },
           "NUnit3TestAdapter": {
             "target": "Package",
@@ -6999,7 +6955,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   },

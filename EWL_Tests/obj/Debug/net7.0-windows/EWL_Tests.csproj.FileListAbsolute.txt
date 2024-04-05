@@ -123,7 +123,6 @@ D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Deb
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.WinForms.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.Wpf.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
-D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\NuGet.Frameworks.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\nunit.framework.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\SQLitePCLRaw.batteries_v2.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\SQLitePCLRaw.core.dll
@@ -258,10 +257,11 @@ D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Deb
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\runtimes\win\lib\net7.0\System.Management.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\EWL.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\EWL.pdb
-D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\obj\Debug\net7.0-windows\EWL_Tests.csproj.CopyComplete
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\obj\Debug\net7.0-windows\EWL_Tests.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\obj\Debug\net7.0-windows\refint\EWL_Tests.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\obj\Debug\net7.0-windows\EWL_Tests.pdb
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\obj\Debug\net7.0-windows\EWL_Tests.genruntimeconfig.cache
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\obj\Debug\net7.0-windows\ref\EWL_Tests.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\obj\Debug\net7.0-windows\EWL_Tests.sourcelink.json
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\obj\Debug\net7.0-windows\EWL_Tests.csproj.Up2Date
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL_Tests\bin\Debug\net7.0-windows\nunit.framework.legacy.dll

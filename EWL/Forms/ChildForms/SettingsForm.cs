@@ -27,8 +27,8 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
             KeyDown += Escape_KeyDown!;
             InitializeComponent();
 
-            NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
-            WSourceComboBox.SelectedIndex = SQLs.Get_WordAddingMode();
+            NumberOfWordsNumericUpDown.Value = SQLService.Get_NumberOfWordsToLearn();
+            WSourceComboBox.SelectedIndex = SQLService.Get_WordAddingMode();
             SetDefaultSButtonAvailability();
             NumberOfWordsNumericUpDown.Focus();
             NumberOfWordsNumericUpDown.UpDownButtonForeColor = Color.White;
@@ -103,8 +103,8 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
             SaveSettingsButton.Enabled = false;
             DefaultSettingsButton.Enabled = true;
 
-            SQLs.Set_NumberOfWordsToLearn((int)NumberOfWordsNumericUpDown.Value);
-            SQLs.Set_WordAddingMode(WSourceComboBox.SelectedIndex);
+            SQLService.Set_NumberOfWordsToLearn((int)NumberOfWordsNumericUpDown.Value);
+            SQLService.Set_WordAddingMode(WSourceComboBox.SelectedIndex);
 
             CloseSettingsButton.PerformClick();
         }
@@ -112,8 +112,8 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
         private void DefaultSettingsButton_Click(object sender, EventArgs e)
         {
             DefaultSettingsButton.Enabled = false;
-            SQLs.Set_NumberOfWordsToLearn(10);
-            SQLs.Set_WordAddingMode(0);
+            SQLService.Set_NumberOfWordsToLearn(10);
+            SQLService.Set_WordAddingMode(0);
 
             NumberOfWordsNumericUpDown.Value = DefaultNumberOfWordsToLearn;
             WSourceComboBox.SelectedIndex = DefaultAddingWModeIndex;

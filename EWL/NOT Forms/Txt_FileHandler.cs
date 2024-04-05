@@ -78,7 +78,7 @@ namespace EWL.NOT_Forms
             result.Item1 = allWords.Count;
 
             foreach (var word in allWords)
-                result.Item2 += SQLs.TryAdd_Word_ToAllWords(
+                result.Item2 += SQLService.TryAdd_Word_ToAllWords(
                     word.Eng, word.Ua, word.Difficulty) ? 1 : 0;
 
             return result;

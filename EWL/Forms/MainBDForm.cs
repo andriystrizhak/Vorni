@@ -79,7 +79,7 @@ namespace EWL
 
         void SetCategoriesList()
         {
-            categories = SQLs.Get_Categories();
+            categories = SQLService.Get_Categories();
             CategoriesComboBox.DataSource = categories.Select(c => c.Name).ToList();
         }
 
@@ -183,24 +183,7 @@ namespace EWL
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            /* спроба прибрати блимання при першому показі панелі
-            foreach (Control panel in BackgroundPanel.Controls)
-                if (panel is Panel)
-                {
-                    panel.Enabled = true;
-                    panel.Visible = true;
-                    panel.BringToFront();
-                }
-            foreach (Control panel in BackgroundPanel.Controls)
-                if (panel is Panel)
-                {
-                    panel.Enabled = false;
-                    panel.Visible = false;
-                }
-            ShowPanel(WelcomePanel);
-            */
-
-            Thread.Sleep(200);
+            Thread.Sleep(500);
             SplashScreenManager.CloseForm();
 
             FadeInTimer.Start();
@@ -266,9 +249,9 @@ namespace EWL
 
             //GPTToggleSwitch.Checked = true;
 
-            CategoriesComboBox.SelectedIndex = SQLs.Get_CurrentCategory() - 1;
-            NumberOfWordsNumericUpDown.Value = SQLs.Get_NumberOfWordsToLearn();
-            DifficultyComboBox.SelectedIndex = SQLs.Get_CurrentDifficulty();
+            CategoriesComboBox.SelectedIndex = SQLService.Get_CurrentCategory() - 1;
+            NumberOfWordsNumericUpDown.Value = SQLService.Get_NumberOfWordsToLearn();
+            DifficultyComboBox.SelectedIndex = SQLService.Get_CurrentDifficulty();
             NumberOfWordsNumericUpDown.UpDownButtonForeColor = Color.White;
 
             ShowPanel(LearningPanel);
@@ -280,13 +263,13 @@ namespace EWL
 
         private void StartLearningButton_Click(object sender, EventArgs e)
         {
-            SQLs.Set_NumberOfWordsToLearn((int)NumberOfWordsNumericUpDown.Value);
-            SQLs.Set_CurrentCategory(CategoriesComboBox.SelectedIndex + 1);
-            SQLs.Set_CurrentDifficulty(DifficultyComboBox.SelectedIndex);
+            SQLService.Set_NumberOfWordsToLearn((int)NumberOfWordsNumericUpDown.Value);
+            SQLService.Set_CurrentCategory(CategoriesComboBox.SelectedIndex + 1);
+            SQLService.Set_CurrentDifficulty(DifficultyComboBox.SelectedIndex);
 
-            Words = SQLs
-                .Get_Words_FromCategory(SQLs.Get_CurrentCategory(),
-                SQLs.Get_NumberOfWordsToLearn(), SQLs.Get_CurrentDifficulty())
+            Words = SQLService
+                .Get_Words_FromCategory(SQLService.Get_CurrentCategory(),
+                SQLService.Get_NumberOfWordsToLearn(), SQLService.Get_CurrentDifficulty())
                 .Select(w => w.Item1)
                 .ToList();
 
@@ -600,13 +583,13 @@ namespace EWL
         void Set_FCWord_RatingAndRepetition(bool increment)
         {
             int rating = FCItems[CurrentWIndex].Rating;
-            SQLs.Rate_Word(FCItems[CurrentWIndex].WordId, increment
+            SQLService.Rate_Word(FCItems[CurrentWIndex].WordId, increment
                 ? ((rating < 5) ? ++rating : rating)
                 : ((rating > 1) ? --rating : rating));
 
             if (increment)
                 LearningStat++;
-            SQLs.Increment_WordRepetition(FCItems[CurrentWIndex].WordId);
+            SQLService.Increment_WordRepetition(FCItems[CurrentWIndex].WordId);
         }
 
         void Null_FCLPanel()
@@ -687,11 +670,11 @@ namespace EWL
                 StartSidebarExtension(40);
             //Thread.Sleep(200);
 
-            Task.Run(() => ShowTransitionPanel(AddingWPanel));
+            var awpTask = Task.Run(() => ShowTransitionPanel(AddingWPanel));
             Thread.Sleep(SidebarExpanded ? 700 : 400);
 
             addedWordsCount = 0;
-            int wAddingMode = SQLs.Get_WordAddingMode();
+            int wAddingMode = SQLService.Get_WordAddingMode();
 
             Null_EngUaTextBoxes();
             AddWTabControl.SelectedIndex = wAddingMode;
@@ -709,6 +692,7 @@ namespace EWL
                     ChooseFileButton.Focus();
                     break;
             }
+            awpTask.Wait();
         }
 
         /// <summary>
@@ -734,7 +718,7 @@ namespace EWL
             string engWord = AddEngWTextBox.Text;
             string uaTrans = AddUaTTextBox.Text;
 
-            if (!SQLs.TryAdd_Word_ToAllWords(engWord, uaTrans))
+            if (!SQLService.TryAdd_Word_ToAllWords(engWord, uaTrans))
                 WordIsRepeatedPopup.Popup();
             else
             {
@@ -747,7 +731,7 @@ namespace EWL
 
         private void CancelAddingButton1_DoClick()
         {
-            SQLs.Remove_LastWords_Permanently(1);
+            SQLService.Remove_LastWords_Permanently(1);
             CancelWAddingPopup1.Popup();
             addedWordsCount--;
             if (addedWordsCount == 0)
@@ -839,7 +823,7 @@ namespace EWL
                 var word = GetWordFromLine(line);
                 if (word == null)
                     isAnyInvalidLineThere = true;
-                else if (!SQLs.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty))
+                else if (!SQLService.TryAdd_Word_ToAllWords(word.Eng, word.Ua, word.Difficulty))
                     isAnyRepeatedWordThere = true;
                 else
                     addedWordsCount++;
@@ -1045,7 +1029,7 @@ namespace EWL
                 handle = ShowProgressPanel(DragAndDropPanel, showAnimation: true);
             }
 
-            await Task.Run(() => SQLs.Remove_LastWords_Permanently(addedWordsCount));
+            await Task.Run(() => SQLService.Remove_LastWords_Permanently(addedWordsCount));
             CancelWAddingPopup2.Popup();
 
             handle?.Close();
@@ -1148,7 +1132,7 @@ namespace EWL
 
         private void StatButton_Click(object sender, EventArgs e)
         {
-            var stat = SQLs.Get_Statistic();
+            var stat = SQLService.Get_Statistic();
             int count = stat.AllWordCount;
             var ratings = stat.AllRatings;
             StatLabel.Text =
@@ -1387,6 +1371,8 @@ namespace EWL
                 //SidebarTimer.Start();
                 Thread.Sleep(600);
             }
+
+            panel.Visible = true;
 
             var handler = ShowProgressPanel(panel, isOpaque: true, showAnimation: true);
             Thread.Sleep(500);

@@ -101,7 +101,7 @@ namespace EWL
                 }
                 else
                 {
-                    SQLs.Set_WasLaunched(true);
+                    SQLService.Set_WasLaunched(true);
                     Program.Mode = LearningMode.DataBase;
                     this.Close();
                 }
@@ -183,7 +183,7 @@ namespace EWL
             string engWord = EngTextBox.Text;
             string uaTrans = UaTextBox.Text;
 
-            if (!SQLs.TryAdd_Word_ToAllWords(engWord, uaTrans))
+            if (!SQLService.TryAdd_Word_ToAllWords(engWord, uaTrans))
                 MessageBox.Show("Таке ж слово вже існує в БД", "Х'юстон, проблемка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
@@ -197,7 +197,7 @@ namespace EWL
 
         private void CancelPrevButton_Click(object sender, EventArgs e)
         {
-            SQLs.Remove_LastWords_Permanently(1);
+            SQLService.Remove_LastWords_Permanently(1);
             addedWordsCount--;
             if (addedWordsCount <= 0)
                 CancelPrevButton.Enabled = false;

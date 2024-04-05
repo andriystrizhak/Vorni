@@ -107,7 +107,6 @@ D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net7.0-windows\Microsoft.Web.WebView2.Wpf.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net7.0-windows\Mono.TextTemplating.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
-D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net7.0-windows\nunit.framework.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net7.0-windows\SQLitePCLRaw.batteries_v2.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net7.0-windows\SQLitePCLRaw.core.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net7.0-windows\SQLitePCLRaw.provider.e_sqlite3.dll
@@ -189,10 +188,11 @@ D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net7.0-windows\EWL.AssemblyInfoInputs.cache
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net7.0-windows\EWL.AssemblyInfo.cs
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net7.0-windows\EWL.csproj.CoreCompileInputs.cache
-D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net7.0-windows\EWL.csproj.CopyComplete
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net7.0-windows\EWL.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net7.0-windows\refint\EWL.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net7.0-windows\EWL.pdb
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net7.0-windows\EWL.genruntimeconfig.cache
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net7.0-windows\ref\EWL.dll
 D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net7.0-windows\EWL.sourcelink.json
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\obj\Debug\net7.0-windows\EWL.csproj.Up2Date
+D:\SELF-DEV\HARD-SKILLS\DEVELOPMENT\PRACTICE\MyProjects\EWL FC\EWL\bin\Debug\net7.0-windows\nunit.framework.dll
