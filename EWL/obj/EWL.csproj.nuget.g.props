@@ -37,14 +37,23 @@
     <PkgDevExpress_Win_Grid Condition=" '$(PkgDevExpress_Win_Grid)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.grid\23.1.6</PkgDevExpress_Win_Grid>
     <PkgDevExpress_Win_RichEdit Condition=" '$(PkgDevExpress_Win_RichEdit)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.richedit\23.1.6</PkgDevExpress_Win_RichEdit>
     <PkgDevExpress_Win_PivotGrid Condition=" '$(PkgDevExpress_Win_PivotGrid)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.pivotgrid\23.1.6</PkgDevExpress_Win_PivotGrid>
-    <PkgDevExpress_Win_Map Condition=" '$(PkgDevExpress_Win_Map)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.map\23.1.6</PkgDevExpress_Win_Map>
-    <PkgDevExpress_Win_Gauges Condition=" '$(PkgDevExpress_Win_Gauges)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.gauges\23.1.6</PkgDevExpress_Win_Gauges>
-    <PkgDevExpress_Win_Gantt Condition=" '$(PkgDevExpress_Win_Gantt)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.gantt\23.1.6</PkgDevExpress_Win_Gantt>
     <PkgDevExpress_Win_Diagram Condition=" '$(PkgDevExpress_Win_Diagram)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.diagram\23.1.6</PkgDevExpress_Win_Diagram>
     <PkgDevExpress_Win Condition=" '$(PkgDevExpress_Win)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win\23.1.6</PkgDevExpress_Win>
     <PkgDevExpress_DataAccess Condition=" '$(PkgDevExpress_DataAccess)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.dataaccess\23.1.6</PkgDevExpress_DataAccess>
     <PkgDevExpress_DataAccess_UI Condition=" '$(PkgDevExpress_DataAccess_UI)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.dataaccess.ui\23.1.6</PkgDevExpress_DataAccess_UI>
+    <PkgDevExpress_Win_Spreadsheet Condition=" '$(PkgDevExpress_Win_Spreadsheet)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.spreadsheet\23.1.6</PkgDevExpress_Win_Spreadsheet>
+    <PkgDevExpress_Win_SpellChecker Condition=" '$(PkgDevExpress_Win_SpellChecker)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.spellchecker\23.1.6</PkgDevExpress_Win_SpellChecker>
+    <PkgDevExpress_Win_Scheduler Condition=" '$(PkgDevExpress_Win_Scheduler)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.scheduler\23.1.6</PkgDevExpress_Win_Scheduler>
+    <PkgDevExpress_Win_SchedulerReporting Condition=" '$(PkgDevExpress_Win_SchedulerReporting)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.schedulerreporting\23.1.6</PkgDevExpress_Win_SchedulerReporting>
     <PkgDevExpress_Win_Charts Condition=" '$(PkgDevExpress_Win_Charts)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.charts\23.1.6</PkgDevExpress_Win_Charts>
+    <PkgDevExpress_Win_Reporting Condition=" '$(PkgDevExpress_Win_Reporting)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.reporting\23.1.6</PkgDevExpress_Win_Reporting>
+    <PkgDevExpress_Win_SchedulerExtensions Condition=" '$(PkgDevExpress_Win_SchedulerExtensions)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.schedulerextensions\23.1.6</PkgDevExpress_Win_SchedulerExtensions>
+    <PkgDevExpress_Win_PdfViewer Condition=" '$(PkgDevExpress_Win_PdfViewer)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.pdfviewer\23.1.6</PkgDevExpress_Win_PdfViewer>
+    <PkgDevExpress_Win_Map Condition=" '$(PkgDevExpress_Win_Map)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.map\23.1.6</PkgDevExpress_Win_Map>
+    <PkgDevExpress_Win_Gauges Condition=" '$(PkgDevExpress_Win_Gauges)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.gauges\23.1.6</PkgDevExpress_Win_Gauges>
+    <PkgDevExpress_Win_Gantt Condition=" '$(PkgDevExpress_Win_Gantt)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.gantt\23.1.6</PkgDevExpress_Win_Gantt>
+    <PkgDevExpress_Win_Dialogs Condition=" '$(PkgDevExpress_Win_Dialogs)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.dialogs\23.1.6</PkgDevExpress_Win_Dialogs>
+    <PkgDevExpress_Win_Design Condition=" '$(PkgDevExpress_Win_Design)' == '' ">C:\Program Files\DevExpress 23.1\Components\Offline Packages\devexpress.win.design\23.1.6</PkgDevExpress_Win_Design>
     <PkgAvalonia_BuildServices Condition=" '$(PkgAvalonia_BuildServices)' == '' ">C:\Users\Windows-10H-20\.nuget\packages\avalonia.buildservices\0.0.28</PkgAvalonia_BuildServices>
     <PkgAvalonia Condition=" '$(PkgAvalonia)' == '' ">C:\Users\Windows-10H-20\.nuget\packages\avalonia\11.0.0</PkgAvalonia>
   </PropertyGroup>

@@ -19,8 +19,19 @@
     <Compile Update="Forms\SetUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\UserControls\SplashScreen1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\UserControls\SplashScreen1.Designer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Forms\UserControls\UC_TransparentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Forms\UserControls\SplashScreen1.resx">
+      <SubType>Code</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

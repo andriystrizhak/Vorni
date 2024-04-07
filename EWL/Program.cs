@@ -9,6 +9,9 @@ using System.Drawing.Drawing2D;
 using Eng_Flash_Cards_Learner.NOT_Forms.LearningItems;
 using DevExpress.Utils.Svg;
 using System.Windows.Forms;
+using SplashScreenManagerSample01;
+using System.Reflection;
+using Eng_Flash_Cards_Learner.Forms.UserControls;
 
 namespace EWL
 {
@@ -35,54 +38,7 @@ namespace EWL
 
         static void ShowFluentSplashScreen()
         {
-            var img = new Bitmap(Resource1.Frame_4);
-
-            SplashScreenManager.ShowImage(
-                image: img, 
-                useFadeIn: true, 
-                useFadeOut: true, 
-                startPos: SplashFormStartPosition.CenterScreen,
-                location: new Point());
-
-            ImageAnimator.Animate(SplashScreenManager.Default.Properties.ImageOptions.Image, OnFrameChanged);
-
-            /*
-            var ssOptions = new FluentSplashScreenOptions();
-            
-            //ssOptions.LogoImageOptions.Image = null;
-            ssOptions.Title = "English Words Learner";
-            ssOptions.Subtitle = "Learn words you want!";
-            ssOptions.RightFooter = "Starting...";
-            ssOptions.LeftFooter = "@andriy_strizhak";
-            ssOptions.LoadingIndicatorType = FluentLoadingIndicatorType.Dots;
-            ssOptions.Opacity = 100;
-
-            SplashScreenManager.ShowFluentSplashScreen
-                (ssOptions, customDrawEventHandler: FluentSplashScreenDraw, useFadeIn: true, useFadeOut: true);
-            */
-        }
-
-        private static void OnFrameChanged(object sender, EventArgs e)
-        {
-            for (int i = 1; i <= 11; i++)
-            {
-                System.Threading.Thread.Sleep(20);
-                if (SplashScreenManager.Default != null)
-                {
-                    SplashScreenManager.Default.Invalidate();
-                }
-            }
-        }
-
-        static void FluentSplashScreenDraw(object sender, FluentSplashScreenCustomDrawEventArgs e)
-        {
-            var linGrBrush = new LinearGradientBrush(
-                new Point(0, 0),
-                new Point(e.Bounds.Height + 1200, e.Bounds.Width),
-                Color.FromArgb(100, 24, 27, 32),
-                Color.FromArgb(100, 170, 101, 254));
-
-            e.Cache.FillRectangle(linGrBrush, e.Bounds);
+            SplashScreenManager.ShowForm(typeof(SplashScreen1));
         }
     }
 }
