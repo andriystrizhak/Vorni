@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EWL_Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a6b39e6dce2cfd915cb96ecdb973153ca7f3ed1b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+792e3525ac5f3f49131d545404080c5c6527b144")]
 [assembly: System.Reflection.AssemblyProductAttribute("EWL_Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EWL_Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

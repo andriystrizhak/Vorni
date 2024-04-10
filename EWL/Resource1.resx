@@ -133,9 +133,6 @@
   <data name="fullscreen_ON" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\fullscreen_ON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-чатgpt-144 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\icons8-чатgpt-144 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-дублировать-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-дублировать-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,8 +154,11 @@
   <data name="icons8-2-в-кружке-100 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-2-в-кружке-100 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-удалить-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\icons8-удалить-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Frame_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Frame 4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VORNI (start) 2.0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\VORNI (start) 2.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-говорить(4)-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-говорить(4)-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -168,6 +168,9 @@
   </data>
   <data name="2icons8-финишный-флажок-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\2icons8-финишный-флажок-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_2__unscreen_ezgif_com_speed__1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-2--unscreen-ezgif.com-speed (1).gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-1-в-кружке-100 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-1-в-кружке-100 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,14 +199,17 @@
   <data name="icons8-график-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-график-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Frame_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Splash Screen\Frame 10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-удалить-60" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-удалить-60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-студенческий-центр-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-студенческий-центр-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-3-в-кружке-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-3-в-кружке-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="envelop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\envelop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-азбука-96(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-азбука-96(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,17 +223,20 @@
   <data name="icons8-говорить-1001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-говорить-1001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-назад-96 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\icons8-назад-96 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1icons8-финишный-флажок-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\1icons8-финишный-флажок-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-5-в-кружке-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-5-в-кружке-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-вопрос-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-вопрос-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="voron3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\voron3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-азбука-96 (1)(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-азбука-96 (1)(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-меню-2563" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-меню-2563.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-меню-2561" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-меню-2561.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,8 +250,14 @@
   <data name="Untitled 3.2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Untitled 3.2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Frame" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Frame.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="envelop2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\envelop2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-назад-96 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-назад-96 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-меню-2562" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-меню-2562.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,11 +268,11 @@
   <data name="icons8-github-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-github-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-удалить-60" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\icons8-удалить-60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="closeoutline_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\closeoutline_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-5-в-кружке-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\icons8-5-в-кружке-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-меню-256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-меню-256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-меню-2564" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-меню-2564.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -274,6 +289,9 @@
   <data name="icons8-плюс-2-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-плюс-2-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Frame_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Splash Screen\Frame 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-тест-96 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-тест-96 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -289,20 +307,20 @@
   <data name="icons8-говорить-1003" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-говорить-1003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-назад-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-назад-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="closeoutline_21" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\closeoutline_21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-меню-2563" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\icons8-меню-2563.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-чатgpt-144 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-чатgpt-144 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-меню-256" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\icons8-меню-256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="1icons8-финишный-флажок-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\1icons8-финишный-флажок-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="voron4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\voron4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="closeoutline_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\closeoutline_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-говорить-100 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-говорить-100 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -319,11 +337,11 @@
   <data name="icons8-4-в-кружке-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-4-в-кружке-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-азбука-96 (1)(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\icons8-азбука-96 (1)(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="envelop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\envelop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-назад-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\icons8-назад-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-удалить-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\icons8-удалить-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-добавить-96 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-добавить-96 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -331,22 +349,7 @@
   <data name="icons8-меню-256(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\icons8-меню-256(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="VORNI (start) 2.0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\VORNI (start) 2.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Frame_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Splash Screen\Frame 10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Frame_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Splash Screen\Frame 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Frame" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Frame.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Frame_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Frame 4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_2__unscreen_ezgif_com_speed__1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\icons8-2--unscreen-ezgif.com-speed (1).gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="closeoutline_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\closeoutline_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

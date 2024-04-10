@@ -85,7 +85,7 @@ namespace EWL
 
         #endregion
 
-        #region [[ Other Panels ]]
+        #region [[ Other Panels / Forms]]
 
         #region [ TopPanel ]
 
@@ -196,7 +196,13 @@ namespace EWL
             if (this.Opacity < 1)
                 this.Opacity += FadeInOutDelta;
             else
+            {
                 FadeInTimer.Stop();
+
+                //CHANGE - прибери комент
+                //if (!SQLService.WasLaunched())
+                    ShowStartInfoForm();
+            }
         }
 
         private void FadeOutTimer_AndClose_Tick(object sender, EventArgs e)
@@ -223,6 +229,16 @@ namespace EWL
             }
             handler.Close();
             e.Cancel = true;
+        }
+
+        #endregion
+
+        #region [ StartInfo Form ]
+
+        void ShowStartInfoForm()
+        {
+            var handler = ShowProgressPanel(this);
+            new StartInfo(this, handler).ShowDialog();
         }
 
         #endregion

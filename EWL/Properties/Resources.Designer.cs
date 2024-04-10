@@ -59,5 +59,15 @@ namespace Eng_Flash_Cards_Learner.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap start_1_0 {
+            get {
+                object obj = ResourceManager.GetObject("start_1.0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

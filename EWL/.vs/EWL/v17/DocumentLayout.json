@@ -3,36 +3,72 @@
   "WorkspaceRootPath": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\usercontrols\\mycustomoverlaypainter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\usercontrols\\mycustomoverlaypainter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|d:\\self-dev\\hard-skills\\development\\practice\\myprojects\\ewl fc\\ewl\\forms\\childforms\\startinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\childforms\\startinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|d:\\self-dev\\hard-skills\\development\\practice\\myprojects\\ewl fc\\ewl\\forms\\childforms\\startinfo.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\childforms\\startinfo.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\mainbdform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\mainbdform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|d:\\self-dev\\hard-skills\\development\\practice\\myprojects\\ewl fc\\ewl\\forms\\usercontrols\\customsplashscreen.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\usercontrols\\customsplashscreen.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\childforms\\startinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\childforms\\startinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\childforms\\settingsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\childforms\\settingsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\childforms\\settingsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\childforms\\settingsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\childforms\\apikeyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\childforms\\apikeyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\childforms\\apikeyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\childforms\\apikeyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\childforms\\apikeyform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\childforms\\apikeyform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\mainbdform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\mainbdform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\mainbdform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\mainbdform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\resource1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
       "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:resource1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\usercontrols\\splashscreen1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\usercontrols\\splashscreen1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\usercontrols\\mycustomoverlaypainter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\usercontrols\\mycustomoverlaypainter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\forms\\usercontrols\\splashscreen1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
-      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\usercontrols\\splashscreen1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|d:\\self-dev\\hard-skills\\development\\practice\\myprojects\\ewl fc\\ewl\\forms\\usercontrols\\customsplashscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\usercontrols\\customsplashscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|d:\\self-dev\\hard-skills\\development\\practice\\myprojects\\ewl fc\\ewl\\forms\\usercontrols\\splashscreen1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\usercontrols\\splashscreen1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|d:\\self-dev\\hard-skills\\development\\practice\\myprojects\\ewl fc\\ewl\\forms\\usercontrols\\customsplashscreen.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\usercontrols\\customsplashscreen.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|d:\\self-dev\\hard-skills\\development\\practice\\myprojects\\ewl fc\\ewl\\forms\\usercontrols\\customsplashscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{57ED3951-21E9-4F61-B604-44283E06FB3B}|EWL.csproj|solutionrelative:forms\\usercontrols\\customsplashscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -45,6 +81,19 @@
           "SelectedChildIndex": 6,
           "Children": [
             {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CustomSplashScreen.Designer.cs",
+              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\CustomSplashScreen.Designer.cs",
+              "RelativeDocumentMoniker": "Forms\\UserControls\\CustomSplashScreen.Designer.cs",
+              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\CustomSplashScreen.Designer.cs",
+              "RelativeToolTip": "Forms\\UserControls\\CustomSplashScreen.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T11:08:47.954Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
             },
@@ -54,36 +103,136 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StartInfo.resx",
+              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\StartInfo.resx",
+              "RelativeDocumentMoniker": "Forms\\ChildForms\\StartInfo.resx",
+              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\StartInfo.resx",
+              "RelativeToolTip": "Forms\\ChildForms\\StartInfo.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2024-04-08T11:07:13.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ApiKeyForm.Designer.cs",
+              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\ApiKeyForm.Designer.cs",
+              "RelativeDocumentMoniker": "Forms\\ChildForms\\ApiKeyForm.Designer.cs",
+              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\ApiKeyForm.Designer.cs",
+              "RelativeToolTip": "Forms\\ChildForms\\ApiKeyForm.Designer.cs",
+              "ViewState": "AQIAALwAAAAAAAAAAAAAANMAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T09:38:18.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StartInfo.cs [Design]",
+              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\StartInfo.cs",
+              "RelativeDocumentMoniker": "Forms\\ChildForms\\StartInfo.cs",
+              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\StartInfo.cs [Design]",
+              "RelativeToolTip": "Forms\\ChildForms\\StartInfo.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T08:55:56.457Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StartInfo.cs",
+              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\StartInfo.cs",
+              "RelativeDocumentMoniker": "Forms\\ChildForms\\StartInfo.cs",
+              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\StartInfo.cs",
+              "RelativeToolTip": "Forms\\ChildForms\\StartInfo.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAUwCEAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T09:17:35.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApiKeyForm.cs [Design]",
+              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\ApiKeyForm.cs",
+              "RelativeDocumentMoniker": "Forms\\ChildForms\\ApiKeyForm.cs",
+              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\ApiKeyForm.cs [Design]",
+              "RelativeToolTip": "Forms\\ChildForms\\ApiKeyForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T09:01:45.032Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "SplashScreen1.cs [Design]",
-              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\SplashScreen1.cs",
-              "RelativeDocumentMoniker": "Forms\\UserControls\\SplashScreen1.cs",
-              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\SplashScreen1.cs [Design]",
-              "RelativeToolTip": "Forms\\UserControls\\SplashScreen1.cs [Design]",
+              "Title": "ApiKeyForm.cs",
+              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\ApiKeyForm.cs",
+              "RelativeDocumentMoniker": "Forms\\ChildForms\\ApiKeyForm.cs",
+              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\ApiKeyForm.cs",
+              "RelativeToolTip": "Forms\\ChildForms\\ApiKeyForm.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAAuwCQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T08:51:56.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SettingsForm.cs [Design]",
+              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\SettingsForm.cs",
+              "RelativeDocumentMoniker": "Forms\\ChildForms\\SettingsForm.cs",
+              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\SettingsForm.cs [Design]",
+              "RelativeToolTip": "Forms\\ChildForms\\SettingsForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T09:03:56.789Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SettingsForm.cs",
+              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\SettingsForm.cs",
+              "RelativeDocumentMoniker": "Forms\\ChildForms\\SettingsForm.cs",
+              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\ChildForms\\SettingsForm.cs",
+              "RelativeToolTip": "Forms\\ChildForms\\SettingsForm.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAowF8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T08:51:48.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CustomSplashScreen.cs [Design]",
+              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\CustomSplashScreen.cs",
+              "RelativeDocumentMoniker": "Forms\\UserControls\\CustomSplashScreen.cs",
+              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\CustomSplashScreen.cs [Design]",
+              "RelativeToolTip": "Forms\\UserControls\\CustomSplashScreen.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-07T16:16:01.936Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SplashScreen1.resx",
-              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\SplashScreen1.resx",
-              "RelativeDocumentMoniker": "Forms\\UserControls\\SplashScreen1.resx",
-              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\SplashScreen1.resx",
-              "RelativeToolTip": "Forms\\UserControls\\SplashScreen1.resx",
+              "DocumentIndex": 15,
+              "Title": "CustomSplashScreen.resx",
+              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\CustomSplashScreen.resx",
+              "RelativeDocumentMoniker": "Forms\\UserControls\\CustomSplashScreen.resx",
+              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\CustomSplashScreen.resx",
+              "RelativeToolTip": "Forms\\UserControls\\CustomSplashScreen.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
               "WhenOpened": "2024-04-07T15:12:52.543Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SplashScreen1.cs",
-              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\SplashScreen1.cs",
-              "RelativeDocumentMoniker": "Forms\\UserControls\\SplashScreen1.cs",
-              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\SplashScreen1.cs",
-              "RelativeToolTip": "Forms\\UserControls\\SplashScreen1.cs",
+              "DocumentIndex": 14,
+              "Title": "CustomSplashScreen.cs",
+              "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\CustomSplashScreen.cs",
+              "RelativeDocumentMoniker": "Forms\\UserControls\\CustomSplashScreen.cs",
+              "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\CustomSplashScreen.cs",
+              "RelativeToolTip": "Forms\\UserControls\\CustomSplashScreen.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAADwvxAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-07T15:23:26.417Z",
@@ -91,63 +240,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "Resource1.resx",
               "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Resource1.resx",
               "RelativeDocumentMoniker": "Resource1.resx",
               "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Resource1.resx",
               "RelativeToolTip": "Resource1.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2024-04-04T07:03:17.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-04T07:03:17.147Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 13,
               "Title": "MyCustomOverlayPainter.cs",
               "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\MyCustomOverlayPainter.cs",
               "RelativeDocumentMoniker": "Forms\\UserControls\\MyCustomOverlayPainter.cs",
               "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\UserControls\\MyCustomOverlayPainter.cs",
               "RelativeToolTip": "Forms\\UserControls\\MyCustomOverlayPainter.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAlAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T13:24:15.174Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-05T13:24:15.174Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "MainBDForm.cs [Design]",
               "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\MainBDForm.cs",
               "RelativeDocumentMoniker": "Forms\\MainBDForm.cs",
               "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\MainBDForm.cs [Design]",
               "RelativeToolTip": "Forms\\MainBDForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-02T15:37:49.886Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2023-12-02T15:37:49.886Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 10,
               "Title": "MainBDForm.cs",
               "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\MainBDForm.cs",
               "RelativeDocumentMoniker": "Forms\\MainBDForm.cs",
               "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Forms\\MainBDForm.cs",
               "RelativeToolTip": "Forms\\MainBDForm.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACIAAAAWAAAA",
+              "ViewState": "AQIAACIAAAAAAAAAAADwv0UAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-11-13T11:08:01.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2023-11-13T11:08:01.372Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\SELF-DEV\\HARD-SKILLS\\DEVELOPMENT\\PRACTICE\\MyProjects\\EWL FC\\EWL\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAACoAAAAAAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACEAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2023-12-02T13:58:01.869Z",
               "EditorCaption": ""

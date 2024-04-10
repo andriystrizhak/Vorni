@@ -82,7 +82,8 @@ namespace Eng_Flash_Cards_Learner.Forms.ChildForms
         {
             SQLService.Set_GPTApiKey(ApiKeyTextBox.Text);
             ApiKeyAddingReportPopup.Popup();
-            Close();
+            FadeOutTimer.Start();
+            //Close();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
